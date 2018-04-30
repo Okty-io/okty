@@ -1,12 +1,17 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ContainerService} from '../../services/container.service';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
 
-  constructor() {
+  constructor(private containerService: ContainerService) {
+  }
+
+  public ngOnInit(): void {
+    this.containerService.getAvailableContainers().then(response => console.log(response));
   }
 }
