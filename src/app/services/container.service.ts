@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Container} from '../models/container.model';
-import {HttpClient} from '@angular/common/http';
-import {Config} from '../app.vars';
+import { Container } from './../models/container.model';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Config } from '../app.vars';
 
 @Injectable()
 export class ContainerService {
@@ -13,7 +13,7 @@ export class ContainerService {
     return new Promise(resolve => {
       const url = Config.GIT_URL + Config.GIT_CONTAINERS_PATH;
 
-      const promises: Array<Promise> = [];
+      const promises: Array<Promise<Container>> = [];
       this.http.get(url).subscribe((data: Array<any>) => {
         data.map(container => {
           promises.push(this.getContainerConfig(container.name));
