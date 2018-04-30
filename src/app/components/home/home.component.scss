@@ -12,12 +12,14 @@
         font-weight: 300;
         text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6);
     }
+
     .home-description {
         font-size: 25px;
         color: white;
         font-weight: 100;
         text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6);
     }
+    
     .home-button {
         background-color: rgba(255,255,255,0.2);
         box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
@@ -25,8 +27,8 @@
         color: #FFF;
         text-shadow: 0 1px 0 rgba(0,0,0,0.2);
         padding: 10px 40px 8px;
-        min-width: 225px;
         text-transform: uppercase;
+        display: inline-block;
         font-size: 20px;
         outline: none;
         text-decoration: none;

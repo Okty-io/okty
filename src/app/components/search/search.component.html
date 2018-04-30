@@ -1,1 +1,14 @@
-<h1>search</h1>
+<div class="search-container">
+    <input type="text" placeholder="Search ..." class="search-input">
+
+    <div class="search-container-docker-container">
+        <div *ngFor="let container of containers" class="docker-container">
+            <div class="docker-container-image">
+                <img src="{{ container.image }}" alt="{{ container.name }}">
+            </div>
+            <div class="docker-container-name">
+                {{ container.name }}
+            </div>
+        </div>
+    </div>
+</div>
