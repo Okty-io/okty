@@ -7,7 +7,6 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'app';
 
   constructor(private http: HttpClient) {
   }
@@ -20,8 +19,9 @@ export class AppComponent implements OnInit {
 
     this.http.get(url).toPromise().then((file: { content: string }) => {
       const content = atob(file.content);
+      const nativeObject = YAML.parse(content);
 
-      console.log(content);
+      console.log(nativeObject);
     });
 
     console.log('test');
