@@ -1,0 +1,100 @@
+.search-container {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+
+    .search-input {
+        margin-top: 100px;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        color: #FFF;
+        padding: 10px 10px;
+        min-width: 250px;
+        display: inline-block;
+        font-size: 25px;
+        outline: none;
+        text-decoration: none;
+        -webkit-transition: .3s ease;
+        transition: .3s ease;
+
+        &::placeholder { 
+            transition: .1s ease;
+            color: rgba(255, 255, 255, 0.35);
+        }
+        
+        &:-ms-input-placeholder { 
+            transition: .1s ease;
+            color: rgba(255, 255, 255, 0.35);
+        }
+        
+        &::-ms-input-placeholder {
+            transition: .1s ease;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        &:hover, &:focus {
+            border-bottom: 2px solid rgba(255, 255, 255, 1);
+        }
+
+        &:focus {
+            &::placeholder { 
+                opacity: 0;
+            }
+            
+            &:-ms-input-placeholder { 
+                opacity: 0;
+            }
+            
+            &::-ms-input-placeholder {
+                opacity: 0;
+            }
+        }
+    }
+
+    .search-container-docker-container {
+        margin-top: 100px;
+
+        .docker-container {
+            width: 150px;
+            height: 150px;
+            display: inline-block;
+
+            .docker-container-image {
+                background: rgba(255, 255, 255, 0.15);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                width: 100px;
+                height: 100px;
+                margin-left: 25px;
+                border-radius: 50%;
+                position: relative;
+                -webkit-transition: .3s ease;
+                transition: .3s ease;
+
+                &:hover {
+                    cursor: pointer;
+                    border: 1px solid rgba(255, 255, 255, 1);
+                }
+
+                img {
+                    width: 60%;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                }
+            }
+
+            .docker-container-name {
+                margin-top: 15px;
+                color: white;
+            }
+        }
+    }
+}
