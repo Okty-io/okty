@@ -9,10 +9,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {HomeComponent} from './components/home/home.component';
 import {SearchComponent} from './components/search/search.component';
 import {SetupComponent} from './components/setup/setup.component';
+import {SidebarComponent} from './components/setup/sidebar/sidebar.component';
 
 // Providers
 import {ContainerService} from './services/container.service';
 import {ContainerResolve} from './services/container.resolve';
+import {ProjectService} from './services/project.service';
 
 // Routes
 import {routes} from './app.routes';
@@ -23,6 +25,7 @@ import {routes} from './app.routes';
     HomeComponent,
     SearchComponent,
     SetupComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import {routes} from './app.routes';
   providers: [
     ContainerService,
     ContainerResolve,
+    ProjectService,
   ],
   bootstrap: [AppComponent]
 })
