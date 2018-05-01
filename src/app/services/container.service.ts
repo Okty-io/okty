@@ -13,7 +13,7 @@ export class ContainerService {
     return new Promise(resolve => {
       const url = Config.GIT_URL + Config.GIT_CONTAINERS_PATH;
 
-      const promises: Array<Promise> = [];
+      const promises: Array<Promise<Container>> = [];
       this.http.get(url).subscribe((data: Array<any>) => {
         data.map(container => {
           promises.push(this.getContainerConfig(container.name));
@@ -29,12 +29,15 @@ export class ContainerService {
   public getContainerConfig(name: string): Promise<Container> {
     const url = Config.GIT_URL + Config.GIT_CONTAINERS_PATH + '/' + name;
 
-    return new Promise<any>(resolve => {
-      this.http.get(url).subscribe((container: { content: string }) => {
-        let content = atob(container.content);
-        content = YAML.parse(content);
+    return new Promise<Container>((resolve, reject) => {
+      this.http.get(url).subscribe((file: { name: string, content: string }) => {
+        const content = atob(file.content);
+        const container: Container = YAML.parse(content);
+        container.configPath = file.name;
 
-        resolve(content);
+        resolve(container);
+      }, () => {
+        reject(null);
       });
     });
   }
