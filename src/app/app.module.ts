@@ -1,16 +1,20 @@
 // Modules
-import {BrowserModule} from '@angular/platform-browser';
-import {RouterModule, Routes} from '@angular/router';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { FormsModule } from "@angular/forms";
 
 // Components
-import {AppComponent} from './app.component';
-import {HttpClientModule} from '@angular/common/http';
-import {HomeComponent} from './components/home/home.component';
-import {SearchComponent} from './components/search/search.component';
+import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
+import { SearchComponent } from './components/search/search.component';
 
 // Providers
-import {ContainerService} from './services/container.service';
+import { ContainerService } from './services/container.service';
+
+// Pipes
+import { FilterPipe } from './pipes/filter.pipe';
 
 // Routing
 const appRoutes: Routes = [
@@ -22,12 +26,14 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    SearchComponent
+    SearchComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
+    FormsModule
   ],
   providers: [
     ContainerService,

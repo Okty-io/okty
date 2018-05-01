@@ -19,6 +19,11 @@
         font-weight: 100;
         text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6);
     }
+
+    .home-text-transition {
+        animation: hideDescription 0.3s linear;
+        animation-fill-mode: forwards;
+    }
     
     .home-button {
         background-color: rgba(255,255,255,0.2);
@@ -39,5 +44,71 @@
             background-color: rgba(255,255,255,0.3);
             color: #FFF;
         }
+    }
+
+    .home-button-transition {
+        animation: goToSearch 1s ease;
+        animation-fill-mode: forwards;
+        animation-delay: 0.35s;
+    }
+}
+
+.home-container-transition {
+    animation: moveContainer 1s linear;
+    animation-fill-mode: forwards;
+    animation-delay: 0.35s;
+}
+
+@-webkit-keyframes moveContainer {
+    0% {
+        top: 50%;
+    }
+    100% {
+        transform: translate(-50%, 35px);
+        top: 0%;
+    }
+}
+
+@-webkit-keyframes hideDescription {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+        -webkit-transform: translateY(-10px);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(-20px);
+    }
+}
+
+@-webkit-keyframes goToSearch {
+    0% {
+        min-width: 50px;
+        margin-top: 100px;
+        position: absolute;
+        top: 0;
+        transform: translate(-50%, 0%);
+    }
+    100% {
+        margin-top: 100px;
+        position: absolute;
+        top: 0;
+        transform: translate(-50%, 0%);
+
+
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        color: rgba(255,255,255,0);
+        text-shadow: none;
+        padding: 10px 10px;
+        min-width: 250px;
+        display: inline-block;
+        font-size: 25px;
+        outline: none;
+        text-decoration: none;
     }
 }

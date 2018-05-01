@@ -63,6 +63,7 @@
             width: 150px;
             height: 150px;
             display: inline-block;
+            animation: reveal .5s ease;
 
             .docker-container-image {
                 background: rgba(255, 255, 255, 0.15);
@@ -96,5 +97,16 @@
                 color: white;
             }
         }
+    }
+}
+
+@keyframes reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
     }
 }
