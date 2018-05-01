@@ -10,7 +10,7 @@ export const routes: Routes = [
     component: SetupComponent,
     resolve: {
       container: ContainerResolve,
-    }
+    },
   },
   {
     path: 'search',
