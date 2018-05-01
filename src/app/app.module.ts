@@ -1,6 +1,6 @@
 // Modules
 import {BrowserModule} from '@angular/platform-browser';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 
 // Components
@@ -8,29 +8,30 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {HomeComponent} from './components/home/home.component';
 import {SearchComponent} from './components/search/search.component';
+import {SetupComponent} from './components/setup/setup.component';
 
 // Providers
 import {ContainerService} from './services/container.service';
+import {ContainerResolve} from './services/container.resolve';
 
-// Routing
-const appRoutes: Routes = [
-  {path: 'search', component: SearchComponent},
-  {path: '**', component: HomeComponent}
-];
+// Routes
+import {routes} from './app.routes';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    SearchComponent
+    SearchComponent,
+    SetupComponent,
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(routes),
     HttpClientModule,
   ],
   providers: [
     ContainerService,
+    ContainerResolve,
   ],
   bootstrap: [AppComponent]
 })
