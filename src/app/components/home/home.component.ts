@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
 
-    redirection: boolean = false;
+  redirection = false;
 
-    constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
-    goToSearch() {
-        this.redirection = true;
-        setTimeout(() => {
-            this.router.navigate(["/search"]);
-        }, 1400);
-    }
+  goToSearch() {
+    this.redirection = true;
+    setTimeout(() => {
+      this.router.navigate(['/search']);
+    }, 1400);
+  }
 }

@@ -1,7 +1,7 @@
-import { Container } from './../models/container.model';
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Config } from '../app.vars';
+import {Container} from '../models/container.model';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Config} from '../app.vars';
 
 @Injectable()
 export class ContainerService {
