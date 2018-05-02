@@ -1,4 +1,6 @@
 <div class='sidebar' *ngIf="visible">
-  <div class="container" *ngFor="let container of containers"></div>
+  <div class="container sidebar-container tool-tip" data-tooltip-title="Right tooltip" data-tooltip-position="right" *ngFor="let container of containers">
+      <span class="container-remove"></span>
+  </div>
   <div class="container add-control" [routerLink]="'/search'"></div>
 </div>
