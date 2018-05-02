@@ -1,21 +1,30 @@
-.top-bar {
-    width: 100%;
-    height: 35px;
-    line-height: 35px;
-    color: white;
-    font-size: 20px;
+:host {
+  display: flex;
 
-    .title {
-        margin-left: 10px;
-        outline: none;
-        a {
-            text-decoration: none;
-            color: white;
-        }
+  .wrapper {
+    width: calc(100vw - 82px);
+  }
+}
+
+.top-bar {
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  .title {
+    margin-left: 10px;
+    outline: none;
+    a {
+      text-decoration: none;
+      color: white;
     }
-    
-    .help {
-        margin-right: 15px;
-        float: right;
-    }
+  }
+
+  .help {
+    margin-right: 15px;
+  }
 }
