@@ -1,1 +1,10 @@
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur assumenda beatae culpa eligendi eos error fugit harum impedit magni, molestias perferendis placeat quae quasi quidem reiciendis sint, vero, voluptas.
+<div class="config">
+  <h1>Configuration {{ container.name }}</h1>
+  <div *ngFor="let group of container.config">
+    <h2>{{ group.label }}</h2>
+    <div *ngFor="let input of group.fields">
+      {{ input.label }}
+      <div [appFormInput]="input.type"></div>
+    </div>
+  </div>
+</div>

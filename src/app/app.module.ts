@@ -11,6 +11,9 @@ import {HomeComponent} from './components/home/home.component';
 import {SearchComponent} from './components/search/search.component';
 import {SetupComponent} from './components/setup/setup.component';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
+import {PortComponent} from './components/setup/form/port/port.component';
+import {VoidComponent} from './components/setup/form/void.component';
+import {InputComponent} from './components/setup/form/input/input.component';
 
 // Providers
 import {ContainerService} from './services/container.service';
@@ -21,8 +24,12 @@ import {CacheService} from './services/cache.service';
 // Pipes
 import {FilterPipe} from './pipes/filter.pipe';
 
+// Directives
+import {FormInputDirective} from './directives/form-input.directive';
+
 // Routes
 import {routes} from './app.routes';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +39,10 @@ import {routes} from './app.routes';
     FilterPipe,
     SetupComponent,
     SidebarComponent,
+    FormInputDirective,
+    InputComponent,
+    PortComponent,
+    VoidComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +55,11 @@ import {routes} from './app.routes';
     ContainerResolve,
     ProjectService,
     CacheService,
+  ],
+  entryComponents: [
+    InputComponent,
+    PortComponent,
+    VoidComponent,
   ],
   bootstrap: [AppComponent]
 })
