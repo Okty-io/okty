@@ -17,8 +17,6 @@ export class ContainerResolve implements Resolve<Container> {
           resolve(container);
         })
         .catch(() => {
-          alert('Error : cannot get container configuration');
-
           // noinspection JSIgnoredPromiseFromCall
           this.router.navigate(['/']);
           resolve(null);
