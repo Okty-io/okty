@@ -1,6 +1,6 @@
 // Modules
 import {BrowserModule} from '@angular/platform-browser';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
@@ -9,34 +9,39 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {HomeComponent} from './components/home/home.component';
 import {SearchComponent} from './components/search/search.component';
+import {SetupComponent} from './components/setup/setup.component';
+import {SidebarComponent} from './components/setup/sidebar/sidebar.component';
 
 // Providers
 import {ContainerService} from './services/container.service';
+import {ContainerResolve} from './services/container.resolve';
+import {ProjectService} from './services/project.service';
 
 // Pipes
 import {FilterPipe} from './pipes/filter.pipe';
 
-// Routing
-const appRoutes: Routes = [
-  {path: 'search', component: SearchComponent},
-  {path: '**', component: HomeComponent}
-];
+// Routes
+import {routes} from './app.routes';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchComponent,
-    FilterPipe
+    FilterPipe,
+    SetupComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(routes),
     HttpClientModule,
     FormsModule
   ],
   providers: [
     ContainerService,
+    ContainerResolve,
+    ProjectService,
   ],
   bootstrap: [AppComponent]
 })
