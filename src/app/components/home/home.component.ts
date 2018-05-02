@@ -17,6 +17,6 @@ export class HomeComponent {
     this.redirection = true;
     setTimeout(() => {
       this.router.navigate(['/search']);
-    }, 1400);
+    }, 1100);
   }
 }

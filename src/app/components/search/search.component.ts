@@ -14,6 +14,6 @@ export class SearchComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.containerService.getAvailableContainers().then(containers => this.containers = containers);
+    //this.containerService.getAvailableContainers().then(containers => this.containers = containers);
   }
 }
