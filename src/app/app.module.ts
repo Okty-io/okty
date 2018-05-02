@@ -16,6 +16,7 @@ import {SidebarComponent} from './components/setup/sidebar/sidebar.component';
 import {ContainerService} from './services/container.service';
 import {ContainerResolve} from './services/container.resolve';
 import {ProjectService} from './services/project.service';
+import {CacheService} from './services/cache.service';
 
 // Pipes
 import {FilterPipe} from './pipes/filter.pipe';
@@ -42,6 +43,7 @@ import {routes} from './app.routes';
     ContainerService,
     ContainerResolve,
     ProjectService,
+    CacheService,
   ],
   bootstrap: [AppComponent]
 })
