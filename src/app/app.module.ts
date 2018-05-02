@@ -23,6 +23,10 @@ import {FilterPipe} from './pipes/filter.pipe';
 
 // Routes
 import {routes} from './app.routes';
+import {InputComponent} from './components/setup/form/input/input.component';
+import {FormInputDirective} from './directives/form-input.directive';
+import {PortComponent} from './components/setup/form/port/port.component';
+import {VoidComponent} from './components/setup/form/void.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,10 @@ import {routes} from './app.routes';
     FilterPipe,
     SetupComponent,
     SidebarComponent,
+    FormInputDirective,
+    InputComponent,
+    PortComponent,
+    VoidComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +52,11 @@ import {routes} from './app.routes';
     ContainerResolve,
     ProjectService,
     CacheService,
+  ],
+  entryComponents: [
+    InputComponent,
+    PortComponent,
+    VoidComponent,
   ],
   bootstrap: [AppComponent]
 })
