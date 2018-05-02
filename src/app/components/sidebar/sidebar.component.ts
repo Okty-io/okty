@@ -19,7 +19,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.projectService.getContainers().subscribe(containers => {
-      console.log(containers);
       this.containers = containers;
 
       if (this.containers.length > 0) {
