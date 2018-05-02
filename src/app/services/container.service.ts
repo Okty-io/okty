@@ -14,7 +14,7 @@ export class ContainerService {
   }
 
   public getAvailableContainers(): Promise<Array<Container>> {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
 
       const cacheData = this.cache.get(this.allContainersCacheKey);
       if (cacheData) {
@@ -33,6 +33,13 @@ export class ContainerService {
         Promise.all(promises).then(containers => {
           this.cache.set(this.allContainersCacheKey, containers);
           resolve(containers);
+        }).catch(response => {
+          const error = {
+            message: response.error.message,
+            status: response.status
+          };
+          this.ajaxError(error);
+          reject(error);
         });
       });
     });
@@ -56,9 +63,22 @@ export class ContainerService {
 
         this.cache.set(this.containerConfigCacheKey + name, container);
         resolve(container);
-      }, () => {
-        reject(null);
+      }, (response) => {
+        const error = {
+          message: response.error.message,
+          status: response.status
+        };
+        this.ajaxError(error);
+        reject(error);
       });
     });
+  }
+
+  public ajaxError(error): void {
+    if (error.status === 403) {
+      alert('Le nombre max d\'appel API vers github est depassé pour cette IP. Revenez plus tard');
+    } else {
+      alert('An error occurred');
+    }
   }
 }
