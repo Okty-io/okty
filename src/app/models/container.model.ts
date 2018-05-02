@@ -1,5 +1,5 @@
 export class Container {
   name: string;
   configPath: string;
-  config: {};
+  config: Array<any>;
 }

@@ -1,10 +1,13 @@
 <div class="config">
   <h1>Configuration {{ container.name }}</h1>
-  <div *ngFor="let group of container.config">
-    <h2>{{ group.label }}</h2>
-    <div *ngFor="let input of group.fields">
-      {{ input.label }}
-      <div [appFormInput]="input.type"></div>
+  <form (submit)="submit()">
+    <div *ngFor="let group of container.config">
+      <h2>{{ group.label }}</h2>
+      <div *ngFor="let input of group.fields">
+        {{ input.label }}
+        <div [appFormInput]="input.type" [appFormControl]="formGroup.get(group.label + '_' + input.id)"></div>
+      </div>
     </div>
-  </div>
+    <button>Submit</button>
+  </form>
 </div>
