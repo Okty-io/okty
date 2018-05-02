@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, Router} from '@angular/router';
 import {Container} from '../models/container.model';
 import {ContainerService} from './container.service';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class ContainerResolve implements Resolve<Container> {
@@ -9,17 +10,16 @@ export class ContainerResolve implements Resolve<Container> {
   constructor(private containerService: ContainerService, private router: Router) {
   }
 
-  resolve(route: ActivatedRouteSnapshot): Promise<Container> {
-    return new Promise<Container>(resolve => {
+  resolve(route: ActivatedRouteSnapshot): Observable<Container> {
+    return new Observable<Container>(observer => {
 
       this.containerService.getContainerConfig(route.params.id)
         .then(container => {
-          resolve(container);
+          observer.next(container);
+          observer.complete();
         })
         .catch(() => {
-          // noinspection JSIgnoredPromiseFromCall
-          this.router.navigate(['/']);
-          resolve(null);
+          observer.complete();
         });
     });
   }
