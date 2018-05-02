@@ -13,7 +13,6 @@ export class SetupComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private projectService: ProjectService) {
     this.container = route.snapshot.data.container;
-    console.log(this.container);
   }
 
   ngOnInit(): void {
