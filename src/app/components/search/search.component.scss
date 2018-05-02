@@ -22,16 +22,16 @@
         -webkit-transition: .3s ease;
         transition: .3s ease;
 
-        &::placeholder { 
+      &::placeholder {
             transition: .1s ease;
             color: rgba(255, 255, 255, 0.35);
         }
-        
-        &:-ms-input-placeholder { 
+
+      &:-ms-input-placeholder {
             transition: .1s ease;
             color: rgba(255, 255, 255, 0.35);
         }
-        
+
         &::-ms-input-placeholder {
             transition: .1s ease;
             color: rgba(255, 255, 255, 0.35);
@@ -42,15 +42,15 @@
         }
 
         &:focus {
-            &::placeholder { 
+          &::placeholder {
                 opacity: 0;
             }
-            
-            &:-ms-input-placeholder { 
+
+          &:-ms-input-placeholder {
                 opacity: 0;
             }
-            
-            &::-ms-input-placeholder {
+
+          &::-ms-input-placeholder {
                 opacity: 0;
             }
         }
@@ -75,6 +75,10 @@
                 position: relative;
                 -webkit-transition: .3s ease;
                 transition: .3s ease;
+
+              &:focus {
+                outline: none;
+              }
 
                 &:hover {
                     cursor: pointer;
