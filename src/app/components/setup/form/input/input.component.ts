@@ -7,4 +7,5 @@ import {FormControl} from '@angular/forms';
 })
 export class InputComponent {
   @Input() formControl: FormControl;
+  @Input() input: any;
 }

@@ -1,9 +1,14 @@
 <div class="input-selector">
   <!--suppress HtmlFormInputWithoutLabel -->
-  <input type="text" value="{{ selected }}" (change)="changeSelected($event.target.value)" (focus)="showPossibles({})"
-         (focusout)="hidePossibles({})">
-  <ul [ngClass]="{'possibles':true, 'show': show }">
-    <li *ngFor="let possible of possibles">
+  <input type="text"
+         value="{{ selected }}"
+         (change)="changeSelected($event.target.value)"
+         (focus)="showPossibles({})"
+         (focusout)="hidePossibles({})"
+         [id]="input.id">
+
+  <ul class='select' [ngClass]="{'show': show }">
+    <li *ngFor="let possible of data">
       <button value="{{possible}}" (click)="changeSelected($event.target.value)">{{ possible }}</button>
     </li>
   </ul>

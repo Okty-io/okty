@@ -5,12 +5,14 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./port.component.scss']
 })
 export class PortComponent {
-  @Input() values: Array<String>;
-  possibles: Array<String>;
+
+  @Input() input: any;
+  data: Array<String>;
   selected: String;
   show: Boolean = false;
+
   constructor() {
-    this.possibles = [
+    this.data = [
       '80',
       '8080',
       '5050',
