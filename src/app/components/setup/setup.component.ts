@@ -48,6 +48,9 @@ export class SetupComponent implements OnInit {
         this.outputConfig['image'] = this.container.docker + ':' + this.container.version;
       });
     });
+
+    console.log(this.outputConfig);
+    console.log(YAML.stringify(this.outputConfig));
   }
 
   private initFormControls(): void {
@@ -87,7 +90,7 @@ export class SetupComponent implements OnInit {
       value = input.value;
     }
 
-    this.outputConfig['environment'][input.base] = value;
+    this.outputConfig['environment'].push(input.base + '=' + value);
   }
 
   private addToVolumes(value: string, input: any): void {
