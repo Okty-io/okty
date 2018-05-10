@@ -44,7 +44,8 @@ export class SetupComponent implements OnInit {
             this.addToPorts(value, input);
             break;
         }
-        console.log(this.outputConfig);
+
+        this.outputConfig['image'] = this.container.docker + ':' + this.container.version;
       });
     });
   }
@@ -65,7 +66,16 @@ export class SetupComponent implements OnInit {
   }
 
   private addToDockerCompose(value: string, input: any): void {
-    console.log(value, input);
+    if (!value) {
+      value = input.value;
+    }
+
+    const notOverridableFolder: Array<string> = ['volumes', 'environment', 'ports'];
+    if (notOverridableFolder.includes(input.base)) {
+      return;
+    }
+
+    this.outputConfig[input.base] = value;
   }
 
   private addToEnvironment(value: string, input: any): void {
@@ -81,10 +91,26 @@ export class SetupComponent implements OnInit {
   }
 
   private addToVolumes(value: string, input: any): void {
-    console.log(value, input);
+    if (!this.outputConfig['volumes']) {
+      this.outputConfig['volumes'] = [];
+    }
+
+    if (!value) {
+      value = input.value;
+    }
+
+    this.outputConfig['volumes'].push(value + ':' + input.base);
   }
 
   private addToPorts(value: string, input: any): void {
-    console.log(value, input);
+    if (!this.outputConfig['ports']) {
+      this.outputConfig['ports'] = [];
+    }
+
+    if (!value) {
+      value = input.value;
+    }
+
+    this.outputConfig['ports'].push(value + ':' + input.base);
   }
 }
