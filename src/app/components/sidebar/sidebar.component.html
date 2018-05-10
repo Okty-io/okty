@@ -1,8 +1,8 @@
-<aside class="containers-docker" *ngIf="visible">  
+<aside class="containers-docker" *ngIf="visible">
     <div class="container-docker-collection" *ngFor="let container of containers">
         <div class="container-docker focusable " role="button" aria-label="Reika" aria-selected="true">
             <div class="container-docker-icon">
-                <img src="http://vignette1.wikia.nocookie.net/dragonball/images/2/2c/Dragonball_%284-Sterne%29.svg" />
+              <img [src]="container.image"/>
             </div>
         </div>
     </div>

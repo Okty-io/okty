@@ -3,5 +3,6 @@ export class Container {
   configPath: string;
   docker: string;
   version: string;
+  image: string;
   config: Array<any>;
 }
