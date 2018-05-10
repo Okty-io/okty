@@ -5,6 +5,16 @@
     transform: translateX(-50%);
     text-align: center;
     width: 100%;
+}
+.search-container-sidebar {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    text-align: center;
+    width: calc(100% - 82px);
+}
+
+.search-container, .search-container-sidebar {
 
     .search-input {
         margin-top: 100px;
