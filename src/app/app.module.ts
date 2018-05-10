@@ -20,6 +20,7 @@ import {ContainerService} from './services/container.service';
 import {ContainerResolve} from './services/container.resolve';
 import {ProjectService} from './services/project.service';
 import {CacheService} from './services/cache.service';
+import {SidebarService} from './services/sidebar.service';
 
 // Pipes
 import {FilterPipe} from './pipes/filter.pipe';
@@ -56,6 +57,7 @@ import {routes} from './app.routes';
     ContainerResolve,
     ProjectService,
     CacheService,
+    SidebarService,
   ],
   entryComponents: [
     InputComponent,

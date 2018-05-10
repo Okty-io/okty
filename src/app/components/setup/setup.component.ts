@@ -3,6 +3,7 @@ import {Container} from '../../models/container.model';
 import {ActivatedRoute} from '@angular/router';
 import {ProjectService} from '../../services/project.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {SidebarService} from '../../services/sidebar.service';
 
 @Component({
   templateUrl: './setup.component.html',
@@ -14,14 +15,17 @@ export class SetupComponent implements OnInit {
   formGroup: FormGroup;
   outputConfig: any;
 
-  constructor(private route: ActivatedRoute, private projectService: ProjectService) {
+  constructor(private route: ActivatedRoute,
+              private projectService: ProjectService,
+              private sidebarService: SidebarService
+  ) {
     this.container = route.snapshot.data.container;
   }
 
   ngOnInit(): void {
     this.initFormControls();
-    this.projectService.addContainer();
     this.outputConfig = {};
+    this.sidebarService.show();
   }
 
   submit(): void {
@@ -49,8 +53,7 @@ export class SetupComponent implements OnInit {
       });
     });
 
-    console.log(this.outputConfig);
-    console.log(YAML.stringify(this.outputConfig));
+    this.projectService.addContainer(this.container, this.outputConfig);
   }
 
   private initFormControls(): void {
