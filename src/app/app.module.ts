@@ -18,7 +18,8 @@ import {ReviewComponent} from './components/review/review.component';
 
 // Providers
 import {ContainerService} from './services/container.service';
-import {ContainerResolve} from './services/container.resolve';
+import {NewContainerResolve} from './services/new-container.resolve';
+import {EditContainerResolve} from './services/edit-container.resolve';
 import {ProjectService} from './services/project.service';
 import {CacheService} from './services/cache.service';
 import {SidebarService} from './services/sidebar.service';
@@ -56,7 +57,8 @@ import {routes} from './app.routes';
   ],
   providers: [
     ContainerService,
-    ContainerResolve,
+    NewContainerResolve,
+    EditContainerResolve,
     ProjectService,
     CacheService,
     SidebarService,
