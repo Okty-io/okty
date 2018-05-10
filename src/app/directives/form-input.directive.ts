@@ -8,7 +8,7 @@ import {VoidComponent} from '../components/setup/form/void.component';
 })
 export class FormInputDirective implements OnInit {
 
-  @Input() appFormInput: string;
+  @Input() appFormInput: any;
   @Input() appFormControl: string;
 
   constructor(private viewContainer: ViewContainerRef, private factory: ComponentFactoryResolver) {
@@ -20,6 +20,7 @@ export class FormInputDirective implements OnInit {
 
     const component = this.viewContainer.createComponent(componentFactory);
     component.instance.formControl = this.appFormControl;
+    component.instance.input = this.appFormInput;
   }
 
   private getComponentType(): Type<any> {
@@ -28,10 +29,10 @@ export class FormInputDirective implements OnInit {
       port: PortComponent
     };
 
-    if (!mapping[this.appFormInput]) {
+    if (!mapping[this.appFormInput.type]) {
       return VoidComponent;
     }
 
-    return mapping[this.appFormInput];
+    return mapping[this.appFormInput.type];
   }
 }
