@@ -14,6 +14,7 @@ import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {PortComponent} from './components/setup/form/port/port.component';
 import {VoidComponent} from './components/setup/form/void.component';
 import {InputComponent} from './components/setup/form/input/input.component';
+import {ReviewComponent} from './components/review/review.component';
 
 // Providers
 import {ContainerService} from './services/container.service';
@@ -44,6 +45,7 @@ import {routes} from './app.routes';
     InputComponent,
     PortComponent,
     VoidComponent,
+    ReviewComponent,
   ],
   imports: [
     BrowserModule,

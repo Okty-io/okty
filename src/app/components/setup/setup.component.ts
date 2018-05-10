@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Container} from '../../models/container.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ProjectService} from '../../services/project.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SidebarService} from '../../services/sidebar.service';
@@ -17,7 +17,8 @@ export class SetupComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private projectService: ProjectService,
-              private sidebarService: SidebarService
+              private sidebarService: SidebarService,
+              private router: Router
   ) {
     this.container = route.snapshot.data.container;
   }
@@ -50,6 +51,7 @@ export class SetupComponent implements OnInit {
         }
 
         this.outputConfig['image'] = this.container.docker + ':' + this.container.version;
+        this.router.navigate(['/review']);
       });
     });
 
