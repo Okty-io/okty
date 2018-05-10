@@ -25,8 +25,23 @@ export class SetupComponent implements OnInit {
 
   ngOnInit(): void {
     this.initFormControls();
-    this.outputConfig = {};
     this.sidebarService.show();
+    this.outputConfig = {};
+  }
+
+  private initFormControls(): void {
+    this.formGroup = new FormGroup({});
+
+    this.container.config.forEach(group => {
+      group.fields.forEach(input => {
+        const formControl = new FormControl(input.value);
+        const controlName = group.label + '_' + input.id;
+
+        formControl.setValidators(Validators.required);
+
+        this.formGroup.addControl(controlName, formControl);
+      });
+    });
   }
 
   submit(): void {
@@ -56,21 +71,6 @@ export class SetupComponent implements OnInit {
     });
 
     this.projectService.addContainer(this.container, this.outputConfig);
-  }
-
-  private initFormControls(): void {
-    this.formGroup = new FormGroup({});
-
-    this.container.config.forEach(group => {
-      group.fields.forEach(input => {
-        const formControl = new FormControl('');
-        const controlName = group.label + '_' + input.id;
-
-        formControl.setValidators(Validators.required);
-
-        this.formGroup.addControl(controlName, formControl);
-      });
-    });
   }
 
   private addToDockerCompose(value: string, input: any): void {
