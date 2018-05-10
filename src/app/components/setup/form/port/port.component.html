@@ -1,6 +1,14 @@
-<label>
+<!--<label>
   <select name="" id="">
     <option value="80">80</option>
     <option value="8080">8080</option>
   </select>
-</label>
+</label> -->
+<div class="input-selector">
+  <input type="text" value="{{ selected }}"(change)="changeSelected($event.target.value)" (focus)="showPossibles({})" (focusout)="hidePossibles({})">
+  <ul [ngClass]="{'possibles':true, 'show': show }">
+    <li *ngFor="let possible of possibles">
+      <button value="{{possible}}" (click)="changeSelected($event.target.value)">{{ possible }}</button>
+    </li>
+  </ul>
+</div>
