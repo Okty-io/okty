@@ -26,11 +26,11 @@ export class PortComponent {
     this.selected = value;
   }
 
-  showPossibles() {
+  showSelect() {
     this.show = true;
   }
 
-  hidePossibles() {
+  hideSelect() {
     this.show = false;
   }
 }
