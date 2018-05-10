@@ -21,17 +21,14 @@ export class PortComponent {
   }
 
   changeSelected(value: any) {
-    console.log(value);
     this.selected = value;
   }
 
   showPossibles() {
-    console.log('showPossibles');
     this.show = true;
   }
 
   hidePossibles() {
-    console.log('hidePossibles');
     this.show = false;
   }
 }
