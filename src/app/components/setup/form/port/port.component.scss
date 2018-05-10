@@ -48,7 +48,7 @@
     list-style: none;
     background: rgba(255, 255, 255, 0.80);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 2px 21px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 21px 0 rgba(0, 0, 0, 0.5);
     margin: 0;
     width: 100%;
     transition: opacity cubic-bezier(1, 0.75, 0.15, 1.01) .5s, max-height cubic-bezier(1, 0.75, 0.15, 1.01) .5s;
@@ -56,7 +56,6 @@
     max-height: 0;
     opacity: 0;
     padding-left: 0;
-    //pointer-events: none;
     overflow: hidden;
     &.show{
       transform:translateY(100%);
