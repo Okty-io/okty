@@ -34,7 +34,12 @@ export class SetupComponent implements OnInit {
 
     this.container.config.forEach(group => {
       group.fields.forEach(input => {
-        const formControl = new FormControl(input.value);
+        let value = input.value;
+        if (input.data) {
+          value = input.data;
+        }
+
+        const formControl = new FormControl(value);
         const controlName = group.label + '_' + input.id;
 
         formControl.setValidators(Validators.required);
@@ -49,6 +54,7 @@ export class SetupComponent implements OnInit {
       group.fields.forEach((input) => {
         const controlName = group.label + '_' + input.id;
         const value = this.formGroup.get(controlName).value;
+        input.data = value;
 
         switch (input.destination) {
           case 'docker-compose':
@@ -70,7 +76,8 @@ export class SetupComponent implements OnInit {
       });
     });
 
-    this.projectService.addContainer(this.container, this.outputConfig);
+    this.container.output = this.outputConfig;
+    this.projectService.addContainer(this.container);
   }
 
   private addToDockerCompose(value: string, input: any): void {

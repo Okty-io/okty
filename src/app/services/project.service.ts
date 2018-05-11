@@ -8,23 +8,37 @@ export class ProjectService {
 
   private containersSubject: Subject<Array<Container>> = new Subject<Array<Container>>();
   private containers: Array<Container> = [];
-  private config: Array<any> = [];
 
-  addContainer(container, config): void {
-    this.containers.push(container);
+  addContainer(container): void {
+    if (!container.containerId) {
+      container.containerId = this.containers.length + 1;
+      this.containers.push(container);
+    } else {
+      this.containers[container.containerId - 1] = container;
+    }
+
     this.containersSubject.next(this.containers);
-
-    const id = this.containers.length;
-    this.config['container_' + id] = config;
-
-    console.log(this.config);
   }
 
-  getConfig(id: number) {
-    return this.config['container_' + id.toString()];
+  getContainer(id: string): Container {
+    const container: Container = this.containers.find((element: Container) => {
+      if (element.containerId === parseInt(id, 10)) {
+        return true;
+      }
+    });
+
+    if (!container) {
+      return null;
+    }
+
+    return container;
   }
 
-  getContainers(): Observable<Array<Container>> {
+  getContainersObservable(): Observable<Array<Container>> {
     return this.containersSubject.asObservable();
+  }
+
+  getContainers(): Array<Container> {
+    return this.containers;
   }
 }

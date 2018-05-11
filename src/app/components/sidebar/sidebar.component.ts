@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
       this.visible = visible;
     });
 
-    this.containersSubscription = this.projectService.getContainers().subscribe(containers => {
+    this.containersSubscription = this.projectService.getContainersObservable().subscribe(containers => {
       this.containers = containers;
     });
 

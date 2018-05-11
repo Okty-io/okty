@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
+import {ProjectService} from '../../services/project.service';
 
 @Component({
   templateUrl: './review.component.html',
@@ -7,7 +8,7 @@ import {Router} from '@angular/router';
 })
 export class ReviewComponent {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private projectService: ProjectService) {
   }
 
   goToAddContainer(): void {
@@ -15,7 +16,8 @@ export class ReviewComponent {
   }
 
   exportProject(): void {
-    alert('Not implemented yet');
+    alert('Look in the console');
+    console.log(this.projectService.getContainers());
   }
 
 }
