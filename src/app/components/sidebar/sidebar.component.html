@@ -1,6 +1,10 @@
 <aside class="containers-docker" *ngIf="visible">
-    <div class="container-docker-collection" *ngFor="let container of containers">
-        <div class="container-docker focusable " role="button" aria-label="Reika" aria-selected="true">
+  <div class="container-docker-collection" *ngFor="let container of containers; let i = index;">
+    <div class="container-docker focusable"
+         role="button"
+         aria-label=""
+         aria-selected="true"
+         [routerLink]="'/edit/' + (i + 1)">
             <div class="container-docker-icon">
               <img [src]="container.image"/>
             </div>
