@@ -14,12 +14,15 @@ import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {PortComponent} from './components/setup/form/port/port.component';
 import {VoidComponent} from './components/setup/form/void.component';
 import {InputComponent} from './components/setup/form/input/input.component';
+import {ReviewComponent} from './components/review/review.component';
 
 // Providers
 import {ContainerService} from './services/container.service';
-import {ContainerResolve} from './services/container.resolve';
+import {NewContainerResolve} from './services/new-container.resolve';
+import {EditContainerResolve} from './services/edit-container.resolve';
 import {ProjectService} from './services/project.service';
 import {CacheService} from './services/cache.service';
+import {SidebarService} from './services/sidebar.service';
 
 // Pipes
 import {FilterPipe} from './pipes/filter.pipe';
@@ -43,6 +46,7 @@ import {routes} from './app.routes';
     InputComponent,
     PortComponent,
     VoidComponent,
+    ReviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,9 +57,11 @@ import {routes} from './app.routes';
   ],
   providers: [
     ContainerService,
-    ContainerResolve,
+    NewContainerResolve,
+    EditContainerResolve,
     ProjectService,
     CacheService,
+    SidebarService,
   ],
   entryComponents: [
     InputComponent,

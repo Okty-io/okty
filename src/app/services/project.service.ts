@@ -6,15 +6,39 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class ProjectService {
 
-  private containersSubject = new Subject<Array<Container>>();
+  private containersSubject: Subject<Array<Container>> = new Subject<Array<Container>>();
   private containers: Array<Container> = [];
 
-  addContainer(): void {
-    this.containers.push(new Container());
+  addContainer(container): void {
+    if (!container.containerId) {
+      container.containerId = this.containers.length + 1;
+      this.containers.push(container);
+    } else {
+      this.containers[container.containerId - 1] = container;
+    }
+
     this.containersSubject.next(this.containers);
   }
 
-  getContainers(): Observable<Array<Container>> {
+  getContainer(id: string): Container {
+    const container: Container = this.containers.find((element: Container) => {
+      if (element.containerId === parseInt(id, 10)) {
+        return true;
+      }
+    });
+
+    if (!container) {
+      return null;
+    }
+
+    return container;
+  }
+
+  getContainersObservable(): Observable<Array<Container>> {
     return this.containersSubject.asObservable();
+  }
+
+  getContainers(): Array<Container> {
+    return this.containers;
   }
 }

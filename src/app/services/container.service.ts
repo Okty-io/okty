@@ -27,7 +27,8 @@ export class ContainerService {
       const promises: Array<Promise<Container>> = [];
       this.http.get(url).subscribe((data: Array<any>) => {
         data.map(container => {
-          promises.push(this.getContainerConfig(container.name));
+          const name = container.name.substring(0, container.name.length - 5);
+          promises.push(this.getContainerConfig(name));
         });
 
         Promise.all(promises).then(containers => {
@@ -41,12 +42,19 @@ export class ContainerService {
           this.ajaxError(error);
           reject(error);
         });
+      }, (response) => {
+        const error = {
+          message: response.error.message,
+          status: response.status
+        };
+        this.ajaxError(error);
+        reject(error);
       });
     });
   }
 
   public getContainerConfig(name: string): Promise<Container> {
-    const url = Config.GIT_URL + Config.GIT_CONTAINERS_PATH + '/' + name;
+    const url = Config.GIT_URL + Config.GIT_CONTAINERS_PATH + '/' + name + '.yaml';
 
     return new Promise<Container>((resolve, reject) => {
 
@@ -59,7 +67,7 @@ export class ContainerService {
       this.http.get(url).subscribe((file: { name: string, content: string }) => {
         const content = atob(file.content);
         const container: Container = YAML.parse(content);
-        container.configPath = file.name;
+        container.configPath = file.name.substring(0, file.name.length - 5);
 
         this.cache.set(this.containerConfigCacheKey + name, container);
         resolve(container);
@@ -74,6 +82,7 @@ export class ContainerService {
     });
   }
 
+  // noinspection JSMethodCanBeStatic
   public ajaxError(error): void {
     if (error.status === 403) {
       alert('Le nombre max d\'appel API vers github est depassé pour cette IP. Revenez plus tard');

@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {ContainerService} from '../../services/container.service';
+import { Component, OnInit } from '@angular/core';
+import { ContainerService } from '../../services/container.service';
 
 @Component({
   selector: 'app-search',

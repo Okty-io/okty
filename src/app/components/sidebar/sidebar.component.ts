@@ -1,7 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProjectService} from '../../services/project.service';
-import {Container} from '../../models/container.model';
-import {ISubscription} from 'rxjs/Subscription';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ProjectService } from '../../services/project.service';
+import { Container } from '../../models/container.model';
+import { ISubscription } from 'rxjs/Subscription';
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,23 +13,25 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   visible = false;
   containers: Array<Container> = [];
-  private subscription: ISubscription;
+  private sidebarSubscription: ISubscription;
+  private containersSubscription: ISubscription;
 
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService, private sidebareService: SidebarService) {
   }
 
   ngOnInit(): void {
-    this.subscription = this.projectService.getContainers().subscribe(containers => {
-      this.containers = containers;
+    this.sidebarSubscription = this.sidebareService.getObservable().subscribe(visible => {
+      this.visible = visible;
+    });
 
-      if (this.containers.length > 0) {
-        this.visible = true;
-      }
+    this.containersSubscription = this.projectService.getContainersObservable().subscribe(containers => {
+      this.containers = containers;
     });
 
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.sidebarSubscription.unsubscribe();
+    this.containersSubscription.unsubscribe();
   }
 }

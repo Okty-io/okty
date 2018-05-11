@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   templateUrl: './port.component.html',
@@ -26,11 +26,11 @@ export class PortComponent {
     this.selected = value;
   }
 
-  showPossibles() {
+  showSelect() {
     this.show = true;
   }
 
-  hidePossibles() {
+  hideSelect() {
     this.show = false;
   }
 }

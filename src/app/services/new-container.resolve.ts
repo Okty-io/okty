@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, Resolve, Router} from '@angular/router';
+import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
 import {Container} from '../models/container.model';
 import {ContainerService} from './container.service';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
-export class ContainerResolve implements Resolve<Container> {
+export class NewContainerResolve implements Resolve<Container> {
 
-  constructor(private containerService: ContainerService, private router: Router) {
+  constructor(private containerService: ContainerService) {
   }
 
   resolve(route: ActivatedRouteSnapshot): Observable<Container> {

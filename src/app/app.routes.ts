@@ -2,14 +2,27 @@ import {SetupComponent} from './components/setup/setup.component';
 import {SearchComponent} from './components/search/search.component';
 import {Routes} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
-import {ContainerResolve} from './services/container.resolve';
+import {ReviewComponent} from './components/review/review.component';
+import {EditContainerResolve} from './services/edit-container.resolve';
+import {NewContainerResolve} from './services/new-container.resolve';
 
 export const routes: Routes = [
   {
-    path: 'setup/:id',
+    path: 'review',
+    component: ReviewComponent,
+  },
+  {
+    path: 'edit/:id',
     component: SetupComponent,
     resolve: {
-      container: ContainerResolve,
+      container: EditContainerResolve,
+    }
+  },
+  {
+    path: 'new/:id',
+    component: SetupComponent,
+    resolve: {
+      container: NewContainerResolve,
     },
   },
   {
