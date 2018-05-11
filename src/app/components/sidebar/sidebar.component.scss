@@ -1,219 +1,219 @@
 .containers-docker {
-    height: calc(100vh - 15px);
-    width: 80px;
-    background: rgba(255, 255, 255, 0.15);
-    border-right: 1px solid rgba(255, 255, 255, 0.15);
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 70px;
-            flex: 0 0 70px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    overflow-y: auto;
-    padding: 15px 0 0 0;
-    -ms-overflow-style: none;
-    position: fixed;
-    animation: revealSideBar .5s ease-in-out;
+  height: calc(100vh - 15px);
+  width: 80px;
+  background: rgba(255, 255, 255, 0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 70px;
+  flex: 0 0 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow-y: auto;
+  padding: 15px 0 0 0;
+  -ms-overflow-style: none;
+  position: fixed;
+  animation: revealSideBar .5s ease-in-out;
+  animation-fill-mode: forwards;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .container-docker {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    position: relative;
+    background: rgba(255, 255, 255, 0.40) no-repeat;
+    animation: revealContainer .8s cubic-bezier(0.29, 0.69, 0, 1.17);
     animation-fill-mode: forwards;
 
-    &::-webkit-scrollbar {
-        display: none;
+    &:focus {
+      outline: none;
     }
 
-    .container-docker {
-        width: 50px;
-        height: 50px;
-        border-radius: 25px;
-        margin-bottom: 8px;
-        cursor: pointer;
-        position: relative;
-      background: rgba(255, 255, 255, 0.40) no-repeat;
-        animation: revealContainer .8s cubic-bezier(0.29, 0.69, 0, 1.17);
-        animation-fill-mode: forwards;
+    &::before {
+      position: absolute;
+      top: 20px;
+      content: " ";
+      display: block;
+      width: 10px;
+      left: -18px;
+      height: 10px;
+      border-radius: 20px;
+    }
 
-      &:focus {
-        outline: none;
+    &:not(.active) {
+      -webkit-animation: server-hover-out 0.6s ease;
+      animation: server-hover-out 0.6s ease;
+    }
+    &:not(.active):hover, .container-docker:not(.active):focus {
+      -webkit-animation: server-hover-in 0.8s ease forwards;
+      animation: server-hover-in 0.8s ease forwards;
+    }
+
+    .container-docker-icon {
+      border-radius: inherit;
+      width: 100%;
+      height: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+
+      & > img {
+        border-radius: inherit;
+        max-width: 100%;
       }
 
-        &::before {
-            position: absolute;
-            top: 20px;
-            content: " ";
-            display: block;
-            width: 10px;
-            left: -18px;
-            height: 10px;
-            border-radius: 20px;
-        }
-
-        &:not(.active) {
-            -webkit-animation: server-hover-out 0.6s ease;
-                    animation: server-hover-out 0.6s ease;
-        }
-        &:not(.active):hover, .container-docker:not(.active):focus {
-            -webkit-animation: server-hover-in 0.8s ease forwards;
-                    animation: server-hover-in 0.8s ease forwards;
-        }
-
-        .container-docker-icon {
-            border-radius: inherit;
-            width: 100%;
-            height: 100%;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
-            -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                    justify-content: center;
-
-            & > img {
-                border-radius: inherit;
-                max-width: 100%;
-            }
-
-            &.add-container-docker:hover {
-                color: rgb(255, 255, 255) !important;
-                animation: pulsate-border 1s infinite alternate;
-                border: 1px dashed rgb(255, 255, 255);
-            }
-        }
-
-        &.active {
-            border-radius: 15px;
-
-            &::before {
-                background: #FFF;
-                height: 40px;
-                top: 5px;
-            }
-        }
-
-        .add-container-docker {
-            cursor: pointer;
-            font-size: 20px;
-            color: white;
-            background: rgba(255, 255, 255, 0.15);
-            outline: none;
-        }
+      &.add-container-docker:hover {
+        color: rgb(255, 255, 255) !important;
+        animation: pulsate-border 1s infinite alternate;
+        border: 1px dashed rgb(255, 255, 255);
+      }
     }
+
+    &.active {
+      border-radius: 15px;
+
+      &::before {
+        background: #FFF;
+        height: 40px;
+        top: 5px;
+      }
+    }
+
+    .add-container-docker {
+      cursor: pointer;
+      font-size: 20px;
+      color: white;
+      background: rgba(255, 255, 255, 0.15);
+      outline: none;
+    }
+  }
 }
 
 @-webkit-keyframes revealSideBar {
-    0% {
-        opacity: 0;
-        transform: translateX(-50%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0%);
-    }
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
 }
 
 @keyframes revealSideBar {
-    0% {
-        opacity: 0;
-        transform: translateX(-50%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0%);
-    }
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
 }
 
 @-webkit-keyframes revealContainer {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0%);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
 
 @keyframes revealContainer {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0%);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
 
 @-webkit-keyframes server-hover-in {
-    0% {
-        border-radius: 25px;
-    }
-    40% {
-        border-radius: 12px;
-    }
-    70% {
-        border-radius: 16.7px;
-    }
-    100% {
-        border-radius: 15px;
-    }
+  0% {
+    border-radius: 25px;
+  }
+  40% {
+    border-radius: 12px;
+  }
+  70% {
+    border-radius: 16.7px;
+  }
+  100% {
+    border-radius: 15px;
+  }
 }
 
 @keyframes server-hover-in {
-    0% {
-        border-radius: 25px;
-    }
-    40% {
-        border-radius: 12px;
-    }
-    70% {
-        border-radius: 16.7px;
-    }
-    100% {
-        border-radius: 15px;
-    }
+  0% {
+    border-radius: 25px;
+  }
+  40% {
+    border-radius: 12px;
+  }
+  70% {
+    border-radius: 16.7px;
+  }
+  100% {
+    border-radius: 15px;
+  }
 }
 
 @-webkit-keyframes server-hover-out {
-    0% {
-        border-radius: 15px;
-    }
-    45% {
-        border-radius: 25px;
-    }
-    65% {
-        border-radius: 25px;
-    }
-    75% {
-        border-radius: 23.5px;
-    }
-    100% {
-        border-radius: 25px;
-    }
+  0% {
+    border-radius: 15px;
+  }
+  45% {
+    border-radius: 25px;
+  }
+  65% {
+    border-radius: 25px;
+  }
+  75% {
+    border-radius: 23.5px;
+  }
+  100% {
+    border-radius: 25px;
+  }
 }
 
 @keyframes server-hover-out {
-    0% {
-        border-radius: 15px;
-    }
-    45% {
-        border-radius: 25px;
-    }
-    65% {
-        border-radius: 25px;
-    }
-    75% {
-        border-radius: 23.5px;
-    }
-    100% {
-        border-radius: 25px;
-    }
+  0% {
+    border-radius: 15px;
+  }
+  45% {
+    border-radius: 25px;
+  }
+  65% {
+    border-radius: 25px;
+  }
+  75% {
+    border-radius: 23.5px;
+  }
+  100% {
+    border-radius: 25px;
+  }
 }

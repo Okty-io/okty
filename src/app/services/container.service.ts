@@ -82,6 +82,7 @@ export class ContainerService {
     });
   }
 
+  // noinspection JSMethodCanBeStatic
   public ajaxError(error): void {
     if (error.status === 403) {
       alert('Le nombre max d\'appel API vers github est depassé pour cette IP. Revenez plus tard');

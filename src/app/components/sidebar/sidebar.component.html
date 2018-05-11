@@ -5,15 +5,16 @@
          aria-label=""
          aria-selected="true"
          [routerLink]="'/edit/' + (i + 1)">
-            <div class="container-docker-icon">
-              <img [src]="container.image"/>
-            </div>
-        </div>
+      <div class="container-docker-icon">
+        <img [src]="container.image"/>
+      </div>
     </div>
+  </div>
 
-    <div class="container-docker-collection">
-        <div [routerLink]="'/search'" class="container-docker" role="button" aria-label="Add container" aria-selected="true">
-            <button class="container-docker-icon add-container-docker">+</button>
-        </div>
+  <div class="container-docker-collection">
+    <div [routerLink]="'/search'" class="container-docker" role="button" aria-label="Add container"
+         aria-selected="true">
+      <button class="container-docker-icon add-container-docker">+</button>
     </div>
+  </div>
 </aside>

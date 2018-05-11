@@ -6,73 +6,72 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500');
 
-
-.config-form{
+.config-form {
   max-width: 800px;
   margin: 0 auto;
 
-  .container{
+  .container {
     margin-top: 30px;
-    padding:0 50px 20px;
+    padding: 0 50px 20px;
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 2px 21px 0 rgba(0, 0, 0, 0.5);
-    &:first-of-type{
+    &:first-of-type {
       margin-top: 0;
     }
-    .content-title{
+    .content-title {
       box-sizing: border-box;
       width: 100%;
       color: #fff;
       display: inline-block;
       margin-bottom: 0;
-      text-shadow: 0 2px 2px rgba(0,0,0,0.5);
+      text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
     }
-    .content{
+    .content {
       padding-top: 20px;
       box-sizing: border-box;
-      display:flex;
-      align-content:flex-start ;
-      flex-flow:wrap;
+      display: flex;
+      align-content: flex-start;
+      flex-flow: wrap;
       flex-direction: row;
       justify-content: space-between;
       font-family: 'Roboto', sans-serif;
-      .input-container{
+      .input-container {
         margin-bottom: 50px;
-        label{
-          color:#fff;
-          text-shadow: 0 2px 2px rgba(0,0,0,0.5);
+        label {
+          color: #fff;
+          text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
         }
-        input{
+        input {
           line-height: 30px;
-          &[type="text"]{
+          &[type="text"] {
             background: none;
-            outline:none;
+            outline: none;
             border: none;
             border-bottom: solid 1px #a9a9a980;
             transition: border-bottom-color ease 0.3s;
             padding: 0 10px;
-            &:focus{
+            &:focus {
               border-bottom-color: #000000;
             }
           }
         }
-        &.an-half{
+        &.an-half {
           width: (100/2 - 4) *1%;
         }
-        &.a-quarter{
+        &.a-quarter {
           width: (50/2 - 4) *1%;
         }
-        &.full{
+        &.full {
           width: 100%;
         }
       }
-      .input-text{
-        label,input{
+      .input-text {
+        label, input {
           width: 100%;
           box-sizing: border-box;
         }
-        label{
+        label {
           margin-bottom: 10px;
           display: block;
         }

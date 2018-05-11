@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProjectService} from '../../services/project.service';
-import {Container} from '../../models/container.model';
-import {ISubscription} from 'rxjs/Subscription';
-import {SidebarService} from '../../services/sidebar.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ProjectService } from '../../services/project.service';
+import { Container } from '../../models/container.model';
+import { ISubscription } from 'rxjs/Subscription';
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',

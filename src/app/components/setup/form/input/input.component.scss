@@ -1,24 +1,24 @@
-:host{
+:host {
   box-sizing: border-box;
   display: block;
   margin-top: 10px;
 }
 
-input{
+input {
   line-height: 30px;
   width: 100%;
   box-sizing: border-box;
-  &[type="text"]{
+  &[type="text"] {
     background: none;
-    outline:none;
+    outline: none;
     border: none;
-    border-bottom: solid 1px rgba(255,255,255,0.20);
+    border-bottom: solid 1px rgba(255, 255, 255, 0.20);
     transition: border-bottom-color ease 0.3s, background-color ease 0.3s;
     padding: 0 10px;
     color: #ffffff;
-    &:focus{
-      background-color: rgba(0,0,0,0.3);
-      border-bottom-color: rgba(255,255,255,1);
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.3);
+      border-bottom-color: rgba(255, 255, 255, 1);
     }
   }
 }

@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Container} from '../../models/container.model';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ProjectService} from '../../services/project.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {SidebarService} from '../../services/sidebar.service';
+import { Component, OnInit } from '@angular/core';
+import { Container } from '../../models/container.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProjectService } from '../../services/project.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
   templateUrl: './setup.component.html',

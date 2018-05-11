@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {Router} from '@angular/router';
-import {ProjectService} from '../../services/project.service';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   templateUrl: './review.component.html',
