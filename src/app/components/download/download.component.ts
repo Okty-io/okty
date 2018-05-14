@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Container } from '../../models/container.model';
 import { ActivatedRoute } from '@angular/router';
 import { saveAs } from 'file-saver/FileSaver';
+import * as JSZip from 'jszip';
 
 @Component({
   templateUrl: './download.component.html',
@@ -20,9 +21,15 @@ export class DownloadComponent implements OnInit {
   }
 
   saveFile(text): void {
-    const filename = 'test.txt';
-    const blob = new Blob([text], { type: 'text/plain' });
-    saveAs(blob, filename);
+    const zip = new JSZip();
+
+    zip.folder('DockerFile').file('test.txt', 'contenu vide');
+    zip.file('download.txt', text);
+    zip.file('README.txt', 'Octy - Licence MIT');
+    zip.generateAsync({type: 'blob'})
+      .then(function(content) {
+        saveAs(content, 'example.zip');
+      });
   }
 
 }
