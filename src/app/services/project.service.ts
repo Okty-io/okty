@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Container} from '../models/container.model';
-import {Subject} from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Container } from '../models/container.model';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ProjectService {
@@ -40,5 +40,19 @@ export class ProjectService {
 
   getContainers(): Array<Container> {
     return this.containers;
+  }
+
+  getDockerCompose(): any {
+    const services = [];
+    this.containers.forEach((container: Container) => {
+      services.push(container.output);
+    });
+
+    const config = {
+      version: '3',
+      services: services
+    };
+
+    return YAML.stringify(config);
   }
 }
