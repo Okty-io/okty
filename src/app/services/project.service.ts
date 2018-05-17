@@ -38,14 +38,10 @@ export class ProjectService {
     return this.containersSubject.asObservable();
   }
 
-  getContainers(): Array<Container> {
-    return this.containers;
-  }
-
   getDockerCompose(): any {
-    const services = [];
+    const services = {};
     this.containers.forEach((container: Container) => {
-      services.push(container.output);
+      services[container.configPath + '_' + container.containerId] = container.output;
     });
 
     const config = {
@@ -53,6 +49,6 @@ export class ProjectService {
       services: services
     };
 
-    return YAML.stringify(config);
+    return YAML.stringify(config, 4);
   }
 }
