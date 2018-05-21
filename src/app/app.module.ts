@@ -32,6 +32,7 @@ import {FormInputDirective} from './directives/form-input.directive';
 
 // Routes
 import {routes} from './app.routes';
+import { SelectizeComponent } from './components/setup/form/selectize/selectize.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import {routes} from './app.routes';
     PortComponent,
     VoidComponent,
     ReviewComponent,
+    SelectizeComponent,
   ],
   imports: [
     BrowserModule,
