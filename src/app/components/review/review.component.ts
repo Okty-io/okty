@@ -17,7 +17,7 @@ export class ReviewComponent {
 
   exportProject(): void {
     alert('Look in the console');
-    console.log(this.projectService.getContainers());
+    console.log(this.projectService.getDockerCompose());
   }
 
 }
