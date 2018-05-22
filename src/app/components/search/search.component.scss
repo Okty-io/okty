@@ -1,18 +1,5 @@
 .search-container {
-  position: absolute;
-  top: 35px;
-  left: 50%;
-  transform: translateX(-50%);
   text-align: center;
-  width: 100%;
-}
-
-.search-container-sidebar {
-  position: absolute;
-  top: 35px;
-  right: 0;
-  text-align: center;
-  width: calc(100% - 82px);
 }
 
 .search-container, .search-container-sidebar {
