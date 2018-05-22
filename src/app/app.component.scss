@@ -1,14 +1,5 @@
 :host {
     display: flex;
-
-    .wrapper {
-        width: calc(100vw);
-    }
-
-    .wrapper-sidebar {
-        width: calc(100vw - 82px);
-        margin-left: 82px;
-    }
 }
 
 .top-bar {
