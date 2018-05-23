@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
+import { saveAs } from 'file-saver/FileSaver';
+import * as JSZip from 'jszip';
 
 @Component({
   templateUrl: './review.component.html',
@@ -16,8 +18,15 @@ export class ReviewComponent {
   }
 
   exportProject(): void {
-    alert('Look in the console');
-    console.log(this.projectService.getDockerCompose());
+    const zip = new JSZip();
+
+    // zip.folder('DockerFile').file('test.txt', 'contenu vide');
+    zip.file('docker-compose.yaml', this.projectService.getDockerCompose());
+    zip.file('README.txt', 'Octy - Licence MIT');
+    zip.generateAsync({type: 'blob'})
+      .then(function(content) {
+        saveAs(content, 'docker.zip');
+      });
   }
 
 }

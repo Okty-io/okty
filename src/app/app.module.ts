@@ -16,7 +16,6 @@ import {PortComponent} from './components/setup/form/port/port.component';
 import {VoidComponent} from './components/setup/form/void.component';
 import {InputComponent} from './components/setup/form/input/input.component';
 import {ReviewComponent} from './components/review/review.component';
-import {DownloadComponent} from './components/download/download.component';
 
 // Providers
 import {ContainerService} from './services/container.service';
@@ -49,7 +48,6 @@ import {routes} from './app.routes';
     PortComponent,
     VoidComponent,
     ReviewComponent,
-    DownloadComponent,
   ],
   imports: [
     BrowserModule,

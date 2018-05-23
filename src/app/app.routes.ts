@@ -1,6 +1,5 @@
 import {SetupComponent} from './components/setup/setup.component';
 import {SearchComponent} from './components/search/search.component';
-import {DownloadComponent} from './components/download/download.component';
 import {Routes} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {ReviewComponent} from './components/review/review.component';
@@ -29,10 +28,6 @@ export const routes: Routes = [
   {
     path: 'search',
     component: SearchComponent,
-  },
-  {
-    path: 'download',
-    component: DownloadComponent,
   },
   {
     path: '**',
