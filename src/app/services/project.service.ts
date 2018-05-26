@@ -7,14 +7,17 @@ import { Observable } from 'rxjs/Observable';
 export class ProjectService {
 
   private containersSubject: Subject<Array<Container>> = new Subject<Array<Container>>();
-  private containers: Array<Container> = [];
+  private containers: Container[] = [];
 
-  addContainer(container): void {
-    if (!container.containerId) {
-      container.containerId = this.containers.length + 1;
+  addContainer(id: string, container: Container): void {
+    container.containerId = id;
+
+    const oldContainer = this.getContainer(id);
+    if (!oldContainer) {
       this.containers.push(container);
     } else {
-      this.containers[container.containerId - 1] = container;
+      const index = this.containers.indexOf(oldContainer);
+      this.containers[index] = container;
     }
 
     this.containersSubject.next(this.containers);
@@ -22,7 +25,7 @@ export class ProjectService {
 
   getContainer(id: string): Container {
     const container: Container = this.containers.find((element: Container) => {
-      if (element.containerId === parseInt(id, 10)) {
+      if (element.containerId === id) {
         return true;
       }
     });
@@ -41,7 +44,7 @@ export class ProjectService {
   getDockerCompose(): any {
     const services = {};
     this.containers.forEach((container: Container) => {
-      services[container.configPath + '_' + container.containerId] = container.output;
+      services[container.containerId] = container.output;
     });
 
     const config = {

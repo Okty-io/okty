@@ -19,5 +19,5 @@ export class Container {
 
   configPath: string;
   output: string;
-  containerId: number;
+  containerId: string;
 }

@@ -11,6 +11,7 @@ import { SidebarService } from '../../services/sidebar.service';
 })
 export class SetupComponent implements OnInit {
 
+  containerId: string;
   container: Container;
   formGroup: FormGroup;
   outputConfig: any;
@@ -69,6 +70,9 @@ export class SetupComponent implements OnInit {
           case 'ports':
             this.addToPorts(value, input);
             break;
+          case 'id':
+            this.addToId(value, input);
+            break;
         }
 
         this.outputConfig['image'] = this.container.docker + ':' + this.container.version;
@@ -77,7 +81,7 @@ export class SetupComponent implements OnInit {
     });
 
     this.container.output = this.outputConfig;
-    this.projectService.addContainer(this.container);
+    this.projectService.addContainer(this.containerId, this.container);
   }
 
   private addToDockerCompose(value: string, input: any): void {
@@ -127,5 +131,13 @@ export class SetupComponent implements OnInit {
     }
 
     this.outputConfig['ports'].push(value + ':' + input.base);
+  }
+
+  private addToId(value: string, input: any): void {
+    if (!value) {
+      value = input.value;
+    }
+
+    this.containerId = value;
   }
 }
