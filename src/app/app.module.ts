@@ -12,7 +12,7 @@ import {HomeComponent} from './components/home/home.component';
 import {SearchComponent} from './components/search/search.component';
 import {SetupComponent} from './components/setup/setup.component';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
-import {PortComponent} from './components/setup/form/port/port.component';
+import { SelectComponent } from './components/setup/form/select/select.component';
 import {VoidComponent} from './components/setup/form/void.component';
 import {InputComponent} from './components/setup/form/input/input.component';
 import {ReviewComponent} from './components/review/review.component';
@@ -45,7 +45,7 @@ import {routes} from './app.routes';
     SidebarComponent,
     FormInputDirective,
     InputComponent,
-    PortComponent,
+    SelectComponent,
     VoidComponent,
     ReviewComponent,
   ],
@@ -67,7 +67,7 @@ import {routes} from './app.routes';
   ],
   entryComponents: [
     InputComponent,
-    PortComponent,
+    SelectComponent,
     VoidComponent,
   ],
   bootstrap: [AppComponent]

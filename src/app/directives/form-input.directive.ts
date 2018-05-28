@@ -1,7 +1,7 @@
-import {ComponentFactoryResolver, Directive, Input, OnInit, Type, ViewContainerRef} from '@angular/core';
-import {InputComponent} from '../components/setup/form/input/input.component';
-import {PortComponent} from '../components/setup/form/port/port.component';
-import {VoidComponent} from '../components/setup/form/void.component';
+import { ComponentFactoryResolver, Directive, Input, OnInit, Type, ViewContainerRef } from '@angular/core';
+import { InputComponent } from '../components/setup/form/input/input.component';
+import { SelectComponent } from '../components/setup/form/select/select.component';
+import { VoidComponent } from '../components/setup/form/void.component';
 
 @Directive({
   selector: '[appFormInput]'
@@ -26,7 +26,7 @@ export class FormInputDirective implements OnInit {
   private getComponentType(): Type<any> {
     const mapping = {
       input: InputComponent,
-      port: PortComponent
+      select: SelectComponent
     };
 
     if (!mapping[this.appFormInput.type]) {
