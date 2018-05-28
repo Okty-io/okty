@@ -33,7 +33,6 @@ export class SetupComponent implements OnInit {
     this.formGroup = new FormGroup({});
 
     this.container.config.forEach(group => {
-      console.log(group);
       group.fields.forEach(input => {
         let value = input.value;
         if (input.data) {
@@ -44,7 +43,6 @@ export class SetupComponent implements OnInit {
         const controlName = group.label + '_' + input.id;
 
         formControl.setValidators(Validators.required);
-
         this.formGroup.addControl(controlName, formControl);
       });
     });

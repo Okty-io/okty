@@ -46,6 +46,7 @@ import { SelectizeComponent } from './components/setup/form/selectize/selectize.
     FormInputDirective,
     InputComponent,
     PortComponent,
+    SelectizeComponent,
     VoidComponent,
     ReviewComponent,
     SelectizeComponent,
@@ -68,6 +69,7 @@ import { SelectizeComponent } from './components/setup/form/selectize/selectize.
   entryComponents: [
     InputComponent,
     PortComponent,
+    SelectizeComponent,
     VoidComponent,
   ],
   bootstrap: [AppComponent]

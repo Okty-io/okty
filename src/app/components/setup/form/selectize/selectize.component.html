@@ -1,1 +1,19 @@
-<input type="text" name="selectize" style="height:50px; width:500px;">
+<div class="selectize-container" >
+  <div class="main"
+       (click)="$event.target.querySelector('#'+input.id).focus()">
+    <div ngClass="selectize-selected" *ngFor="let select of selected">{{select}}</div>
+
+    <input type="text" name="selectize"
+           #selectizeInput
+           [formControl]="formControl"
+           [id]="input.id"
+            (focus)="$event"
+            (change)="checkInput($event)"
+            (input)="checkInput($event)">
+  </div>
+
+  <div class="selectize-possibles">
+    <div *ngFor="let selection of selections" (click)="addSelected(selection)">{{selection}}</div>
+  </div>
+</div>
+

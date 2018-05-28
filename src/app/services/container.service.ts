@@ -23,7 +23,6 @@ export class ContainerService {
       }
 
       const url = Config.GIT_URL + Config.GIT_CONTAINERS_PATH + '?ref=' + Config.GIT_BRANCH;
-      console.log(url);
       const promises: Array<Promise<Container>> = [];
       this.http.get(url).subscribe((data: Array<any>) => {
         data.map(container => {

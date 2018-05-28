@@ -1,0 +1,18 @@
+.selectize-container{
+  position: relative;
+  .main{
+    min-height: 30px;
+    border-bottom: solid 1px #fff;
+    width: 100%;
+    box-sizing: border-box;
+    .selectize-selected, input[name="selectize"]{
+      display: inline-block;
+      box-sizing: border-box;
+      line-height: 30px;
+    }
+    input[name="selectize"]{
+      width: 8px;
+      min-width:8px;
+    }
+  }
+}
