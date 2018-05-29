@@ -15,6 +15,7 @@ import {PortComponent} from './components/setup/form/port/port.component';
 import {VoidComponent} from './components/setup/form/void.component';
 import {InputComponent} from './components/setup/form/input/input.component';
 import {ReviewComponent} from './components/review/review.component';
+import { SelectizeComponent } from './components/setup/form/selectize/selectize.component';
 
 // Providers
 import {ContainerService} from './services/container.service';
@@ -32,7 +33,6 @@ import {FormInputDirective} from './directives/form-input.directive';
 
 // Routes
 import {routes} from './app.routes';
-import { SelectizeComponent } from './components/setup/form/selectize/selectize.component';
 
 
 @NgModule({
@@ -46,7 +46,6 @@ import { SelectizeComponent } from './components/setup/form/selectize/selectize.
     FormInputDirective,
     InputComponent,
     PortComponent,
-    SelectizeComponent,
     VoidComponent,
     ReviewComponent,
     SelectizeComponent,
