@@ -8,10 +8,12 @@ import {FormControl} from '@angular/forms';
 export class SelectizeComponent implements OnInit, AfterViewInit {
   @Input() formControl: FormControl;
   @Input() input: any;
-  public selections: Array<String> = [];
-  public selected: Array<String> = [];
   @ViewChild('selectizeInput') selectizeInput;
   private highestLength = 50;
+  public selected: Array<String> = [];
+  public selections: Array<String> = [];
+  public showPossibles = false;
+
   constructor() {
   }
 
@@ -28,11 +30,24 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
 
   addSelected(value: string) {
     this.selected.push(value);
+    this.selectizeInput.nativeElement.value = '';
+    this.resetSelectionsToDefault();
   }
   checkInput(event: Event): void {
     const target = <HTMLInputElement>event.target;
     this.resizeInput(target);
     this.refineSelections(target.value);
+  }
+
+  focusTheInput(target: HTMLElement): void {
+    if (!target.classList.contains('selectize-selected')) {
+      this.selectizeInput.nativeElement.focus();
+    }
+  }
+  hidePossiblesContainer(): void {
+    setTimeout(() => {
+      this.showPossibles = false;
+    }, 100);
   }
 
   refineSelections(value: string): void {
@@ -48,8 +63,19 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
     }
   }
 
+  removeSelected(value: string): void {
+    this.selected.splice(this.selected.indexOf(value), 1);
+    this.resetSelectionsToDefault();
+  }
+
   resetSelectionsToDefault(): void {
-    this.selections = [...this.input.possibles];
+    const possibles: Array<String> = [];
+    this.input.possibles.forEach((possible) => {
+      if (this.selected.indexOf(possible) === -1) {
+        possibles.push(possible);
+      }
+    });
+    this.selections = [...possibles];
   }
 
   resizeInput(target: HTMLInputElement): void {
@@ -61,5 +87,9 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
     } else {
       target.style.width = '';
     }
+  }
+
+  showPossiblesContainer(): void {
+    this.showPossibles = true;
   }
 }
