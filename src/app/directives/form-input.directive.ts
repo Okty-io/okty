@@ -2,6 +2,7 @@ import {ComponentFactoryResolver, Directive, Input, OnInit, Type, ViewContainerR
 import {InputComponent} from '../components/setup/form/input/input.component';
 import {PortComponent} from '../components/setup/form/port/port.component';
 import {VoidComponent} from '../components/setup/form/void.component';
+import {SelectizeComponent} from '../components/setup/form/selectize/selectize.component';
 
 @Directive({
   selector: '[appFormInput]'
@@ -26,7 +27,8 @@ export class FormInputDirective implements OnInit {
   private getComponentType(): Type<any> {
     const mapping = {
       input: InputComponent,
-      port: PortComponent
+      port: PortComponent,
+      selectize: SelectizeComponent
     };
 
     if (!mapping[this.appFormInput.type]) {

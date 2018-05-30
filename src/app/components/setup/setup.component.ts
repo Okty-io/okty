@@ -44,7 +44,6 @@ export class SetupComponent implements OnInit {
         const controlName = group.label + '_' + input.id;
 
         formControl.setValidators(Validators.required);
-
         this.formGroup.addControl(controlName, formControl);
       });
     });
