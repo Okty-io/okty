@@ -9,7 +9,8 @@
 
   <ul class='select' [ngClass]="{'show': show }">
     <li *ngFor="let item of data">
-      <button type="button" value="{{item}}" (click)="changeSelected($event.target.value)">{{ item }}</button>
+      <button type="button" value="{{item.value}}" (click)="changeSelected($event.target.value)">{{ item.label }}
+      </button>
     </li>
   </ul>
 </div>
