@@ -3,6 +3,7 @@ import { InputComponent } from '../components/setup/form/input/input.component';
 import { SelectComponent } from '../components/setup/form/select/select.component';
 import { VoidComponent } from '../components/setup/form/void.component';
 import { SelectizeComponent } from '../components/setup/form/selectize/selectize.component';
+import { SelectContainerComponent } from '../components/setup/form/select-container/select-container.component';
 
 @Directive({
   selector: '[appFormInput]'
@@ -26,9 +27,10 @@ export class FormInputDirective implements OnInit {
 
   private getComponentType(): Type<any> {
     const mapping = {
-      input: InputComponent,
-      selectize: SelectizeComponent,
-      select: SelectComponent
+      'input': InputComponent,
+      'selectize': SelectizeComponent,
+      'select': SelectComponent,
+      'select-container': SelectContainerComponent
     };
 
     if (!mapping[this.appFormInput.type]) {
