@@ -9,16 +9,14 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
   @Input() formControl: FormControl;
   @Input() input: any;
   @ViewChild('selectizeInput') selectizeInput;
+
   private highestLength = 50;
   public selected: Array<String> = [];
   public selections: Array<{ label: string, value: string }> = [];
   public showPossibles = false;
 
-  constructor() {
-  }
-
   ngOnInit(): void {
-    this.resetSelectionsToDefault();
+    this.refineSelections();
   }
 
   ngAfterViewInit() {
@@ -28,7 +26,8 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
   addSelected(value: string) {
     this.selected.push(value);
     this.selectizeInput.nativeElement.value = '';
-    this.resetSelectionsToDefault();
+    this.refineSelections();
+    this.updateFormControlValue();
   }
 
   checkInput(event: Event): void {
@@ -38,6 +37,7 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
   }
 
   focusTheInput(target: HTMLElement): void {
+    console.log('focusTheInput');
     if (!target.classList.contains('selectize-selected')) {
       this.selectizeInput.nativeElement.focus();
     }
@@ -46,22 +46,19 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
   hidePossiblesContainer(): void {
     setTimeout(() => {
       this.showPossibles = false;
+      this.selectizeInput.nativeElement.value = '';
+      this.refineSelections();
     }, 100);
   }
 
-  refineSelections(value: string): void {
-    if (value === '') {
-      this.resetSelectionsToDefault();
-      return;
-    }
-
+  refineSelections(value: string = ''): void {
     this.selections = [];
     for (const data in this.input.source) {
-      if (!this.input.source.hasOwnProperty(data)) {
+      if (!this.input.source.hasOwnProperty(data) || this.selected.includes(data)) {
         continue;
       }
 
-      if (data.indexOf(value) === -1) {
+      if (value !== '' && data.indexOf(value) === -1) {
         continue;
       }
 
@@ -74,27 +71,24 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
 
   removeSelected(value: string): void {
     this.selected.splice(this.selected.indexOf(value), 1);
-    this.resetSelectionsToDefault();
+    this.refineSelections();
+    this.updateFormControlValue();
   }
 
-  resetSelectionsToDefault(): void {
-    this.selections = [];
-    for (const value in this.input.source) {
-      if (!this.input.source.hasOwnProperty(value)) {
-        continue;
-      }
+  updateFormControlValue(): void {
+    let formControlValue = '';
+    this.selected.forEach((data: string) => {
+      formControlValue += (formControlValue.length > 0 ? ';' : '') + data;
+    });
 
-      this.selections.push({
-        label: this.input.source[value],
-        value: value,
-      });
-    }
+    this.formControl.setValue(formControlValue);
   }
 
   resizeInput(target: HTMLInputElement): void {
     if (target.value.length > 11) {
       target.value = target.value.substr(0, this.highestLength);
     }
+
     if (target.value.length > 0) {
       target.style.width = ((target.value.length + 1) * 6.9) + 'px';
     } else {
