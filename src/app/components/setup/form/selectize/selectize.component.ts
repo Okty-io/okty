@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   templateUrl: './selectize.component.html',
@@ -11,16 +11,13 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
   @ViewChild('selectizeInput') selectizeInput;
   private highestLength = 50;
   public selected: Array<String> = [];
-  public selections: Array<String> = [];
+  public selections: Array<{ label: string, value: string }> = [];
   public showPossibles = false;
 
   constructor() {
   }
 
   ngOnInit(): void {
-    /**
-     * TODO : Peut-être limiter le nom de caractères possible dans l'input par rapport a la plus longue valeur du tableur "possibles" ?
-     */
     this.resetSelectionsToDefault();
   }
 
@@ -33,6 +30,7 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
     this.selectizeInput.nativeElement.value = '';
     this.resetSelectionsToDefault();
   }
+
   checkInput(event: Event): void {
     const target = <HTMLInputElement>event.target;
     this.resizeInput(target);
@@ -44,6 +42,7 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
       this.selectizeInput.nativeElement.focus();
     }
   }
+
   hidePossiblesContainer(): void {
     setTimeout(() => {
       this.showPossibles = false;
@@ -51,15 +50,25 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
   }
 
   refineSelections(value: string): void {
-    this.resetSelectionsToDefault();
-    if (value !== '') {
-      const possibles: Array<String> = [];
-      this.selections.forEach(selection => {
-        if (selection.indexOf(value) !== -1) {
-          possibles.push(selection);
-        }
+    if (value === '') {
+      this.resetSelectionsToDefault();
+      return;
+    }
+
+    this.selections = [];
+    for (const data in this.input.source) {
+      if (!this.input.source.hasOwnProperty(data)) {
+        continue;
+      }
+
+      if (data.indexOf(value) === -1) {
+        continue;
+      }
+
+      this.selections.push({
+        label: this.input.source[data],
+        value: data,
       });
-      this.selections = possibles;
     }
   }
 
@@ -69,13 +78,17 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
   }
 
   resetSelectionsToDefault(): void {
-    const possibles: Array<String> = [];
-    this.input.possibles.forEach((possible) => {
-      if (this.selected.indexOf(possible) === -1) {
-        possibles.push(possible);
+    this.selections = [];
+    for (const value in this.input.source) {
+      if (!this.input.source.hasOwnProperty(value)) {
+        continue;
       }
-    });
-    this.selections = [...possibles];
+
+      this.selections.push({
+        label: this.input.source[value],
+        value: value,
+      });
+    }
   }
 
   resizeInput(target: HTMLInputElement): void {

@@ -27,7 +27,7 @@ export class FormInputDirective implements OnInit {
   private getComponentType(): Type<any> {
     const mapping = {
       input: InputComponent,
-      selectize: SelectizeComponent
+      selectize: SelectizeComponent,
       select: SelectComponent
     };
 
