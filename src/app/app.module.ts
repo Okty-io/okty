@@ -12,10 +12,10 @@ import {HomeComponent} from './components/home/home.component';
 import {SearchComponent} from './components/search/search.component';
 import {SetupComponent} from './components/setup/setup.component';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
-import { SelectComponent } from './components/setup/form/select/select.component';
 import {VoidComponent} from './components/setup/form/void.component';
 import {InputComponent} from './components/setup/form/input/input.component';
 import {ReviewComponent} from './components/review/review.component';
+import { SelectizeComponent } from './components/setup/form/selectize/selectize.component';
 
 // Providers
 import {ContainerService} from './services/container.service';
@@ -48,6 +48,7 @@ import {routes} from './app.routes';
     SelectComponent,
     VoidComponent,
     ReviewComponent,
+    SelectizeComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +69,7 @@ import {routes} from './app.routes';
   entryComponents: [
     InputComponent,
     SelectComponent,
+    SelectizeComponent,
     VoidComponent,
   ],
   bootstrap: [AppComponent]
