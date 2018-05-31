@@ -9,8 +9,11 @@
 
   <ul class='select' [ngClass]="{'show': show }">
     <li *ngFor="let item of data">
-      <button type="button" value="{{item.value}}" (click)="changeSelected($event.target.value)">{{ item.label }}
+      <button type="button" value="{{item}}" (click)="changeSelected($event.target.value)">{{ item }}
       </button>
+    </li>
+    <li *ngIf="data.length <= 0">
+      <button type="button">No container found</button>
     </li>
   </ul>
 </div>
