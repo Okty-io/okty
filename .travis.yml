@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - "8"
+
+branches:
+  only:
+    - dev
+
+before_script:
+  - npm install -g firebase-tools
+  - npm install
+
+script:
+  - ./node_modules/.bin/ng build --prod --aot
+
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN
