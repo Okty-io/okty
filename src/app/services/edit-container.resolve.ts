@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, Resolve, Router} from '@angular/router';
-import {Container} from '../models/container.model';
-import {Observable} from 'rxjs/Observable';
-import {ProjectService} from './project.service';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
+import { Container } from '../models/container.model';
+import { Observable } from 'rxjs/Observable';
+import { ProjectService } from './project.service';
 
 @Injectable()
 export class EditContainerResolve implements Resolve<Container> {
@@ -19,6 +19,7 @@ export class EditContainerResolve implements Resolve<Container> {
         return;
       }
 
+      console.log(container);
       observer.next(container);
       observer.complete();
     });

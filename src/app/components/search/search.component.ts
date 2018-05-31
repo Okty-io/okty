@@ -8,6 +8,7 @@ import { ContainerService } from '../../services/container.service';
 })
 export class SearchComponent implements OnInit {
 
+  searchContainer: HTMLInputElement;
   containers: Array<any> = [];
 
   constructor(private containerService: ContainerService) {

@@ -54,4 +54,8 @@ export class ProjectService {
 
     return YAML.stringify(config, 4);
   }
+
+  getContainers() {
+    return this.containers;
+  }
 }

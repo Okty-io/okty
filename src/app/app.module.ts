@@ -17,6 +17,7 @@ import { InputComponent } from './components/setup/form/input/input.component';
 import { ReviewComponent } from './components/review/review.component';
 import { SelectizeComponent } from './components/setup/form/selectize/selectize.component';
 import { SelectComponent } from './components/setup/form/select/select.component';
+import { SelectContainerComponent } from './components/setup/form/select-container/select-container.component';
 
 // Providers
 import { ContainerService } from './services/container.service';
@@ -50,6 +51,7 @@ import { routes } from './app.routes';
     VoidComponent,
     ReviewComponent,
     SelectizeComponent,
+    SelectContainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,6 +74,7 @@ import { routes } from './app.routes';
     SelectComponent,
     SelectizeComponent,
     VoidComponent,
+    SelectContainerComponent,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,33 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Container } from '../../models/container.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SidebarService } from '../../services/sidebar.service';
+import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
   templateUrl: './setup.component.html',
   styleUrls: ['./setup.component.scss'],
 })
-export class SetupComponent implements OnInit {
+export class SetupComponent implements OnInit, OnDestroy {
 
   containerId: string;
   container: Container;
   formGroup: FormGroup;
   outputConfig: any;
 
+  private dataSubscription: ISubscription;
+
   constructor(private route: ActivatedRoute,
               private projectService: ProjectService,
               private sidebarService: SidebarService,
               private router: Router
   ) {
-    this.container = route.snapshot.data.container;
+    this.container = this.route.snapshot.data.container;
   }
 
   ngOnInit(): void {
+    this.dataSubscription = this.route.data.subscribe(data => {
+      this.container = data.container;
+      this.initFormControls();
+    });
+
     this.initFormControls();
     this.sidebarService.show();
     this.outputConfig = {};
+  }
+
+  ngOnDestroy(): void {
+    this.dataSubscription.unsubscribe();
   }
 
   private initFormControls(): void {
