@@ -20,8 +20,8 @@ export class ReviewComponent {
   exportProject(): void {
     const zip = new JSZip();
 
-    zip.file('docker-compose.yaml', this.projectService.getDockerCompose());
-    zip.file('README.txt', 'Octy - Licence MIT');
+    zip.file('docker-compose.yml', this.projectService.getDockerCompose());
+    zip.file('README.txt', 'Okty - Licence MIT');
     zip.generateAsync({type: 'blob'})
       .then(function(content) {
         saveAs(content, 'docker.zip');

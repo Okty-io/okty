@@ -1,17 +1,21 @@
 language: node_js
 node_js:
-  - "8"
+- '8'
 
 branches:
   only:
-    - master
+  - master
 
 before_script:
-  - npm install -g firebase-tools
-  - npm install
+- npm install -g firebase-tools
+- npm install
 
 script:
-  - ./node_modules/.bin/ng build --prod --aot
+- "./node_modules/.bin/ng build --prod --aot"
 
-after_success:
-  - firebase deploy --token $FIREBASE_TOKEN
+deploy:
+  provider: firebase
+  skip-cleanup: true
+  token:
+    secure: Zor0lYV3lqY4cSXV6FIblacy6EQ9xVcpDZU4fhpqRpFLvFG1X04RauOS/RU8Ab3sssnbZ1z/xr3G93uC9UPnFTyQgqAv4hMFgD6ArQbDgHlYIf8PVTW5QjkAcTigDMIWdVGJAIwp9wMbyTT9VDHxEqiL2/MJF63sG4gIjuktcdbdanAsD4JnyEditaZE3ZlVzWyli+kXjKdKrYFy+dOBAa26Ls7XFguaYfU+sZWaPVCgN41RoPX24Pdikcsry5u9fpQ7ukGHMZGSisxYlN0TOjZcO6LDBKn56QyPQ3QmWEeRMtkGaVzB2FJj36Pr8nuLMXOXZwGBOCb8nLR+A/uTLintK21+lL19+aSqLU1qTdBLTpl1RfESMH7/cbIbSmY5Q8iAhBpHpbO/cRP+W/6e2yWtppKuhhlWtRTnPR83AZJUVEbnM/AT6uNWTpX7XpWTOXl30k1E5agc7ZMOKWKwKiGM7uVyQRA1MVoV3SxZ7xJKLpz7AJdBHYwZdjFIk3kps+0EXsyS9sfUAkNYAZrD1YMZC0e6clBlRmNKfIxRQbl3WtxEjatl+gHdt0tcgnB1jiRgMOiTBqDS4nzcs+25NX/sKAi2X8gKTpr0Nb93ranAoa4lXM1rdpTJ6LMCOtKRls0oiUNf5TMdTbTwuKiuvqhM47po4M5IIvXNb4YdLtQ=
+  project: "okty-7e60c"
