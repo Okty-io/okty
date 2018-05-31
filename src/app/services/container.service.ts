@@ -1,14 +1,26 @@
-import {Container} from '../models/container.model';
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Config} from '../app.vars';
-import {CacheService} from './cache.service';
+import { Container } from '../models/container.model';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Config } from '../app.vars';
+import { CacheService } from './cache.service';
 
 @Injectable()
 export class ContainerService {
 
   private allContainersCacheKey = 'all_containers_cache_key';
   private containerConfigCacheKey = 'container_config_';
+
+  private static nameWithoutExtension(name: string) {
+    return name.substring(0, name.length - 4); // 4 = '.yml'
+  }
+
+  private static ajaxError(error): void {
+    if (error.status === 403) {
+      alert('Le nombre max d\'appel API vers github est depassé pour cette IP. Revenez plus tard');
+    } else {
+      alert('An error occurred');
+    }
+  }
 
   constructor(private http: HttpClient, private cache: CacheService) {
   }
@@ -26,7 +38,7 @@ export class ContainerService {
       const promises: Array<Promise<Container>> = [];
       this.http.get(url).subscribe((data: Array<any>) => {
         data.map(container => {
-          const name = container.name.substring(0, container.name.length - 5);
+          const name = ContainerService.nameWithoutExtension(container.name);
           promises.push(this.getContainerConfig(name));
         });
 
@@ -38,7 +50,7 @@ export class ContainerService {
             message: response.error.message,
             status: response.status
           };
-          this.ajaxError(error);
+          ContainerService.ajaxError(error);
           reject(error);
         });
       }, (response) => {
@@ -46,14 +58,14 @@ export class ContainerService {
           message: response.error.message,
           status: response.status
         };
-        this.ajaxError(error);
+        ContainerService.ajaxError(error);
         reject(error);
       });
     });
   }
 
   public getContainerConfig(name: string): Promise<Container> {
-    const url = Config.GIT_URL + Config.GIT_CONTAINERS_PATH + '/' + name + '.yaml';
+    const url = Config.GIT_URL + Config.GIT_CONTAINERS_PATH + '/' + name + '.yml';
 
     return new Promise<Container>((resolve, reject) => {
 
@@ -66,7 +78,7 @@ export class ContainerService {
       this.http.get(url).subscribe((file: { name: string, content: string }) => {
         const content = atob(file.content);
         const container: Container = YAML.parse(content);
-        container.configPath = file.name.substring(0, file.name.length - 5);
+        container.configPath = ContainerService.nameWithoutExtension(file.name);
 
         this.cache.set(this.containerConfigCacheKey + name, container);
         resolve(container);
@@ -75,18 +87,9 @@ export class ContainerService {
           message: response.error.message,
           status: response.status
         };
-        this.ajaxError(error);
+        ContainerService.ajaxError(error);
         reject(error);
       });
     });
-  }
-
-  // noinspection JSMethodCanBeStatic
-  public ajaxError(error): void {
-    if (error.status === 403) {
-      alert('Le nombre max d\'appel API vers github est depassé pour cette IP. Revenez plus tard');
-    } else {
-      alert('An error occurred');
-    }
   }
 }
