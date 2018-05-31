@@ -3,8 +3,8 @@
   <input type="text"
          value="{{ selected }}"
          (change)="changeSelected($event.target.value)"
-         (focus)="showSelect({})"
-         (focusout)="hideSelect({})"
+         (focus)="showSelect()"
+         (focusout)="hideSelect()"
          [id]="input.id">
 
   <ul class='select' [ngClass]="{'show': show }">
