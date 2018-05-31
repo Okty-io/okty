@@ -1,6 +1,246 @@
+.logo-container {
+    width: 100vw;
+    height: 250px;
+    margin-top: 500px;
+    position: relative;
+
+    .okty-container {
+        position: absolute;
+        width: 85px;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        opacity: 0;
+        z-index: 10;
+
+        animation: revealSvg .5s cubic-bezier(0.42, 0, 0, 3.9);
+        animation-fill-mode: forwards;
+        animation-delay: 1.6s;
+
+        #oktysvg {
+            margin-top: 50%;
+
+            animation: headAnim 5s infinite;
+            animation-fill-mode: forwards;
+            animation-delay: .8s;
+        }
+        @keyframes revealSvg {
+            0% {
+              opacity: 0;
+              transform: translate(-50%, 5%);
+            }
+            100% {
+              opacity: 1;
+              transform: translate(-50%, 0%);
+            }
+        }
+    }
+
+    .docker-container {
+        width: 400px;
+        min-width: 400px;
+        height: 100%;
+        margin-left: calc(50% - 200px);
+        position: relative;
+        opacity: 0;
+
+        animation: revealContainer .5s;
+        animation-fill-mode: forwards;
+        animation-delay: 1.5s;
+
+        @keyframes revealContainer {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+        }
+
+        .docker-container-1 {
+            width: 45px;
+            position: absolute;
+            top: 0%;
+            left: 50px;
+            opacity: 0;
+
+            animation: docker1 6s infinite;
+            animation-delay: 1.5s;
+        }
+        @keyframes docker1 {
+            0% {
+                opacity: 0;
+            }
+            25% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+                top: 50%;
+                left: 50%;
+            }
+        }
+        .docker-container-2 {
+            width: 45px;
+            position: absolute;
+            top: 0%;
+            right: 50px;
+            opacity: 0;
+
+            animation: docker2 6s infinite;
+            animation-delay: 2.5s;
+        }
+        @keyframes docker2 {
+            0% {
+                opacity: 0;
+            }
+            25% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+                top: 50%;
+                right: 50%;
+            }
+        }
+        .docker-container-3 {
+            width: 45px;
+            position: absolute;
+            right: 0%;
+            top: calc(50% - 30px);
+            opacity: 0;
+    
+            animation: docker3 6s infinite;
+            animation-delay: 3.5s;
+        }
+        @keyframes docker3 {
+            0% {
+                opacity: 0;
+            }
+            25% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+                right: 50%;
+            }
+        }
+        .docker-container-4 {
+            width: 45px;
+            position: absolute;
+            right: 50px;
+            bottom: 0%;
+            opacity: 0;
+    
+            animation: docker4 6s infinite;
+            animation-delay: 4.5s;
+        }
+        @keyframes docker4 {
+            0% {
+                opacity: 0;
+            }
+            25% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+                right: 50%;
+                bottom: 50%;
+            }
+        }
+        .docker-container-5 {
+            width: 45px;
+            position: absolute;
+            left: 50px;
+            bottom: 0%;
+            opacity: 0;
+    
+            animation: docker5 6s infinite;
+            animation-delay: 5.5s;
+        }
+        @keyframes docker5 {
+            0% {
+                opacity: 0;
+            }
+            25% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+                left: 50%;
+                bottom: 50%;
+            }
+        }
+        .docker-container-6 {
+            width: 45px;
+            position: absolute;
+            top: calc(50% - 30px);
+            left: 0%;
+            opacity: 0;
+    
+            animation: docker6 6s infinite;
+            animation-delay: 6.5s;
+        }
+        @keyframes docker6 {
+            0% {
+                opacity: 0;
+            }
+            25% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+                left: 50%;
+            }
+        }
+    }
+}
+
+@keyframes headAnim {
+    0% {
+        transform: scale(1,1);
+    }
+    2% {
+        transform: scale(1.1,0.95);
+    }
+    20% {
+        transform: scale(0.95,1.1);
+    }
+    50% {
+        transform: scale(1);
+    }
+    55% {
+        transform: scale(1.1,0.95);
+    }
+    70% {
+        transform: scale(0.95,1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 .home-container {
   position: absolute;
-  top: 50%;
+  top: 40%;
+  width: 100vw;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -71,6 +311,12 @@
   }
 }
 
+.home-logo-transition {
+    animation: hideLogo .7s cubic-bezier(0.29, 0.69, 0, 1.17);
+    animation-fill-mode: forwards;
+    animation-delay: 0.35s;
+}
+
 .home-container-transition {
   animation: moveContainer .7s cubic-bezier(0.29, 0.69, 0, 1.17);
   animation-fill-mode: forwards;
@@ -88,7 +334,7 @@
   }
 }
 
-@-webkit-keyframes moveContainer {
+@keyframes moveContainer {
   0% {
     top: 50%;
   }
@@ -98,7 +344,7 @@
   }
 }
 
-@-webkit-keyframes hideWelcome {
+@keyframes hideWelcome {
   0% {
     opacity: 1;
   }
@@ -112,7 +358,7 @@
   }
 }
 
-@-webkit-keyframes hideDescription {
+@keyframes hideDescription {
   0% {
     opacity: 1;
   }
@@ -126,10 +372,24 @@
   }
 }
 
-@-webkit-keyframes goToSearch {
+@keyframes hideLogo {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+        margin-top: 800px;
+    }
+    100% {
+        opacity: 0;
+        margin-top: 1000px;
+    }
+}
+
+@keyframes goToSearch {
   0% {
     min-width: 50px;
-    margin-top: 100px;
+    margin-top: 10px;
     position: absolute;
     top: 0;
     transform: translate(-50%, 0%);
