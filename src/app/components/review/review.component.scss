@@ -1,23 +1,26 @@
 :host {
-  color: #fff;
+    color: #fff;
 }
 
 .review {
-  max-width: 700px;
-  margin: 0 auto;
+    max-width: 700px;
+    margin: 0 auto;
 
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 
-  .card {
-    width: 25%;
-    margin-top: 30px;
-    padding: 0 50px 0;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 2px 21px 0 rgba(0, 0, 0, 0.5);
-    text-align: center;
+    .card {
+        width: 25%;
+        margin-top: 30px;
+        padding: 0 50px 0;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        text-align: center;
+        cursor: pointer;
+        transition: .3s ease;
 
-    cursor: pointer;
-  }
+        &:hover {
+            border: 1px solid rgba(255, 255, 255, 1);
+        }
+    }
 }
