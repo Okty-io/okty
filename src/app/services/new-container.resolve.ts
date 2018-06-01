@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
 import {Container} from '../models/container.model';
 import {ContainerService} from './container.service';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class NewContainerResolve implements Resolve<Container> {
