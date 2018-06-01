@@ -1,7 +1,7 @@
-import { ISubscription } from 'rxjs/Subscription';
 import { SidebarService } from './services/sidebar.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { wrapperAnimation } from './wrapper.animation';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,18 +11,19 @@ import { wrapperAnimation } from './wrapper.animation';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-    public wrapperStatus: string = 'full';
-    private subscription: ISubscription;
+  public wrapperStatus = 'full';
+  private subscription: Subscription;
 
-    constructor(private sidebarStatus: SidebarService) {}
+  constructor(private sidebarStatus: SidebarService) {
+  }
 
-    ngOnInit(): void {
-        this.subscription = this.sidebarStatus.getObservable().subscribe((status: boolean) => {
-            this.wrapperStatus = status ? 'sidebar' : 'full';
-        });
-    }
+  ngOnInit(): void {
+    this.subscription = this.sidebarStatus.getObservable().subscribe((status: boolean) => {
+      this.wrapperStatus = status ? 'sidebar' : 'full';
+    });
+  }
 
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
-    }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

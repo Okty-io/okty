@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 import { Container } from '../models/container.model';
-import { Observable } from 'rxjs/Observable';
 import { ProjectService } from './project.service';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class EditContainerResolve implements Resolve<Container> {

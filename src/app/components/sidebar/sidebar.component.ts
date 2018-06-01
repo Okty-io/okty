@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProjectService } from '../../services/project.service';
 import { Container } from '../../models/container.model';
-import { ISubscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
@@ -13,8 +13,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   visible = false;
   containers: Array<Container> = [];
-  private sidebarSubscription: ISubscription;
-  private containersSubscription: ISubscription;
+  private sidebarSubscription: Subscription;
+  private containersSubscription: Subscription;
 
   constructor(private projectService: ProjectService, private sidebareService: SidebarService) {
   }
