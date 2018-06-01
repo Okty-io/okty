@@ -77,8 +77,9 @@
       justify-content: center;
 
       & > img {
-        border-radius: inherit;
-        max-width: 100%;
+        border-radius: 25px;
+        max-width: 50px;
+        max-height: 50px;
       }
 
       &.add-container-docker:hover {
