@@ -38,6 +38,12 @@
 * Only one file to run your project
 
 ## How To Use
+- Go to [https://okty.io/](https://okty.io)
+- Search the container you need
+- Quickly configure it
+- Add another container or export your projet
+
+That's all !
 
 ## Contribute
 
