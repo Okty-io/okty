@@ -3,7 +3,6 @@ node_js:
 - '8'
 
 before_script:
-- npm install -g firebase-tools
 - npm install
 
 script:
