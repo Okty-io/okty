@@ -58,10 +58,11 @@
 
     > *{
       padding: 5px 15px;
+      font-size: 0.8rem;
 
       &:hover{
         cursor: pointer;
-        background: rgba(255, 255, 255, 0.7);
+        background-color: rgb(116, 159, 214);
         color: #000000;
       }
     }

@@ -34,8 +34,8 @@
       padding: 0 10px;
       color: #ffffff;
       &:focus {
-        background-color: rgba(0, 0, 0, 0.3);
-        border-bottom-color: rgba(255, 255, 255, 1);
+        background-color: rgba(255, 255, 255, 0.15);
+        border-bottom-color: white;
       }
     }
   }
@@ -46,7 +46,7 @@
     bottom: 0;
     text-decoration: none;
     list-style: none;
-    background: rgba(255, 255, 255, 0.80);
+    background: rgba(0, 0, 0, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 2px 21px 0 rgba(0, 0, 0, 0.5);
     margin: 0;
@@ -64,8 +64,8 @@
       pointer-events: all;
     }
     li {
-      border-bottom: solid 1px #fff;
       button {
+        color: white;
         background: none;
         border: none;
         text-align: left;
@@ -75,6 +75,14 @@
         outline: none;
         font-weight: 600;
         cursor: pointer;
+      }
+      &:hover{
+        cursor: pointer;
+        background-color: rgb(116, 159, 214);
+        button {
+            color: #000000;
+
+        }
       }
     }
   }
