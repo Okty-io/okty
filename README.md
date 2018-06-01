@@ -23,8 +23,8 @@
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
   <a href="#contribute">Contribute</a> •
-  <a href="#license">License</a>
-  <a href="#credits">Credits</a> •
+  <a href="#license">License</a> •
+  <a href="#credits">Credits</a>
 </p>
 
 

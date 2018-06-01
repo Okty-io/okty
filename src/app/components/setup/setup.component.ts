@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SidebarService } from '../../services/sidebar.service';
-import { ISubscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './setup.component.html',
@@ -17,7 +17,7 @@ export class SetupComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
   outputConfig: any;
 
-  private dataSubscription: ISubscription;
+  private dataSubscription: Subscription;
 
   constructor(private route: ActivatedRoute,
               private projectService: ProjectService,
