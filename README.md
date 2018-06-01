@@ -17,7 +17,7 @@
 [![Build Status](https://travis-ci.org/lbassin/okty.svg?branch=master)](https://travis-ci.org/lbassin/okty) 
 ![Dependencies](https://david-dm.org/lbassin/okty.svg)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
@@ -27,3 +27,12 @@
   <a href="#license">License</a>
 </p>
 
+
+## Key Features
+
+* Generate a development environment
+* Add all containers you need
+  - Easily configure each container
+  - Export the final docker-compose
+* Quick configuration  
+* Only one file to run your project
