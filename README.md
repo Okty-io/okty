@@ -16,7 +16,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![Build Status](https://travis-ci.org/lbassin/okty.svg?branch=master)](https://travis-ci.org/lbassin/okty) 
 ![Dependencies](https://david-dm.org/lbassin/okty.svg)
-![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
+![Contributions welcome](https://img.shields.io/badge/contributions-welcome-lightgrey.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 <p align="center">
