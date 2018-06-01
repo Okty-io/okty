@@ -6,6 +6,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500');
 
+²h1 {
+  text-align: center;
+}
+
 .config-form {
     max-width: 800px;
     margin: 0 auto;
@@ -94,6 +98,7 @@
         text-align: center;
         cursor: pointer;
         transition: .3s ease;
+      float: right;
 
         &:hover {
             border: 1px solid rgba(255, 255, 255, 1);
