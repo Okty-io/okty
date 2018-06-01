@@ -24,5 +24,4 @@ export class EditContainerResolve implements Resolve<Container> {
       observer.complete();
     });
   }
-
 }
