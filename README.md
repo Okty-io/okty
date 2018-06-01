@@ -23,8 +23,8 @@
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
   <a href="#contribute">Contribute</a> •
-  <a href="#credits">Credits</a> •
   <a href="#license">License</a>
+  <a href="#credits">Credits</a> •
 </p>
 
 
@@ -36,3 +36,20 @@
   - Export the final docker-compose
 * Quick configuration  
 * Only one file to run your project
+
+## How To Use
+
+## Contribute
+
+## License
+Okty is made available under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+
+## Credits
+Okty is created and maintained by
+[Samuel Alves Antunes](https://github.com/NeverTwice), 
+[Laurent Bassin](https://github.com/lbassin),
+[Maxime Marquet](https://github.com/x-Raz) &
+[Jordan Venant](https://github.com/Kubenic).
+
+*We're open to suggestions, feel free to message us or open an issue.*  
+*Pull requests are also welcome!*
