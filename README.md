@@ -2,7 +2,7 @@
 <h1 align="center">
   <br>
   <a href="https://okty.io/">
-    <img src="https://i.imgur.com/tAlvov1.png" alt="Okty" height="200">
+    <img src="https://i.imgur.com/kN8SThu.png" alt="Okty" height="200">
   </a>
   <br>
   Okty.io
