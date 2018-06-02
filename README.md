@@ -42,7 +42,9 @@
 - Quickly configure it
 - Add another container or export your projet
 
-That's all !
+That's all !  
+  
+Having trouble using okty ? Maybe [wiki](https://github.com/lbassin/okty/wiki) would help you !  
 
 ## Contribute
 
