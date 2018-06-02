@@ -1,6 +1,5 @@
 
 <h1 align="center">
-  <br>
   <a href="https://okty.io/">
     <img src="https://i.imgur.com/kN8SThu.png" alt="Okty" height="200">
   </a>
@@ -43,9 +42,17 @@
 - Quickly configure it
 - Add another container or export your projet
 
-That's all !
+That's all !  
+  
+Having trouble using okty ? Maybe [wiki](https://github.com/lbassin/okty/wiki) would help you !  
 
 ## Contribute
+
+Okty needs help to stay up to date and improve his features.  
+If something is missing or broken, feel free to open an issue or made a pull request.  
+  
+Maybe the container you want isn't available ? 
+Make your own or ask for it on the [configuration dedicated repository](https://github.com/lbassin/okty-config) !
 
 ## License
 Okty is made available under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
