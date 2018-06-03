@@ -19,6 +19,31 @@ export class SetupComponent implements OnInit, OnDestroy {
 
   private dataSubscription: Subscription;
 
+  private static setValidatorsToInput(formControl: FormControl, config: any) {
+    const validators = [];
+    for (const key in config) {
+      if (!config.hasOwnProperty(key)) {
+        continue;
+      }
+
+      switch (key) {
+        case 'required':
+          validators.push(Validators.required);
+          break;
+        case 'numbers':
+          validators.push(Validators.min(config[key].min));
+          validators.push(Validators.max(config[key].max));
+          validators.push(Validators.pattern('^[0-9]+$'));
+          break;
+        case 'regex':
+          validators.push(Validators.pattern(config[key]));
+          break;
+      }
+    }
+
+    formControl.setValidators(validators);
+  }
+
   constructor(private route: ActivatedRoute,
               private projectService: ProjectService,
               private sidebarService: SidebarService,
@@ -55,13 +80,19 @@ export class SetupComponent implements OnInit, OnDestroy {
         const formControl = new FormControl(value);
         const controlName = group.label + '_' + input.id;
 
-        formControl.setValidators(Validators.required);
+        SetupComponent.setValidatorsToInput(formControl, input.validators);
+
         this.formGroup.addControl(controlName, formControl);
       });
     });
   }
 
   submit(): void {
+    if (this.formGroup.invalid) {
+      console.log(this.formGroup.errors);
+      return;
+    }
+
     this.container.config.forEach((group) => {
       group.fields.forEach((input) => {
         const controlName = group.label + '_' + input.id;
@@ -151,4 +182,5 @@ export class SetupComponent implements OnInit, OnDestroy {
 
     this.containerId = value;
   }
+
 }
