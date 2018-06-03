@@ -18,5 +18,6 @@
   <div [ngClass]="{'selectize-possibles':true,'hidden':showPossibles === false}">
     <div *ngFor="let selection of selections" (click)="addSelected(selection.value)">{{selection.label}}</div>
   </div>
+  <p *ngIf="formControl.invalid">{{ formControl.errors | validatorErrors }}</p>
 </div>
 

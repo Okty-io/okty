@@ -29,6 +29,7 @@ import { SidebarService } from './services/sidebar.service';
 
 // Pipes
 import { FilterPipe } from './pipes/filter.pipe';
+import { ValidatorErrorsPipe } from './pipes/validator-errors.pipe';
 
 // Directives
 import { FormInputDirective } from './directives/form-input.directive';
@@ -52,6 +53,7 @@ import { routes } from './app.routes';
     ReviewComponent,
     SelectizeComponent,
     SelectContainerComponent,
+    ValidatorErrorsPipe,
   ],
   imports: [
     BrowserModule,
