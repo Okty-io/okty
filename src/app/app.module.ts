@@ -18,6 +18,7 @@ import { ReviewComponent } from './components/review/review.component';
 import { SelectizeComponent } from './components/setup/form/selectize/selectize.component';
 import { SelectComponent } from './components/setup/form/select/select.component';
 import { SelectContainerComponent } from './components/setup/form/select-container/select-container.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 // Providers
 import { ContainerService } from './services/container.service';
@@ -26,6 +27,7 @@ import { EditContainerResolve } from './services/edit-container.resolve';
 import { ProjectService } from './services/project.service';
 import { CacheService } from './services/cache.service';
 import { SidebarService } from './services/sidebar.service';
+import { MessageService } from './services/message.service';
 
 // Pipes
 import { FilterPipe } from './pipes/filter.pipe';
@@ -54,6 +56,7 @@ import { routes } from './app.routes';
     SelectizeComponent,
     SelectContainerComponent,
     ValidatorErrorsPipe,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +73,7 @@ import { routes } from './app.routes';
     ProjectService,
     CacheService,
     SidebarService,
+    MessageService,
   ],
   entryComponents: [
     InputComponent,
