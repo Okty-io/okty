@@ -120,7 +120,6 @@ export class SetupComponent implements OnInit, OnDestroy {
             break;
         }
 
-        this.sendNotification();
         this.outputConfig['image'] = this.container.docker + ':' + this.container.version;
         this.router.navigate(['/review']);
       });
@@ -128,6 +127,7 @@ export class SetupComponent implements OnInit, OnDestroy {
 
     this.container.output = this.outputConfig;
     this.projectService.addContainer(this.containerId, this.container);
+    this.sendNotification();
   }
 
   private addToDockerCompose(value: string, input: any): void {

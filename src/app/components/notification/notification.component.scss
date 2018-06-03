@@ -1,15 +1,23 @@
-.info {
+.notification {
+  padding: 10px 20px 10px 20px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+
+}
+
+.is-info {
   background-color: azure;
 }
 
-.success {
-  background-color: lightgreen;
+.is-success {
+  background-color: #91ff91;
 }
 
-.warning {
+.is-warning {
   background-color: lightsalmon;
 }
 
-.danger {
+.is-danger {
   background-color: lightcoral;
 }

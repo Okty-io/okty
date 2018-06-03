@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 export class Message {
   content: string;
@@ -10,17 +11,25 @@ export class Message {
   }
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
 
-  message: Message;
+  private message: Message;
+  private subject: Subject<Message> = new Subject<Message>();
 
   makeNotification(content, style): void {
     this.message =  new Message(content, style);
-    console.log('From MessageService: ' + this.message);
+    this.show();
+  }
+
+  show(): void {
+    this.subject.next(this.message);
+  }
+
+  getObservable(): Observable<Message> {
+    return this.subject.asObservable();
   }
 
 }

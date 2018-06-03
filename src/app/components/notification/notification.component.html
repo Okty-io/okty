@@ -2,6 +2,7 @@
     <div class="notification"
          [ngClass]="{'is-info':     message.style=='info',
                      'is-danger':   message.style=='danger',
+                     'is-warning':   message.style=='warning',
                      'is-success':  message.style=='success'}">
 
       {{message.content}}
