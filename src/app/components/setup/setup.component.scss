@@ -105,3 +105,9 @@ h1 {
         }
     }
 }
+
+/deep/ p.errors {
+  font-size: 10pt;
+  margin: 6px 0;
+  color: #F22613;
+}
