@@ -5,6 +5,7 @@ import { ProjectService } from '../../services/project.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SidebarService } from '../../services/sidebar.service';
 import { Subscription } from 'rxjs';
+import { isNumberValidator } from '../../validators/isNumber';
 
 @Component({
   templateUrl: './setup.component.html',
@@ -33,7 +34,7 @@ export class SetupComponent implements OnInit, OnDestroy {
         case 'numbers':
           validators.push(Validators.min(config[key].min));
           validators.push(Validators.max(config[key].max));
-          validators.push(Validators.pattern('^[0-9]+$'));
+          validators.push(isNumberValidator);
           break;
         case 'regex':
           validators.push(Validators.pattern(config[key]));
@@ -89,7 +90,7 @@ export class SetupComponent implements OnInit, OnDestroy {
 
   submit(): void {
     if (this.formGroup.invalid) {
-      console.log(this.formGroup.errors);
+      alert('There are some errors with data you provided');
       return;
     }
 

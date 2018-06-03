@@ -6,6 +6,7 @@
          (focus)="showSelect()"
          (focusout)="hideSelect()"
          [id]="input.id">
+  <p *ngIf="formControl.invalid">{{ formControl.errors | validatorErrors }}</p>
 
   <ul class='select' [ngClass]="{'show': show }">
     <li *ngFor="let item of data">
