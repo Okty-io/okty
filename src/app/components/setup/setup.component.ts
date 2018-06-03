@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SidebarService } from '../../services/sidebar.service';
 import { Subscription } from 'rxjs';
 import { isNumberValidator } from '../../validators/isNumber';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   templateUrl: './setup.component.html',
@@ -48,6 +49,7 @@ export class SetupComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
               private projectService: ProjectService,
               private sidebarService: SidebarService,
+              private messageService: MessageService,
               private router: Router
   ) {
     this.container = this.route.snapshot.data.container;
@@ -118,6 +120,7 @@ export class SetupComponent implements OnInit, OnDestroy {
             break;
         }
 
+        this.sendNotification();
         this.outputConfig['image'] = this.container.docker + ':' + this.container.version;
         this.router.navigate(['/review']);
       });
@@ -184,4 +187,8 @@ export class SetupComponent implements OnInit, OnDestroy {
     this.containerId = value;
   }
 
+  private sendNotification(): void {
+    const msg = 'Your container has been added successfully !';
+    this.messageService.makeNotification(msg, 'success');
+  }
 }
