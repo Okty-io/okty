@@ -1,12 +1,21 @@
 <div class="review">
-  <div class="card" (click)="goToAddContainer()">
-    <p>
-      Add container
-    </p>
+  <div class="block">
+    <div class="card" (click)="goToAddContainer()">
+      <p>
+        <i class="fa fa-plus"></i>
+        Add container
+      </p>
+    </div>
+    <div class="card" (click)="exportProject()">
+      <p>
+        <i class="fa fa-download"></i>
+        Export my project
+      </p>
+    </div>
   </div>
-  <div class="card" (click)="exportProject()">
-    <p>
-      Export my project
-    </p>
+
+  <div class="block">
+    <p> We strongly recommend you to NOT use this in a Production Environment since we're still on Beta Version.
+      Follow us on Twitter @Okty to keep yourself up to date</p>
   </div>
 </div>
