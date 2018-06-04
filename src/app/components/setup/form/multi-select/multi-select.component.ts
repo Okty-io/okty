@@ -2,10 +2,10 @@ import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/cor
 import { FormControl } from '@angular/forms';
 
 @Component({
-  templateUrl: './selectize.component.html',
-  styleUrls: ['./selectize.component.scss']
+  templateUrl: './multi-select.component.html',
+  styleUrls: ['./multi-select.component.scss']
 })
-export class SelectizeComponent implements OnInit, AfterViewInit {
+export class MultiSelectComponent implements OnInit, AfterViewInit {
   @Input() formControl: FormControl;
   @Input() input: any;
   @ViewChild('selectizeInput') selectizeInput;
