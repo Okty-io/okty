@@ -92,7 +92,7 @@ export class SetupComponent implements OnInit, OnDestroy {
 
   submit(): void {
     if (this.formGroup.invalid) {
-      this.messageService.makeNotification('There are some errors with data you provided', 'danger');
+      this.messageService.makeNotification('There are some errors with the data you provided', 'danger');
       return;
     }
 
