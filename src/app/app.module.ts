@@ -15,7 +15,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { VoidComponent } from './components/setup/form/void.component';
 import { InputComponent } from './components/setup/form/input/input.component';
 import { ReviewComponent } from './components/review/review.component';
-import { SelectizeComponent } from './components/setup/form/selectize/selectize.component';
+import { MultiSelectComponent } from './components/setup/form/multi-select/multi-select.component';
 import { SelectComponent } from './components/setup/form/select/select.component';
 import { SelectContainerComponent } from './components/setup/form/select-container/select-container.component';
 import { NotificationComponent } from './components/notification/notification.component';
@@ -53,7 +53,7 @@ import { routes } from './app.routes';
     SelectComponent,
     VoidComponent,
     ReviewComponent,
-    SelectizeComponent,
+    MultiSelectComponent,
     SelectContainerComponent,
     ValidatorErrorsPipe,
     NotificationComponent,
@@ -78,7 +78,7 @@ import { routes } from './app.routes';
   entryComponents: [
     InputComponent,
     SelectComponent,
-    SelectizeComponent,
+    MultiSelectComponent,
     VoidComponent,
     SelectContainerComponent,
   ],
