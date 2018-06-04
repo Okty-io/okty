@@ -16,12 +16,24 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
   public showPossibles = false;
 
   ngOnInit(): void {
+    this.initSelectedValues();
     this.refineSelections();
   }
 
   ngAfterViewInit() {
     this.selectizeInput.nativeElement.style.width = ((this.selectizeInput.nativeElement.value.length + 1) * 6.8) + 'px';
   }
+
+  initSelectedValues(): void {
+    if (!this.formControl.value) {
+      return;
+    }
+
+    this.formControl.value.toString().split(';').forEach((selected) => {
+      this.addSelected(selected);
+    });
+  }
+
 
   addSelected(value: string) {
     this.selected.push(value);
@@ -37,7 +49,6 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
   }
 
   focusTheInput(target: HTMLElement): void {
-    console.log('focusTheInput');
     if (!target.classList.contains('selectize-selected')) {
       this.selectizeInput.nativeElement.focus();
     }
