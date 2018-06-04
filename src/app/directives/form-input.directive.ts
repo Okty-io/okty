@@ -2,7 +2,7 @@ import { ComponentFactoryResolver, Directive, Input, OnInit, Type, ViewContainer
 import { InputComponent } from '../components/setup/form/input/input.component';
 import { SelectComponent } from '../components/setup/form/select/select.component';
 import { VoidComponent } from '../components/setup/form/void.component';
-import { SelectizeComponent } from '../components/setup/form/selectize/selectize.component';
+import { MultiSelectComponent } from '../components/setup/form/multi-select/multi-select.component';
 import { SelectContainerComponent } from '../components/setup/form/select-container/select-container.component';
 
 @Directive({
@@ -28,7 +28,7 @@ export class FormInputDirective implements OnInit {
   private getComponentType(): Type<any> {
     const mapping = {
       'input': InputComponent,
-      'selectize': SelectizeComponent,
+      'multi-select': MultiSelectComponent,
       'select': SelectComponent,
       'select-container': SelectContainerComponent
     };
