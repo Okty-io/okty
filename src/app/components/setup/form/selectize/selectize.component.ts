@@ -37,7 +37,7 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
   }
 
   focusTheInput(target: HTMLElement): void {
-    console.log('focusTheInput');
+
     if (!target.classList.contains('selectize-selected')) {
       this.selectizeInput.nativeElement.focus();
     }
@@ -48,7 +48,7 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
       this.showPossibles = false;
       this.selectizeInput.nativeElement.value = '';
       this.refineSelections();
-    }, 100);
+    }, 200);
   }
 
   refineSelections(value: string = ''): void {

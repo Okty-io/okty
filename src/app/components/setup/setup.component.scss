@@ -64,6 +64,12 @@
         &.full {
           width: 100%;
         }
+
+        @media screen and (max-width: 860px){
+          &.an-half, &.a-quarter, &.full{
+            width: 100%;
+          }
+        }
       }
       .input-text {
         label, input {
@@ -75,6 +81,9 @@
           display: block;
         }
       }
+    }
+    @media screen and (max-width: 500px){
+      padding: 0 20px 20px;
     }
   }
 }

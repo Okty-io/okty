@@ -1,9 +1,11 @@
 .logo-container {
     width: 100vw;
     height: 250px;
-    margin-top: 500px;
+    margin-top: 50vh;
     position: relative;
-
+    &.sidebar-visible{
+      margin-left: -82px;
+    }
     .okty-container {
         position: absolute;
         width: 85px;
@@ -114,7 +116,7 @@
             right: 0%;
             top: calc(50% - 30px);
             opacity: 0;
-    
+
             animation: docker3 6s infinite;
             animation-delay: 3.5s;
         }
@@ -139,7 +141,7 @@
             right: 50px;
             bottom: 0%;
             opacity: 0;
-    
+
             animation: docker4 6s infinite;
             animation-delay: 4.5s;
         }
@@ -165,7 +167,7 @@
             left: 50px;
             bottom: 0%;
             opacity: 0;
-    
+
             animation: docker5 6s infinite;
             animation-delay: 5.5s;
         }
@@ -191,7 +193,7 @@
             top: calc(50% - 30px);
             left: 0%;
             opacity: 0;
-    
+
             animation: docker6 6s infinite;
             animation-delay: 6.5s;
         }
