@@ -21,4 +21,8 @@ input {
         border-bottom-color: rgba(255, 255, 255, 1);
     }
   }
+
+  &.errors {
+    border-bottom: solid 1px #F22613 !important;
+  }
 }

@@ -1,4 +1,4 @@
-import { trigger, state, style, transition, animate } from "@angular/animations";
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 export const wrapperAnimation = trigger('wrapperStatus', [
     state('full', style({

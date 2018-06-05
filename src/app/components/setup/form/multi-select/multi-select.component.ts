@@ -2,10 +2,10 @@ import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/cor
 import { FormControl } from '@angular/forms';
 
 @Component({
-  templateUrl: './selectize.component.html',
-  styleUrls: ['./selectize.component.scss']
+  templateUrl: './multi-select.component.html',
+  styleUrls: ['./multi-select.component.scss']
 })
-export class SelectizeComponent implements OnInit, AfterViewInit {
+export class MultiSelectComponent implements OnInit, AfterViewInit {
   @Input() formControl: FormControl;
   @Input() input: any;
   @ViewChild('selectizeInput') selectizeInput;
@@ -16,12 +16,24 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
   public showPossibles = false;
 
   ngOnInit(): void {
+    this.initSelectedValues();
     this.refineSelections();
   }
 
   ngAfterViewInit() {
     this.selectizeInput.nativeElement.style.width = ((this.selectizeInput.nativeElement.value.length + 1) * 6.8) + 'px';
   }
+
+  initSelectedValues(): void {
+    if (!this.formControl.value) {
+      return;
+    }
+
+    this.formControl.value.toString().split(';').forEach((selected) => {
+      this.addSelected(selected);
+    });
+  }
+
 
   addSelected(value: string) {
     this.selected.push(value);
@@ -37,7 +49,6 @@ export class SelectizeComponent implements OnInit, AfterViewInit {
   }
 
   focusTheInput(target: HTMLElement): void {
-
     if (!target.classList.contains('selectize-selected')) {
       this.selectizeInput.nativeElement.focus();
     }

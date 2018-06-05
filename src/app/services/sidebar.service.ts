@@ -19,5 +19,4 @@ export class SidebarService {
   getObservable(): Observable<boolean> {
     return this.visibleSubject.asObservable();
   }
-
 }

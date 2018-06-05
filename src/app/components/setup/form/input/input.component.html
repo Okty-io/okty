@@ -1,2 +1,3 @@
 <!--suppress HtmlFormInputWithoutLabel -->
-<input type="text" name="input" [formControl]="formControl" [id]="input.id">
+<input type="text" name="input" [formControl]="formControl" [id]="input.id" [ngClass]="{'errors':formControl.invalid}">
+<p *ngIf="formControl.invalid" class="errors">{{ formControl.errors | validatorErrors }}</p>

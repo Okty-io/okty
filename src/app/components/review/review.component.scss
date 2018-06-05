@@ -1,23 +1,50 @@
 :host {
-  color: #fff;
+    color: #fff;
 }
 
 .review {
-  max-width: 700px;
-  margin: 0 auto;
+    max-width: 700px;
+    margin: 0 auto;
+    justify-content: space-between;
 
-  display: flex;
-  justify-content: space-between;
+    .block {
+      width: 100%;
+      height: 100px;
 
-  .card {
-    width: 25%;
-    margin-top: 30px;
-    padding: 0 50px 0;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 2px 21px 0 rgba(0, 0, 0, 0.5);
-    text-align: center;
+      .card {
+        width: 25%;
+        margin-top: 30px;
+        padding: 0 50px 0;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        text-align: center;
+        cursor: pointer;
+        transition: .3s ease;
+        float:left;
 
-    cursor: pointer;
-  }
+        &:last-of-type {
+          float: right;
+        }
+
+        &:hover {
+          border: 1px solid rgba(255, 255, 255, 1);
+        }
+
+        i {
+          font-size: 23px;
+          position: relative;
+          top: 3px;
+          padding-right: 5px;
+        }
+
+      }
+
+      p {
+        text-align: center;
+      }
+
+      a {
+        color: #add8e6;
+      }
+    }
 }

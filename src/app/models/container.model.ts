@@ -14,6 +14,7 @@ export class Container {
       destination: string;
       value: string;
       data: string;
+      validators: any;
     }>
   }>;
 

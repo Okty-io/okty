@@ -15,9 +15,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { VoidComponent } from './components/setup/form/void.component';
 import { InputComponent } from './components/setup/form/input/input.component';
 import { ReviewComponent } from './components/review/review.component';
-import { SelectizeComponent } from './components/setup/form/selectize/selectize.component';
+import { MultiSelectComponent } from './components/setup/form/multi-select/multi-select.component';
 import { SelectComponent } from './components/setup/form/select/select.component';
 import { SelectContainerComponent } from './components/setup/form/select-container/select-container.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 // Providers
 import { ContainerService } from './services/container.service';
@@ -26,9 +27,11 @@ import { EditContainerResolve } from './services/edit-container.resolve';
 import { ProjectService } from './services/project.service';
 import { CacheService } from './services/cache.service';
 import { SidebarService } from './services/sidebar.service';
+import { MessageService } from './services/message.service';
 
 // Pipes
 import { FilterPipe } from './pipes/filter.pipe';
+import { ValidatorErrorsPipe } from './pipes/validator-errors.pipe';
 
 // Directives
 import { FormInputDirective } from './directives/form-input.directive';
@@ -50,8 +53,10 @@ import { routes } from './app.routes';
     SelectComponent,
     VoidComponent,
     ReviewComponent,
-    SelectizeComponent,
+    MultiSelectComponent,
     SelectContainerComponent,
+    ValidatorErrorsPipe,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,11 +73,12 @@ import { routes } from './app.routes';
     ProjectService,
     CacheService,
     SidebarService,
+    MessageService,
   ],
   entryComponents: [
     InputComponent,
     SelectComponent,
-    SelectizeComponent,
+    MultiSelectComponent,
     VoidComponent,
     SelectContainerComponent,
   ],

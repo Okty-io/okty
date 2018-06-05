@@ -4,7 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SidebarService } from '../../services/sidebar.service';
-import { ISubscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
+import { isNumberValidator } from '../../validators/isNumber';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   templateUrl: './setup.component.html',
@@ -17,11 +19,37 @@ export class SetupComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
   outputConfig: any;
 
-  private dataSubscription: ISubscription;
+  private dataSubscription: Subscription;
+
+  private static setValidatorsToInput(formControl: FormControl, config: any) {
+    const validators = [];
+    for (const key in config) {
+      if (!config.hasOwnProperty(key)) {
+        continue;
+      }
+
+      switch (key) {
+        case 'required':
+          validators.push(Validators.required);
+          break;
+        case 'numbers':
+          validators.push(Validators.min(config[key].min));
+          validators.push(Validators.max(config[key].max));
+          validators.push(isNumberValidator);
+          break;
+        case 'regex':
+          validators.push(Validators.pattern(config[key]));
+          break;
+      }
+    }
+
+    formControl.setValidators(validators);
+  }
 
   constructor(private route: ActivatedRoute,
               private projectService: ProjectService,
               private sidebarService: SidebarService,
+              private messageService: MessageService,
               private router: Router
   ) {
     this.container = this.route.snapshot.data.container;
@@ -55,13 +83,19 @@ export class SetupComponent implements OnInit, OnDestroy {
         const formControl = new FormControl(value);
         const controlName = group.label + '_' + input.id;
 
-        formControl.setValidators(Validators.required);
+        SetupComponent.setValidatorsToInput(formControl, input.validators);
+
         this.formGroup.addControl(controlName, formControl);
       });
     });
   }
 
   submit(): void {
+    if (this.formGroup.invalid) {
+      this.messageService.makeNotification('There are some errors with data you provided', 'danger');
+      return;
+    }
+
     this.container.config.forEach((group) => {
       group.fields.forEach((input) => {
         const controlName = group.label + '_' + input.id;
@@ -93,6 +127,7 @@ export class SetupComponent implements OnInit, OnDestroy {
 
     this.container.output = this.outputConfig;
     this.projectService.addContainer(this.containerId, this.container);
+    this.sendNotification();
   }
 
   private addToDockerCompose(value: string, input: any): void {
@@ -150,5 +185,10 @@ export class SetupComponent implements OnInit, OnDestroy {
     }
 
     this.containerId = value;
+  }
+
+  private sendNotification(): void {
+    const msg = 'Your container has been added successfully !';
+    this.messageService.makeNotification(msg, 'success');
   }
 }

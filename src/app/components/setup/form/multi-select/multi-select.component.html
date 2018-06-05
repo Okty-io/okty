@@ -12,11 +12,13 @@
            [id]="input.id"
            (focus)="showPossiblesContainer()"
            (focusout)="hidePossiblesContainer()"
-           (input)="checkInput($event)">
+           (input)="checkInput($event)"
+           [ngClass]="{'errors':formControl.invalid}">
   </div>
 
   <div [ngClass]="{'selectize-possibles':true,'hidden':showPossibles === false}">
     <div *ngFor="let selection of selections" (click)="addSelected(selection.value)">{{selection.label}}</div>
   </div>
+  <p *ngIf="formControl.invalid" class="errors">{{ formControl.errors | validatorErrors }}</p>
 </div>
 

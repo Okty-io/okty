@@ -1,27 +1,68 @@
-# Dockerize
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+<h1 align="center">
+  <a href="https://okty.io/">
+    <img src="https://i.imgur.com/kN8SThu.png" alt="Okty" height="200">
+  </a>
+  <br>
+  Okty.io
+  <br>
+</h1>
 
-## Development server
+<h4 align="center">The simplest application to create your docker projects.</h4>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![Build Status](https://travis-ci.org/lbassin/okty.svg?branch=master)](https://travis-ci.org/lbassin/okty) 
+![Dependencies](https://david-dm.org/lbassin/okty.svg)
+![Contributions welcome](https://img.shields.io/badge/contributions-welcome-lightgrey.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## Code scaffolding
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#contribute">Contribute</a> •
+  <a href="#license">License</a> •
+  <a href="#credits">Credits</a>
+</p>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Key Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+* Generate a development environment
+* Add all containers you need
+  - Easily configure each container
+  - Export the final docker-compose
+* Quick configuration  
+* Only one file to run your project
 
-## Running unit tests
+## How To Use
+- Go to [https://okty.io/](https://okty.io)
+- Search the container you need
+- Quickly configure it
+- Add another container or export your projet
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+That's all !  
+  
+Having trouble using okty ? Maybe [wiki](https://github.com/lbassin/okty/wiki) would help you !  
 
-## Running end-to-end tests
+## Contribute
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Okty needs help to stay up to date and improve his features.  
+If something is missing or broken, feel free to open an issue or made a pull request.  
+  
+Maybe the container you want isn't available ? 
+Make your own or ask for it on the [configuration dedicated repository](https://github.com/lbassin/okty-config) !
 
-## Further help
+## License
+Okty is made available under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Credits
+Okty is created and maintained by
+[Samuel Alves Antunes](https://github.com/NeverTwice), 
+[Laurent Bassin](https://github.com/lbassin),
+[Maxime Marquet](https://github.com/x-Raz) &
+[Jordan Venant](https://github.com/Kubenic).
+
+*We're open to suggestions, feel free to message us or open an issue.*  
+*Pull requests are also welcome!*
