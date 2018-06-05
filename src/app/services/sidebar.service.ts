@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Subject} from 'rxjs/Subject';
+import {Observable} from 'rxjs/Observable';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class SidebarService {
 
-  private visibleSubject: Subject<boolean> = new Subject<boolean>();
+  private visibleSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   hide(): void {
     this.visibleSubject.next(false);
