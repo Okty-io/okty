@@ -59,7 +59,7 @@ export class MultiSelectComponent implements OnInit, AfterViewInit {
       this.showPossibles = false;
       this.selectizeInput.nativeElement.value = '';
       this.refineSelections();
-    }, 100);
+    }, 200);
   }
 
   refineSelections(value: string = ''): void {

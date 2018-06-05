@@ -1,6 +1,6 @@
-<div class="logo-container" [ngClass]="{'home-logo-transition': redirection}">
-  <div class="okty-container">
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="oktysvg" x="0px" y="0px" viewBox="0 0 98.6 174.6" xml:space="preserve">
+<div [ngClass]="{'logo-container': true, 'home-logo-transition': redirection, 'sidebar-visible': sidebarVisible}">
+    <div class="okty-container">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="oktysvg" x="0px" y="0px" viewBox="0 0 98.6 174.6" style="enable-background:new 0 0 98.6 174.6;" xml:space="preserve">
             <style type="text/css">
                 .st0 {
                   fill: rgb(76, 148, 223);
@@ -79,5 +79,5 @@
   <p class="home-description" [ngClass]="{'home-description-transition': redirection}">
     The simplest application to create your docker projects.
   </p>
-  <a (click)="goToSearch()" [ngClass]="{'home-button-transition': redirection}" class="home-button">Start</a>
+  <a (click)="goToSearch()" [ngClass]="{'home-button-transition': redirection}" class="home-button">Start Here</a>
 </div>

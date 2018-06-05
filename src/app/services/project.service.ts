@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Container } from '../models/container.model';
-import { Subject, Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class ProjectService {

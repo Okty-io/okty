@@ -20,7 +20,7 @@ export class MessageService {
   private subject: Subject<Message> = new Subject<Message>();
 
   makeNotification(content, style): void {
-    this.message =  new Message(content, style);
+    this.message = new Message(content, style);
     this.show();
   }
 

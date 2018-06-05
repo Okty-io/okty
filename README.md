@@ -44,12 +44,12 @@
 
 That's all !  
   
-Having trouble using okty ? Maybe [wiki](https://github.com/lbassin/okty/wiki) would help you !  
+Having trouble using okty ? Maybe [wiki](https://github.com/lbassin/okty/wiki) can help you !  
 
 ## Contribute
 
-Okty needs help to stay up to date and improve his features.  
-If something is missing or broken, feel free to open an issue or made a pull request.  
+Okty needs help to stay up to date and improve its features.  
+If something is missing or broken, feel free to open an issue or make a pull request.  
   
 Maybe the container you want isn't available ? 
 Make your own or ask for it on the [configuration dedicated repository](https://github.com/lbassin/okty-config) !
