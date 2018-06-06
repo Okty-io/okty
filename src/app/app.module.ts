@@ -1,5 +1,5 @@
 // Modules
-import {BrowserModule} from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -28,7 +28,7 @@ import { ProjectService } from './services/project.service';
 import { CacheService } from './services/cache.service';
 import { SidebarService } from './services/sidebar.service';
 import { MessageService } from './services/message.service';
-import {CustomTitleService} from './services/title.service';
+import { CustomTitleService } from './services/title.service';
 
 // Pipes
 import { FilterPipe } from './pipes/filter.pipe';
@@ -39,7 +39,6 @@ import { FormInputDirective } from './directives/form-input.directive';
 
 // Routes
 import { routes } from './app.routes';
-
 
 @NgModule({
   declarations: [

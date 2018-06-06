@@ -7,7 +7,7 @@ import { SidebarService } from '../../services/sidebar.service';
 import { Subscription } from 'rxjs';
 import { isNumberValidator } from '../../validators/isNumber';
 import { MessageService } from '../../services/message.service';
-import {CustomTitleService} from '../../services/title.service';
+import { CustomTitleService } from '../../services/title.service';
 
 @Component({
   templateUrl: './setup.component.html',
@@ -55,10 +55,11 @@ export class SetupComponent implements OnInit, OnDestroy {
               private router: Router
   ) {
     this.container = this.route.snapshot.data.container;
-    this.titleService.setTitle('New container : ' + this.container.name);
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('New container : ' + this.container.name);
+
     this.dataSubscription = this.route.data.subscribe(data => {
       this.container = data.container;
       this.initFormControls();
