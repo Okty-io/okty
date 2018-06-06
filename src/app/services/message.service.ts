@@ -1,26 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-
-export class Message {
-  content: string;
-  style: string;
-
-  constructor(content, style?) {
-    this.content = content;
-    this.style = style || 'info';
-  }
-}
+import { Notification } from '../models/notification.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
 
-  private message: Message;
-  private subject: Subject<Message> = new Subject<Message>();
+  private message: Notification;
+  private subject: Subject<Notification> = new Subject<Notification>();
 
   makeNotification(content, style): void {
-    this.message = new Message(content, style);
+    this.message = new Notification(content, style);
     this.show();
   }
 
@@ -28,7 +19,7 @@ export class MessageService {
     this.subject.next(this.message);
   }
 
-  getObservable(): Observable<Message> {
+  getObservable(): Observable<Notification> {
     return this.subject.asObservable();
   }
 
