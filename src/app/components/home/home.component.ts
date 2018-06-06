@@ -1,7 +1,7 @@
-import {Component, ElementRef, OnChanges, OnDestroy} from '@angular/core';
+import { Component, ElementRef, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import {SidebarService} from '../../services/sidebar.service';
-import {isBoolean} from 'util';
+import { SidebarService } from '../../services/sidebar.service';
+import { CustomTitleService } from '../../services/title.service';
 
 @Component({
   selector: 'app-home',
@@ -12,13 +12,13 @@ export class HomeComponent implements OnDestroy {
 
   redirection = false;
   sidebarVisible = false;
-  constructor(private router: Router, private elRef: ElementRef, private sidebarService: SidebarService) {
+  constructor(private router: Router, private elRef: ElementRef, private sidebarService: SidebarService, private titleService: CustomTitleService) {
+    this.titleService.resetTitle();
     elRef.nativeElement.ownerDocument.body.style.overflow = 'hidden';
     elRef.nativeElement.ownerDocument.body.style.width = '100vw';
     elRef.nativeElement.ownerDocument.body.style.height = '100vh';
     elRef.nativeElement.ownerDocument.body.style.display = 'block';
     this.sidebarService.getObservable().subscribe(value => this.sidebarVisible = value);
-    console.log(this.sidebarVisible);
   }
   ngOnDestroy() {
     this.elRef.nativeElement.ownerDocument.body.style.overflow = null;

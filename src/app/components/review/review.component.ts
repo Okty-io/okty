@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
 import { saveAs } from 'file-saver/FileSaver';
 import * as JSZip from 'jszip';
+import {CustomTitleService} from '../../services/title.service';
 
 @Component({
   templateUrl: './review.component.html',
@@ -10,7 +11,8 @@ import * as JSZip from 'jszip';
 })
 export class ReviewComponent {
 
-  constructor(private router: Router, private projectService: ProjectService) {
+  constructor(private router: Router, private projectService: ProjectService, private titleService: CustomTitleService) {
+    this.titleService.setTitle('Review');
   }
 
   goToAddContainer(): void {
