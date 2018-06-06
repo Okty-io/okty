@@ -1,10 +1,10 @@
-<div *ngIf="message" class="wrapper">
-    <div class="notification"
-         [ngClass]="{'is-info':     message.style=='info',
+<div *ngIf="message?.content?.length > 0" class="wrapper">
+  <div class="notification"
+       [ngClass]="{'is-info':     message.style=='info',
                      'is-danger':   message.style=='danger',
                      'is-warning':   message.style=='warning',
                      'is-success':  message.style=='success'}">
 
-      {{message.content}}
-    </div>
+    {{message.content}}
+  </div>
 </div>
