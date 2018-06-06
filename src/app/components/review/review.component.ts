@@ -16,6 +16,10 @@ export class ReviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleService.setTitle('Review');
+
+    if (this.projectService.getContainers().length <= 0) {
+      this.router.navigate(['/']);
+    }
   }
 
   goToAddContainer(): void {
