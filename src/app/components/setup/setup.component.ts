@@ -134,6 +134,11 @@ export class SetupComponent implements OnInit, OnDestroy {
     this.sendNotification();
   }
 
+  goBack(): void {
+    this.router.navigate(['/search']);
+    return;
+  }
+
   private addToDockerCompose(value: string, input: any): void {
     if (!value) {
       value = input.value;
