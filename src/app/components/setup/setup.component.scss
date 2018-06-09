@@ -1,7 +1,7 @@
 .config {
-    color: #fff;
-    margin: auto;
-    width: 75%;
+  color: #fff;
+  margin: auto;
+  width: 75%;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500');
@@ -14,84 +14,85 @@ h1 {
   max-width: 800px;
   margin: 0 auto;
 
-      .container {
-        margin-top: 30px;
-        padding: 0 50px 20px;
-        background: rgba(255, 255, 255, 0.15);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        &:first-of-type {
-          margin-top: 0;
-        }
-        .content-title {
-          box-sizing: border-box;
-          width: 100%;
+  .container {
+    margin-top: 30px;
+    padding: 0 50px 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    &:first-of-type {
+      margin-top: 0;
+    }
+    .content-title {
+      box-sizing: border-box;
+      width: 100%;
+      color: #fff;
+      display: inline-block;
+      margin-bottom: 0;
+      text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+    }
+    .content {
+      padding-top: 20px;
+      box-sizing: border-box;
+      display: flex;
+      align-content: flex-start;
+      flex-flow: wrap;
+      flex-direction: row;
+      justify-content: space-between;
+      font-family: 'Roboto', sans-serif;
+      .input-container {
+        margin-bottom: 50px;
+        label {
           color: #fff;
-          display: inline-block;
-          margin-bottom: 0;
           text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
         }
-        .content {
-          padding-top: 20px;
-          box-sizing: border-box;
-          display: flex;
-          align-content: flex-start;
-          flex-flow: wrap;
-          flex-direction: row;
-          justify-content: space-between;
-          font-family: 'Roboto', sans-serif;
-          .input-container {
-            margin-bottom: 50px;
-            label {
-              color: #fff;
-              text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
-            }
-            input {
-              line-height: 30px;
-              &[type="text"] {
-                background: none;
-                outline: none;
-                border: none;
-                border-bottom: solid 1px #a9a9a980;
-                transition: border-bottom-color ease 0.3s;
-                padding: 0 10px;
-                &:focus {
-                  border-bottom-color: #000000;
-                }
-              }
-            }
-            &.an-half {
-              width: (100/2 - 4) *1%;
-            }
-            &.a-quarter {
-              width: (50/2 - 4) *1%;
-            }
-            &.full {
-              width: 100%;
-            }
-            @media screen and (max-width: 860px) {
-              &.an-half, &.a-quarter, &.full {
-                width: 100%;
-              }
+        input {
+          line-height: 30px;
+          &[type="text"] {
+            background: none;
+            outline: none;
+            border: none;
+            border-bottom: solid 1px #a9a9a980;
+            transition: border-bottom-color ease 0.3s;
+            padding: 0 10px;
+            &:focus {
+              border-bottom-color: #000000;
             }
           }
-          .input-text {
-            label, input {
-              width: 100%;
-              box-sizing: border-box;
-            }
-            label {
-              margin-bottom: 10px;
-              display: block;
-            }
+        }
+        &.an-half {
+          width: (100/2 - 4) *1%;
+        }
+        &.a-quarter {
+          width: (50/2 - 4) *1%;
+        }
+        &.full {
+          width: 100%;
+        }
+        @media screen and (max-width: 860px) {
+          &.an-half, &.a-quarter, &.full {
+            width: 100%;
           }
         }
       }
+      .input-text {
+        label, input {
+          width: 100%;
+          box-sizing: border-box;
+        }
+        label {
+          margin-bottom: 10px;
+          display: block;
+        }
+      }
     }
-    @media screen and (max-width: 500px) {
-      padding: 0 20px 20px;
-    }
+  }
+}
 
-.submit-container {
+@media screen and (max-width: 500px) {
+  padding: 0 20px 20px;
+}
+
+.btn {
   margin-top: 15px;
   font-size: 13px;
   padding: 10px 50px 10px;
@@ -101,13 +102,15 @@ h1 {
   text-align: center;
   cursor: pointer;
   transition: .3s ease;
-  float: right;
 
   &:hover {
     border: 1px solid rgba(255, 255, 255, 1);
   }
 }
 
+.submit-container {
+  float: right;
+}
 
 /deep/ p.errors {
   font-size: 10px;
@@ -117,5 +120,5 @@ h1 {
   background: #b92618;
   color: #FFFFFF;
   border-radius: 0 0 5px 5px;
-  text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 }
