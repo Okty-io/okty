@@ -12,9 +12,20 @@
   </div>
 
   <div class="container-docker-collection">
-    <div [routerLink]="'/search'" class="container-docker" role="button" aria-label="Add container"
+    <div [routerLink]="'/search'"
+         class="container-docker"
+         role="button"
+         aria-label="Add container"
          aria-selected="true">
-      <button class="container-docker-icon add-container-docker">+</button>
+      <button class="container-docker-icon add-container-docker"><i class="fa fa-plus"></i></button>
+    </div>
+    <div [routerLink]="'/review'"
+         *ngIf="containers.length > 0"
+         class="container-docker"
+         role="button"
+         aria-label="Add container"
+         aria-selected="true">
+      <button class="container-docker-icon add-container-docker"><i class="fa fa-download"></i></button>
     </div>
   </div>
 </aside>
