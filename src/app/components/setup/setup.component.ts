@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { isNumberValidator } from '../../validators/isNumber';
 import { MessageService } from '../../services/message.service';
 import { CustomTitleService } from '../../services/title.service';
+import { ContainerValidator } from '../../validators/container.validator';
 
 @Component({
   templateUrl: './setup.component.html',
@@ -22,37 +23,13 @@ export class SetupComponent implements OnInit, OnDestroy {
 
   private dataSubscription: Subscription;
 
-  private static setValidatorsToInput(formControl: FormControl, config: any) {
-    const validators = [];
-    for (const key in config) {
-      if (!config.hasOwnProperty(key)) {
-        continue;
-      }
-
-      switch (key) {
-        case 'required':
-          validators.push(Validators.required);
-          break;
-        case 'numbers':
-          validators.push(Validators.min(config[key].min));
-          validators.push(Validators.max(config[key].max));
-          validators.push(isNumberValidator);
-          break;
-        case 'regex':
-          validators.push(Validators.pattern(config[key]));
-          break;
-      }
-    }
-
-    formControl.setValidators(validators);
-  }
-
   constructor(private route: ActivatedRoute,
               private projectService: ProjectService,
               private sidebarService: SidebarService,
               private messageService: MessageService,
               private titleService: CustomTitleService,
-              private router: Router
+              private router: Router,
+              private containerValidator: ContainerValidator
   ) {
     this.container = this.route.snapshot.data.container;
   }
@@ -87,7 +64,7 @@ export class SetupComponent implements OnInit, OnDestroy {
         const formControl = new FormControl(value);
         const controlName = group.label + '_' + input.id;
 
-        SetupComponent.setValidatorsToInput(formControl, input.validators);
+        this.setValidatorsToInput(formControl, input);
 
         this.formGroup.addControl(controlName, formControl);
       });
@@ -199,5 +176,36 @@ export class SetupComponent implements OnInit, OnDestroy {
   private sendNotification(): void {
     const msg = 'Your container has been added successfully !';
     this.messageService.makeNotification(msg, 'success');
+  }
+
+  private setValidatorsToInput(formControl: FormControl, input: any) {
+    const validators = [];
+    const config = input.validators;
+
+    for (const key in config) {
+      if (!config.hasOwnProperty(key)) {
+        continue;
+      }
+
+      switch (key) {
+        case 'required':
+          validators.push(Validators.required);
+          break;
+        case 'numbers':
+          validators.push(Validators.min(config[key].min));
+          validators.push(Validators.max(config[key].max));
+          validators.push(isNumberValidator);
+          break;
+        case 'regex':
+          validators.push(Validators.pattern(config[key]));
+          break;
+      }
+    }
+
+    if (input.destination === 'id' && input.base === 'container_id') {
+      formControl.setAsyncValidators(this.containerValidator.isIdUnique.bind(this.containerValidator));
+    }
+
+    formControl.setValidators(validators);
   }
 }

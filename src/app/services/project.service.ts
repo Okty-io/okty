@@ -9,9 +9,15 @@ export class ProjectService {
   private containers: Container[] = [];
 
   addContainer(id: string, container: Container): void {
+    const isNew = container.containerId === undefined;
     container.containerId = id;
 
     const oldContainer = this.getContainer(id);
+    if (oldContainer && isNew) {
+      alert('This container ID is already used');
+      return;
+    }
+
     if (!oldContainer) {
       this.containers.push(container);
     } else {
