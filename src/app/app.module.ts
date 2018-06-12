@@ -29,6 +29,7 @@ import { CacheService } from './services/cache.service';
 import { SidebarService } from './services/sidebar.service';
 import { MessageService } from './services/message.service';
 import { CustomTitleService } from './services/title.service';
+import { ContainerValidator } from './validators/container.validator';
 
 // Pipes
 import { FilterPipe } from './pipes/filter.pipe';
@@ -74,7 +75,8 @@ import { routes } from './app.routes';
     CacheService,
     SidebarService,
     MessageService,
-    CustomTitleService
+    CustomTitleService,
+    ContainerValidator,
   ],
   entryComponents: [
     InputComponent,

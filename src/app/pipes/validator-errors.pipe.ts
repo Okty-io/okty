@@ -21,6 +21,8 @@ export class ValidatorErrorsPipe implements PipeTransform {
           return 'Value has to be a number';
         case 'pattern':
           return 'Wrong value format';
+        case 'isIdUnique':
+          return 'Container ID has to be unique';
       }
     }
 
