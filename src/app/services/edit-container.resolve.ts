@@ -19,7 +19,7 @@ export class EditContainerResolve implements Resolve<Container> {
         return;
       }
 
-      console.log(container);
+      container.containerId = null;
       observer.next(container);
       observer.complete();
     });
