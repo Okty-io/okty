@@ -16,6 +16,7 @@ import { ContainerValidator } from '../../validators/container.validator';
 })
 export class SetupComponent implements OnInit, OnDestroy {
 
+  containerIndex: number;
   containerId: string;
   container: Container;
   formGroup: FormGroup;
@@ -39,6 +40,8 @@ export class SetupComponent implements OnInit, OnDestroy {
 
     this.dataSubscription = this.route.data.subscribe(data => {
       this.container = data.container;
+      this.containerIndex = this.projectService.getIndexOfContainer(data.container);
+
       this.initFormControls();
     });
 
@@ -210,7 +213,7 @@ export class SetupComponent implements OnInit, OnDestroy {
     }
 
     if (input.destination === 'id' && input.base === 'container_id') {
-      formControl.setAsyncValidators(this.containerValidator.isIdUnique.bind(this.containerValidator));
+      formControl.setAsyncValidators(this.containerValidator.isIdUnique(this.containerIndex).bind(this.containerValidator));
     }
 
     formControl.setValidators(validators);
