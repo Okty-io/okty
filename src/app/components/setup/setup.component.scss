@@ -92,6 +92,11 @@ h1 {
   padding: 0 20px 20px;
 }
 
+.actions-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .btn {
   margin-top: 15px;
   font-size: 13px;
@@ -103,14 +108,15 @@ h1 {
   cursor: pointer;
   transition: .3s ease;
 
+  &.remove {
+    background-color: #b92618;
+  }
+
   &:hover {
     border: 1px solid rgba(255, 255, 255, 1);
   }
 }
 
-.submit-container {
-  float: right;
-}
 
 /deep/ p.errors {
   font-size: 10px;
