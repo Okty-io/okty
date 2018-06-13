@@ -41,6 +41,15 @@ export class ProjectService {
     return container;
   }
 
+  getContainerByIndex(index: number): Container {
+    const container: Container = this.containers[index];
+    if (!container) {
+      return null;
+    }
+
+    return container;
+  }
+
   removeContainer(id: string): void {
     const index: number = this.containers.findIndex((element: Container) => {
       return element.containerId === id;
@@ -70,5 +79,11 @@ export class ProjectService {
 
   getContainers() {
     return this.containers;
+  }
+
+  getIndexOfContainer(container: Container) {
+    return this.containers.findIndex((element: Container) => {
+      return element.containerId === container.containerId;
+    });
   }
 }
