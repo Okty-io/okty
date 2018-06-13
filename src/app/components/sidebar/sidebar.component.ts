@@ -27,15 +27,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.containersSubscription = this.projectService.getContainersObservable().subscribe(containers => {
       this.containers = containers;
     });
-
   }
 
   ngOnDestroy(): void {
     this.sidebarSubscription.unsubscribe();
     this.containersSubscription.unsubscribe();
-  }
-
-  removeContainer(containerId: string) {
-    this.projectService.removeContainer(containerId);
   }
 }
