@@ -9,9 +9,15 @@ export class ProjectService {
   private containers: Container[] = [];
 
   addContainer(id: string, container: Container): void {
+    const isNew = container.containerId === undefined;
     container.containerId = id;
 
     const oldContainer = this.getContainer(id);
+    if (oldContainer && isNew) {
+      alert('This container ID is already used');
+      return;
+    }
+
     if (!oldContainer) {
       this.containers.push(container);
     } else {
@@ -24,9 +30,7 @@ export class ProjectService {
 
   getContainer(id: string): Container {
     const container: Container = this.containers.find((element: Container) => {
-      if (element.containerId === id) {
-        return true;
-      }
+      return element.containerId === id;
     });
 
     if (!container) {
@@ -34,6 +38,15 @@ export class ProjectService {
     }
 
     return container;
+  }
+
+  removeContainer(id: string): void {
+    const index: number = this.containers.findIndex((element: Container) => {
+      return element.containerId === id;
+    });
+
+    this.containers.splice(index, 1);
+    this.containersSubject.next(this.containers);
   }
 
   getContainersObservable(): Observable<Array<Container>> {
