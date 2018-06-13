@@ -10,7 +10,14 @@
         </div>
       </div>
     </div>
-    <button class="btn back" type="button" (click)="goBack()">Back</button>
-    <button class="btn submit-container">Submit</button>
+    <div class="actions-container">
+      <button class="btn back" type="button" (click)="goBack()">Back</button>
+      <button class="btn remove"
+              type="button"
+              *ngIf="container.containerId"
+              (click)="removeContainer(container.containerId)">Remove
+      </button>
+      <button class="btn submit">Submit</button>
+    </div>
   </form>
 </div>

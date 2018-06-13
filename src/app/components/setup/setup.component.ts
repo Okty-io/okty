@@ -111,6 +111,11 @@ export class SetupComponent implements OnInit, OnDestroy {
     this.sendNotification();
   }
 
+  removeContainer(containerId: string) {
+    this.projectService.removeContainer(containerId);
+    this.router.navigate(['/search']);
+  }
+
   goBack(): void {
     this.router.navigate(['/search']);
     return;
