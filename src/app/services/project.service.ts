@@ -8,16 +8,16 @@ export class ProjectService {
   private containersSubject: Subject<Array<Container>> = new Subject<Array<Container>>();
   private containers: Container[] = [];
 
-  addContainer(id: string, container: Container): void {
+  addContainer(id: string, container: Container): boolean {
     const isNew = container.containerId === undefined;
-    container.containerId = id;
 
     const oldContainer = this.getContainer(id);
     if (oldContainer && isNew) {
       alert('This container ID is already used');
-      return;
+      return false;
     }
 
+    container.containerId = id;
     if (!oldContainer) {
       this.containers.push(container);
     } else {
@@ -26,6 +26,7 @@ export class ProjectService {
     }
 
     this.containersSubject.next(this.containers);
+    return true;
   }
 
   getContainer(id: string): Container {

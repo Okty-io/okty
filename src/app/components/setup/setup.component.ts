@@ -102,13 +102,15 @@ export class SetupComponent implements OnInit, OnDestroy {
         }
 
         this.outputConfig['image'] = this.container.docker + ':' + this.container.version;
-        this.router.navigate(['/review']);
       });
     });
 
     this.container.output = this.outputConfig;
-    this.projectService.addContainer(this.containerId, this.container);
-    this.sendNotification();
+
+    if (this.projectService.addContainer(this.containerId, this.container)) {
+      this.router.navigate(['/review']);
+      this.sendNotification();
+    }
   }
 
   goBack(): void {
