@@ -16,7 +16,7 @@ export class SearchTemplatesResolve implements Resolve<ISearchable[]> {
       this.templateService.getAvailableTemplates().then(templates => {
 
         templates.forEach((template: Template) => {
-          template.action = '';
+          template.action = '/template/' + template.configPath;
         });
 
         observer.next(templates);

@@ -79,7 +79,7 @@ export class TemplateService {
       this.http.get(url).subscribe((file: { name: string, content: string }) => {
         const content = atob(file.content);
         const template: Template = YAML.parse(content);
-        // template.configPath = TemplateService.nameWithoutExtension(file.name);
+        template.configPath = TemplateService.nameWithoutExtension(file.name);
 
         this.cache.set(this.templateConfigCacheKey + name, template);
         resolve(template);

@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Container } from '../models/container.model';
 import { Observable, Subject } from 'rxjs';
+import { SidebarService } from './sidebar.service';
 
 @Injectable()
 export class ProjectService {
 
   private containersSubject: Subject<Array<Container>> = new Subject<Array<Container>>();
   private containers: Container[] = [];
+
+  constructor(private sidebarService: SidebarService) {
+  }
 
   addContainer(id: string, container: Container): boolean {
     const isNew = container.containerId === undefined;
@@ -25,6 +29,7 @@ export class ProjectService {
       this.containers[index] = container;
     }
 
+    this.sidebarService.show();
     this.containersSubject.next(this.containers);
     return true;
   }

@@ -7,6 +7,8 @@ import {EditContainerResolve} from './services/edit-container.resolve';
 import {NewContainerResolve} from './services/new-container.resolve';
 import { SearchTemplatesResolve } from './services/search-templates.resolve';
 import { SearchContainersResolve } from './services/search-containers.resolve';
+import { TemplateComponent } from './components/template/template.component';
+import { NewTemplateResolve } from './services/new-template.resolve';
 
 export const routes: Routes = [
   {
@@ -32,6 +34,13 @@ export const routes: Routes = [
     component: SearchComponent,
     resolve: {
       results: SearchTemplatesResolve,
+    }
+  },
+  {
+    path: 'template/:id',
+    component: TemplateComponent,
+    resolve: {
+      template: NewTemplateResolve,
     }
   },
   {
