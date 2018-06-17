@@ -5,6 +5,8 @@ import {HomeComponent} from './components/home/home.component';
 import {ReviewComponent} from './components/review/review.component';
 import {EditContainerResolve} from './services/edit-container.resolve';
 import {NewContainerResolve} from './services/new-container.resolve';
+import { SearchTemplatesResolve } from './services/search-templates.resolve';
+import { SearchContainersResolve } from './services/search-containers.resolve';
 
 export const routes: Routes = [
   {
@@ -26,8 +28,18 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'template',
+    component: SearchComponent,
+    resolve: {
+      results: SearchTemplatesResolve,
+    }
+  },
+  {
     path: 'search',
     component: SearchComponent,
+    resolve: {
+      results: SearchContainersResolve
+    }
   },
   {
     path: '**',

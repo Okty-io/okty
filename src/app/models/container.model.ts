@@ -1,6 +1,9 @@
-export class Container {
+import { ISearchable } from './ISearchable';
+
+export class Container implements ISearchable {
   name: string;
   image: string;
+  action: string;
   docker: string;
   version: string;
   config: Array<{

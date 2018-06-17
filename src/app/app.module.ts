@@ -40,6 +40,9 @@ import { FormInputDirective } from './directives/form-input.directive';
 
 // Routes
 import { routes } from './app.routes';
+import { SearchTemplatesResolve } from './services/search-templates.resolve';
+import { SearchContainersResolve } from './services/search-containers.resolve';
+import { TemplateService } from './services/template.service';
 
 @NgModule({
   declarations: [
@@ -77,6 +80,9 @@ import { routes } from './app.routes';
     MessageService,
     CustomTitleService,
     ContainerValidator,
+    SearchTemplatesResolve,
+    SearchContainersResolve,
+    TemplateService,
   ],
   entryComponents: [
     InputComponent,

@@ -43,4 +43,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.router.navigate(['/search']);
     }, 1100);
   }
+
+  goToTemplate(): void {
+    this.redirection = true;
+    setTimeout(() => {
+      this.router.navigate(['/template']);
+    }, 1100);
+  }
 }
