@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
-import { TemplateService } from './template.service';
 import { ISearchable } from '../models/ISearchable';
 import { Template } from '../models/template.model';
+import { GithubService } from './github.service';
 
 @Injectable()
 export class SearchTemplatesResolve implements Resolve<ISearchable[]> {
 
-  constructor(private templateService: TemplateService) {
+  constructor(private githubService: GithubService) {
   }
 
   resolve(route: ActivatedRouteSnapshot): Observable<ISearchable[]> {
     return new Observable<ISearchable[]>(observer => {
-      this.templateService.getAvailableTemplates().then(templates => {
+      this.githubService.getAllTemplates().then(templates => {
 
         templates.forEach((template: Template) => {
           template.action = '/template/' + template.configPath;

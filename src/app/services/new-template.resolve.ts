@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
-import { TemplateService } from './template.service';
 import { Template } from '../models/template.model';
+import { GithubService } from './github.service';
 
 @Injectable()
 export class NewTemplateResolve implements Resolve<Template> {
 
-  constructor(private templateService: TemplateService) {
+  constructor(private githubService: GithubService) {
   }
 
   resolve(route: ActivatedRouteSnapshot): Observable<Template> {
     return new Observable<Template>(observer => {
 
-      this.templateService.getTemplateConfig(route.params.id)
+      this.githubService.getTemplate(route.params.id)
         .then(template => {
           observer.next(template);
           observer.complete();

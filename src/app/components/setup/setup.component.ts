@@ -9,6 +9,7 @@ import { isNumberValidator } from '../../validators/isNumber';
 import { MessageService } from '../../services/message.service';
 import { CustomTitleService } from '../../services/title.service';
 import { ContainerValidator } from '../../validators/container.validator';
+import { ContainerService } from '../../services/container.service';
 
 @Component({
   templateUrl: './setup.component.html',
@@ -17,10 +18,8 @@ import { ContainerValidator } from '../../validators/container.validator';
 export class SetupComponent implements OnInit, OnDestroy {
 
   containerIndex: number;
-  containerId: string;
   container: Container;
   formGroup: FormGroup;
-  outputConfig: any;
 
   private dataSubscription: Subscription;
 
@@ -30,7 +29,8 @@ export class SetupComponent implements OnInit, OnDestroy {
               private messageService: MessageService,
               private titleService: CustomTitleService,
               private router: Router,
-              private containerValidator: ContainerValidator
+              private containerValidator: ContainerValidator,
+              private containerService: ContainerService,
   ) {
     this.container = this.route.snapshot.data.container;
   }
@@ -46,7 +46,6 @@ export class SetupComponent implements OnInit, OnDestroy {
     });
 
     this.initFormControls();
-    this.outputConfig = {};
   }
 
   ngOnDestroy(): void {
@@ -79,37 +78,9 @@ export class SetupComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.container.config.forEach((group) => {
-      group.fields.forEach((input) => {
-        const controlName = group.label + '_' + input.id;
-        const value = this.formGroup.get(controlName).value;
-        input.data = value;
+    this.container = this.containerService.dataToContainer(this.container, this.formGroup.value);
 
-        switch (input.destination) {
-          case 'docker-compose':
-            this.addToDockerCompose(value, input);
-            break;
-          case 'environment':
-            this.addToEnvironment(value, input);
-            break;
-          case 'volumes':
-            this.addToVolumes(value, input);
-            break;
-          case 'ports':
-            this.addToPorts(value, input);
-            break;
-          case 'id':
-            this.addToId(value, input);
-            break;
-        }
-
-        this.outputConfig['image'] = this.container.docker + ':' + this.container.version;
-      });
-    });
-
-    this.container.output = this.outputConfig;
-
-    if (this.projectService.addContainer(this.containerId, this.container)) {
+    if (this.projectService.addContainer(this.container.containerId, this.container)) {
       this.router.navigate(['/review']);
       this.sendNotification();
     }
@@ -123,63 +94,6 @@ export class SetupComponent implements OnInit, OnDestroy {
   goBack(): void {
     this.router.navigate(['/search']);
     return;
-  }
-
-  private addToDockerCompose(value: string, input: any): void {
-    if (!value) {
-      value = input.value;
-    }
-
-    const notOverridableFolder: Array<string> = ['volumes', 'environment', 'ports'];
-    if (notOverridableFolder.includes(input.base)) {
-      return;
-    }
-
-    this.outputConfig[input.base] = value;
-  }
-
-  private addToEnvironment(value: string, input: any): void {
-    if (!this.outputConfig['environment']) {
-      this.outputConfig['environment'] = [];
-    }
-
-    if (!value) {
-      value = input.value;
-    }
-
-    this.outputConfig['environment'].push(input.base + '=' + value);
-  }
-
-  private addToVolumes(value: string, input: any): void {
-    if (!this.outputConfig['volumes']) {
-      this.outputConfig['volumes'] = [];
-    }
-
-    if (!value) {
-      value = input.value;
-    }
-
-    this.outputConfig['volumes'].push(value + ':' + input.base);
-  }
-
-  private addToPorts(value: string, input: any): void {
-    if (!this.outputConfig['ports']) {
-      this.outputConfig['ports'] = [];
-    }
-
-    if (!value) {
-      value = input.value;
-    }
-
-    this.outputConfig['ports'].push(value + ':' + input.base);
-  }
-
-  private addToId(value: string, input: any): void {
-    if (!value) {
-      value = input.value;
-    }
-
-    this.containerId = value;
   }
 
   private sendNotification(): void {

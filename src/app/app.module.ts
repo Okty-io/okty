@@ -22,7 +22,6 @@ import { NotificationComponent } from './components/notification/notification.co
 import { TemplateComponent } from './components/template/template.component';
 
 // Providers
-import { ContainerService } from './services/container.service';
 import { NewContainerResolve } from './services/new-container.resolve';
 import { EditContainerResolve } from './services/edit-container.resolve';
 import { ProjectService } from './services/project.service';
@@ -33,8 +32,9 @@ import { CustomTitleService } from './services/title.service';
 import { ContainerValidator } from './validators/container.validator';
 import { SearchTemplatesResolve } from './services/search-templates.resolve';
 import { SearchContainersResolve } from './services/search-containers.resolve';
-import { TemplateService } from './services/template.service';
 import { NewTemplateResolve } from './services/new-template.resolve';
+import { GithubService } from './services/github.service';
+import { ContainerService } from './services/container.service';
 
 // Pipes
 import { FilterPipe } from './pipes/filter.pipe';
@@ -74,7 +74,6 @@ import { routes } from './app.routes';
     ReactiveFormsModule,
   ],
   providers: [
-    ContainerService,
     NewContainerResolve,
     EditContainerResolve,
     ProjectService,
@@ -85,8 +84,9 @@ import { routes } from './app.routes';
     ContainerValidator,
     SearchTemplatesResolve,
     SearchContainersResolve,
-    TemplateService,
+    GithubService,
     NewTemplateResolve,
+    ContainerService,
   ],
   entryComponents: [
     InputComponent,
