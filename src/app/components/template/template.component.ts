@@ -4,6 +4,7 @@ import { Template } from '../../models/template.model';
 import { Container } from '../../models/container.model';
 import { ProjectService } from '../../services/project.service';
 import { GithubService } from '../../services/github.service';
+import { ContainerService } from '../../services/container.service';
 
 @Component({
   templateUrl: './template.component.html',
@@ -14,7 +15,8 @@ export class TemplateComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private githubService: GithubService,
               private projectService: ProjectService,
-              private router: Router) {
+              private router: Router,
+              private containerService: ContainerService) {
     this.template = this.route.snapshot.data.template;
   }
 
@@ -27,8 +29,8 @@ export class TemplateComponent implements OnInit {
     }
 
     this.template.containers.forEach(async (element: Container) => {
-      const container: Container = await this.githubService.getContainer(element.configPath);
-      container.output = element.output;
+      let container: Container = await this.githubService.getContainer(element.configPath);
+      container = this.containerService.dataToContainer(container, element.config);
 
       this.projectService.addContainer(element.containerId, container);
     });

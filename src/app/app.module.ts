@@ -44,6 +44,7 @@ import { FormInputDirective } from './directives/form-input.directive';
 
 // Routes
 import { routes } from './app.routes';
+import { ContainerService } from './services/container.service';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { routes } from './app.routes';
     SearchContainersResolve,
     GithubService,
     NewTemplateResolve,
+    ContainerService,
   ],
   entryComponents: [
     InputComponent,
