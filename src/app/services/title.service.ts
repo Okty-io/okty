@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-
 @Injectable()
 export class CustomTitleService {
   private default = 'Okty - Create your Docker Projects';

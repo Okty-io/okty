@@ -8,7 +8,7 @@ interface CacheData {
 @Injectable()
 export class CacheService {
 
-  private CACHE_PREFIX = 'octopy_';
+  private CACHE_PREFIX = 'okty_';
   private CACHE_LIFETIME = 3600000; // 1 hour in millisecond
 
   public get(key: string): any {
