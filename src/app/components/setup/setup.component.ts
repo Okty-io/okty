@@ -46,7 +46,6 @@ export class SetupComponent implements OnInit, OnDestroy {
     });
 
     this.initFormControls();
-    this.sidebarService.show();
     this.outputConfig = {};
   }
 

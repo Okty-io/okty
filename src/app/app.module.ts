@@ -19,6 +19,7 @@ import { MultiSelectComponent } from './components/setup/form/multi-select/multi
 import { SelectComponent } from './components/setup/form/select/select.component';
 import { SelectContainerComponent } from './components/setup/form/select-container/select-container.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { TemplateComponent } from './components/template/template.component';
 
 // Providers
 import { ContainerService } from './services/container.service';
@@ -30,6 +31,10 @@ import { SidebarService } from './services/sidebar.service';
 import { MessageService } from './services/message.service';
 import { CustomTitleService } from './services/title.service';
 import { ContainerValidator } from './validators/container.validator';
+import { SearchTemplatesResolve } from './services/search-templates.resolve';
+import { SearchContainersResolve } from './services/search-containers.resolve';
+import { TemplateService } from './services/template.service';
+import { NewTemplateResolve } from './services/new-template.resolve';
 
 // Pipes
 import { FilterPipe } from './pipes/filter.pipe';
@@ -58,6 +63,7 @@ import { routes } from './app.routes';
     SelectContainerComponent,
     ValidatorErrorsPipe,
     NotificationComponent,
+    TemplateComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +83,10 @@ import { routes } from './app.routes';
     MessageService,
     CustomTitleService,
     ContainerValidator,
+    SearchTemplatesResolve,
+    SearchContainersResolve,
+    TemplateService,
+    NewTemplateResolve,
   ],
   entryComponents: [
     InputComponent,

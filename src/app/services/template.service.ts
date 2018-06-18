@@ -1,14 +1,14 @@
-import { Container } from '../models/container.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Config } from '../app.vars';
 import { CacheService } from './cache.service';
+import { Template } from '../models/template.model';
 
 @Injectable()
-export class ContainerService {
+export class TemplateService {
 
-  private allContainersCacheKey = 'all_containers_cache_key';
-  private containerConfigCacheKey = 'container_config_';
+  private allTemplatesCacheKey = 'all_templates_cache_key';
+  private templateConfigCacheKey = 'template_config_';
 
   private static nameWithoutExtension(name: string) {
     return name.substring(0, name.length - 4); // 4 = '.yml'
@@ -25,32 +25,33 @@ export class ContainerService {
   constructor(private http: HttpClient, private cache: CacheService) {
   }
 
-  public getAvailableContainers(): Promise<Array<Container>> {
+  public getAvailableTemplates(): Promise<Array<Template>> {
     return new Promise((resolve, reject) => {
 
-      const cacheData = this.cache.get(this.allContainersCacheKey);
+      const cacheData = this.cache.get(this.allTemplatesCacheKey);
       if (cacheData) {
         resolve(cacheData);
         return;
       }
 
-      const url = Config.getUrl(Config.GIT_CONTAINERS_PATH, '');
-      const promises: Array<Promise<Container>> = [];
+      const url = Config.getUrl(Config.GIT_TEMPLATES_PATH, '');
+      console.log(url);
+      const promises: Array<Promise<Template>> = [];
       this.http.get(url).subscribe((data: Array<any>) => {
-        data.map(container => {
-          const name = ContainerService.nameWithoutExtension(container.name);
-          promises.push(this.getContainerConfig(name));
+        data.map(template => {
+          const name = TemplateService.nameWithoutExtension(template.name);
+          promises.push(this.getTemplateConfig(name));
         });
 
-        Promise.all(promises).then(containers => {
-          this.cache.set(this.allContainersCacheKey, containers);
-          resolve(containers);
+        Promise.all(promises).then(templates => {
+          this.cache.set(this.allTemplatesCacheKey, templates);
+          resolve(templates);
         }).catch(response => {
           const error = {
             message: response.error.message,
             status: response.status
           };
-          ContainerService.ajaxError(error);
+          TemplateService.ajaxError(error);
           reject(error);
         });
       }, (response) => {
@@ -58,18 +59,18 @@ export class ContainerService {
           message: response.error.message,
           status: response.status
         };
-        ContainerService.ajaxError(error);
+        TemplateService.ajaxError(error);
         reject(error);
       });
     });
   }
 
-  public getContainerConfig(name: string): Promise<Container> {
-    const url = Config.getUrl(Config.GIT_CONTAINERS_PATH, name + '.yml');
+  public getTemplateConfig(name: string): Promise<Template> {
+    const url = Config.getUrl(Config.GIT_TEMPLATES_PATH, name + '.yml');
 
-    return new Promise<Container>((resolve, reject) => {
+    return new Promise<Template>((resolve, reject) => {
 
-      const cacheData = this.cache.get(this.containerConfigCacheKey + name);
+      const cacheData = this.cache.get(this.templateConfigCacheKey + name);
       if (cacheData) {
         resolve(cacheData);
         return;
@@ -77,17 +78,17 @@ export class ContainerService {
 
       this.http.get(url).subscribe((file: { name: string, content: string }) => {
         const content = atob(file.content);
-        const container: Container = YAML.parse(content);
-        container.configPath = ContainerService.nameWithoutExtension(file.name);
+        const template: Template = YAML.parse(content);
+        template.configPath = TemplateService.nameWithoutExtension(file.name);
 
-        this.cache.set(this.containerConfigCacheKey + name, container);
-        resolve(container);
+        this.cache.set(this.templateConfigCacheKey + name, template);
+        resolve(template);
       }, (response) => {
         const error = {
           message: response.error.message,
           status: response.status
         };
-        ContainerService.ajaxError(error);
+        TemplateService.ajaxError(error);
         reject(error);
       });
     });
