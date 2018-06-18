@@ -1,6 +1,11 @@
-export class Container {
+import { ISearchable } from './ISearchable';
+
+export class Container implements ISearchable {
   name: string;
   image: string;
+  action: string;
+  configPath: string;
+
   docker: string;
   version: string;
   config: Array<{
@@ -18,7 +23,6 @@ export class Container {
     }>
   }>;
 
-  configPath: string;
   output: string;
   containerId: string;
 }
