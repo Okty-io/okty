@@ -34,6 +34,7 @@ import { SearchTemplatesResolve } from './services/search-templates.resolve';
 import { SearchContainersResolve } from './services/search-containers.resolve';
 import { NewTemplateResolve } from './services/new-template.resolve';
 import { GithubService } from './services/github.service';
+import { ContainerService } from './services/container.service';
 
 // Pipes
 import { FilterPipe } from './pipes/filter.pipe';
@@ -44,7 +45,6 @@ import { FormInputDirective } from './directives/form-input.directive';
 
 // Routes
 import { routes } from './app.routes';
-import { ContainerService } from './services/container.service';
 
 @NgModule({
   declarations: [
