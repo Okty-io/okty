@@ -19,6 +19,13 @@ export class TemplateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.projectService.getContainers().length > 0 && this.projectService.isFromTemplate()) {
+      this.projectService.reset();
+
+      this.router.navigate(['/template']);
+      return;
+    }
+
     this.template.containers.forEach(async (element: Container) => {
       const container = await this.containerService.getContainerConfig(element.configPath);
       container.output = element.output;
@@ -26,6 +33,7 @@ export class TemplateComponent implements OnInit {
       this.projectService.addContainer(element.containerId, container);
     });
 
+    this.projectService.setFromTemplate(true);
     this.router.navigate(['/review']);
   }
 }
