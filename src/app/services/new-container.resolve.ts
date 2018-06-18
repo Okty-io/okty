@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Container } from '../models/container.model';
-import { ContainerService } from './container.service';
 import { Observable } from 'rxjs';
+import { GithubService } from './github.service';
 
 @Injectable()
 export class NewContainerResolve implements Resolve<Container> {
 
-  constructor(private containerService: ContainerService) {
+  constructor(private githubService: GithubService) {
   }
 
   resolve(route: ActivatedRouteSnapshot): Observable<Container> {
     return new Observable<Container>(observer => {
 
-      this.containerService.getContainerConfig(route.params.id)
+      this.githubService.getContainer(route.params.id)
         .then(container => {
           observer.next(container);
           observer.complete();
