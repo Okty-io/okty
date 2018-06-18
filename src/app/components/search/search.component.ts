@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContainerService } from '../../services/container.service';
 import { CustomTitleService } from '../../services/title.service';
-import { ActivatedRoute } from '@angular/router';
-import { ISearchable } from '../../models/ISearchable';
 
 @Component({
   selector: 'app-search',
@@ -12,15 +10,13 @@ import { ISearchable } from '../../models/ISearchable';
 export class SearchComponent implements OnInit {
 
   searchContainer: HTMLInputElement;
-  results: Array<ISearchable[]> = [];
+  containers: Array<any> = [];
 
-  constructor(private containerService: ContainerService,
-              private titleService: CustomTitleService,
-              private route: ActivatedRoute) {
-    this.results = route.snapshot.data.results;
+  constructor(private containerService: ContainerService, private titleService: CustomTitleService) {
   }
 
   public ngOnInit(): void {
     this.titleService.setTitle('Search');
+    this.containerService.getAvailableContainers().then(containers => this.containers = containers);
   }
 }

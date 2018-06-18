@@ -34,7 +34,7 @@ export class ContainerService {
         return;
       }
 
-      const url = Config.getUrl(Config.GIT_CONTAINERS_PATH, '');
+      const url = Config.GIT_URL + Config.GIT_CONTAINERS_PATH;
       const promises: Array<Promise<Container>> = [];
       this.http.get(url).subscribe((data: Array<any>) => {
         data.map(container => {
@@ -65,7 +65,7 @@ export class ContainerService {
   }
 
   public getContainerConfig(name: string): Promise<Container> {
-    const url = Config.getUrl(Config.GIT_CONTAINERS_PATH, name + '.yml');
+    const url = Config.GIT_URL + Config.GIT_CONTAINERS_PATH + '/' + name + '.yml';
 
     return new Promise<Container>((resolve, reject) => {
 

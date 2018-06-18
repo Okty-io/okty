@@ -13,9 +13,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   redirection = false;
   sidebarVisible = false;
 
-  searchSelected = false;
-  templateSelected = false;
-
   constructor(
     private router: Router,
     private elRef: ElementRef,
@@ -42,17 +39,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   goToSearch() {
     this.redirection = true;
-    this.searchSelected = true;
     setTimeout(() => {
       this.router.navigate(['/search']);
-    }, 1100);
-  }
-
-  goToTemplate(): void {
-    this.redirection = true;
-    this.templateSelected = true;
-    setTimeout(() => {
-      this.router.navigate(['/template']);
     }, 1100);
   }
 }

@@ -1,21 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Container } from '../models/container.model';
 import { Observable, Subject } from 'rxjs';
-import { SidebarService } from './sidebar.service';
 
 @Injectable()
 export class ProjectService {
 
-  private containersSubject: Subject<Array<Container>>;
-
-  private fromTemplate: boolean;
-  private containers: Container[];
-
-  constructor(private sidebarService: SidebarService) {
-    this.containersSubject = new Subject<Array<Container>>();
-    this.containers = [];
-    this.fromTemplate = false;
-  }
+  private containersSubject: Subject<Array<Container>> = new Subject<Array<Container>>();
+  private containers: Container[] = [];
 
   addContainer(id: string, container: Container): boolean {
     const isNew = container.containerId === undefined;
@@ -34,7 +25,6 @@ export class ProjectService {
       this.containers[index] = container;
     }
 
-    this.sidebarService.show();
     this.containersSubject.next(this.containers);
     return true;
   }
@@ -95,19 +85,5 @@ export class ProjectService {
     return this.containers.findIndex((element: Container) => {
       return element.containerId === container.containerId;
     });
-  }
-
-  setFromTemplate(isFromTemplate: boolean) {
-    this.fromTemplate = isFromTemplate;
-  }
-
-  isFromTemplate(): boolean {
-    return this.fromTemplate;
-  }
-
-  reset() {
-    this.containers = [];
-    this.sidebarService.hide();
-    this.containersSubject.next(this.containers);
   }
 }
