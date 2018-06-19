@@ -11,13 +11,14 @@ import { ISearchable } from '../../models/ISearchable';
 export class SearchComponent implements OnInit {
 
   searchContainer: HTMLInputElement;
-  containers: Array<any> = [];
+  results: Array<ISearchable[]> = [];
 
-  constructor(private containerService: ContainerService, private titleService: CustomTitleService) {
+  constructor(private titleService: CustomTitleService,
+              private route: ActivatedRoute) {
+    this.results = route.snapshot.data.results;
   }
 
   public ngOnInit(): void {
     this.titleService.setTitle('Search');
-    this.containerService.getAvailableContainers().then(containers => this.containers = containers);
   }
 }
