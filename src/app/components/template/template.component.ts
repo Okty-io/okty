@@ -28,14 +28,20 @@ export class TemplateComponent implements OnInit {
       return;
     }
 
-    this.template.containers.forEach(async (element: Container) => {
-      let container: Container = await this.githubService.getContainer(element.configPath);
-      container = this.containerService.dataToContainer(container, element.config);
+    const addContainerPromises = [];
+    this.template.containers.forEach((element: Container) => {
+      addContainerPromises.push(new Promise(async (resolve) => {
+        let container: Container = await this.githubService.getContainer(element.configPath);
+        container = this.containerService.dataToContainer(container, element.config);
 
-      this.projectService.addContainer(element.containerId, container);
+        this.projectService.addContainer(element.containerId, container);
+        resolve();
+      }));
     });
 
-    this.projectService.setFromTemplate(true);
-    this.router.navigate(['/review']);
+    Promise.all(addContainerPromises).then(() => {
+      this.projectService.setFromTemplate(true);
+      this.router.navigate(['/review']);
+    });
   }
 }
