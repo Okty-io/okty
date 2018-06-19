@@ -24,6 +24,12 @@ export class SelectContainerComponent implements OnInit {
     this.projectService.getContainers().forEach((container: Container) => {
       this.data.push(container.containerId);
     });
+
+    if (this.data.includes(this.formControl.value)) {
+      this.selected = this.formControl.value;
+    } else {
+      this.formControl.setValue('');
+    }
   }
 
   changeSelected(value: any) {

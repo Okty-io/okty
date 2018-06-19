@@ -1,95 +1,103 @@
-import { Container } from '../models/container.model';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Config } from '../app.vars';
-import { CacheService } from './cache.service';
+import { Container } from '../models/container.model';
 
 @Injectable()
 export class ContainerService {
 
-  private allContainersCacheKey = 'all_containers_cache_key';
-  private containerConfigCacheKey = 'container_config_';
+  private outputConfig: any;
+  containerId: any;
 
-  private static nameWithoutExtension(name: string) {
-    return name.substring(0, name.length - 4); // 4 = '.yml'
+  public dataToContainer(container: Container, data: any): Container {
+    this.outputConfig = {};
+
+    container.config.forEach((group) => {
+      group.fields.forEach((input) => {
+        const controlName = group.label + '_' + input.id;
+        const value = data[controlName];
+        input.data = value;
+
+        switch (input.destination) {
+          case 'docker-compose':
+            this.addToDockerCompose(value, input);
+            break;
+          case 'environment':
+            this.addToEnvironment(value, input);
+            break;
+          case 'volumes':
+            this.addToVolumes(value, input);
+            break;
+          case 'ports':
+            this.addToPorts(value, input);
+            break;
+          case 'id':
+            this.addToId(value, input);
+            break;
+        }
+      });
+    });
+
+    this.outputConfig['image'] = container.docker + ':' + container.version;
+
+    container.output = this.outputConfig;
+    container.containerId = this.containerId;
+
+    return container;
   }
 
-  private static ajaxError(error): void {
-    if (error.status === 403) {
-      alert('Le nombre max d\'appel API vers github est depassé pour cette IP. Revenez plus tard');
-    } else {
-      alert('An error occurred');
+  private addToDockerCompose(value: string, input: any): void {
+    if (!value) {
+      value = input.value;
     }
+
+    const notOverridableFolder: Array<string> = ['volumes', 'environment', 'ports'];
+    if (notOverridableFolder.includes(input.base)) {
+      return;
+    }
+
+    this.outputConfig[input.base] = value;
   }
 
-  constructor(private http: HttpClient, private cache: CacheService) {
+  private addToEnvironment(value: string, input: any): void {
+    if (!this.outputConfig['environment']) {
+      this.outputConfig['environment'] = [];
+    }
+
+    if (!value) {
+      value = input.value;
+    }
+
+    this.outputConfig['environment'].push(input.base + '=' + value);
   }
 
-  public getAvailableContainers(): Promise<Array<Container>> {
-    return new Promise((resolve, reject) => {
+  private addToVolumes(value: string, input: any): void {
+    if (!this.outputConfig['volumes']) {
+      this.outputConfig['volumes'] = [];
+    }
 
-      const cacheData = this.cache.get(this.allContainersCacheKey);
-      if (cacheData) {
-        resolve(cacheData);
-        return;
-      }
+    if (!value) {
+      value = input.value;
+    }
 
-      const url = Config.GIT_URL + Config.GIT_CONTAINERS_PATH;
-      const promises: Array<Promise<Container>> = [];
-      this.http.get(url).subscribe((data: Array<any>) => {
-        data.map(container => {
-          const name = ContainerService.nameWithoutExtension(container.name);
-          promises.push(this.getContainerConfig(name));
-        });
-
-        Promise.all(promises).then(containers => {
-          this.cache.set(this.allContainersCacheKey, containers);
-          resolve(containers);
-        }).catch(response => {
-          const error = {
-            message: response.error.message,
-            status: response.status
-          };
-          ContainerService.ajaxError(error);
-          reject(error);
-        });
-      }, (response) => {
-        const error = {
-          message: response.error.message,
-          status: response.status
-        };
-        ContainerService.ajaxError(error);
-        reject(error);
-      });
-    });
+    this.outputConfig['volumes'].push(value + ':' + input.base);
   }
 
-  public getContainerConfig(name: string): Promise<Container> {
-    const url = Config.GIT_URL + Config.GIT_CONTAINERS_PATH + '/' + name + '.yml';
+  private addToPorts(value: string, input: any): void {
+    if (!this.outputConfig['ports']) {
+      this.outputConfig['ports'] = [];
+    }
 
-    return new Promise<Container>((resolve, reject) => {
+    if (!value) {
+      value = input.value;
+    }
 
-      const cacheData = this.cache.get(this.containerConfigCacheKey + name);
-      if (cacheData) {
-        resolve(cacheData);
-        return;
-      }
+    this.outputConfig['ports'].push(value + ':' + input.base);
+  }
 
-      this.http.get(url).subscribe((file: { name: string, content: string }) => {
-        const content = atob(file.content);
-        const container: Container = YAML.parse(content);
-        container.configPath = ContainerService.nameWithoutExtension(file.name);
+  private addToId(value: string, input: any): void {
+    if (!value) {
+      value = input.value;
+    }
 
-        this.cache.set(this.containerConfigCacheKey + name, container);
-        resolve(container);
-      }, (response) => {
-        const error = {
-          message: response.error.message,
-          status: response.status
-        };
-        ContainerService.ajaxError(error);
-        reject(error);
-      });
-    });
+    this.containerId = value;
   }
 }

@@ -1,13 +1,14 @@
 <div class="tm-sidebar-left uk-animation-slide-left-medium" *ngIf="visible">
-    <ul class="uk-nav uk-nav-default tm-nav">
-        <li [routerLink]="'/search'" class="uk-nav-header okty-container-card">
-            <span class="uk-icon uk-position-center" uk-icon="plus"></span>
-        </li>
-    </ul>
-    <ul class="uk-nav uk-nav-default tm-nav uk-animation-slide-top-medium" *ngFor="let container of containers">
-        <li [routerLink]="'/edit/' + container.containerId" class="uk-nav-header okty-container-card" uk-tooltip="title: container.name; pos: right">
-            <img class="sidebar-img" [src]="container.image"/>
-        </li>
-    </ul>
+  <ul class="uk-nav uk-nav-default tm-nav">
+    <li [routerLink]="'/search'" class="uk-nav-header okty-container-card">
+      <span class="uk-icon uk-position-center" uk-icon="plus"></span>
+    </li>
+  </ul>
+  <ul class="uk-nav uk-nav-default tm-nav uk-animation-slide-top-medium" *ngFor="let container of containers">
+    <li [routerLink]="'/edit/' + container.containerId" class="uk-nav-header okty-container-card"
+        uk-tooltip="title: container.name; pos: right">
+      <img class="sidebar-img" [src]="container.image"/>
+    </li>
+  </ul>
 </div>
 

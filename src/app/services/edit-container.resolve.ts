@@ -12,14 +12,13 @@ export class EditContainerResolve implements Resolve<Container> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<Container> {
     return new Observable<Container>(observer => {
-      const container = this.projectService.getContainer(route.params.id);
+      const container = this.projectService.getContainerByIndex(route.params.id);
       if (!container) {
         this.router.navigate(['/search']);
         observer.complete();
         return;
       }
 
-      console.log(container);
       observer.next(container);
       observer.complete();
     });

@@ -187,6 +187,10 @@ h2 {
     transition: .3s;
     margin-right: 15px;
 
+    &:not(:first-child) {
+      margin-left: 12px;
+    }
+
     &:hover {
         box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
         transition: .3s;

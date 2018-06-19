@@ -8,6 +8,8 @@ import { Subscription } from 'rxjs';
 import { isNumberValidator } from '../../validators/isNumber';
 import { MessageService } from '../../services/message.service';
 import { CustomTitleService } from '../../services/title.service';
+import { ContainerValidator } from '../../validators/container.validator';
+import { ContainerService } from '../../services/container.service';
 
 @Component({
   templateUrl: './setup.component.html',
@@ -15,15 +17,94 @@ import { CustomTitleService } from '../../services/title.service';
 })
 export class SetupComponent implements OnInit, OnDestroy {
 
-  containerId: string;
+  containerIndex: number;
   container: Container;
   formGroup: FormGroup;
-  outputConfig: any;
 
   private dataSubscription: Subscription;
 
-  private static setValidatorsToInput(formControl: FormControl, config: any) {
+  constructor(private route: ActivatedRoute,
+              private projectService: ProjectService,
+              private sidebarService: SidebarService,
+              private messageService: MessageService,
+              private titleService: CustomTitleService,
+              private router: Router,
+              private containerValidator: ContainerValidator,
+              private containerService: ContainerService,
+  ) {
+    this.container = this.route.snapshot.data.container;
+  }
+
+  ngOnInit(): void {
+    this.titleService.setTitle('New container : ' + this.container.name);
+
+    this.dataSubscription = this.route.data.subscribe(data => {
+      this.container = data.container;
+      this.containerIndex = this.projectService.getIndexOfContainer(data.container);
+
+      this.initFormControls();
+    });
+
+    this.initFormControls();
+  }
+
+  ngOnDestroy(): void {
+    this.dataSubscription.unsubscribe();
+  }
+
+  private initFormControls(): void {
+    this.formGroup = new FormGroup({});
+
+    this.container.config.forEach(group => {
+      group.fields.forEach(input => {
+        let value = input.value;
+        if (input.data) {
+          value = input.data;
+        }
+
+        const formControl = new FormControl(value);
+        const controlName = group.label + '_' + input.id;
+
+        this.setValidatorsToInput(formControl, input);
+
+        this.formGroup.addControl(controlName, formControl);
+      });
+    });
+  }
+
+  submit(): void {
+    if (this.formGroup.invalid) {
+      this.messageService.makeNotification('There are some errors with the data you provided', 'danger');
+      return;
+    }
+
+    this.container = this.containerService.dataToContainer(this.container, this.formGroup.value);
+
+    if (this.projectService.addContainer(this.container.containerId, this.container)) {
+      this.router.navigate(['/review']);
+      this.sendNotification();
+    }
+  }
+
+  removeContainer(containerId: string) {
+    this.projectService.removeContainer(containerId);
+    this.router.navigate(['/search']);
+  }
+
+  goBack(): void {
+    this.router.navigate(['/search']);
+    return;
+  }
+
+  private sendNotification(): void {
+    const msg = 'Your container has been added successfully !';
+    this.messageService.makeNotification(msg, 'success');
+  }
+
+  private setValidatorsToInput(formControl: FormControl, input: any) {
     const validators = [];
+    const config = input.validators;
+
     for (const key in config) {
       if (!config.hasOwnProperty(key)) {
         continue;
@@ -44,155 +125,10 @@ export class SetupComponent implements OnInit, OnDestroy {
       }
     }
 
+    if (input.destination === 'id' && input.base === 'container_id') {
+      formControl.setAsyncValidators(this.containerValidator.isIdUnique(this.containerIndex).bind(this.containerValidator));
+    }
+
     formControl.setValidators(validators);
-  }
-
-  constructor(private route: ActivatedRoute,
-              private projectService: ProjectService,
-              private sidebarService: SidebarService,
-              private messageService: MessageService,
-              private titleService: CustomTitleService,
-              private router: Router
-  ) {
-    this.container = this.route.snapshot.data.container;
-  }
-
-  ngOnInit(): void {
-    this.titleService.setTitle('New container : ' + this.container.name);
-
-    this.dataSubscription = this.route.data.subscribe(data => {
-      this.container = data.container;
-      this.initFormControls();
-    });
-
-    this.initFormControls();
-    this.sidebarService.show();
-    this.outputConfig = {};
-  }
-
-  ngOnDestroy(): void {
-    this.dataSubscription.unsubscribe();
-  }
-
-  private initFormControls(): void {
-    this.formGroup = new FormGroup({});
-
-    this.container.config.forEach(group => {
-      group.fields.forEach(input => {
-        let value = input.value;
-        if (input.data) {
-          value = input.data;
-        }
-
-        const formControl = new FormControl(value);
-        const controlName = group.label + '_' + input.id;
-
-        SetupComponent.setValidatorsToInput(formControl, input.validators);
-
-        this.formGroup.addControl(controlName, formControl);
-      });
-    });
-  }
-
-  submit(): void {
-    if (this.formGroup.invalid) {
-      this.messageService.makeNotification('There are some errors with the data you provided', 'danger');
-      return;
-    }
-
-    this.container.config.forEach((group) => {
-      group.fields.forEach((input) => {
-        const controlName = group.label + '_' + input.id;
-        const value = this.formGroup.get(controlName).value;
-        input.data = value;
-
-        switch (input.destination) {
-          case 'docker-compose':
-            this.addToDockerCompose(value, input);
-            break;
-          case 'environment':
-            this.addToEnvironment(value, input);
-            break;
-          case 'volumes':
-            this.addToVolumes(value, input);
-            break;
-          case 'ports':
-            this.addToPorts(value, input);
-            break;
-          case 'id':
-            this.addToId(value, input);
-            break;
-        }
-
-        this.outputConfig['image'] = this.container.docker + ':' + this.container.version;
-        this.router.navigate(['/review']);
-      });
-    });
-
-    this.container.output = this.outputConfig;
-    this.projectService.addContainer(this.containerId, this.container);
-    this.sendNotification();
-  }
-
-  private addToDockerCompose(value: string, input: any): void {
-    if (!value) {
-      value = input.value;
-    }
-
-    const notOverridableFolder: Array<string> = ['volumes', 'environment', 'ports'];
-    if (notOverridableFolder.includes(input.base)) {
-      return;
-    }
-
-    this.outputConfig[input.base] = value;
-  }
-
-  private addToEnvironment(value: string, input: any): void {
-    if (!this.outputConfig['environment']) {
-      this.outputConfig['environment'] = [];
-    }
-
-    if (!value) {
-      value = input.value;
-    }
-
-    this.outputConfig['environment'].push(input.base + '=' + value);
-  }
-
-  private addToVolumes(value: string, input: any): void {
-    if (!this.outputConfig['volumes']) {
-      this.outputConfig['volumes'] = [];
-    }
-
-    if (!value) {
-      value = input.value;
-    }
-
-    this.outputConfig['volumes'].push(value + ':' + input.base);
-  }
-
-  private addToPorts(value: string, input: any): void {
-    if (!this.outputConfig['ports']) {
-      this.outputConfig['ports'] = [];
-    }
-
-    if (!value) {
-      value = input.value;
-    }
-
-    this.outputConfig['ports'].push(value + ':' + input.base);
-  }
-
-  private addToId(value: string, input: any): void {
-    if (!value) {
-      value = input.value;
-    }
-
-    this.containerId = value;
-  }
-
-  private sendNotification(): void {
-    const msg = 'Your container has been added successfully !';
-    this.messageService.makeNotification(msg, 'success');
   }
 }
