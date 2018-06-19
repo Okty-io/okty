@@ -1,15 +1,28 @@
-<div class="search-container">
-  <input [(ngModel)]="searchContainer" type="text" placeholder="Search ..." class="search-input">
+<div class="uk-container okty-container">
 
-  <div class="search-container-docker-container">
-    <div *ngFor="let container of containers | filter : searchContainer" class="docker-container">
-      <div class="docker-container-image" [routerLink]="'/new/' + container.configPath">
-        <img src="{{ container.image }}" alt="{{ container.name }}">
-      </div>
-      <div class="docker-container-name">
-        {{ container.name }}
-      </div>
-    </div>
-  </div>
-  <p class="info-msg">Make or Ask your own container <a href="https://github.com/lbassin/okty-config" target="blank">here</a> !</p>
+    <nav class="uk-navbar-container okty-search uk-margin-medium-top" uk-navbar>
+        <div class="uk-navbar-left">
+            <div class="uk-navbar-item">
+                <div class="uk-search uk-search-navbar">
+                    <span uk-search-icon class="uk-animation-fade"></span>
+                    <input autofocus [(ngModel)]="searchContainer" class="uk-search-input uk-animation-fade" type="search" placeholder="Search...">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="grid uk-margin-medium-top">
+        <article *ngFor="let container of containers | filter : searchContainer" [routerLink]="'/new/' + container.configPath" class="uk-animation-slide-bottom-medium">
+            <div class="article-skew"></div>
+            
+            <div class="article-img">
+                <img src="{{ container.image }}" alt="{{ container.name }}">
+            </div>
+
+            <div class="article-content">
+                <h3 class="uk-card-title uk-margin-remove-bottom">{{ container.name }}</h3>
+            </div>
+        </article>
+    </section>
+
 </div>

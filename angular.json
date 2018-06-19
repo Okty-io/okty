@@ -23,10 +23,14 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/font-awesome/css/font-awesome.css"
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/uikit/dist/css/uikit.min.css",
+              "node_modules/uikit/dist/css/uikit-core.min.css"
             ],
             "scripts": [
-              "node_modules/yamljs/dist/yaml.min.js"
+              "node_modules/yamljs/dist/yaml.min.js",
+              "node_modules/uikit/dist/js/uikit.min.js",
+              "node_modules/uikit/dist/js/uikit-icons.min.js"
             ]
           },
           "configurations": {
