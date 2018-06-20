@@ -26,6 +26,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
                 setTimeout(() => {
                     this.message = null;
                 }, 2500);
+                this.endOfNotif = false;
             }
         );
     }

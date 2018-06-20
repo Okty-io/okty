@@ -1,30 +1,11 @@
 :host {
-  box-sizing: border-box;
-  display: block;
-  margin-top: 10px;
+    box-sizing: border-box;
+    display: block;
+    margin-top: 10px;
 }
 
-/*input {
-  line-height: 30px;
-  width: 100%;
-  box-sizing: border-box;
-
-  &[type="text"] {
-    background: none;
-    outline: none;
-    border: none;
-    border-bottom: solid 1px rgba(255, 255, 255, 0.20);
-    transition: border-bottom-color ease 0.3s, background-color ease 0.3s;
-    padding: 0 10px;
-    color: #ffffff;
-
-    &:focus {
-        background-color: rgba(255, 255, 255, 0.15);
-        border-bottom-color: rgba(255, 255, 255, 1);
+input {
+    &.errors {
+        border-bottom: solid 1px #F22613 !important;
     }
-  }
-
-  &.errors {
-    border-bottom: solid 1px #F22613 !important;
-  }
-}*/
+}

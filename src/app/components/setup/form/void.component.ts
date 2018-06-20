@@ -3,6 +3,4 @@ import { Component } from '@angular/core';
 @Component({
     template: ''
 })
-export class VoidComponent {
-
-}
+export class VoidComponent { }
