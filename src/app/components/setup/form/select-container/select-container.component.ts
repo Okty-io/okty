@@ -41,6 +41,8 @@ export class SelectContainerComponent implements OnInit {
     }
 
     hideSelect() {
-        this.show = false;
+        setTimeout(() => {
+            this.show = false;
+        }, 100);
     }
 }
