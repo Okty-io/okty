@@ -19,9 +19,9 @@
 
         <div class="uk-margin-medium-top" style="position: relative">
             <div class="uk-width-1">
-                <span class="uk-button okty-button uk-button-primary submit-container uk-position-center-left">Back</span>
-                <span class="uk-button okty-button uk-button-danger submit-container uk-position-center">Remove</span>
-                <button class="uk-button okty-button uk-button-primary submit-container uk-position-center-right">Submit</button>
+                <button class="uk-button okty-button okty-primary uk-button-primary submit-container uk-position-center-left" type="button" (click)="goBack()">Back</button>
+                <button class="uk-button okty-button okty-danger uk-button-danger submit-container uk-position-center" type="button" *ngIf="container.containerId" (click)="removeContainer(container.containerId)">Remove</button>
+                <button class="uk-button okty-button okty-primary uk-button-primary submit-container uk-position-center-right">Submit</button>
             </div>
         </div>
     </form>

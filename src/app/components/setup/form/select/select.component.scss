@@ -8,6 +8,7 @@
   width: 100%;
   position: relative;
   cursor: pointer;
+
   &::before {
     content: "";
     height: 5px;
@@ -20,11 +21,13 @@
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
   }
+
   & > input {
     line-height: 30px;
     width: 100%;
     box-sizing: border-box;
     cursor: pointer;
+
     &[type="text"] {
       background: none;
       outline: none;
@@ -33,6 +36,7 @@
       transition: border-bottom-color ease 0.3s, background-color ease 0.3s;
       padding: 0 10px;
       color: #ffffff;
+
       &:focus {
         background-color: rgba(255, 255, 255, 0.15);
         border-bottom-color: white;
@@ -57,13 +61,16 @@
     opacity: 0;
     padding-left: 0;
     overflow: hidden;
+
     &.show {
       transform: translateY(100%);
       max-height: 100vh;
       opacity: 1;
       pointer-events: all;
     }
+
     li {
+
       button {
         color: white;
         background: none;
@@ -76,9 +83,11 @@
         font-weight: 600;
         cursor: pointer;
       }
+
       &:hover{
         cursor: pointer;
         background-color: rgb(116, 159, 214);
+        
         button {
             color: #000000;
 

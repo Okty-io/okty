@@ -8,6 +8,7 @@
   line-height: 30px;
   width: 100%;
   box-sizing: border-box;
+
   &[type="text"] {
     background: none;
     outline: none;
@@ -16,6 +17,7 @@
     transition: border-bottom-color ease 0.3s, background-color ease 0.3s;
     padding: 0 10px;
     color: #ffffff;
+
     &:focus {
         background-color: rgba(255, 255, 255, 0.15);
         border-bottom-color: rgba(255, 255, 255, 1);
@@ -25,5 +27,4 @@
   &.errors {
     border-bottom: solid 1px #F22613 !important;
   }
-}
-*/
+}*/

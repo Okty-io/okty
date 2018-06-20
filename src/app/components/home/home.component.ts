@@ -29,13 +29,13 @@ export class HomeComponent implements OnInit {
     this.redirection = true;
     setTimeout(() => {
       this.router.navigate(['/search']);
-    }, 1100);
+    }, 1150);
   }
 
   goToTemplate(): void {
     this.redirection = true;
     setTimeout(() => {
       this.router.navigate(['/template']);
-    }, 1100);
+    }, 1150);
   }
 }

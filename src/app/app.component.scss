@@ -1,9 +1,26 @@
 :host {
     .okty-navbar {
-        background: linear-gradient(to left, #28a5f5, #1e87f0);
         position: sticky;
         top: 0;
         z-index: 1000;
+
+        .left-gradient {
+            height: 80px;
+            width: 50%;
+            position: absolute;
+            z-index: -1;
+            left: 0;
+            background: linear-gradient(to left, #28a5f5, #1e87f0);
+        }
+
+        .right-gradient {
+            height: 80px;
+            width: 50%;
+            position: absolute;
+            z-index: -1;
+            right: 0;
+            background: linear-gradient(to right, #28a5f5, #1e87f0);
+        }
 
         .okty-navbar-text {
             color: white;

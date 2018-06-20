@@ -2,8 +2,7 @@
   <div class="main"
        (click)="focusTheInput($event.target)">
     <div ngClass="selectize-selected" *ngFor="let select of selected"
-         (click)="removeSelected(select)"
-    >{{select}}
+         (click)="removeSelected(select)">{{select}}
     </div>
 
     <!--suppress HtmlFormInputWithoutLabel -->
