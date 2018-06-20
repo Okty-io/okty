@@ -11,8 +11,8 @@ import { ProjectService } from '../../services/project.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-    redirection = false;
-    sidebarVisible = false;
+    redirection: boolean;
+    emptyProject: boolean;
 
     constructor(
         private router: Router,
@@ -20,10 +20,12 @@ export class HomeComponent implements OnInit, OnDestroy {
         private titleService: CustomTitleService,
         private projectService: ProjectService,
     ) {
-        this.sidebarService.getObservable().subscribe(value => this.sidebarVisible = value);
     }
 
     ngOnInit(): void {
+        this.redirection = false;
+        this.emptyProject = this.projectService.getContainers().length <= 0;
+
         this.titleService.resetTitle();
         this.sidebarService.hide();
     }

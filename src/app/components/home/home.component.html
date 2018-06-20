@@ -78,6 +78,14 @@
 </div>
 
 <div class="uk-container uk-text-center uk-margin-large-top" style="margin-top:70px !important;">
-    <button (click)="goToSearch()" [ngClass]="{'uk-animation-slide-top-small uk-animation-reverse': redirection, 'uk-animation-slide-bottom-small': !redirection}" class="okty-button-home uk-button uk-button-primary uk-button-large">Empty project</button>
-    <button (click)="goToTemplate()" [ngClass]="{'uk-animation-slide-top-small uk-animation-reverse': redirection, 'uk-animation-slide-bottom-small': !redirection}" class="okty-button-home uk-button uk-button-primary uk-button-large">From template</button>
+    <button (click)="goToSearch()"
+            [ngClass]="{'uk-animation-slide-top-small uk-animation-reverse': redirection, 'uk-animation-slide-bottom-small': !redirection}"
+            class="okty-button-home uk-button uk-button-primary uk-button-large">
+        {{ emptyProject ? 'Empty project' : 'Continue'}}
+    </button>
+    <button (click)="goToTemplate()"
+            [ngClass]="{'uk-animation-slide-top-small uk-animation-reverse': redirection, 'uk-animation-slide-bottom-small': !redirection}"
+            class="okty-button-home uk-button uk-button-primary uk-button-large">
+        From template
+    </button>
 </div>
