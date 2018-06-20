@@ -1,8 +1,8 @@
 {
-  "short_name": "Okty",
-  "name": "Okty - Create your Docker Projects",
-  "start_url": "/",
-  "background_color": "#09337b",
-  "display": "standalone",
-  "theme_color": "#09337b"
+    "short_name": "Okty",
+    "name": "Okty - Create your Docker Projects",
+    "start_url": "/",
+    "background_color": "#2c99f3",
+    "display": "standalone",
+    "theme_color": "#2c99f3"
 }
