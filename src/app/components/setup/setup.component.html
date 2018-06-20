@@ -1,23 +1,28 @@
-<div class="config">
-  <h1>Configuration {{ container.name }}</h1>
-  <form (submit)="submit()" class="config-form">
-    <div *ngFor="let group of container.config" class="container">
-      <h2 class="content-title">{{ group.label }}</h2>
-      <div class="content">
-        <div *ngFor="let input of group.fields" [ngClass]="['an-half','input-container input-'+ input.type]">
-          <label [for]="input.id">{{ input.label }}</label>
-          <div [appFormInput]="input" [appFormControl]="formGroup.get(group.label + '_' + input.id)"></div>
+<div class="uk-container uk-container-small okty-container uk-margin-medium-top uk-margin-large-bottom uk-animation-slide-bottom-medium">
+
+    <h1 class="uk-margin-large-bottom uk-text-center">Configuration {{ container.name }}</h1>
+
+    <form (submit)="submit()">
+
+        <div *ngFor="let group of container.config" class="uk-container uk-container-small uk-margin-medium-top okty-config">
+            <h2 class="content-title">{{ group.label }}</h2>
+            <hr class="uk-divider-icon">
+            <div class="uk-grid-small" uk-grid>
+                <div *ngFor="let input of group.fields" class=" uk-width-1-2@s">
+                  <label [for]="input.id" class="uk-form-label">{{ input.label }}</label>
+                    <div class="uk-form-controls">
+                        <div [appFormInput]="input" [appFormControl]="formGroup.get(group.label + '_' + input.id)"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="actions-container">
-      <button class="btn back" type="button" (click)="goBack()">Back</button>
-      <button class="btn remove"
-              type="button"
-              *ngIf="container.containerId"
-              (click)="removeContainer(container.containerId)">Remove
-      </button>
-      <button class="btn submit">Submit</button>
-    </div>
-  </form>
+
+        <div class="uk-margin-medium-top" style="position: relative">
+            <div class="uk-width-1">
+                <button class="uk-button okty-button okty-primary uk-button-primary submit-container uk-position-center-left" type="button" (click)="goBack()">Back</button>
+                <button class="uk-button okty-button okty-danger uk-button-danger submit-container uk-position-center" type="button" *ngIf="container.containerId" (click)="removeContainer(container.containerId)">Remove</button>
+                <button class="uk-button okty-button okty-primary uk-button-primary submit-container uk-position-center-right">Submit</button>
+            </div>
+        </div>
+    </form>
 </div>

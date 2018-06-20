@@ -1,123 +1,75 @@
-.search-container {
-  text-align: center;
-}
+.okty-container {
+    text-align: -webkit-center;
 
-.search-container, .search-container-sidebar {
+    .okty-search {
+        width: 350px;
+        background: none;
+        border: 1px solid #e5e5e5;
+        transition: .3s;
 
-  .search-input {
-    margin-top: 100px;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0);
-    border: none;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-    color: #FFF;
-    padding: 10px 10px;
-    min-width: 250px;
-    display: inline-block;
-    font-size: 25px;
-    outline: none;
-    text-decoration: none;
-    -webkit-transition: .3s ease;
-    transition: .3s ease;
-
-    &::placeholder {
-      transition: .1s ease;
-      color: rgba(255, 255, 255, 0.35);
-    }
-
-    &:-ms-input-placeholder {
-      transition: .1s ease;
-      color: rgba(255, 255, 255, 0.35);
-    }
-
-    &::-ms-input-placeholder {
-      transition: .1s ease;
-      color: rgba(255, 255, 255, 0.35);
-    }
-
-    &:hover, &:focus {
-      border-bottom: 2px solid rgba(255, 255, 255, 1);
-    }
-
-    &:focus {
-      &::placeholder {
-        opacity: 0;
-      }
-
-      &:-ms-input-placeholder {
-        opacity: 0;
-      }
-
-      &::-ms-input-placeholder {
-        opacity: 0;
-      }
-    }
-  }
-
-  .search-container-docker-container {
-    margin-top: 100px;
-
-    .docker-container {
-      width: 150px;
-      height: 150px;
-      display: inline-block;
-      animation: reveal .5s ease;
-
-      .docker-container-image {
-        background: rgba(255, 255, 255, 0.15);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        width: 100px;
-        height: 100px;
-        margin-left: 25px;
-        border-radius: 50%;
-        position: relative;
-        -webkit-transition: .3s ease;
-        transition: .3s ease;
-
-        &:focus {
-          outline: none;
+        &:focus-within {
+            border-color: #b2b2b2;
         }
+    }
+
+    article {
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        border: none !important;
+        border-radius: 2px;
+        box-shadow: 0 2px 8px rgba(0,0,0,.08);
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        outline: none;
+        max-width: 325px;
+        transition: box-shadow .1s ease-in-out;
 
         &:hover {
-          cursor: pointer;
-          border: 1px solid rgba(255, 255, 255, 1);
+            box-shadow: 0 14px 25px rgba(0,0,0,0.16);
         }
-
-        img {
-          width: 60%;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          margin: auto;
+    
+        .article-skew {
+            width: 100px;
+            min-width: 100px;
+            height: 100px;
+            position: relative;
+            left: -35px;
+            background: linear-gradient(to left, #28a5f5, #1e87f0);
+            transform: skewX(-35deg);
+            z-index: 1;
         }
-      }
-
-      .docker-container-name {
-        margin-top: 15px;
-        color: white;
-      }
+    
+        .article-img {
+            height: 70px;
+            width: 70px;
+            margin-left: 20px;
+            border-radius: 35px;
+            background-color: white;
+            z-index: 2;
+            position: absolute; 
+            left: 0px;
+    
+            img {
+                width: 45px;
+                margin-top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    
+        .article-content {
+            text-align: center;
+            width: calc(100% - 90px);
+        }
     }
-  }
-
-  .info-msg {
-    color: white;
-
-    a {
-      color: #add8e6;
-    }
-
-  }
 }
 
-@keyframes reveal {
-  0% {
-    opacity: 0;
-    transform: translateY(20%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0%);
-  }
+
+.grid {
+	display: grid;
+	grid-gap: 20px;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
