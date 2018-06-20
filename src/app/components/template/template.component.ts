@@ -7,26 +7,25 @@ import { GithubService } from '../../services/github.service';
 import { ContainerService } from '../../services/container.service';
 
 @Component({
-  templateUrl: './template.component.html',
+    templateUrl: './template.component.html',
 })
 export class TemplateComponent implements OnInit {
-  private template: Template;
+    private template: Template;
 
-  constructor(private route: ActivatedRoute,
-              private githubService: GithubService,
-              private projectService: ProjectService,
-              private router: Router,
-              private containerService: ContainerService) {
-    this.template = this.route.snapshot.data.template;
-  }
-
-  ngOnInit(): void {
-    if (this.projectService.getContainers().length > 0 && this.projectService.isFromTemplate()) {
-      this.projectService.reset();
-
-      this.router.navigate(['/template']);
-      return;
+    constructor(private route: ActivatedRoute,
+                private githubService: GithubService,
+                private projectService: ProjectService,
+                private router: Router,
+                private containerService: ContainerService) {
+        this.template = this.route.snapshot.data.template;
     }
+
+    ngOnInit(): void {
+        if (this.projectService.getContainers().length > 0 && this.projectService.isFromTemplate()) {
+            this.projectService.reset();
+            this.router.navigate(['/template']);
+            return;
+        }
 
     const addContainerPromises = [];
     this.template.containers.forEach((element: Container) => {
