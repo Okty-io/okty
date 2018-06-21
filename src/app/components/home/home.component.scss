@@ -14,10 +14,11 @@
 }
 
 @keyframes goToContainer {
-    0% { }
+    0% {
+    }
     100% {
-        height: 0px;
-        top: 0px;
+        height: 0;
+        top: 0;
     }
 }
 
@@ -25,6 +26,7 @@ h1 {
     font-size: 2.625rem !important;
     color: white;
 }
+
 h2 {
     font-size: 2rem !important;
     color: white;
@@ -38,6 +40,7 @@ h2 {
     animation: okty-1 6s infinite;
     animation-delay: .5s;
 }
+
 .docker-container-2 {
     position: absolute;
     top: 185px;
@@ -46,6 +49,7 @@ h2 {
     animation: okty-2 6s infinite;
     animation-delay: 1.5s;
 }
+
 .docker-container-3 {
     position: absolute;
     top: 285px;
@@ -54,6 +58,7 @@ h2 {
     animation: okty-3 6s infinite;
     animation-delay: 2.5s;
 }
+
 .docker-container-4 {
     position: absolute;
     top: 390px;
@@ -62,6 +67,7 @@ h2 {
     animation: okty-4 6s infinite;
     animation-delay: 3.5s;
 }
+
 .docker-container-5 {
     position: absolute;
     top: 390px;
@@ -70,6 +76,7 @@ h2 {
     animation: okty-5 6s infinite;
     animation-delay: 4.5s;
 }
+
 .docker-container-6 {
     position: absolute;
     top: 285px;
@@ -184,28 +191,35 @@ h2 {
     border: 1px solid white;
     border-radius: 50px;
     background: linear-gradient(to left, #28a5f5, #1e87f0);
-    max-width: 215px;
-    min-width: 215px;
+    width: 215px;
     transition: .3s;
 
     &:not(:first-child) {
-      margin-left: 12px;
+        margin-left: 12px;
     }
 
     &:hover {
         box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
         transition: .3s;
     }
+
+    @media screen and (max-width: 525px) {
+        width: 75%;
+        margin-bottom: 12px;
+
+        &:not(:first-child) {
+            margin-left: 0;
+            margin-bottom: 24px;
+        }
+    }
 }
-
-
 
 #chevron {
     text-align: center;
     height: 100vh;
     width: 100%;
     top: 0;
-    position: absolute;
+    position: fixed;
 
     &::before {
         content: '';
@@ -236,9 +250,16 @@ h2 {
         -o-transform: skew(0deg, -10deg);
         transform: skew(0deg, -10deg);
     }
+
+    @media screen and (max-width: 525px) {
+        &::before, &::after {
+            margin-top: 0;
+            transform: none;
+        }
+    }
 }
 
-.test-redirection  {
+.test-redirection {
 
     &::before {
         animation: testContainer 1.1s cubic-bezier(0.4, 0, 0.2, 1);
@@ -256,13 +277,14 @@ h2 {
 }
 
 @keyframes testContainer {
-    0% { }
+    0% {
+    }
     40% {
         transform: skew(0deg, 0deg);
     }
     100% {
         transform: skew(0deg, 0deg);
-        height: 0px;
-        top: 0px;
+        height: 0;
+        top: 0;
     }
 }
