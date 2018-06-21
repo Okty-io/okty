@@ -33,7 +33,7 @@
                     <p style="line-height:  20px;">
                         Okty
                         <br>
-                        <span style="font-size: 12px;font-style:  italic;">v2.0.0</span>
+                        <span style="font-size: 12px;font-style:  italic;">v2.0.1</span>
                     </p>
                 </a>
 
@@ -57,7 +57,7 @@
     </div>
 </nav>
 
-<div [@wrapperStatus]="wrapperStatus">
+<div class="okty-main" [ngClass]="{sidebarVisible: wrapperStatus !== 'full'}">
     <main>
         <router-outlet></router-outlet>
     </main>

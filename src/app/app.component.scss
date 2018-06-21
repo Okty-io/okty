@@ -50,10 +50,22 @@
             visibility: visible;
             -webkit-transform: scaleX(1);
             transform: scaleX(1);
-          }
+        }
     }
 
     .sidebarVisible {
         margin-left: 85px;
+    }
+
+    .okty-main {
+        @media screen and (max-width: 600px) {
+            margin-left: 0 !important;
+            height: calc(100vh - 85px);
+            overflow-y: scroll;
+
+            &.sidebarVisible {
+                height: calc(100vh - 80px - 85px);
+            }
+        }
     }
 }
