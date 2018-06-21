@@ -57,7 +57,7 @@
     </div>
 </nav>
 
-<div [@wrapperStatus]="wrapperStatus">
+<div class="okty-main" [ngClass]="{sidebarVisible: wrapperStatus !== 'full'}">
     <main>
         <router-outlet></router-outlet>
     </main>
