@@ -2,7 +2,8 @@
     text-align: -webkit-center;
 
     .okty-search {
-        width: 350px;
+        max-width: 350px;
+        width: 90%;
         background: none;
         border: 1px solid #e5e5e5;
         transition: .3s;
