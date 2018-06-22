@@ -235,7 +235,6 @@ h2 {
         -ms-transform: skew(0deg, 10deg);
         -o-transform: skew(0deg, 10deg);
         transform: skew(0deg, 10deg);
-        box-shadow: 0 7px 38px -12px rgba(0, 0, 0, 0.75);
     }
 
     &::after {
@@ -251,7 +250,6 @@ h2 {
         -ms-transform: skew(0deg, -10deg);
         -o-transform: skew(0deg, -10deg);
         transform: skew(0deg, -10deg);
-        box-shadow: 7px 9px 27px -12px rgba(0, 0, 0, 0.75)
     }
 
     @media screen and (max-width: 525px) {
