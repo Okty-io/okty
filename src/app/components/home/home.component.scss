@@ -214,13 +214,20 @@ h2 {
     }
 }
 
+.okty-margin-top {
+    margin-top: 140px !important;
+
+    @media screen and (max-width: 525px) {
+        margin-top: 32px !important;
+    }
+}
+
 #chevron {
     text-align: center;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     top: 0;
-    position: fixed;
-
+    position: absolute;
 
     &::before {
         content: '';
@@ -235,7 +242,6 @@ h2 {
         -ms-transform: skew(0deg, 10deg);
         -o-transform: skew(0deg, 10deg);
         transform: skew(0deg, 10deg);
-        box-shadow: 0 7px 38px -12px rgba(0, 0, 0, 0.75);
     }
 
     &::after {
@@ -251,7 +257,6 @@ h2 {
         -ms-transform: skew(0deg, -10deg);
         -o-transform: skew(0deg, -10deg);
         transform: skew(0deg, -10deg);
-        box-shadow: 7px 9px 27px -12px rgba(0, 0, 0, 0.75)
     }
 
     @media screen and (max-width: 525px) {
