@@ -10,10 +10,10 @@
     .okty-container-card {
         width: 65px;
         height: 65px;
-        padding: 0px !important;
+        padding: 0 !important;
         margin-top: 10px;
         margin-bottom: 10px;
-        position: relative; 
+        position: relative;
         margin-left: 50%;
         transform: translate(-50%);
         border: 1px solid #e5e5e5;
@@ -22,6 +22,12 @@
         outline: none;
         transition: .3s;
         cursor: pointer;
+
+        @media screen and (max-width: 600px) {
+            display: inline-block;
+            transform: none;
+            margin: 10px 6px;
+        }
 
         &:hover {
             border-color: #b2b2b2;
@@ -33,5 +39,16 @@
             margin-left: 50%;
             transform: translate(-50%, -50%);
         }
+    }
+
+    @media screen and (max-width: 600px) {
+        right: 0;
+        width: 100vw !important;
+        top: initial;
+        height: 85px;
+        overflow-y: hidden;
+        text-align: left;
+        border-right: none;
+        border-top: 1px #e5e5e5 solid;
     }
 }
