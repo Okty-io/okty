@@ -55,6 +55,8 @@
             left: 0;
 
             img {
+                display: block;
+                margin: 0 auto;
                 width: 45px;
                 margin-top: 50%;
                 transform: translateY(-50%);
@@ -76,4 +78,8 @@
 
 .uk-search-navbar {
     width: auto;
+}
+
+.info-msg {
+    margin-top: 24px;
 }
