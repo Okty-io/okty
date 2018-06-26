@@ -34,7 +34,6 @@ export class MultiSelectComponent implements OnInit, AfterViewInit {
         });
     }
 
-
     addSelected(value: string) {
         this.selected.push(value);
         this.selectizeInput.nativeElement.value = '';
