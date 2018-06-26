@@ -220,6 +220,12 @@ h2 {
     @media screen and (max-width: 525px) {
         margin-top: 32px !important;
     }
+    @media screen and (max-height: 900px) {
+        margin-top: 32px !important;
+    }
+    @media screen and (min-width: 526px) and (max-height: 800px){
+        margin-top: 0 !important;
+    }
 }
 
 #chevron {
