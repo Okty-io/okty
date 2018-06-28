@@ -44,7 +44,7 @@
 
 That's all !  
   
-Having trouble using okty ? Maybe [wiki](https://github.com/lbassin/okty/wiki) can help you !  
+Having trouble using okty ? Maybe [wiki](https://github.com/Okty-io/okty/wiki) can help you !  
 
 ## Contribute
 
@@ -52,7 +52,7 @@ Okty needs help to stay up to date and improve its features.
 If something is missing or broken, feel free to open an issue or make a pull request.  
   
 Maybe the container you want isn't available ? 
-Make your own or ask for it on the [configuration dedicated repository](https://github.com/lbassin/okty-config) !
+Make your own or ask for it on the [configuration dedicated repository](https://github.com/Okty-io/okty-config) !
 
 ## License
 Okty is made available under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
