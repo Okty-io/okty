@@ -13,7 +13,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![Build Status](https://travis-ci.org/okty-io/okty.svg?branch=master)](https://travis-ci.org/lbassin/okty) 
+[![Build Status](https://travis-ci.org/okty-io/okty.svg?branch=master)](https://travis-ci.org/okty-io/okty) 
 ![Dependencies](https://david-dm.org/okty-io/okty.svg)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-lightgrey.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -66,3 +66,4 @@ Okty is created and maintained by
 
 *We're open to suggestions, feel free to message us or open an issue.*  
 *Pull requests are also welcome!*
+
