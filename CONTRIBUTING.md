@@ -9,7 +9,7 @@ Feel free to make them on new features if you decide to improve our application.
 
 ## Submitting changes
 
-Please send a [GitHub Pull Request](https://github.com/lbassin/okty/compare) with a clear list of what you've done.  
+Please send a [GitHub Pull Request](https://github.com/Okty-io/okty/compare) with a clear list of what you've done.  
 Make sure all of your commits are atomic (one feature per commit).  
 Always write a clear log message for your commits.
 
