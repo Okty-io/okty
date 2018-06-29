@@ -33,11 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private initGoogleAnalytics(): void {
-    if (!environment.googleAnalyticsTrackingId) {
-      return;
-    }
-
-    if (!window.localStorage) {
+    if (!environment.production || !window.localStorage) {
       return;
     }
 
