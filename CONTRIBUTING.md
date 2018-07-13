@@ -14,7 +14,7 @@ Make sure all of your commits are atomic (one feature per commit).
 Always write a clear log message for your commits.
 
 If you submit a pull request, we will love you forever ! 
-And if you don't, at least send us a feedback on Twitter @OktyOfficial sharing your experience with Okty.
+And if you don't, at least send us a feedback on Twitter @OktyApp sharing your experience with Okty.
 
 ## Coding conventions
 
