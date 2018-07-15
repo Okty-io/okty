@@ -2,13 +2,8 @@ language: node_js
 node_js:
 - '9.10.1'
 
-branches:
-  only:
-  - master
-  - dev
-
 before_script:
-- npm install
+- npm install --onyl=prod
 
 script:
 - "./node_modules/.bin/ng build --prod --aot"

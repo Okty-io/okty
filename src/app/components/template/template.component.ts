@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Template } from '../../models/template.model';
 import { Container } from '../../models/container.model';
 import { ProjectService } from '../../services/project.service';
-import { GithubService } from '../../services/github.service';
 import { ContainerService } from '../../services/container.service';
+import { IConfigService } from '../../services/config/IConfig.service';
 
 @Component({
     templateUrl: './template.component.html',
@@ -12,8 +12,8 @@ import { ContainerService } from '../../services/container.service';
 export class TemplateComponent implements OnInit {
     private template: Template;
 
-    constructor(private route: ActivatedRoute,
-                private githubService: GithubService,
+    constructor(@Inject('IConfigService') private configService: IConfigService,
+                private route: ActivatedRoute,
                 private projectService: ProjectService,
                 private router: Router,
                 private containerService: ContainerService) {
@@ -30,7 +30,7 @@ export class TemplateComponent implements OnInit {
     const addContainerPromises = [];
     this.template.containers.forEach((element: Container) => {
       addContainerPromises.push(new Promise(async (resolve) => {
-        let container: Container = await this.githubService.getContainer(element.configPath);
+        let container: Container = await this.configService.getContainer(element.configPath);
         container = this.containerService.dataToContainer(container, element.config);
 
         this.projectService.addContainer(element.containerId, container);

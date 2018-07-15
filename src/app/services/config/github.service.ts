@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { CacheService } from './cache.service';
+import { CacheService } from '../cache.service';
 import { HttpClient } from '@angular/common/http';
-import { Config } from '../app.vars';
-import { Container } from '../models/container.model';
-import { Template } from '../models/template.model';
+import { Config } from '../../app.vars';
+import { Container } from '../../models/container.model';
+import { Template } from '../../models/template.model';
+import { IConfigService } from './IConfig.service';
 
 @Injectable()
-export class GithubService {
+export class GithubService implements IConfigService {
 
   private allContainersCacheKey = 'all_containers_cache_key';
   private containerConfigCacheKey = 'container_config_';
