@@ -15,10 +15,6 @@ export class GithubService implements IConfigService {
   private allTemplatesCacheKey = 'all_templates_cache_key';
   private templateConfigCacheKey = 'template_config_';
 
-  private static nameWithoutExtension(name: string) {
-    return name.substring(0, name.length - 4); // 4 = '.yml'
-  }
-
   private static ajaxError(error): void {
     if (error.status === 403) {
       alert('Le nombre max d\'appel API vers github est depassé pour cette IP. Revenez plus tard');
@@ -30,23 +26,29 @@ export class GithubService implements IConfigService {
   constructor(private http: HttpClient, private cache: CacheService) {
   }
 
-  public getAllContainers(): Promise<Array<any>> {
-    return this.getAvailableElements(Config.GIT_CONTAINERS_PATH, this.allContainersCacheKey, this.containerConfigCacheKey);
+  public getAllContainers(): Promise<Container[]> {
+    return this.getAvailableElements(
+      Config.GIT_CONTAINERS_PATH,
+      this.allContainersCacheKey,
+      this.containerConfigCacheKey) as Promise<Container[]>;
   }
 
-  public getContainer(name: string): Promise<any> {
-    return this.getElement(name, Config.GIT_CONTAINERS_PATH, this.containerConfigCacheKey);
+  public getContainer(name: string): Promise<Container> {
+    return this.getElement(name, Config.GIT_CONTAINERS_PATH, this.containerConfigCacheKey) as Promise<Container>;
   }
 
-  public getAllTemplates(): Promise<Array<any>> {
-    return this.getAvailableElements(Config.GIT_TEMPLATES_PATH, this.allTemplatesCacheKey, this.templateConfigCacheKey);
+  public getAllTemplates(): Promise<Template[]> {
+    return this.getAvailableElements(
+      Config.GIT_TEMPLATES_PATH,
+      this.allTemplatesCacheKey,
+      this.templateConfigCacheKey) as Promise<Template[]>;
   }
 
-  public getTemplate(name: string): Promise<any> {
-    return this.getElement(name, Config.GIT_TEMPLATES_PATH, this.templateConfigCacheKey);
+  public getTemplate(name: string): Promise<Template> {
+    return this.getElement(name, Config.GIT_TEMPLATES_PATH, this.templateConfigCacheKey) as Promise<Template>;
   }
 
-  private getAvailableElements(githubPath: string, allCacheKey: string, oneCacheKey: string): Promise<Array<Container | Template>> {
+  private getAvailableElements(githubPath: string, allCacheKey: string, oneCacheKey: string): Promise<Container[] | Template[]> {
     return new Promise((resolve, reject) => {
       const cacheData = this.cache.get(allCacheKey);
       if (cacheData) {
@@ -59,11 +61,11 @@ export class GithubService implements IConfigService {
 
       this.http.get(url).subscribe((data: Array<any>) => {
         data.map(element => {
-          const name = GithubService.nameWithoutExtension(element.name);
+          const name = Config.nameWithoutExtension(element.name);
           promises.push(this.getElement(name, githubPath, oneCacheKey));
         });
 
-        Promise.all(promises).then(elements => {
+        Promise.all(promises).then((elements: Container[] | Template[]) => {
           this.cache.set(allCacheKey, elements);
           resolve(elements);
         }).catch(response => {
@@ -99,7 +101,7 @@ export class GithubService implements IConfigService {
       this.http.get(url).subscribe((file: { name: string, content: string }) => {
         const content = atob(file.content);
         const element: Container | Template = YAML.parse(content);
-        element.configPath = GithubService.nameWithoutExtension(file.name);
+        element.configPath = Config.nameWithoutExtension(file.name);
 
         this.cache.set(oneCacheKey + name, element);
         resolve(element);
