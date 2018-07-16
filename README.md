@@ -16,7 +16,7 @@
 [![Build Status](https://travis-ci.org/Okty-io/okty.svg?branch=master)](https://travis-ci.org/okty-io/okty) 
 ![Dependencies](https://david-dm.org/okty-io/okty.svg)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-lightgrey.svg)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
