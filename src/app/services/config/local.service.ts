@@ -21,9 +21,11 @@ export class LocalService implements IConfigService {
   }
 
   private static handleError(error: any): void {
-    console.error(error.message);
     if (error.status === 0) {
-      console.error('Did you start the node server of the config repository ?');
+      alert('Configuration is missing. Checks console for more details.');
+      console.error('Did you start the node server of the config repository ? http://github.com/okty-io/okty-config');
+    } else {
+      console.error(error.message);
     }
   }
 
