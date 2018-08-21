@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CacheService } from '../cache.service';
 import { HttpClient } from '@angular/common/http';
-import { Config } from '../../app.vars';
 import { Container } from '../../models/container.model';
 import { Template } from '../../models/template.model';
 import { IConfigService } from './IConfig.service';
@@ -9,11 +8,32 @@ import { IConfigService } from './IConfig.service';
 @Injectable()
 export class GithubService implements IConfigService {
 
+  private static GIT_CONTAINERS_PATH = 'containers';
+  private static GIT_TEMPLATES_PATH = 'templates';
+  private static GIT_USER = 'Okty-io';
+  private static GIT_REPO = 'okty-config';
+  private static GIT_BRANCHE = '?ref=master';
+  private static GIT_URL = 'https://api.github.com/repos/' + GithubService.GIT_USER + '/' + GithubService.GIT_REPO + '/contents/';
+
+  private static fileExtension = '.yml';
+
   private allContainersCacheKey = 'all_containers_cache_key';
   private containerConfigCacheKey = 'container_config_';
 
   private allTemplatesCacheKey = 'all_templates_cache_key';
   private templateConfigCacheKey = 'template_config_';
+
+  private static getUrl(type: string, file: string): string {
+    if (file) {
+      file = '/' + file;
+    }
+
+    return GithubService.GIT_URL + type + file + GithubService.GIT_BRANCHE;
+  }
+
+  private static nameWithoutExtension(name: string) {
+    return name.substring(0, name.length - GithubService.fileExtension.length);
+  }
 
   private static ajaxError(error): void {
     if (error.status === 403) {
@@ -28,24 +48,24 @@ export class GithubService implements IConfigService {
 
   public getAllContainers(): Promise<Container[]> {
     return this.getAvailableElements(
-      Config.GIT_CONTAINERS_PATH,
+      GithubService.GIT_CONTAINERS_PATH,
       this.allContainersCacheKey,
       this.containerConfigCacheKey) as Promise<Container[]>;
   }
 
   public getContainer(name: string): Promise<Container> {
-    return this.getElement(name, Config.GIT_CONTAINERS_PATH, this.containerConfigCacheKey) as Promise<Container>;
+    return this.getElement(name, GithubService.GIT_CONTAINERS_PATH, this.containerConfigCacheKey) as Promise<Container>;
   }
 
   public getAllTemplates(): Promise<Template[]> {
     return this.getAvailableElements(
-      Config.GIT_TEMPLATES_PATH,
+      GithubService.GIT_TEMPLATES_PATH,
       this.allTemplatesCacheKey,
       this.templateConfigCacheKey) as Promise<Template[]>;
   }
 
   public getTemplate(name: string): Promise<Template> {
-    return this.getElement(name, Config.GIT_TEMPLATES_PATH, this.templateConfigCacheKey) as Promise<Template>;
+    return this.getElement(name, GithubService.GIT_TEMPLATES_PATH, this.templateConfigCacheKey) as Promise<Template>;
   }
 
   private getAvailableElements(githubPath: string, allCacheKey: string, oneCacheKey: string): Promise<Container[] | Template[]> {
@@ -56,12 +76,12 @@ export class GithubService implements IConfigService {
         return;
       }
 
-      const url = Config.getUrl(githubPath, '');
+      const url = GithubService.getUrl(githubPath, '');
       const promises: Array<Promise<Container | Template>> = [];
 
       this.http.get(url).subscribe((data: Array<any>) => {
         data.map(element => {
-          const name = Config.nameWithoutExtension(element.name);
+          const name = GithubService.nameWithoutExtension(element.name);
           promises.push(this.getElement(name, githubPath, oneCacheKey));
         });
 
@@ -88,7 +108,7 @@ export class GithubService implements IConfigService {
   }
 
   private getElement(name: string, githubPath: string, oneCacheKey: string): Promise<Container | Template> {
-    const url = Config.getUrl(githubPath, name + '.yml');
+    const url = GithubService.getUrl(githubPath, name + '.yml');
 
     return new Promise<Container | Template>((resolve, reject) => {
 
@@ -101,7 +121,7 @@ export class GithubService implements IConfigService {
       this.http.get(url).subscribe((file: { name: string, content: string }) => {
         const content = atob(file.content);
         const element: Container | Template = YAML.parse(content);
-        element.configPath = Config.nameWithoutExtension(file.name);
+        element.configPath = GithubService.nameWithoutExtension(file.name);
 
         this.cache.set(oneCacheKey + name, element);
         resolve(element);
