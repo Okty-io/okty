@@ -1,7 +1,10 @@
 {
-  "name": "dockerize",
-  "version": "0.0.0",
-  "license": "MIT",
+  "name": "okty",
+  "version": "2.1.0",
+  "license": "GPLv3",
+  "repository": "https://github.com/Okty-io/okty/",
+  "author": "Samuel Alves Antunes, Laurent Bassin, Maxime Marquet, Jordan Venant",
+  "description": "The simplest application to create and customize your docker projects",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +13,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.3",
     "@angular/common": "^6.0.3",
