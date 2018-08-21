@@ -4,7 +4,7 @@ export class Template implements ISearchable {
   name: string;
   image: string;
   action: string;
-  path: string;
+  configPath: string;
 
   containers: Array<any>;
 }

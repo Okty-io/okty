@@ -7,7 +7,7 @@ import { ContainerService } from '../../services/container.service';
 import { IConfigService } from '../../services/config/IConfig.service';
 
 @Component({
-    templateUrl: './template.component.html',
+    template: 'Loading...',
 })
 export class TemplateComponent implements OnInit {
     private template: Template;
@@ -30,7 +30,7 @@ export class TemplateComponent implements OnInit {
     const addContainerPromises = [];
     this.template.containers.forEach((element: Container) => {
       addContainerPromises.push(new Promise(async (resolve) => {
-        let container: Container = await this.configService.getContainer(element.path);
+        let container: Container = await this.configService.getContainer(element.configPath);
         container = this.containerService.dataToContainer(container, element.config);
 
         this.projectService.addContainer(element.containerId, container);

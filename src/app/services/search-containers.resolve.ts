@@ -16,7 +16,7 @@ export class SearchContainersResolve implements Resolve<ISearchable[]> {
       this.configService.getAllContainers().then(containers => {
 
         containers.forEach((container: Container) => {
-          container.action = '/new/' + container.path;
+          container.action = '/new/' + container.configPath;
         });
 
         observer.next(containers);

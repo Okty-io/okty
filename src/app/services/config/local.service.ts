@@ -8,10 +8,16 @@ import { HttpClient } from '@angular/common/http';
 export class LocalService implements IConfigService {
 
   private static basePath = 'http://127.0.0.1:3000/';
-  private static containerPath = 'containers';
+  private static containersPath = 'containers';
+  private static templatesPath = 'templates';
+  private static fileExtension = '.yml';
 
   private static getContainersPath(): string {
-    return LocalService.basePath + LocalService.containerPath;
+    return LocalService.basePath + LocalService.containersPath;
+  }
+
+  private static getTemplatesPath(): string {
+    return LocalService.basePath + LocalService.templatesPath;
   }
 
   private static handleError(error: any): void {
@@ -19,6 +25,10 @@ export class LocalService implements IConfigService {
     if (error.status === 0) {
       console.error('Did you start the node server of the config repository ?');
     }
+  }
+
+  private static nameWithoutExtension(name: string) {
+    return name.substring(0, name.length - LocalService.fileExtension.length);
   }
 
   constructor(private http: HttpClient) {
@@ -29,7 +39,7 @@ export class LocalService implements IConfigService {
   }
 
   getAllTemplates(): Promise<Template[]> {
-    return undefined;
+    return this.getAvailableElements(LocalService.getTemplatesPath()) as Promise<Template[]>;
   }
 
   getContainer(name: string): Promise<Container> {
@@ -37,7 +47,7 @@ export class LocalService implements IConfigService {
   }
 
   getTemplate(name: string): Promise<Template> {
-    return undefined;
+    return this.getElement(LocalService.getTemplatesPath(), name) as Promise<Template>;
   }
 
   private getAvailableElements(path: string): Promise<Container[] | Template[]> {
@@ -65,12 +75,15 @@ export class LocalService implements IConfigService {
 
   private getElement(basePath: string, name: string): Promise<Container | Template> {
     return new Promise<Container | Template>((resolve: Function) => {
-      const path = basePath + '/' + name;
+      let path = basePath + '/' + name;
+      if (!path.endsWith(LocalService.fileExtension)) {
+        path += LocalService.fileExtension;
+      }
 
       this.http.get(path).subscribe((file: { content: string }) => {
         const content = atob(file.content);
         const element: Container | Template = YAML.parse(content);
-        element.path = name;
+        element.configPath = LocalService.nameWithoutExtension(name);
 
         resolve(element);
       }, (error) => {
