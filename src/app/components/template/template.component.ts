@@ -30,7 +30,7 @@ export class TemplateComponent implements OnInit {
     const addContainerPromises = [];
     this.template.containers.forEach((element: Container) => {
       addContainerPromises.push(new Promise(async (resolve) => {
-        let container: Container = await this.configService.getContainer(element.configPath);
+        let container: Container = await this.configService.getContainer(element.path);
         container = this.containerService.dataToContainer(container, element.config);
 
         this.projectService.addContainer(element.containerId, container);

@@ -33,7 +33,7 @@ export class LocalService implements IConfigService {
   }
 
   getContainer(name: string): Promise<Container> {
-    return undefined;
+    return this.getElement(LocalService.getContainersPath(), name) as Promise<Container>;
   }
 
   getTemplate(name: string): Promise<Template> {
@@ -70,6 +70,7 @@ export class LocalService implements IConfigService {
       this.http.get(path).subscribe((file: { content: string }) => {
         const content = atob(file.content);
         const element: Container | Template = YAML.parse(content);
+        element.path = name;
 
         resolve(element);
       }, (error) => {

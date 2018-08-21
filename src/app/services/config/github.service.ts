@@ -101,7 +101,7 @@ export class GithubService implements IConfigService {
       this.http.get(url).subscribe((file: { name: string, content: string }) => {
         const content = atob(file.content);
         const element: Container | Template = YAML.parse(content);
-        element.configPath = Config.nameWithoutExtension(file.name);
+        element.path = Config.nameWithoutExtension(file.name);
 
         this.cache.set(oneCacheKey + name, element);
         resolve(element);
