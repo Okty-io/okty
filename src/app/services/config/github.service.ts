@@ -8,8 +8,8 @@ import { IConfigService } from './IConfig.service';
 @Injectable()
 export class GithubService implements IConfigService {
 
-  private static GIT_CONTAINERS_PATH = 'containers';
-  private static GIT_TEMPLATES_PATH = 'templates';
+  private static GIT_CONTAINERS_PATH = 'config/containers';
+  private static GIT_TEMPLATES_PATH = 'config/templates';
   private static GIT_USER = 'Okty-io';
   private static GIT_REPO = 'okty-config';
   private static GIT_BRANCHE = '?ref=master';
