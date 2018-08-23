@@ -55,7 +55,7 @@ Maybe the container you want isn't available ?
 Make your own or ask for it on the [configuration dedicated repository](https://github.com/Okty-io/okty-config) !
 
 ## License
-Okty is made available under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+Okty is made available under the [GNU GPL v3 License](https://opensource.org/licenses/GPL-3.0).
 
 ## Credits
 Okty is created and maintained by
