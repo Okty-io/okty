@@ -3,7 +3,7 @@ node_js:
 - '9.10.1'
 
 before_script:
-- npm install --onyl=prod
+- npm install --only=prod
 
 script:
 - "./node_modules/.bin/ng build --prod --aot"
