@@ -25,6 +25,9 @@ export class SelectComponent implements OnInit {
 
             this.data.push({value: value, label: this.input.source[value]});
         }
+        if (this.formControl.value && Object.keys(this.input.source).includes(this.formControl.value)) {
+            this.selected = this.formControl.value;
+        }
     }
 
     changeSelected(value: any) {

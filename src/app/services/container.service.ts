@@ -8,7 +8,9 @@ export class ContainerService {
   containerId: any;
 
   public dataToContainer(container: Container, data: any): Container {
-    this.outputConfig = {};
+    this.outputConfig = {
+      'image': container.docker + ':' + container.version
+    };
 
     container.config.forEach((group) => {
       group.fields.forEach((input) => {
@@ -35,8 +37,6 @@ export class ContainerService {
         }
       });
     });
-
-    this.outputConfig['image'] = container.docker + ':' + container.version;
 
     container.output = this.outputConfig;
     container.containerId = this.containerId;

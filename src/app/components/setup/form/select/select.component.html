@@ -6,7 +6,9 @@
         (focus)="showSelect()"
         (focusout)="hideSelect()"
         [id]="input.id"
-        [ngClass]="{'errors':formControl.invalid}">
+        [ngClass]="{'errors':formControl.invalid}"
+        class="uk-input"
+        autocomplete="off">
     <p *ngIf="formControl.invalid" class="errors">{{ formControl.errors | validatorErrors }}</p>
 
     <ul class='select' [ngClass]="{'show': show }">
