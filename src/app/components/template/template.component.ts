@@ -7,25 +7,25 @@ import { ContainerService } from '../../services/container.service';
 import { IConfigService } from '../../services/config/IConfig.service';
 
 @Component({
-    template: 'Loading...',
+  template: 'Loading...',
 })
 export class TemplateComponent implements OnInit {
-    private template: Template;
+  private template: Template;
 
-    constructor(@Inject('IConfigService') private configService: IConfigService,
-                private route: ActivatedRoute,
-                private projectService: ProjectService,
-                private router: Router,
-                private containerService: ContainerService) {
-        this.template = this.route.snapshot.data.template;
+  constructor(@Inject('IConfigService') private configService: IConfigService,
+              private route: ActivatedRoute,
+              private projectService: ProjectService,
+              private router: Router,
+              private containerService: ContainerService) {
+    this.template = this.route.snapshot.data.template;
+  }
+
+  ngOnInit(): void {
+    if (this.projectService.getContainers().length > 0 && this.projectService.isFromTemplate()) {
+      this.projectService.reset();
+      this.router.navigate(['/template']);
+      return;
     }
-
-    ngOnInit(): void {
-        if (this.projectService.getContainers().length > 0 && this.projectService.isFromTemplate()) {
-            this.projectService.reset();
-            this.router.navigate(['/template']);
-            return;
-        }
 
     const addContainerPromises = [];
     this.template.containers.forEach((element: Container) => {

@@ -1,19 +1,19 @@
 <div class="selectize-container">
-    <div class="main" (click)="focusTheInput($event.target)">
-        <div ngClass="selectize-selected" *ngFor="let select of selected" (click)="removeSelected(select)">{{select}}</div>
+  <div class="main" (click)="focusTheInput($event.target)">
+    <div ngClass="selectize-selected" *ngFor="let select of selected" (click)="removeSelected(select)">{{select}}</div>
 
-        <!--suppress HtmlFormInputWithoutLabel -->
-        <input type="text" name="selectize" #selectizeInput
-            [id]="input.id"
-            (focus)="showPossiblesContainer()"
-            (focusout)="hidePossiblesContainer()"
-            (input)="checkInput($event)"
-            [ngClass]="{'errors':formControl.invalid}">
-    </div>
+    <!--suppress HtmlFormInputWithoutLabel -->
+    <input type="text" name="selectize" #selectizeInput
+           [id]="input.id"
+           (focus)="showPossiblesContainer()"
+           (focusout)="hidePossiblesContainer()"
+           (input)="checkInput($event)"
+           [ngClass]="{'errors':formControl.invalid}">
+  </div>
 
-    <div [ngClass]="{'selectize-possibles':true,'hidden':showPossibles === false}">
-        <div *ngFor="let selection of selections" (click)="addSelected(selection.value)">{{selection.label}}</div>
-    </div>
-    <p *ngIf="formControl.invalid" class="errors">{{ formControl.errors | validatorErrors }}</p>
+  <div [ngClass]="{'selectize-possibles':true,'hidden':showPossibles === false}">
+    <div *ngFor="let selection of selections" (click)="addSelected(selection.value)">{{selection.label}}</div>
+  </div>
+  <p *ngIf="formControl.invalid" class="errors">{{ formControl.errors | validatorErrors }}</p>
 </div>
 
