@@ -15,6 +15,8 @@ export class AppComponent implements OnInit, OnDestroy {
   private sidebarSubscription: Subscription;
   private routerSubscription: Subscription;
 
+  public version = environment.version;
+
   constructor(private sidebarStatus: SidebarService,
               private changeDetector: ChangeDetectorRef,
               private router: Router) {
