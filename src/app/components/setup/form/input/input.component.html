@@ -1,5 +1,6 @@
 <!--suppress HtmlFormInputWithoutLabel -->
-<input type="text" name="input" [formControl]="formControl" [id]="input.id" [ngClass]="{'uk-form-danger': formControl.invalid}" class="uk-input">
+<input type="text" name="input" [formControl]="formControl" [id]="input.id"
+       [ngClass]="{'uk-form-danger': formControl.invalid}" class="uk-input">
 <div class="uk-alert-danger" uk-alert *ngIf="formControl.invalid">
-    <p>{{ formControl.errors | validatorErrors }}</p>
+  <p>{{ formControl.errors | validatorErrors }}</p>
 </div>

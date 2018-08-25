@@ -1,17 +1,17 @@
 <app-sidebar></app-sidebar>
 
 <nav class="uk-navbar-container okty-navbar">
-    <div class="left-gradient"></div>
-    <div class="right-gradient"></div>
-    <div class="uk-container uk-container-expand">
-        <div class="uk-navbar">
-            <div class="uk-navbar-left">
+  <div class="left-gradient"></div>
+  <div class="right-gradient"></div>
+  <div class="uk-container uk-container-expand">
+    <div class="uk-navbar">
+      <div class="uk-navbar-left">
 
-                <a class="uk-navbar-item uk-logo okty-navbar-text" [routerLink]="'/'">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="uk-margin-small-right" version="1.1" x="0px" y="0px" viewBox="0 0 98.6 174.6" style="width: 30px;enable-background:new 0 0 98.6 174.6;" xml:space="preserve">
+        <a class="uk-navbar-item uk-logo okty-navbar-text" [routerLink]="'/'">
+          <svg xmlns="http://www.w3.org/2000/svg" class="uk-margin-small-right" version="1.1" x="0px" y="0px" viewBox="0 0 98.6 174.6" style="width: 30px;enable-background:new 0 0 98.6 174.6;" xml:space="preserve">
                         <style type="text/css">
                             .st0 {
-                                fill: rgb(255, 255, 255);
+                              fill: rgb(255, 255, 255);
                             }
                         </style>
                         <g>
@@ -30,38 +30,39 @@
                             </g>
                         </g>
                     </svg>
-                    <p style="line-height:  20px;">
-                        Okty
-                        <br>
-                        <span style="font-size: 12px;font-style:  italic;">{{ version }}</span>
-                    </p>
-                </a>
+          <p style="line-height:  20px;">
+            Okty
+            <br>
+            <span style="font-size: 12px;font-style:  italic;">{{ version }}</span>
+          </p>
+        </a>
 
-            </div>
-            <div class="uk-navbar-right">
+      </div>
+      <div class="uk-navbar-right">
 
-                <ul class="uk-navbar-nav">
-                    <li class="uk-active">
-                        <a href="https://github.com/Okty-io/okty/wiki" target="blank"
-                           class="okty-navbar-text okty-nav-link">Documentation</a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/Okty-io/okty" class="uk-icon-link okty-navbar-text" target="blank"
-                           uk-icon="github"></a>
-                    </li>
-                    <li>
-                         <a href="https://twitter.com/oktyapp" class="uk-icon-link okty-navbar-text" target="blank" uk-icon="twitter"></a>
-                    </li>
-                </ul>
+        <ul class="uk-navbar-nav">
+          <li class="uk-active">
+            <a href="https://github.com/Okty-io/okty/wiki" target="blank"
+               class="okty-navbar-text okty-nav-link">Documentation</a>
+          </li>
+          <li>
+            <a href="https://github.com/Okty-io/okty" class="uk-icon-link okty-navbar-text" target="blank"
+               uk-icon="github"></a>
+          </li>
+          <li>
+            <a href="https://twitter.com/oktyapp" class="uk-icon-link okty-navbar-text" target="blank"
+               uk-icon="twitter"></a>
+          </li>
+        </ul>
 
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </nav>
 
 <div class="okty-main" [ngClass]="{sidebarVisible: wrapperStatus !== 'full'}">
-    <main>
-        <router-outlet></router-outlet>
-    </main>
-    <app-notification></app-notification>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <app-notification></app-notification>
 </div>
