@@ -54,6 +54,12 @@ export class ContainerService {
       return;
     }
 
+    if (input.base === 'command') {
+      this.outputConfig[input.base] = ['/bin/sh', '-c', value];
+
+      return;
+    }
+
     this.outputConfig[input.base] = value;
   }
 

@@ -1,27 +1,27 @@
 :host {
-    box-sizing: border-box;
-    display: block;
-    margin-top: 10px;
+  box-sizing: border-box;
+  display: block;
+  margin-top: 10px;
 }
 
 .uk-form-danger, .uk-form-danger:focus {
-    color: #f0506e;
-    border: 1px solid #f46d85;
+  color: #f0506e;
+  border: 1px solid #f46d85;
 }
 
-*+.uk-alert {
-    margin-top: 5px;
+* + .uk-alert {
+  margin-top: 5px;
 }
 
 .uk-alert {
-    position: relative;
-    margin-bottom: 20px;
-    padding: 5px 29px 5px 15px;
-    background: #f8f8f8;
-    color: #666;
+  position: relative;
+  margin-bottom: 20px;
+  padding: 5px 29px 5px 15px;
+  background: #f8f8f8;
+  color: #666;
 }
 
 .uk-alert-danger {
-    background: #fef4f6;
-    color: #f0506e;
+  background: #fef4f6;
+  color: #f0506e;
 }
