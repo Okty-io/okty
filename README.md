@@ -57,6 +57,11 @@ Make your own or ask for it on the [configuration dedicated repository](https://
 ## License
 Okty is made available under the [GNU GPL v3 License](https://opensource.org/licenses/GPL-3.0).
 
+## Contributors
+
+| [<img src="https://avatars0.githubusercontent.com/u/7290607?s=400&v=4" width="100px;"/><br /><sub><b>KMarques</b></sub>](https://github.com/kmarques)
+| :---: | 
+
 ## Credits
 Okty is created and maintained by
 [Samuel Alves Antunes](https://github.com/NeverTwice), 
