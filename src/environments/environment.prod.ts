@@ -1,7 +1,7 @@
-import { GithubService } from '../app/services/config/github.service';
+import { AwsService } from '../app/services/config/aws.service';
 
 export const environment = {
   production: true,
-  configService: GithubService,
+  configService: AwsService,
   version: require('../../package.json').version
 };
