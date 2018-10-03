@@ -34,7 +34,7 @@ import { SearchTemplatesResolve } from './services/search-templates.resolve';
 import { SearchContainersResolve } from './services/search-containers.resolve';
 import { NewTemplateResolve } from './services/new-template.resolve';
 import { ContainerService } from './services/container.service';
-import { IConfigService } from './services/config/IConfig.service';
+import { ApiService } from './services/api.service';
 
 // Pipes
 import { FilterPipe } from './pipes/filter.pipe';
@@ -45,8 +45,6 @@ import { FormInputDirective } from './directives/form-input.directive';
 
 // Routes
 import { routes } from './app.routes';
-
-import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -88,10 +86,7 @@ import { environment } from '../environments/environment';
     SearchContainersResolve,
     NewTemplateResolve,
     ContainerService,
-    {
-      provide: 'IConfigService',
-      useClass: environment.configService
-    }
+    ApiService,
   ],
   entryComponents: [
     InputComponent,
