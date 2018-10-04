@@ -14,10 +14,8 @@ export class SearchContainersResolve implements Resolve<ISearchable[]> {
   resolve(route: ActivatedRouteSnapshot): Observable<ISearchable[]> {
     return new Observable<ISearchable[]>(observer => {
       this.apiService.getAllContainers().then(containers => {
-        console.log(containers);
-
         containers.forEach((container: Container) => {
-          container.action = '/new/' + container.configPath;
+          container.action = '/new/' + container.id;
         });
 
         observer.next(containers);

@@ -6,6 +6,7 @@ export class Container implements ISearchable {
   action: string;
   configPath: string;
 
+  id: string;
   docker: string;
   version: string;
   config: Array<{

@@ -24,15 +24,40 @@ export class ApiService {
 
   getAllContainers(): Promise<Container[]> {
     return new Promise<Container[]>((resolve) => {
-      this.post(`query{containers{name,image}}`)
+      this.post(`query{containers{id,name,image}}`)
         .then(response => resolve(response.containers))
         .catch(() => resolve([]));
     });
   }
 
   getContainer(name: string): Promise<Container> {
-    return new Promise<Container>((resolve, reject) => {
-      resolve(null);
+    return new Promise<Container>((resolve) => {
+      this.post(`
+      {
+        container(id: "${name}") {
+          id
+          name
+          image
+          config {
+            id
+            label
+            fields {
+              id,
+              label
+              type
+              base
+              destination
+              value
+              validators {
+                name
+                constraint
+              }
+            }
+          }
+        }
+      }`)
+        .then(response => resolve(response.container))
+        .catch(() => resolve(null));
     });
   }
 

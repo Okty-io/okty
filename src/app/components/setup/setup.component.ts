@@ -105,22 +105,18 @@ export class SetupComponent implements OnInit, OnDestroy {
     const validators = [];
     const config = input.validators;
 
-    for (const key in config) {
-      if (!config.hasOwnProperty(key)) {
-        continue;
-      }
-
-      switch (key) {
+    for (const validator of config) {
+      switch (validator.name) {
         case 'required':
           validators.push(Validators.required);
           break;
         case 'numbers':
-          validators.push(Validators.min(config[key].min));
-          validators.push(Validators.max(config[key].max));
+          validators.push(Validators.min(validator.constraint.min));
+          validators.push(Validators.max(validator.constraint.max));
           validators.push(isNumberValidator);
           break;
         case 'regex':
-          validators.push(Validators.pattern(config[key]));
+          validators.push(Validators.pattern(validator.constraint));
           break;
       }
     }
