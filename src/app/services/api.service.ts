@@ -38,6 +38,8 @@ export class ApiService {
           id
           name
           image
+          docker
+          version
           config {
             id
             label
