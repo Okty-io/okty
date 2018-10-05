@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   api: {
-    host: 'http://127.0.0.1:8080/graphql/'
+    host: 'https://api.okty.io/graphql/'
   },
   version: require('../../package.json').version
 };
