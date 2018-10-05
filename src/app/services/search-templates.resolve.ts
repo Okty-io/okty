@@ -14,9 +14,8 @@ export class SearchTemplatesResolve implements Resolve<ISearchable[]> {
   resolve(route: ActivatedRouteSnapshot): Observable<ISearchable[]> {
     return new Observable<ISearchable[]>(observer => {
       this.apiService.getAllTemplates().then(templates => {
-
         templates.forEach((template: Template) => {
-          template.action = '/template/' + template.configPath;
+          template.action = '/template/' + template.id;
         });
 
         observer.next(templates);

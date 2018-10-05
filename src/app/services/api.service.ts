@@ -63,15 +63,32 @@ export class ApiService {
 
   getAllTemplates(): Promise<Template[]> {
     return new Promise<Template[]>((resolve) => {
-      this.post(`query{templates{name,image}}`)
+      this.post(`query{templates{id,name,image}}`)
         .then(response => resolve(response.templates))
         .catch(() => resolve([]));
     });
   }
 
   getTemplate(name: string): Promise<Template> {
-    return new Promise<Template>((resolve, reject) => {
-      resolve(null);
+    return new Promise<Template>((resolve) => {
+      this.post(`
+      {
+        template(id:"${name}"){
+          id,
+          name,
+          image,
+          containers{
+            id,
+            container,
+            config{
+              label,
+              value
+            }
+          }
+        }
+      }`)
+        .then(response => resolve(response.template))
+        .catch(() => resolve(null));
     });
   }
 }

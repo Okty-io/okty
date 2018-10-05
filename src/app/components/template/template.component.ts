@@ -28,12 +28,18 @@ export class TemplateComponent implements OnInit {
     }
 
     const addContainerPromises = [];
-    this.template.containers.forEach((element: Container) => {
+    this.template.containers.forEach((element: any) => {
       addContainerPromises.push(new Promise(async (resolve) => {
-        let container: Container = await this.apiService.getContainer(element.configPath);
-        container = this.containerService.dataToContainer(container, element.config);
+        let container: Container = await this.apiService.getContainer(element.container);
 
-        this.projectService.addContainer(element.containerId, container);
+        const config = {};
+        for (const input of element.config) {
+          config[input.label] = input.value;
+        }
+
+        container = this.containerService.dataToContainer(container, config);
+
+        this.projectService.addContainer(element.id, container);
         resolve();
       }));
     });
