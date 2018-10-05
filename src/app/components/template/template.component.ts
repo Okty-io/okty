@@ -1,10 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Template } from '../../models/template.model';
 import { Container } from '../../models/container.model';
 import { ProjectService } from '../../services/project.service';
 import { ContainerService } from '../../services/container.service';
-import { IConfigService } from '../../services/config/IConfig.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   template: 'Loading...',
@@ -12,7 +12,7 @@ import { IConfigService } from '../../services/config/IConfig.service';
 export class TemplateComponent implements OnInit {
   private template: Template;
 
-  constructor(@Inject('IConfigService') private configService: IConfigService,
+  constructor(private apiService: ApiService,
               private route: ActivatedRoute,
               private projectService: ProjectService,
               private router: Router,
@@ -28,12 +28,18 @@ export class TemplateComponent implements OnInit {
     }
 
     const addContainerPromises = [];
-    this.template.containers.forEach((element: Container) => {
+    this.template.containers.forEach((element: any) => {
       addContainerPromises.push(new Promise(async (resolve) => {
-        let container: Container = await this.configService.getContainer(element.configPath);
-        container = this.containerService.dataToContainer(container, element.config);
+        let container: Container = await this.apiService.getContainer(element.container);
 
-        this.projectService.addContainer(element.containerId, container);
+        const config = {};
+        for (const input of element.config) {
+          config[input.label] = input.value;
+        }
+
+        container = this.containerService.dataToContainer(container, config);
+
+        this.projectService.addContainer(element.id, container);
         resolve();
       }));
     });

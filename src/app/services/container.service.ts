@@ -8,6 +8,7 @@ export class ContainerService {
   containerId: any;
 
   public dataToContainer(container: Container, data: any): Container {
+    console.log(container);
     this.outputConfig = {
       'image': container.docker + ':' + container.version
     };

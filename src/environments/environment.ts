@@ -1,7 +1,7 @@
-import { LocalService } from '../app/services/config/local.service';
-
 export const environment = {
   production: false,
-  configService: LocalService,
+  api: {
+    host: 'http://127.0.0.1:8080/graphql/'
+  },
   version: require('../../package.json').version
 };

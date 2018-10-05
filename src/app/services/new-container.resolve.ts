@@ -1,19 +1,19 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Container } from '../models/container.model';
 import { Observable } from 'rxjs';
-import { IConfigService } from './config/IConfig.service';
+import { ApiService } from './api.service';
 
 @Injectable()
 export class NewContainerResolve implements Resolve<Container> {
 
-  constructor(@Inject('IConfigService') private configService: IConfigService) {
+  constructor(private apiService: ApiService) {
   }
 
   resolve(route: ActivatedRouteSnapshot): Observable<Container> {
     return new Observable<Container>(observer => {
 
-      this.configService.getContainer(route.params.id)
+      this.apiService.getContainer(route.params.id)
         .then(container => {
           observer.next(container);
           observer.complete();
