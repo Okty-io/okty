@@ -18,13 +18,10 @@ export class SelectComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    for (const value in this.input.source) {
-      if (!this.input.source.hasOwnProperty(value)) {
-        continue;
-      }
-
-      this.data.push({value: value, label: this.input.source[value]});
+    for (const source of this.input.source) {
+      this.data.push({value: source.value, label: source.label});
     }
+
     if (this.formControl.value && Object.keys(this.input.source).includes(this.formControl.value)) {
       this.selected = this.formControl.value;
     }
