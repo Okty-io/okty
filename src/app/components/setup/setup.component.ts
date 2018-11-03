@@ -104,6 +104,9 @@ export class SetupComponent implements OnInit, OnDestroy {
   private setValidatorsToInput(formControl: FormControl, input: any) {
     const validators = [];
     const config = input.validators;
+    if (!config) {
+      return;
+    }
 
     for (const validator of config) {
       switch (validator.name) {

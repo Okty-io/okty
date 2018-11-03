@@ -9,92 +9,23 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  private post(query: string): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      this.http.post(environment.api.host, {query: query}).toPromise()
-        .then((response: { data: any, errors: any }) => {
-          if (response.errors) {
-            reject(response.errors);
-          }
-
-          resolve(response.data);
-        });
-    });
-  }
-
   getAllContainers(): Promise<Container[]> {
-    return new Promise<Container[]>((resolve) => {
-      this.post(`query{containers{id,name,image}}`)
-        .then(response => resolve(response.containers))
-        .catch(() => resolve([]));
-    });
+    return this.http.get(`${environment.api.host}/container/form`).toPromise() as Promise<Container[]>;
   }
 
   getContainer(name: string): Promise<Container> {
-    return new Promise<Container>((resolve) => {
-      this.post(`
-      {
-        container(id: "${name}") {
-          id
-          name
-          image
-          docker
-          version
-          config {
-            id
-            label
-            fields {
-              id,
-              label
-              type
-              base
-              destination
-              value
-              source {
-                label
-                value
-              }
-              validators {
-                name
-                constraint
-              }
-            }
-          }
-        }
-      }`)
-        .then(response => resolve(response.container))
-        .catch(() => resolve(null));
-    });
+    return this.http.get(`${environment.api.host}/container/form/${name}`).toPromise() as Promise<Container>;
   }
 
   getAllTemplates(): Promise<Template[]> {
-    return new Promise<Template[]>((resolve) => {
-      this.post(`query{templates{id,name,image}}`)
-        .then(response => resolve(response.templates))
-        .catch(() => resolve([]));
-    });
+    return this.http.get(`${environment.api.host}/template/`).toPromise() as Promise<Template[]>;
   }
 
   getTemplate(name: string): Promise<Template> {
-    return new Promise<Template>((resolve) => {
-      this.post(`
-      {
-        template(id:"${name}"){
-          id,
-          name,
-          image,
-          containers{
-            id,
-            container,
-            config{
-              label,
-              value
-            }
-          }
-        }
-      }`)
-        .then(response => resolve(response.template))
-        .catch(() => resolve(null));
-    });
+    return this.http.get(`${environment.api.host}/template/${name}`).toPromise() as Promise<Template>;
+  }
+
+  build(args: any[]): Promise<any> {
+    return this.http.post(`${environment.api.host}/container/build`, args, {responseType: 'blob'}).toPromise();
   }
 }

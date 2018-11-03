@@ -34,6 +34,8 @@ export class ProjectService {
       this.containers[index] = container;
     }
 
+    console.log(this.containers);
+
     this.sidebarService.show();
     this.containersSubject.next(this.containers);
     return true;
@@ -41,6 +43,7 @@ export class ProjectService {
 
   getContainer(id: string): Container {
     const container: Container = this.containers.find((element: Container) => {
+      console.log(id, element);
       return element.containerId === id;
     });
 
@@ -73,20 +76,6 @@ export class ProjectService {
     return this.containersSubject.asObservable();
   }
 
-  getDockerCompose(): any {
-    const services = {};
-    this.containers.forEach((container: Container) => {
-      services[container.containerId] = container.output;
-    });
-
-    const config = {
-      version: '3',
-      services: services
-    };
-
-    return YAML.stringify(config, 4);
-  }
-
   getContainers() {
     return this.containers;
   }
@@ -109,5 +98,15 @@ export class ProjectService {
     this.containers = [];
     this.sidebarService.hide();
     this.containersSubject.next(this.containers);
+  }
+
+  getBuildArgs() {
+    const args = [];
+
+    this.containers.forEach((data: Container) => {
+      args.push(data.output);
+    });
+
+    return args;
   }
 }
