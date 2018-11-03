@@ -42,9 +42,7 @@ export class ContainerService {
       });
     });
 
-    container.output = {} as OutputConfig;
-    Object.assign(container.output, this.outputConfig);
-
+    container.output = JSON.parse(JSON.stringify(this.outputConfig));
     container.containerId = this.outputConfig.args.id;
 
     return container;
