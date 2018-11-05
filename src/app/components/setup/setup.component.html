@@ -13,7 +13,7 @@
         <div *ngFor="let input of group.fields" class=" uk-width-1-2@s">
           <label [for]="input.id" class="uk-form-label">{{ input.label }}</label>
           <div class="uk-form-controls">
-            <div [appFormInput]="input" [appFormControl]="formGroup.get(group.label + '_' + input.id)"></div>
+            <div [appFormInput]="input" [appFormControl]="formGroup.get(group.id + '_' + input.id)"></div>
           </div>
         </div>
       </div>

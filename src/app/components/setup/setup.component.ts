@@ -63,7 +63,7 @@ export class SetupComponent implements OnInit, OnDestroy {
         }
 
         const formControl = new FormControl(value);
-        const controlName = group.label + '_' + input.id;
+        const controlName = group.id + '_' + input.id;
 
         this.setValidatorsToInput(formControl, input);
 

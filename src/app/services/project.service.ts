@@ -34,8 +34,6 @@ export class ProjectService {
       this.containers[index] = container;
     }
 
-    console.log(this.containers);
-
     this.sidebarService.show();
     this.containersSubject.next(this.containers);
     return true;
@@ -43,7 +41,6 @@ export class ProjectService {
 
   getContainer(id: string): Container {
     const container: Container = this.containers.find((element: Container) => {
-      console.log(id, element);
       return element.containerId === id;
     });
 

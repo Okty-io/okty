@@ -5,14 +5,16 @@ import { OutputConfig } from '../models/OutputConfig';
 @Injectable()
 export class ContainerService {
 
-  private outputConfig: OutputConfig = {image: '', args: {}} as OutputConfig;
+  private outputConfig: OutputConfig;
 
   public dataToContainer(container: Container, data: any): Container {
+    this.outputConfig = {image: '', args: {}} as OutputConfig;
     this.outputConfig.image = container.id;
 
     container.config.forEach((group) => {
       group.fields.forEach((input) => {
-        const controlName = group.label + '_' + input.id;
+        const controlName = group.id + '_' + input.id;
+
         const value = data[controlName];
         input.data = value;
 
