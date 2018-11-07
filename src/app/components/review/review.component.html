@@ -3,12 +3,25 @@
 </div>
 
 <div class="uk-container uk-text-center uk-margin-large-top uk-animation-slide-bottom-medium">
-  <button (click)="goToAddContainer()" class="okty-review-button uk-button uk-button-primary uk-button-large">Add
-    container
-  </button>
-  <button (click)="exportProject()" class="okty-review-button uk-button uk-button-primary uk-button-large">Export my
-    project
-  </button>
+  <ng-container  *ngIf="!loading">
+    <button (click)="goToAddContainer()" class="okty-review-button uk-button uk-button-primary uk-button-large">Add
+      container
+    </button>
+    <button (click)="exportProject()" class="okty-review-button uk-button uk-button-primary uk-button-large">Export my
+      project
+    </button>
+  </ng-container>
+  <ng-container *ngIf="loading">
+    <div class="load-wrapp">
+      <div class="load-5">
+        <div class="ring-2">
+          <div class="ball-holder">
+            <div class="ball"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 </div>
 
 <div class="uk-container uk-container-small uk-text-center uk-margin-large-top uk-animation-slide-bottom-medium">

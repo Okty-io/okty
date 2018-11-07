@@ -11,6 +11,8 @@ import { ApiService } from '../../services/api.service';
 })
 export class ReviewComponent implements OnInit {
 
+  loading = false;
+
   constructor(private router: Router,
               private projectService: ProjectService,
               private titleService: CustomTitleService,
@@ -30,10 +32,12 @@ export class ReviewComponent implements OnInit {
   }
 
   exportProject(): void {
+    this.loading = true;
     const args = this.projectService.getBuildArgs();
 
     this.apiService.build(args).then(file => {
       saveAs(file, 'okty.zip');
+      this.loading = false;
     });
   }
 }

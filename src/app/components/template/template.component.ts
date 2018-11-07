@@ -7,7 +7,7 @@ import { ContainerService } from '../../services/container.service';
 import { ApiService } from '../../services/api.service';
 
 @Component({
-  template: 'Loading...',
+  templateUrl: './template.component.html',
 })
 export class TemplateComponent implements OnInit {
   private template: Template;

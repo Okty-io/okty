@@ -5,3 +5,63 @@ body {
   padding: 0;
   font-family: 'Lato', sans-serif;
 }
+
+// Loader (Thank you https://codepen.io/Manoz/pen/pydxK)
+.load-wrapp {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+
+}
+
+.load-wrapp p {padding: 0 0 20px;}
+.load-wrapp:last-child {margin-right: 0;}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.load-5 {
+  padding-top: calc(50vh - 80px);
+  animation: fadein 0.6s;
+}
+
+.load-5 .ball-holder {animation: loadingE 1.3s linear infinite;}
+
+@keyframes loadingE {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ring-2 {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  margin: 0 auto;
+  border: 4px solid #4b9cdb;
+  border-radius: 100%;
+}
+
+.ball-holder {
+  position: absolute;
+  width: 12px;
+  height: 45px;
+  left: 17px;
+  top: 0px;
+}
+
+.ball {
+  position: absolute;
+  top: -11px;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background: #4282B3;
+}
+
