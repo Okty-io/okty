@@ -63,18 +63,18 @@ export class MultiSelectComponent implements OnInit, AfterViewInit {
 
   refineSelections(value: string = ''): void {
     this.selections = [];
-    for (const source of this.input.source) {
-      if (this.selected.includes(source.value)) {
+    for (const data in this.input.source) {
+      if (!this.input.source.hasOwnProperty(data) || this.selected.includes(data)) {
         continue;
       }
 
-      if (value !== '' && source.value.indexOf(value) === -1) {
+      if (value !== '' && data.indexOf(value) === -1) {
         continue;
       }
 
       this.selections.push({
-        label: source.value,
-        value: source.value,
+        label: this.input.source[data],
+        value: data,
       });
     }
   }

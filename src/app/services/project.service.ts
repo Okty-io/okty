@@ -73,20 +73,6 @@ export class ProjectService {
     return this.containersSubject.asObservable();
   }
 
-  getDockerCompose(): any {
-    const services = {};
-    this.containers.forEach((container: Container) => {
-      services[container.containerId] = container.output;
-    });
-
-    const config = {
-      version: '3',
-      services: services
-    };
-
-    return YAML.stringify(config, 4);
-  }
-
   getContainers() {
     return this.containers;
   }
@@ -109,5 +95,15 @@ export class ProjectService {
     this.containers = [];
     this.sidebarService.hide();
     this.containersSubject.next(this.containers);
+  }
+
+  getBuildArgs() {
+    const args = [];
+
+    this.containers.forEach((data: Container) => {
+      args.push(data.output);
+    });
+
+    return args;
   }
 }

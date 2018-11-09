@@ -1,5 +1,5 @@
 export interface ISearchable {
   name: string;
-  image: string;
+  logo: string;
   action: string;
 }

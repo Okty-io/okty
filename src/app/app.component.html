@@ -61,8 +61,21 @@
 </nav>
 
 <div class="okty-main" [ngClass]="{sidebarVisible: wrapperStatus !== 'full'}">
-  <main>
-    <router-outlet></router-outlet>
-  </main>
-  <app-notification></app-notification>
+  <ng-container *ngIf="!loading">
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <app-notification></app-notification>
+  </ng-container>
+  <ng-container *ngIf="loading">
+    <div class="load-wrapp">
+      <div class="load-5">
+        <div class="ring-2">
+          <div class="ball-holder">
+            <div class="ball"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 </div>

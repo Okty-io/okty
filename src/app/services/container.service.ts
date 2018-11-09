@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Container } from '../models/container.model';
+import { OutputConfig } from '../models/OutputConfig';
 
 @Injectable()
 export class ContainerService {
 
-  private outputConfig: any;
-  containerId: any;
+  private outputConfig: OutputConfig;
 
   public dataToContainer(container: Container, data: any): Container {
-    console.log(container);
-    this.outputConfig = {
-      'image': container.docker + ':' + container.version
-    };
+    this.outputConfig = {image: '', args: {}} as OutputConfig;
+    this.outputConfig.image = container.id;
 
     container.config.forEach((group) => {
       group.fields.forEach((input) => {
-        const controlName = group.label + '_' + input.id;
+        const controlName = group.id + '_' + input.id;
+
         const value = data[controlName];
         input.data = value;
 
         switch (input.destination) {
           case 'docker-compose':
             this.addToDockerCompose(value, input);
+            break;
+          case 'version':
+            this.addToVersion(value, input);
             break;
           case 'environment':
             this.addToEnvironment(value, input);
@@ -32,6 +34,9 @@ export class ContainerService {
           case 'ports':
             this.addToPorts(value, input);
             break;
+          case 'files':
+            this.addToFiles(value, input);
+            break;
           case 'id':
             this.addToId(value, input);
             break;
@@ -39,8 +44,8 @@ export class ContainerService {
       });
     });
 
-    container.output = this.outputConfig;
-    container.containerId = this.containerId;
+    container.output = JSON.parse(JSON.stringify(this.outputConfig));
+    container.containerId = this.outputConfig.args.id;
 
     return container;
   }
@@ -56,48 +61,68 @@ export class ContainerService {
     }
 
     if (input.base === 'command') {
-      this.outputConfig[input.base] = ['/bin/sh', '-c', value];
+      this.outputConfig.args[input.base] = ['/bin/sh', '-c', value];
 
       return;
     }
 
-    this.outputConfig[input.base] = value;
+    this.outputConfig.args[input.base] = value;
+  }
+
+  private addToVersion(value: string, input: any): void {
+    if (!value) {
+      value = input.value;
+    }
+
+    this.outputConfig.args.version = value;
   }
 
   private addToEnvironment(value: string, input: any): void {
-    if (!this.outputConfig['environment']) {
-      this.outputConfig['environment'] = [];
+    if (!this.outputConfig.args['environments']) {
+      this.outputConfig.args['environments'] = [];
     }
 
     if (!value) {
       value = input.value;
     }
 
-    this.outputConfig['environment'].push(input.base + '=' + value);
+    this.outputConfig.args['environments'].push(input.base + '=' + value);
   }
 
   private addToVolumes(value: string, input: any): void {
-    if (!this.outputConfig['volumes']) {
-      this.outputConfig['volumes'] = [];
+    if (!this.outputConfig.args['volumes']) {
+      this.outputConfig.args['volumes'] = [];
     }
 
     if (!value) {
       value = input.value;
     }
 
-    this.outputConfig['volumes'].push(value + ':' + input.base);
+    this.outputConfig.args['volumes'].push(value + ':' + input.base);
   }
 
   private addToPorts(value: string, input: any): void {
-    if (!this.outputConfig['ports']) {
-      this.outputConfig['ports'] = [];
+    if (!this.outputConfig.args['ports']) {
+      this.outputConfig.args['ports'] = [];
     }
 
     if (!value) {
       value = input.value;
     }
 
-    this.outputConfig['ports'].push(value + ':' + input.base);
+    this.outputConfig.args['ports'].push(value + ':' + input.base);
+  }
+
+  private addToFiles(value: string, input: any): void {
+    if (!this.outputConfig.args['files']) {
+      this.outputConfig.args['files'] = {};
+    }
+
+    if (!value) {
+      value = input.value;
+    }
+
+    this.outputConfig.args['files'][input.base] = value;
   }
 
   private addToId(value: string, input: any): void {
@@ -105,6 +130,6 @@ export class ContainerService {
       value = input.value;
     }
 
-    this.containerId = value;
+    this.outputConfig.args['id'] = value;
   }
 }
