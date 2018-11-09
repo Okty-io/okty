@@ -3,7 +3,7 @@ export class OutputConfig {
   args: {
     id: string;
     version: string;
-    files: Array<any>;
+    files: any;
     environments: Array<any>;
     volumes: Array<any>;
   };

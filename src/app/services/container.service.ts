@@ -115,7 +115,7 @@ export class ContainerService {
 
   private addToFiles(value: string, input: any): void {
     if (!this.outputConfig.args['files']) {
-      this.outputConfig.args['files'] = [];
+      this.outputConfig.args['files'] = {};
     }
 
     if (!value) {
