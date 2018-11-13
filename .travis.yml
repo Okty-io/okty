@@ -16,6 +16,7 @@ deploy:
   bucket: okty
   local-dir: dist/okty
   acl: public_read
+  skip_cleanup: true
   on:
     repo: Okty-io/okty
     branch: v2
