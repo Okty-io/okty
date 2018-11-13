@@ -9,11 +9,13 @@ script:
 - "./node_modules/.bin/ng build --prod --aot"
 
 deploy:
-  provider: firebase
-  skip-cleanup: true
-  token:
-    secure: k7/beDs+b6jH2hUQ7HtbpNiqT7scmBNy28tcj7DQA2fB66x9Q/jugVAUv1hcU+hZBqy7Bw008OfracvpJXV46U2gSOHHxCBQg1le7gqb/+Kcb0qwjkNrag0HwlunutHvtKTtUrE2c3uueksT/VM0p73bjJTTMA1wc3eUfZhY1fC44Dm0rFcpsn9oSL0vN4wyfm3RSxN1c1JX2+7vZxRM247Nd3xoXAdRQDLpgqq/QE1fnpD8x7QW5o/UBxVgZj43T7G8YoV8nAHTjEWerIzy7d1QL4WYT8TvmvcpXK719YaKzZBqmNP2J6/lf704vz2JVOo188kFbdUZYI4flXJoRc7M7e8SMbxhcnzUk24cpqemUEX1OdvQSDhWzCwbafg4EDujE6FQ/d6Z6+wuLanMfXH4LOHSuaITNpctXvajwbVc/KhK0S4MIrU8Amn+PXvg/AN/RB2pgCd8BDrtkPfK0/LhQtRMg3yndGtfEyQIBYSEZgsLuSW+SGj50QefiyOKPfrjetpYeqB40dvBrTbNULwqbdCIxBBRTW6ZfyIe8uEnFN8diDTIwHBhktVmIS262gwxxdOGBbHLnTuY8RszvhR6IQ34IWWjayPxJyHZJPo+44BeBOntpKLhmk0mGetSPBhY+9p6CR9WLi6jMHLLDzuODunVv0TTiJv2yfAkHvE=
-  project: okty-7e60c
+  provider: s3
+  access_key_id: AKIAJPRVJ7C4CKQQ2JVQ
+  secret_access_key:
+    secure: B1DLYQo7xT1jlOLkmaB22bUg9i/2hv89+swOLPx46tjHfyMbWV0DblNFcQUBuG0Fm5vf3Jwf7QdvLV9o4Y4hqxNKnlwY/5CV2OFf5lCC4oQGHUBqrnpP5tmGFgtV9EVxJailwx9IWqeahqb0NXNC4p7zd1PknlSqiifC1DS0HOyNWLrbBYj92ArL5GppSXAckMD8OvTX3i3/L32HqnjdvGDUiBkY9aJqvbikHMhnOxKyNgT4cjVPUnDBZBLwiL5Gs8UBf0LVA5AOKpqkEPG3vC9S6tcx0ri4cagLdRP0/sGMZYv12oSKOqeTg+WQy0UeV8uWhj1woPLpdxxAJRBr49eCZO8mYiywLI1hNQEFlMS/t0CfkV4fB9ZkL/BYfPaTVn3iz0FBOUkPyXlpqHZtz0KaUP16+To+SkEbMEt8djFm8VbirFLCUSmaE/EnWuR63z45lt598MaOka+fj41AycS0wvVVV0UilI9VbzmIZ/Al4wLsjM+sVgab6niCpaVAFf3IkNy1qjZR5x1XYmYmAy14mh08POmnPkES9LDlt0vmrmGjHKkrn5QRTwABOAeGbrlACdN4oTYtatlHHtpSDAkfPidhbF77aqyryiW3SGK807iC6a3T7PTbZx9IOyNxewnvA8WsR2SAuXJaENh1+hl19o59Yt2ml0nVJ1ZM0tg=
+  bucket: okty
+  local-dir: dist
+  acl: public_read
   on:
     repo: Okty-io/okty
-    branch: master
+    branch: v2
