@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="column column_left">
+        <div class="center">
+            <div class="center-item center-item-left">
+                <h1>Welcome to Okty</h1>
+                <h3>The simplest open source application<br>to create your docker projects</h3>
+
+                <a routerLink="/" class="action empty">Empty project</a>
+                <a routerLink="/" class="action template">From template</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="column column_right" (onSVGInserted)="animeIso()" [replaceContents]="false" [inlineSVG]="'./assets/iso_lines_color.svg'">
+        <img width="90%" id="plate" class="planche" src="./assets/iso_plate.svg"/>
+        <img width="90%" class="planche" src="./assets/iso_lines_base.svg"/>
+        <img width="90%" class="planche" src="./assets/iso_cubes.svg"/>
+    </div>
+</div>
+
+<div class="mouse">
+    <div class="scroll"></div>
+</div>
+
+<div class="row">
+    <div class="column column_left" style="background: red;">
+        <div class="center">
+            <div class="center-item center-item-left" >
+
+            </div>
+        </div>
+    </div>
+
+    <div class="column column_right" style="background: yellow;">
+        <div class="center">
+            <div class="center-item center-item-right" >
+
+            </div>
+        </div>
+    </div>
+</div>

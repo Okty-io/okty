@@ -1,0 +1,121 @@
+.navbar {
+    width: 100vw;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    .navbar-left {
+        .logo {
+            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 25px;
+            margin-top: 5px;
+        }
+
+        #logo-blue {
+            z-index: 9;
+        }
+        
+        #logo-white {
+            z-index: 10;
+            opacity: 0;
+        }
+
+        .name {
+            position: absolute;
+            top: 0;
+            left: 85px;
+            height: 60px;
+            line-height: 60px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+    }
+
+    .navbar-right {
+        height: 60px;
+        line-height: 60px;
+        width: auto;
+        right: 0;
+        top: 0;
+        position: absolute;
+
+        a {
+            font-family: sans-serif;
+            font-weight: bold;
+            color: white;
+            margin-right: 40px;
+            background-image: linear-gradient(#fff 50%, #fff 50%), linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 50%);
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-size: 0 0.15em, 100% 0.15em;
+            padding-bottom: .188em;
+            text-decoration: none;
+            transition: background-size .5s;
+
+            &:hover {
+                background-size: 100% 0.15em, 100% 0.15em;
+                cursor: pointer;
+            }
+        }
+        
+        .login {
+            margin-right: 15px !important;
+        }
+
+        .signup {
+            background: white;
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.35);
+            color: black !important;
+            margin-right: 25px !important;
+            padding: 3px 18px;
+            cursor: pointer;
+            border-radius: 15px;
+            border: 2px solid white;
+            transition: all .3s ease;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(.9);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(#5a99d4, 0);
+            }
+            100% {
+                transform: scale(.9);
+                box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+            }
+        }
+
+        .signup:hover {
+            background: rgba(255, 255, 255, 0);
+            color: white !important;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+#morph-container {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+#morph-shape {
+    fill: url(#gradient);
+}
