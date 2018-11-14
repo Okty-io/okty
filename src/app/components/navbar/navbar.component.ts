@@ -32,7 +32,6 @@ export class NavbarComponent implements OnInit {
         });
 
         this.shapeConfig();
-        console.log(this.name);
     }
 
     private shapeConfig(): void {
@@ -65,7 +64,7 @@ export class NavbarComponent implements OnInit {
         document.querySelector('.mouse').classList.toggle('fade');
 
         setTimeout(() => {
-            anime({
+            anime(  {
                 targets: '#morph-shape',
                 d: this.pathNav,
                 easing: [.6, 0, .12, 1.2],

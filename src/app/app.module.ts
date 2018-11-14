@@ -5,14 +5,18 @@ import {InlineSVGModule} from 'ng-inline-svg';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {NavbarComponent} from './navbar/navbar.component';
-import {HomeComponent} from './home/home.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {HomeComponent} from './components/home/home.component';
+import {ContainersResolver} from './services/containers.resolver';
+import {TemplatesResolver} from './services/templates.resolver';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavbarComponent,
-        HomeComponent
+        HomeComponent,
+        SearchComponent
     ],
     imports: [
         BrowserModule,
@@ -20,7 +24,10 @@ import {HomeComponent} from './home/home.component';
         HttpClientModule,
         InlineSVGModule.forRoot()
     ],
-    providers: [],
+    providers: [
+        ContainersResolver,
+        TemplatesResolver
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
