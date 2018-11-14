@@ -1,28 +1,25 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
-import {InlineSVGModule} from 'ng-inline-svg';
-
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {NavbarComponent} from './components/navbar/navbar.component';
-import {HomeComponent} from './components/home/home.component';
-import {ContainersResolver} from './services/containers.resolver';
-import {TemplatesResolver} from './services/templates.resolver';
-import { SearchComponent } from './components/search/search.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { ContainersResolver } from './core/resolvers/containers.resolver';
+import { TemplatesResolver } from './core/resolvers/templates.resolver';
+import { RouterModule } from '@angular/router';
+import { CoreModule } from './core/core.module';
+import { HomeModule } from './modules/home/home.module';
+import { GeneratorModule } from './modules/generator/generator.module';
 
 @NgModule({
     declarations: [
         AppComponent,
-        NavbarComponent,
-        HomeComponent,
-        SearchComponent
+        NavbarComponent
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        InlineSVGModule.forRoot()
+        RouterModule.forRoot([]),
+        CoreModule,
+        HomeModule,
+        GeneratorModule
     ],
     providers: [
         ContainersResolver,
