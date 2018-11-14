@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
     }
 
-    private animeIso(): void {
+    public animeIso(): void {
         this.relativeOffset
             .add({
                 targets: 'svg .cls-1 #Calque_2 #Calque_12 .gr1',

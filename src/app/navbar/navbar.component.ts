@@ -57,7 +57,7 @@ export class NavbarComponent implements OnInit {
         });
     }
 
-    private shapeAnime(): void {
+    public shapeAnime(): void {
         this.pathNav = 'M0,0v60.1c0,0,0,0,0,0L' + window.innerWidth + ',60v0V0c0,0,0,0,0,0H0';
 
         document.querySelector('.column_left').classList.toggle('fade-to-bottom');
