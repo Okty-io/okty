@@ -4,10 +4,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { ContainersResolver } from './core/resolvers/containers.resolver';
 import { TemplatesResolver } from './core/resolvers/templates.resolver';
-import { RouterModule } from '@angular/router';
 import { CoreModule } from './core/core.module';
-import { HomeModule } from './modules/home/home.module';
-import { GeneratorModule } from './modules/generator/generator.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
     declarations: [
@@ -16,10 +14,8 @@ import { GeneratorModule } from './modules/generator/generator.module';
     ],
     imports: [
         BrowserModule,
-        RouterModule.forRoot([]),
-        CoreModule,
-        HomeModule,
-        GeneratorModule
+        AppRoutingModule,
+        CoreModule
     ],
     providers: [
         ContainersResolver,
