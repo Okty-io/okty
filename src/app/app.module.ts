@@ -6,6 +6,7 @@ import { ContainersResolver } from './core/resolvers/containers.resolver';
 import { TemplatesResolver } from './core/resolvers/templates.resolver';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -14,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         AppRoutingModule,
         CoreModule
     ],
