@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
     public animeIso(): void {
         setTimeout(() => {
-            document.querySelector('.planche-anim').style.opacity = 1;
+            (document.querySelector('.planche-anim') as any).style.opacity = 1;
             this.relativeOffset
                 .add({
                     targets: 'svg .cls-1 #Calque_2 #Calque_12 .gr1',
