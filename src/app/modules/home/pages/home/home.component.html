@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="column column_left">
+    <div id="column_left" class="column column_left">
         <div class="center">
             <div class="center-item center-item-left">
                 <h1>Welcome to Okty</h1>
@@ -11,11 +11,11 @@
         </div>
     </div>
 
-    <div class="column column_right" (onSVGInserted)="animeIso()" [replaceContents]="false"
+    <div id="column_right" class="column column_right" (onSVGInserted)="animeIso()" [replaceContents]="false"
          [inlineSVG]="'./assets/iso_lines_color.svg'">
         <img width="90%" id="plate" class="planche" src="./assets/iso_plate.svg"/>
-        <img width="90%" class="planche" src="./assets/iso_lines_base.svg"/>
-        <img width="90%" class="planche" src="./assets/iso_cubes.svg"/>
+        <img width="90%" id="lines" class="planche" src="./assets/iso_lines_base.svg"/>
+        <img width="90%" id="cubes" class="planche" src="./assets/iso_cubes.svg"/>
     </div>
 </div>
 
