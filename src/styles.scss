@@ -1,3 +1,52 @@
+/*********************************************
+***************** VARIABLES ******************
+*********************************************/
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+$color--primary: #227fc8;
+$font--lato: 'Lato', sans-serif;
+
+/*********************************************
+**************** MEDIA SIZE ******************
+*********************************************/
+
+$S: 480px;
+$M: 790px;
+$L: 970px;
+
+@mixin MQ( $canvas ) {
+    @if $canvas == S {
+        @media only screen and ( max-width: $S ) {
+            @content;
+        }
+    } @else if $canvas == M {
+        @media only screen and ( max-width: $M ) {
+            @content;
+        }
+    } @else if $canvas == L {
+        @media only screen and ( max-width: $L ) {
+            @content;
+        }
+    }
+}
+
+/*********************************************
+***************** GENERAL ********************
+*********************************************/
+
+html {
+    font-family: $font--lato;
+    font-size: 15px;
+    color: #000;
+    line-height: 1.7;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-feature-settings: "liga" on;
+}
+
 body {
     padding: 0;
     margin: 0;
