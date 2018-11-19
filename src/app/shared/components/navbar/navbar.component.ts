@@ -22,12 +22,20 @@ export class NavbarComponent implements OnInit {
     ngOnInit() {
         this.amount = (0.6 * (100 - (window.innerWidth * 100 / window.screen.width)) / 100);
         this.viewBox = '0 0 ' + (window.innerWidth - 10) + ' ' + window.innerHeight;
-        this.pathShape = 'M' + (window.innerWidth / 100) * 47.3 + ',0v227.2c0,64.8,34.6,124.8,90.8,157.2L' + window.innerWidth + ',' +
-            (((window.innerHeight / 100) * 84.8) * (0.98 - this.amount)) + 'v0.1V0H' + (window.innerWidth / 100) * 47.3;
-        this.pathNav = 'M0,0v60.1c0,0,0,0,0,0L' + window.innerWidth + ',60v0V0c0,0,0,0,0,0H0';
         this.animFinished = false;
+        this.pathNav = 'M0,0v60.1c0,0,0,0,0,0L' + window.innerWidth + ',60v0V0c0,0,0,0,0,0H0';
 
-        this.shapeConfig();
+        if (window.innerWidth < 971) {
+            this.pathShape = this.pathNav;
+            document.querySelector('#morph-container path').setAttribute('d', this.pathNav);
+            this.name.nativeElement.style.color = 'white';
+            this.shapeConfig();
+        } else {
+            this.pathShape = 'M' + (window.innerWidth / 100) * 47.3 + ',0v227.2c0,64.8,34.6,124.8,90.8,157.2L' + window.innerWidth + ',' +
+                (((window.innerHeight / 100) * 84.8) * (0.98 - this.amount)) + 'v0.1V0H' + (window.innerWidth / 100) * 47.3;
+            this.name.nativeElement.style.color = 'black';
+            this.shapeConfig();
+        }
 
         this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd && event.url !== '/') {
@@ -38,10 +46,6 @@ export class NavbarComponent implements OnInit {
 
     public shapeAnime(): void {
         this.pathNav = 'M0,0v60.1c0,0,0,0,0,0L' + window.innerWidth + ',60v0V0c0,0,0,0,0,0H0';
-
-        // document.querySelector('.column_left').classList.toggle('fade-to-bottom');
-        // document.querySelector('.column_right').classList.toggle('fade-to-top');
-        // document.querySelector('.mouse').classList.toggle('fade');
 
         setTimeout(() => {
             anime({
@@ -80,13 +84,20 @@ export class NavbarComponent implements OnInit {
             this.viewBox = '0 0 ' + window.innerWidth + ' ' + window.innerHeight;
             document.querySelector('#morph-container').setAttribute('viewBox', this.viewBox);
 
-            if (this.animFinished) {
+            if (window.innerWidth < 971) {
                 this.pathNav = 'M0,0v60.1c0,0,0,0,0,0L' + window.innerWidth + ',60v0V0c0,0,0,0,0,0H0';
                 document.querySelector('#morph-container path').setAttribute('d', this.pathNav);
+                this.name.nativeElement.style.color = 'white';
             } else {
-                this.pathShape = 'M' + (window.innerWidth / 100) * 47.3 + ',0v227.2c0,64.8,34.6,124.8,90.8,157.2L' + window.innerWidth +
-                    ',' + (((window.innerHeight / 100) * 84.8) * (0.98 - this.amount)) + 'v0.1V0H' + (window.innerWidth / 100) * 47.3;
-                document.querySelector('#morph-container path').setAttribute('d', this.pathShape);
+                if (this.animFinished) {
+                    this.pathNav = 'M0,0v60.1c0,0,0,0,0,0L' + window.innerWidth + ',60v0V0c0,0,0,0,0,0H0';
+                    document.querySelector('#morph-container path').setAttribute('d', this.pathNav);
+                } else {
+                    this.pathShape = 'M' + (window.innerWidth / 100) * 47.3 + ',0v227.2c0,64.8,34.6,124.8,90.8,157.2L' + window.innerWidth +
+                        ',' + (((window.innerHeight / 100) * 84.8) * (0.98 - this.amount)) + 'v0.1V0H' + (window.innerWidth / 100) * 47.3;
+                    document.querySelector('#morph-container path').setAttribute('d', this.pathShape);
+                }
+                this.name.nativeElement.style.color = 'black';
             }
         });
     }

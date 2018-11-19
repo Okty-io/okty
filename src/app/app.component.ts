@@ -9,6 +9,7 @@ import { navbarAnimation } from './shared/components/navbar/navbar.animation';
         <div [@routeAnimations]="prepareRoute(outlet)">
             <app-navbar></app-navbar>
             <router-outlet #outlet="outlet"></router-outlet>
+            <app-footer></app-footer>
         </div>
     `,
     animations: [
