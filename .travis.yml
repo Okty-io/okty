@@ -21,3 +21,7 @@ deploy:
     on:
         repo: Okty-io/okty
         branch: v2
+
+after_deploy:
+    - aws configure set preview.cloudfront true
+    - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
