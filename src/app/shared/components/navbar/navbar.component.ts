@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.amount = (0.6 * (100 - (window.innerWidth * 100 / window.screen.width)) / 100);
+        /*this.amount = (0.6 * (100 - (window.innerWidth * 100 / window.screen.width)) / 100);
         this.viewBox = '0 0 ' + (window.innerWidth - 10) + ' ' + window.innerHeight;
         this.animFinished = false;
         this.pathNav = 'M0,0v60.1c0,0,0,0,0,0L' + window.innerWidth + ',60v0V0c0,0,0,0,0,0H0';
@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit {
             if (event instanceof NavigationEnd && event.url !== '/') {
                 // this.shapeAnime();
             }
-        });
+        });*/
     }
 
     public shapeAnime(): void {
