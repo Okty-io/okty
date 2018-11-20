@@ -7,6 +7,7 @@
     top: 0;
     left: 0;
     z-index: 2;
+    background-color: #227fc8;;
 
     .navbar-left {
         .logo {
@@ -23,7 +24,7 @@
 
         #logo-white {
             z-index: 10;
-            opacity: 0;
+            opacity: 1;
         }
 
         .name {
@@ -35,6 +36,7 @@
             font-size: 20px;
             font-weight: bold;
             font-family: sans-serif;
+            color: #fff;
         }
 
         a, a:visited {
