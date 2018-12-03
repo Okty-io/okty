@@ -4,14 +4,6 @@ export const homeAnimation =
     trigger('routeAnimations', [
         // ENTER HOMEPAGE
         transition('* => HomePage', [
-            query(':enter, :leave', [
-                style({
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%'
-                })
-            ]),
             group([
                 query('#plate', [
                     animate('1.5s ease-out', keyframes([
@@ -45,14 +37,6 @@ export const homeAnimation =
         ]),
         // LEAVE HOMEPAGE
         transition('HomePage => *', [
-            query(':enter, :leave', [
-                style({
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%'
-                })
-            ]),
             group([
                 query('#column_left', [
                     animate('1s ease-out', style({

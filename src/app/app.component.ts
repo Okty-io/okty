@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { homeAnimation } from './modules/home/pages/home/home.animation';
-import { navbarAnimation } from './shared/components/navbar/navbar.animation';
 
 @Component({
     selector: 'app-root',
     template: `
-        <div [@routeAnimations]="prepareRoute(outlet)">
+        <div [@routeAnimations]="prepareRoute(outlet)" style="min-height: 100vh">
             <app-navbar></app-navbar>
             <router-outlet #outlet="outlet"></router-outlet>
-            <app-footer></app-footer>
         </div>
+        <app-footer></app-footer>
     `,
     animations: [
-        // navbarAnimation,
         homeAnimation
     ]
 })
