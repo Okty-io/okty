@@ -1,11 +1,11 @@
 # How to contribute
 
-We're really glad you're reading this, because we need volunteer developers to help this project to stay up to date.
+We're really glad you're reading this, because we need your help to improve this project.
 
 ## Testing
 
-We're currently working on writing some test to provide a better application in the future.
-Feel free to make them on new features if you decide to improve our application.
+We're currently working on our continuous integration deployment, so we need you to make sure you implement
+tests on your code if you decide to take part of the adventure. 
 
 ## Submitting changes
 
@@ -13,13 +13,13 @@ Please send a [GitHub Pull Request](https://github.com/Okty-io/okty/compare) wit
 Make sure all of your commits are atomic (one feature per commit).  
 Always write a clear log message for your commits.
 
-If you submit a pull request, we will love you forever ! 
-And if you don't, at least send us a feedback on Twitter @OktyApp sharing your experience with Okty.
+Of course, every pull request acceptation will add you to our contributors list.
+Please don't forger to leave us a feedback on Twitter @OktyApp sharing your experience with Okty.
 
 ## Coding conventions
 
 Start reading our code and you'll get the hang of it. 
-In case of a doubt, refer to angular recommendation
+In case of a doubt, refer to angular recommendations.
 
 Thanks,
-Samuel, Laurent, Maxime & Jordan
+From Samuel, Laurent, Maxime, Jordan and Adrien
