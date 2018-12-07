@@ -1,4 +1,6 @@
-export default class Container {
+import Listable from '../interfaces/listable';
+
+export default class Container implements Listable {
     name: string;
     logo: string;
     config: Array<{
@@ -14,4 +16,12 @@ export default class Container {
             validators: Array<{ [key: string]: any }>;
         }>;
     }>;
+
+    getTitle(): string {
+        return this.name;
+    }
+
+    getImage(): string {
+        return this.logo;
+    }
 }
