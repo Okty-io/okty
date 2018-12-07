@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        HttpClientModule,
         AppRoutingModule,
         CoreModule
     ],

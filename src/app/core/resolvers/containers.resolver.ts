@@ -1,9 +1,15 @@
-import {Injectable} from '@angular/core';
-import {Resolve} from '@angular/router';
+import { Injectable } from '@angular/core';
+import { Resolve } from '@angular/router';
+import { ContainerService } from '../services/container.service';
+import Container from '../models/container';
 
 @Injectable()
 export class ContainersResolver implements Resolve<any> {
-    resolve(): any {
-        return undefined;
+
+    constructor(private containerService: ContainerService) {
+    }
+
+    resolve(): Promise<Container[]> {
+        return this.containerService.getAll();
     }
 }
