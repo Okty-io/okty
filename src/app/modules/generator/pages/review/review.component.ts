@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../../../core/services/session.service';
-import { FormFieldData } from '../../../../core/interfaces/form-field-data';
+import { ContainerFormData } from '../../../../core/interfaces/form-data';
 
 @Component({
     selector: 'app-generator-review',
@@ -9,7 +9,7 @@ import { FormFieldData } from '../../../../core/interfaces/form-field-data';
 })
 export class ReviewComponent implements OnInit {
 
-    containers: Array<FormFieldData[]>;
+    containers: Array<ContainerFormData>;
 
     constructor(private sessionService: SessionService) {
 
