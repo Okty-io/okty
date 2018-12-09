@@ -3,6 +3,7 @@ import { ContainerService } from '../../../../core/services/container.service';
 import { ActivatedRoute } from '@angular/router';
 import { Container } from '../../../../core/models/container';
 import { FormGroup } from '@angular/forms';
+import { SessionService } from '../../../../core/services/session.service';
 
 @Component({
     templateUrl: './add.component.html',
@@ -16,7 +17,11 @@ export class AddComponent implements OnInit, OnDestroy {
     data: FormGroup;
     error: string;
 
-    constructor(private containerService: ContainerService, private route: ActivatedRoute) {
+    constructor(
+        private containerService: ContainerService,
+        private sessionService: SessionService,
+        private route: ActivatedRoute
+    ) {
     }
 
     ngOnInit(): void {
@@ -32,7 +37,6 @@ export class AddComponent implements OnInit, OnDestroy {
     }
 
     submit(): void {
-        console.log(this.data);
-        console.log(this.data.valid);
+        this.sessionService.addContainer(this.data.value);
     }
 }
