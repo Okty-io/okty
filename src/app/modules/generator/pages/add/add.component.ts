@@ -4,6 +4,8 @@ import { Container } from '../../../../core/models/container';
 import { FormGroup } from '@angular/forms';
 import { SessionService } from '../../../../core/services/session.service';
 import { ContainerRepository } from '../../../../core/repositories/container.repository';
+import { ContainerFormData } from '../../../../core/interfaces/form-data';
+import { ContainerService } from '../../../../core/services/container.service';
 
 @Component({
     templateUrl: './add.component.html',
@@ -21,7 +23,8 @@ export class AddComponent implements OnInit, OnDestroy {
         private containerRepository: ContainerRepository,
         private sessionService: SessionService,
         private route: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private containerService: ContainerService
     ) {
     }
 
@@ -38,7 +41,13 @@ export class AddComponent implements OnInit, OnDestroy {
     }
 
     submit(): void {
-        this.sessionService.addContainer(this.data.value);
-        this.router.navigate(['/', 'generator', 'review']);
+        const containerFormData = new ContainerFormData();
+        containerFormData.image = this.route.snapshot.params.id;
+        containerFormData.config = this.data.value;
+
+        console.log(this.containerService.formDataToApiArg(this.container, containerFormData));
+
+        this.sessionService.addContainer(containerFormData);
+        // this.router.navigate(['/', 'generator', 'review']);
     }
 }
