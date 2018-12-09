@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ContainerService } from '../../../../core/services/container.service';
 import { Container } from '../../../../core/models/container';
 import { Listable } from '../../../../core/interfaces/listable';
+import { ContainerRepository } from '../../../../core/repositories/container.repository';
 
 @Component({
     templateUrl: './containers.component.html',
@@ -14,14 +14,14 @@ export class ContainersComponent implements OnInit, OnDestroy {
 
     private subscribeContainers;
 
-    constructor(private containerService: ContainerService) {
+    constructor(private containerRepository: ContainerRepository) {
     }
 
     ngOnInit(): void {
         this.containers = null;
         this.displayed = null;
 
-        this.subscribeContainers = this.containerService.getAll().subscribe((containers: Container[]) => {
+        this.subscribeContainers = this.containerRepository.getAll().subscribe((containers: Container[]) => {
             this.containers = containers;
             this.displayed = containers;
         });

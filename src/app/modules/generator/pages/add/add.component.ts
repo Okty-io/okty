@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ContainerService } from '../../../../core/services/container.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Container } from '../../../../core/models/container';
 import { FormGroup } from '@angular/forms';
 import { SessionService } from '../../../../core/services/session.service';
+import { ContainerRepository } from '../../../../core/repositories/container.repository';
 
 @Component({
     templateUrl: './add.component.html',
@@ -18,7 +18,7 @@ export class AddComponent implements OnInit, OnDestroy {
     error: string;
 
     constructor(
-        private containerService: ContainerService,
+        private containerRepository: ContainerRepository,
         private sessionService: SessionService,
         private route: ActivatedRoute,
         private router: Router
@@ -26,7 +26,7 @@ export class AddComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.subscribeContainer = this.containerService.getOne(this.route.snapshot.params.id)
+        this.subscribeContainer = this.containerRepository.getOne(this.route.snapshot.params.id)
             .subscribe(
                 (container: Container) => this.container = container,
                 (error: string) => this.error = error

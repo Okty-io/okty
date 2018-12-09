@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ApiService } from '../services/api.service';
 import { Template } from '../models/template';
 
 @Injectable({
     providedIn: 'root'
 })
-export class TemplateService {
+export class TemplateRepository {
 
     constructor(private api: ApiService) {
     }
