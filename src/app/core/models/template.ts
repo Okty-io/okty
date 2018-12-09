@@ -1,6 +1,7 @@
 import { Listable } from '../interfaces/listable';
 
 export class Template implements Listable {
+    id: string;
     name: string;
     logo: string;
     containers: Array<{
@@ -16,5 +17,9 @@ export class Template implements Listable {
 
     getImage(): string {
         return this.logo;
+    }
+
+    getLink(): string {
+        return '/';
     }
 }

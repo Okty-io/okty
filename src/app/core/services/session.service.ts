@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormFieldData } from '../models/form-field-data';
+import { FormFieldData } from '../interfaces/form-field-data';
 
 @Injectable({
     providedIn: 'root'
@@ -14,5 +14,9 @@ export class SessionService {
 
     addContainer(data: FormFieldData[]): void {
         this.containers.push(data);
+    }
+
+    getContainers(): Array<FormFieldData[]> {
+        return this.containers;
     }
 }

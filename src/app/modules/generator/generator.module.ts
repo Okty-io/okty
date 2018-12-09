@@ -18,6 +18,7 @@ import { SelectContainerComponent } from './components/fields/select-container/s
 import { OnlyVisibleFieldPipe } from './directives/only-visible-field.pipe';
 import { FormComponent } from './components/form/form.component';
 import { ValidatorErrorsPipe } from './directives/validator-errrors.pipe';
+import { ReviewComponent } from './pages/review/review.component';
 
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ import { ValidatorErrorsPipe } from './directives/validator-errrors.pipe';
         SelectMultipleComponent,
         SelectContainerComponent,
         FormComponent,
+        ReviewComponent,
     ],
     imports: [
         CommonModule,
