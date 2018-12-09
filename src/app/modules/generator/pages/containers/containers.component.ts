@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import Container from '../../../../core/models/container';
 import { ContainerService } from '../../../../core/services/container.service';
+import Listable from '../../../../core/interfaces/listable';
 
 @Component({
     selector: 'app-containers',
@@ -10,6 +11,7 @@ import { ContainerService } from '../../../../core/services/container.service';
 export class ContainersComponent implements OnInit, OnDestroy {
 
     containers: Container[];
+    displayed: Listable[];
 
     private subscribeContainers;
 
@@ -18,10 +20,19 @@ export class ContainersComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.containers = null;
-        this.containerService.getAll().subscribe((containers: Container[]) => this.containers = containers);
+        this.displayed = null;
+
+        this.containerService.getAll().subscribe((containers: Container[]) => {
+            this.containers = containers;
+            this.displayed = containers;
+        });
     }
 
     ngOnDestroy() {
         this.subscribeContainers.unsubscribe();
+    }
+
+    updateDisplayed(containers: Listable[]) {
+        this.displayed = containers;
     }
 }
