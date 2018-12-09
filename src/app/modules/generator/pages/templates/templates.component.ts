@@ -4,7 +4,6 @@ import Template from '../../../../core/models/template';
 import Listable from '../../../../core/interfaces/listable';
 
 @Component({
-    selector: 'app-templates',
     templateUrl: './templates.component.html',
     styleUrls: ['./templates.component.scss']
 })

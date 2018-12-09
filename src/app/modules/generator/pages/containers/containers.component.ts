@@ -4,7 +4,6 @@ import { ContainerService } from '../../../../core/services/container.service';
 import Listable from '../../../../core/interfaces/listable';
 
 @Component({
-    selector: 'app-containers',
     templateUrl: './containers.component.html',
     styleUrls: ['./containers.component.scss']
 })
