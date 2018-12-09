@@ -15,6 +15,6 @@ export class ApiService {
     }
 
     public get(endpoint: string): Observable<any> {
-        return this.http.get(`${this.baseUrl}/${endpoint}`);
+        return this.http.get(`${this.baseUrl}/${endpoint}/`);
     }
 }

@@ -18,7 +18,7 @@ export class ContainersComponent implements OnInit, OnDestroy {
     constructor(private containerService: ContainerService) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.containers = null;
         this.displayed = null;
 
@@ -28,7 +28,7 @@ export class ContainersComponent implements OnInit, OnDestroy {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subscribeContainers.unsubscribe();
     }
 

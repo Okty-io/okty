@@ -1,3 +1,2 @@
-<p>
-  templates works!
-</p>
+<app-generator-search [elements]="templates" (outputSearch)="updateDisplayed($event)"></app-generator-search>
+<app-generator-list [elements]="displayed"></app-generator-list>
