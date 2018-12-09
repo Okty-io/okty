@@ -1,9 +1,14 @@
-<div *ngIf="elements == null">
-    Loading ...
+<div class="text" *ngIf="!elements || (elements && elements.length == 0)">
+    <div *ngIf="elements == null">
+        Loading ...
+    </div>
+    <div *ngIf="elements && elements.length == 0">
+        No data
+    </div>
 </div>
-<div *ngIf="elements && elements.length == 0">
-    No data
-</div>
-<div *ngFor="let element of elements">
-    {{ element.getTitle() }}
+
+<div class="list" *ngIf="elements && elements.length > 0">
+    <div *ngFor="let element of elements">
+        {{ element.getTitle() }}
+    </div>
 </div>
