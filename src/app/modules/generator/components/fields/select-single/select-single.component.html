@@ -1,3 +1,11 @@
-<p>
-  select-single works!
-</p>
+<label>
+    {{ field.label }}
+    <select [name]="field.label" [formControl]="formControl">
+        <option *ngFor="let option of options" [value]="option.value">
+            {{option.label}}
+        </option>
+    </select>
+</label>
+<div *ngIf="formControl.invalid">
+    <p>{{ formControl.errors | validatorErrors }}</p>
+</div>

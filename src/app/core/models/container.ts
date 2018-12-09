@@ -28,6 +28,7 @@ export interface ContainerConfigField {
     destination: 'id' | 'version' | 'ports' | 'volumes' | 'environment' | 'files' | 'docker-compose';
     value: string;
     validators: Array<ContainerConfigFieldValidator>;
+    source: Array<{ [key: string]: string }>;
 }
 
 export interface ContainerConfigFieldValidator {
