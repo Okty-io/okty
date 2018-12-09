@@ -1,6 +1,7 @@
 import { Listable } from '../interfaces/listable';
 
 export class Container implements Listable {
+    id: string;
     name: string;
     logo: string;
     config: ContainerConfigGroup[];
@@ -11,6 +12,10 @@ export class Container implements Listable {
 
     getImage(): string {
         return this.logo;
+    }
+
+    getLink(): string {
+        return '/generator/add/' + this.id;
     }
 }
 

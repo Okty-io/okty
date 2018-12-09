@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ContainerService } from '../../../../core/services/container.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Container } from '../../../../core/models/container';
 import { FormGroup } from '@angular/forms';
 import { SessionService } from '../../../../core/services/session.service';
@@ -20,7 +20,8 @@ export class AddComponent implements OnInit, OnDestroy {
     constructor(
         private containerService: ContainerService,
         private sessionService: SessionService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router
     ) {
     }
 
@@ -38,5 +39,6 @@ export class AddComponent implements OnInit, OnDestroy {
 
     submit(): void {
         this.sessionService.addContainer(this.data.value);
+        this.router.navigate(['/', 'generator', 'review']);
     }
 }

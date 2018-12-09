@@ -21,7 +21,7 @@ export class ContainersComponent implements OnInit, OnDestroy {
         this.containers = null;
         this.displayed = null;
 
-        this.containerService.getAll().subscribe((containers: Container[]) => {
+        this.subscribeContainers = this.containerService.getAll().subscribe((containers: Container[]) => {
             this.containers = containers;
             this.displayed = containers;
         });
