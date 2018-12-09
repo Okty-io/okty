@@ -1,21 +1,9 @@
-import Listable from '../interfaces/listable';
+import { Listable } from '../interfaces/listable';
 
-export default class Container implements Listable {
+export class Container implements Listable {
     name: string;
     logo: string;
-    config: Array<{
-        id: string;
-        label: string;
-        fields: Array<{
-            id: string;
-            label: string;
-            type: 'input' | 'select' | 'multi-select' | 'select-container';
-            base: string;
-            destination: 'id' | 'version' | 'ports' | 'volumes' | 'environment' | 'files' | 'docker-compose';
-            value: string;
-            validators: Array<{ [key: string]: any }>;
-        }>;
-    }>;
+    config: ContainerConfigGroup[];
 
     getTitle(): string {
         return this.name;
@@ -24,4 +12,24 @@ export default class Container implements Listable {
     getImage(): string {
         return this.logo;
     }
+}
+
+export interface ContainerConfigGroup {
+    id: string;
+    label: string;
+    fields: Array<ContainerConfigField>;
+}
+
+export interface ContainerConfigField {
+    id: string;
+    label: string;
+    type: 'input' | 'checkbox' | 'select-single' | 'select-multiple' | 'select-container' | 'hidden';
+    base: string;
+    destination: 'id' | 'version' | 'ports' | 'volumes' | 'environment' | 'files' | 'docker-compose';
+    value: string;
+    validators: Array<ContainerConfigFieldValidator>;
+}
+
+export interface ContainerConfigFieldValidator {
+    [key: string]: string | object | number;
 }

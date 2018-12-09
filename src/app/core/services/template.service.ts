@@ -3,7 +3,7 @@ import { ApiService } from './api.service';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
-import Template from '../models/template';
+import { Template } from '../models/template';
 
 @Injectable({
     providedIn: 'root'

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TemplateService } from '../../../../core/services/template.service';
-import Template from '../../../../core/models/template';
-import Listable from '../../../../core/interfaces/listable';
+import { Template } from '../../../../core/models/template';
+import { Listable } from '../../../../core/interfaces/listable';
 
 @Component({
     templateUrl: './templates.component.html',
