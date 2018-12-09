@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import Listable from '../../../../core/interfaces/listable';
+import { Listable } from '../../../../core/interfaces/listable';
 
 @Component({
     selector: 'app-generator-search',

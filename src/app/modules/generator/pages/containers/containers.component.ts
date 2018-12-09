@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import Container from '../../../../core/models/container';
 import { ContainerService } from '../../../../core/services/container.service';
-import Listable from '../../../../core/interfaces/listable';
+import { Container } from '../../../../core/models/container';
+import { Listable } from '../../../../core/interfaces/listable';
 
 @Component({
     templateUrl: './containers.component.html',

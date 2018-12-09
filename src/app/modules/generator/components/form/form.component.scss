@@ -1,0 +1,16 @@
+:host {
+    .group {
+        background-color: #a9a9a9;
+        display: flex;
+        flex-wrap: wrap;
+
+        h2 {
+            width: 100%;
+        }
+
+        .field {
+            background-color: #e2e2e2;
+            width: 50%;
+        }
+    }
+}

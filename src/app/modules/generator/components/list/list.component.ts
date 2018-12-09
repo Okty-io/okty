@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import Listable from '../../../../core/interfaces/listable';
+import { Listable } from '../../../../core/interfaces/listable';
 
 @Component({
     selector: 'app-generator-list',
@@ -8,7 +8,7 @@ import Listable from '../../../../core/interfaces/listable';
 })
 export class ListComponent {
 
-    @Input() elements: Array<Listable>;
+    @Input() elements: Listable[];
 
     constructor() {
     }

@@ -1,0 +1,15 @@
+:host {
+    .config {
+        width: 50%;
+
+        .header {
+            img {
+                max-width: 100px;
+            }
+
+            h1 {
+                display: inline;
+            }
+        }
+    }
+}

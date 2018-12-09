@@ -1,6 +1,6 @@
-import Listable from '../interfaces/listable';
+import { Listable } from '../interfaces/listable';
 
-export default class Template implements Listable {
+export class Template implements Listable {
     name: string;
     logo: string;
     containers: Array<{

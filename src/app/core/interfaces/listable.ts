@@ -1,4 +1,4 @@
-export default interface Listable {
+export interface Listable {
     getTitle(): string;
 
     getImage(): string;

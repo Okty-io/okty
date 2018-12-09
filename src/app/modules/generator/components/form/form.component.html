@@ -1,0 +1,9 @@
+<div class="group" *ngFor="let group of container.config">
+    <h2>{{ group.label }}</h2>
+    <div class="field" *ngFor="let field of group.fields|onlyVisibleField">
+        <ng-template appGeneratorFormField
+                     [appFormField]="field"
+                     [appFormControl]="getFormControl(group, field)">
+        </ng-template>
+    </div>
+</div>
