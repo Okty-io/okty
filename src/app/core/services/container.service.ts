@@ -24,4 +24,14 @@ export class ContainerService {
             })
         );
     }
+
+    public getOne(id: string): Observable<Container> {
+        return this.api.get(`container/form/${id}`).pipe(
+            map((element: object) => Object.assign(new Container, element)),
+            catchError((error: HttpErrorResponse) => {
+                console.error(error.message);
+                return of(null);
+            })
+        );
+    }
 }

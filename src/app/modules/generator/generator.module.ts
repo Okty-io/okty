@@ -7,9 +7,10 @@ import { TemplatesComponent } from './pages/templates/templates.component';
 import { SearchComponent } from './components/search/search.component';
 import { ListComponent } from './components/list/list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddComponent } from './pages/add/add.component';
 
 @NgModule({
-    declarations: [ContainersComponent, TemplatesComponent, SearchComponent, ListComponent],
+    declarations: [ContainersComponent, TemplatesComponent, SearchComponent, ListComponent, AddComponent],
     imports: [
         CommonModule,
         GeneratorRoutingModule,
