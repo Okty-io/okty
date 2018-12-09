@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { TemplateService } from '../../../../core/services/template.service';
 import { Template } from '../../../../core/models/template';
 import { Listable } from '../../../../core/interfaces/listable';
+import { TemplateRepository } from '../../../../core/repositories/template.repository';
 
 @Component({
     templateUrl: './templates.component.html',
@@ -14,14 +14,14 @@ export class TemplatesComponent implements OnInit, OnDestroy {
 
     private subscribeTemplates;
 
-    constructor(private templateService: TemplateService) {
+    constructor(private templateRepository: TemplateRepository) {
     }
 
     ngOnInit(): void {
         this.templates = null;
         this.displayed = null;
 
-        this.subscribeTemplates = this.templateService.getAll().subscribe((templates) => {
+        this.subscribeTemplates = this.templateRepository.getAll().subscribe((templates) => {
             this.templates = templates;
             this.displayed = templates;
         });
