@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import Container from '../models/container';
 import { ApiService } from './api.service';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -28,10 +28,7 @@ export class ContainerService {
     public getOne(id: string): Observable<Container> {
         return this.api.get(`container/form/${id}`).pipe(
             map((element: object) => Object.assign(new Container, element)),
-            catchError((error: HttpErrorResponse) => {
-                console.error(error.message);
-                return of(null);
-            })
+            catchError((response: HttpErrorResponse) => throwError(response.error.error ? response.error.error : 'Error'))
         );
     }
 }

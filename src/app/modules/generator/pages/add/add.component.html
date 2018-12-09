@@ -1,5 +1,10 @@
-<div *ngIf="!container">
-    Loading ...
+<div class="text" *ngIf="!container">
+    <div *ngIf="error">
+        {{error}}
+    </div>
+    <div *ngIf="!error">
+        Loading ...
+    </div>
 </div>
 <div *ngIf="container">
     <h1>New {{container.name}}</h1>
