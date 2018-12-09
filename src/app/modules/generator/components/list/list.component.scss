@@ -1,0 +1,16 @@
+:host {
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+
+        div {
+            width: 150px;
+            height: 150px;
+            border: 1px solid #000;
+
+            margin: 12px;
+
+            text-align: center;
+        }
+    }
+}
