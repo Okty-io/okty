@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import Listable from '../../../../core/interfaces/listable';
 
 @Component({
@@ -6,15 +6,10 @@ import Listable from '../../../../core/interfaces/listable';
     templateUrl: './list.component.html',
     styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
 
     @Input() elements: Array<Listable>;
 
     constructor() {
     }
-
-    ngOnInit() {
-        console.log(this.elements);
-    }
-
 }
