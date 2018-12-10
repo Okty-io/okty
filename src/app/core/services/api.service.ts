@@ -17,4 +17,8 @@ export class ApiService {
     public get(endpoint: string): Observable<any> {
         return this.http.get(`${this.baseUrl}/${endpoint}/`);
     }
+
+    public post(endpoint: string, data: any): Observable<any> {
+        return this.http.post(`${this.baseUrl}/${endpoint}/`, data, {responseType: 'json'});
+    }
 }
