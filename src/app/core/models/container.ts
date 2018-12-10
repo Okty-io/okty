@@ -30,7 +30,7 @@ export interface ContainerConfigField {
     label: string;
     type: 'input' | 'checkbox' | 'select-single' | 'select-multiple' | 'select-container' | 'hidden';
     base: string;
-    destination: 'id' | 'version' | 'ports' | 'volumes' | 'environment' | 'files' | 'docker-compose';
+    destination: 'id' | 'version' | 'volumes' | 'ports' | 'environments' | 'files' | 'docker-compose';
     value: string;
     validators: Array<ContainerConfigFieldValidator>;
     source: Array<{ [key: string]: string }>;
