@@ -11,6 +11,7 @@ export class SelectMultipleComponent implements OnInit {
     @Input() formControl: FormControl;
     @Input() field: ContainerConfigField;
 
+    displayedFormControl: FormControl;
     options: Array<{ label: string; value: string }>;
 
     ngOnInit(): void {
@@ -25,5 +26,12 @@ export class SelectMultipleComponent implements OnInit {
                 value: key
             });
         }
+
+        this.displayedFormControl = new FormControl();
+        this.displayedFormControl.setValue(this.formControl.value);
+
+        this.displayedFormControl.valueChanges.subscribe((selected: string[]) => {
+            this.formControl.setValue(selected.join(','));
+        });
     }
 }
