@@ -10,7 +10,6 @@ export class ContainerService {
 
     private output = {} as ContainerArgs;
 
-    // noinspection JSMethodCanBeStatic
     formDataToApiArg(container: Container, formData: ContainerFormData): ContainerArgs {
         this.output = {args: {}} as ContainerArgs;
         this.output.image = formData.image;
