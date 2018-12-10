@@ -10,23 +10,33 @@ export class ContainerService {
 
     private output = {} as ContainerArgs;
 
-
     // noinspection JSMethodCanBeStatic
     formDataToApiArg(container: Container, formData: ContainerFormData): ContainerArgs {
-        this.output = {} as ContainerArgs;
+        this.output = {args: {}} as ContainerArgs;
         this.output.image = formData.image;
 
         container.config.forEach((group: ContainerConfigGroup) => {
             group.fields.forEach((field: ContainerConfigField) => {
                 const name = group.id + '_' + field.id;
 
-                console.log([field, name, formData.config[name]]);
                 switch (field.destination) {
                     case 'id':
                         this.addToId(formData.config[name]);
                         break;
                     case 'version':
                         this.addToVersion(formData.config[name]);
+                        break;
+                    case 'volumes':
+                        this.addToVolumes(formData.config[name], field.base);
+                        break;
+                    case 'ports':
+                        this.addToPorts(formData.config[name], field.base);
+                        break;
+                    case 'environments':
+                        this.addToEnvironments(field.base, formData.config[name]);
+                        break;
+                    case 'files':
+                        this.addToFiles(field.base, formData.config[name]);
                         break;
                 }
 
@@ -52,4 +62,47 @@ export class ContainerService {
         this.output.version = version;
     }
 
+    private addToVolumes(source: string, destination: string): void {
+        if (!this.output.args.volumes) {
+            this.output.args.volumes = [];
+        }
+
+        this.output.args.volumes.push({
+            host: source,
+            container: destination
+        });
+    }
+
+    private addToPorts(source: string, destination: string): void {
+        if (!this.output.args.ports) {
+            this.output.args.ports = [];
+        }
+
+        this.output.args.ports.push({
+            host: source,
+            container: destination
+        });
+    }
+
+    private addToEnvironments(key: string, value: string): void {
+        if (!this.output.args.environments) {
+            this.output.args.environments = [];
+        }
+
+        this.output.args.environments.push({
+            key: key,
+            value: value
+        });
+    }
+
+    private addToFiles(key: string, value: string): void {
+        if (!this.output.args.files) {
+            this.output.args.files = [];
+        }
+
+        this.output.args.files.push({
+            key: key,
+            value: value
+        });
+    }
 }

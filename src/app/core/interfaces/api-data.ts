@@ -4,9 +4,21 @@ export interface ContainerArgs {
     version: string;
 
     args: {
-        ports: Array<any>;
-        volumes: Array<any>;
-        environments: Array<any>;
-        files: Array<any>;
+        ports: Array<{
+            host: string;
+            container: string;
+        }>;
+        volumes: Array<{
+            host: string;
+            container: string;
+        }>;
+        environments: Array<{
+            key: string;
+            value: string;
+        }>;
+        files: Array<{
+            key: string;
+            value: string;
+        }>;
     };
 }
