@@ -20,5 +20,9 @@ export interface ContainerArgs {
             key: string;
             value: string;
         }>;
+        compose: Array<{
+            key: string;
+            value: string;
+        }>
     };
 }

@@ -26,6 +26,9 @@ export class ContainerService {
                     case 'version':
                         this.addToVersion(formData.config[name]);
                         break;
+                    case 'compose':
+                        this.addToDockerCompose(field.base, formData.config[name]);
+                        break;
                     case 'volumes':
                         this.addToVolumes(formData.config[name], field.base);
                         break;
@@ -37,6 +40,9 @@ export class ContainerService {
                         break;
                     case 'files':
                         this.addToFiles(field.base, formData.config[name]);
+                        break;
+                    default:
+                        console.error('Output not available:', field.destination);
                         break;
                 }
 
@@ -101,6 +107,17 @@ export class ContainerService {
         }
 
         this.output.args.files.push({
+            key: key,
+            value: value
+        });
+    }
+
+    private addToDockerCompose(key: string, value: string): void {
+        if (!this.output.args.compose) {
+            this.output.args.compose = [];
+        }
+
+        this.output.args.compose.push({
             key: key,
             value: value
         });
