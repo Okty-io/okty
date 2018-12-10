@@ -4,6 +4,7 @@ import { catchError, map } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ApiService } from '../services/api.service';
 import { Container } from '../models/container';
+import { ContainerArgs } from '../interfaces/api-data';
 
 @Injectable({
     providedIn: 'root'
@@ -30,5 +31,10 @@ export class ContainerRepository {
             map((element: object) => Object.assign(new Container, element)),
             catchError((response: HttpErrorResponse) => throwError(response.error.error ? response.error.error : 'Error'))
         );
+    }
+
+    public getPreview(apiArg: ContainerArgs): Promise<string> {
+        return this.api.post('preview', apiArg)
+            .toPromise();
     }
 }

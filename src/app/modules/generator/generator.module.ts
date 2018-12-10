@@ -19,6 +19,7 @@ import { OnlyVisibleFieldPipe } from './directives/only-visible-field.pipe';
 import { FormComponent } from './components/form/form.component';
 import { ValidatorErrorsPipe } from './directives/validator-errrors.pipe';
 import { ReviewComponent } from './pages/review/review.component';
+import { PreviewComponent } from './components/preview/preview.component';
 
 @NgModule({
     declarations: [
@@ -38,6 +39,7 @@ import { ReviewComponent } from './pages/review/review.component';
         SelectContainerComponent,
         FormComponent,
         ReviewComponent,
+        PreviewComponent,
     ],
     imports: [
         CommonModule,
