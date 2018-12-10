@@ -1,6 +1,6 @@
 <label>
     {{ field.label }}
-    <select [name]="field.label" [formControl]="formControl" multiple>
+    <select [name]="field.label" [formControl]="displayedFormControl" multiple>
         <option *ngFor="let option of options" [value]="option.value">
             {{option.label}}
         </option>
