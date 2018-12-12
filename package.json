@@ -26,8 +26,10 @@
     "@angular/router": "~7.0.0",
     "animejs": "^2.2.0",
     "core-js": "^2.5.4",
+    "highlight.js": "^9.13.1",
     "ng-inline-svg": "^8.1.0",
     "rxjs": "~6.3.3",
+    "yamljs": "^0.3.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
@@ -37,9 +39,11 @@
     "@angular/language-service": "~7.0.0",
     "@types/animejs": "^2.0.1",
     "@types/core-js": "^2.5.0",
+    "@types/highlight.js": "^9.12.3",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
+    "@types/yamljs": "^0.2.30",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",

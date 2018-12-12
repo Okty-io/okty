@@ -27,9 +27,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/highlight.js/styles/rainbow.css"
             ],
-            "scripts": []
+            "scripts": [
+                "node_modules/yamljs/dist/yaml.min.js"
+            ]
           },
           "configurations": {
             "production": {

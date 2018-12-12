@@ -27,14 +27,20 @@ export class ContainerRepository {
     }
 
     public getOne(id: string): Observable<Container> {
-        return this.api.get(`container/form/${id}`).pipe(
-            map((element: object) => Object.assign(new Container, element)),
-            catchError((response: HttpErrorResponse) => throwError(response.error.error ? response.error.error : 'Error'))
+        return this.api.get(`container/form/${id}`)
+            .pipe(
+                map((element: object) => Object.assign(new Container, element)),
+                catchError((response: HttpErrorResponse) => throwError(response.error.error ? response.error.error : 'Error')
+            )
         );
     }
 
     public getPreview(apiArg: ContainerArgs): Promise<string> {
         return this.api.post('preview', apiArg)
+            .pipe(
+                map((response: { content: string }) => response.content),
+                catchError((error: HttpErrorResponse) => throwError(error.message))
+            )
             .toPromise();
     }
 }
