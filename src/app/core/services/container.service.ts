@@ -11,7 +11,7 @@ export class ContainerService {
     private output = {} as ContainerArgs;
 
     formDataToApiArg(container: Container, formData: ContainerFormData): ContainerArgs {
-        this.output = {args: {}} as ContainerArgs;
+        this.output = {image: '', args: {}} as ContainerArgs;
         this.output.image = formData.image;
 
         container.config.forEach((group: ContainerConfigGroup) => {
@@ -56,7 +56,7 @@ export class ContainerService {
             return;
         }
 
-        this.output.id = id;
+        this.output.args.id = id;
     }
 
     private addToVersion(version: string): void {
@@ -64,7 +64,7 @@ export class ContainerService {
             return;
         }
 
-        this.output.version = version;
+        this.output.args.version = version;
     }
 
     private addToVolumes(source: string, destination: string): void {

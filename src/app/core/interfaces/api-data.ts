@@ -1,9 +1,9 @@
 export interface ContainerArgs {
-    id: string;
     image: string;
-    version: string;
 
     args: {
+        id: string;
+        version: string;
         ports: Array<{
             host: string;
             container: string;
