@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import hljs from 'highlight.js/lib';
 
 @Component({
     selector: 'app-generator-preview',
@@ -7,15 +8,25 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PreviewComponent implements OnInit {
 
-    @Input() content: string;
-
     preview: string;
 
     constructor() {
     }
 
     ngOnInit() {
-        this.preview = 'To convert';
+        this.preview = '';
+        hljs.initHighlighting();
+    }
+
+    @Input()
+    set content(data: string) {
+        if (!data) {
+            this.preview = '';
+        }
+
+        const file = YAML.stringify(data, 8);
+        this.preview = hljs.highlight('yaml', file).value;
+
     }
 
 }

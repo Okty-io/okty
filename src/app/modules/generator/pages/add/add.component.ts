@@ -60,6 +60,8 @@ export class AddComponent implements OnInit, OnDestroy {
         this.data = updatedData;
 
         const apiArg = this.containerService.formDataToApiArg(this.container, this.getContainerFormData());
-        this.containerRepository.getPreview(apiArg).then((preview: any) => this.preview = preview);
+        this.containerRepository.getPreview(apiArg)
+            .then((preview: any) => this.preview = preview)
+            .catch((error) => console.log(error));
     }
 }

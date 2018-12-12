@@ -7,19 +7,17 @@
     </div>
 </div>
 
-<div *ngIf="container">
-    <div class="config">
-        <div class="header">
-            <img src="{{container.logo}}" alt="{{container.name}} logo">
-            <h1>Configuration {{container.name}}</h1>
-        </div>
-
-        <form (submit)="submit()">
-            <app-generator-form [container]="container" (dataChange)="updateData($event)"></app-generator-form>
-            <button type="button">Back</button>
-            <button type="submit">Next</button>
-        </form>
+<div class="config" *ngIf="container">
+    <div class="header">
+        <img src="{{container.logo}}" alt="{{container.name}} logo">
+        <h1>Configuration {{container.name}}</h1>
     </div>
+
+    <form (submit)="submit()">
+        <app-generator-form [container]="container" (dataChange)="updateData($event)"></app-generator-form>
+        <button type="button">Back</button>
+        <button type="submit">Next</button>
+    </form>
 
     <div class="preview">
         <app-generator-preview [content]="preview"></app-generator-preview>

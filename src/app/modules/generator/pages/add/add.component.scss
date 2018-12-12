@@ -1,19 +1,28 @@
 :host {
     .config {
-        width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
 
-        .header {
-            img {
-                max-width: 100px;
-            }
+    .header {
+        width: 100%;
 
-            h1 {
-                display: inline;
-            }
+        img {
+            max-width: 100px;
+        }
+
+        h1 {
+            display: inline;
         }
     }
 
-    .preview {
+    form {
         width: 50%;
+    }
+
+    .preview {
+        width: 40%;
+        margin-left: 5%;
     }
 }
