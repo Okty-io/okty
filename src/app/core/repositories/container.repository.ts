@@ -31,12 +31,21 @@ export class ContainerRepository {
             .pipe(
                 map((element: object) => Object.assign(new Container, element)),
                 catchError((response: HttpErrorResponse) => throwError(response.error.error ? response.error.error : 'Error')
-            )
-        );
+                )
+            );
     }
 
     public getPreview(apiArg: ContainerArgs): Promise<string> {
         return this.api.post('preview', apiArg)
+            .pipe(
+                map((response: { content: string }) => response.content),
+                catchError((error: HttpErrorResponse) => throwError(error.message))
+            )
+            .toPromise();
+    }
+
+    public getFullPreview(apiArgs: ContainerArgs[]): Promise<string> {
+        return this.api.post(`preview/full`, apiArgs)
             .pipe(
                 map((response: { content: string }) => response.content),
                 catchError((error: HttpErrorResponse) => throwError(error.message))
