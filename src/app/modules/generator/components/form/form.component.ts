@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Container, ContainerConfigField, ContainerConfigGroup } from '../../../../core/models/container';
 import { AbstractControl, FormGroup } from '@angular/forms';
-import { FormControlService } from '../../../../core/services/form-control.service';
+import { Container, ContainerConfigField, ContainerConfigGroup } from '../../models/container';
+import { FormControlService } from '../../services/form-control.service';
 
 @Component({
     selector: 'app-generator-form',

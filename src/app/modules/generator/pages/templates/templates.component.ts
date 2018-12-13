@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Template } from '../../../../core/models/template';
-import { Listable } from '../../../../core/interfaces/listable';
-import { TemplateRepository } from '../../../../core/repositories/template.repository';
+import { Template } from '../../models/template';
+import { Listable } from '../../interfaces/listable';
+import { TemplateRepository } from '../../repositories/template.repository';
 
 @Component({
     templateUrl: './templates.component.html',

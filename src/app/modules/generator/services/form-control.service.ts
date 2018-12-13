@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ContainerConfigField } from '../models/container';
 import { FormControl, ValidatorFn, Validators } from '@angular/forms';
-import { isNumberValidator } from '../../modules/generator/validators/is-number.validator';
+import { isNumberValidator } from '../validators/is-number.validator';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class FormControlService {
 
     // noinspection JSMethodCanBeStatic

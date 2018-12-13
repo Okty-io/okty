@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionService } from '../../../../core/services/session.service';
-import { ContainerFormData } from '../../../../core/interfaces/form-data';
-import { ContainerService } from '../../../../core/services/container.service';
-import { ContainerRepository } from '../../../../core/repositories/container.repository';
-import { ContainerArgs } from '../../../../core/interfaces/api-data';
+import { ContainerFormData } from '../../interfaces/form-data';
+import { SessionService } from '../../services/session.service';
+import { ContainerService } from '../../services/container.service';
+import { ContainerRepository } from '../../repositories/container.repository';
+import { ContainerArgs } from '../../interfaces/api-data';
 
 @Component({
     selector: 'app-generator-review',

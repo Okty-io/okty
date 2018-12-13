@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Container } from '../../../../core/models/container';
 import { FormGroup } from '@angular/forms';
-import { SessionService } from '../../../../core/services/session.service';
-import { ContainerRepository } from '../../../../core/repositories/container.repository';
-import { ContainerFormData } from '../../../../core/interfaces/form-data';
-import { ContainerService } from '../../../../core/services/container.service';
+import { Container } from '../../models/container';
+import { ContainerRepository } from '../../repositories/container.repository';
+import { SessionService } from '../../services/session.service';
+import { ContainerService } from '../../services/container.service';
+import { ContainerFormData } from '../../interfaces/form-data';
 
 @Component({
     templateUrl: './add.component.html',

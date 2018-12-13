@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ContainerConfigField } from '../../../../../core/models/container';
+import { ContainerConfigField } from '../../../models/container';
 
 @Component({
     templateUrl: './select-multiple.component.html',

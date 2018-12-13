@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ContainerConfigField } from '../../../core/models/container';
+import { ContainerConfigField } from '../models/container';
 
 @Pipe({
     name: 'onlyVisibleField'

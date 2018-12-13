@@ -4,9 +4,7 @@ import { ContainerFormData } from '../interfaces/form-data';
 import { Container, ContainerConfigField, ContainerConfigGroup } from '../models/container';
 import { ContainerRepository } from '../repositories/container.repository';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class ContainerService {
 
     constructor(private containerRepository: ContainerRepository) {

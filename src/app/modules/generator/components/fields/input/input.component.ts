@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ContainerConfigField } from '../../../../../core/models/container';
+import { ContainerConfigField } from '../../../models/container';
 
 @Component({
     templateUrl: './input.component.html',
