@@ -1,5 +1,5 @@
 export class ContainerFormData {
-    image: string;
+    form: string;
     config: Array<FormFieldData[]>;
 }
 

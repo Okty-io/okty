@@ -43,7 +43,7 @@ export class AddComponent implements OnInit, OnDestroy {
 
     getContainerFormData(): ContainerFormData {
         const containerFormData = new ContainerFormData();
-        containerFormData.image = this.route.snapshot.params.id;
+        containerFormData.form = this.route.snapshot.params.id;
         containerFormData.config = this.data.value;
 
         return containerFormData;
@@ -59,7 +59,7 @@ export class AddComponent implements OnInit, OnDestroy {
     async updateData(updatedData: FormGroup) {
         this.data = updatedData;
 
-        const apiArg = this.containerService.formDataToApiArg(this.container, this.getContainerFormData());
+        const apiArg = await this.containerService.formDataToApiArg(this.getContainerFormData());
         this.containerRepository.getPreview(apiArg)
             .then((preview: any) => this.preview = preview)
             .catch((error) => console.log(error));
