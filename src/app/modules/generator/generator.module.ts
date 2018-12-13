@@ -20,6 +20,11 @@ import { FormComponent } from './components/form/form.component';
 import { ValidatorErrorsPipe } from './directives/validator-errrors.pipe';
 import { ReviewComponent } from './pages/review/review.component';
 import { PreviewComponent } from './components/preview/preview.component';
+import { ContainerRepository } from './repositories/container.repository';
+import { TemplateRepository } from './repositories/template.repository';
+import { ContainerService } from './services/container.service';
+import { FormControlService } from './services/form-control.service';
+import { SessionService } from './services/session.service';
 
 @NgModule({
     declarations: [
@@ -46,6 +51,13 @@ import { PreviewComponent } from './components/preview/preview.component';
         GeneratorRoutingModule,
         FormsModule,
         ReactiveFormsModule,
+    ],
+    providers: [
+        ContainerRepository,
+        TemplateRepository,
+        ContainerService,
+        FormControlService,
+        SessionService
     ],
     entryComponents: [
         VoidComponent,

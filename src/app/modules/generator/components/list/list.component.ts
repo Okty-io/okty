@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Listable } from '../../../../core/interfaces/listable';
+import { Listable } from '../../interfaces/listable';
 
 @Component({
     selector: 'app-generator-list',

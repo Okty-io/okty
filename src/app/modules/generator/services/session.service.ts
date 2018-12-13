@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ContainerFormData } from '../interfaces/form-data';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class SessionService {
 
-    private containers: Array<ContainerFormData>;
+    private readonly containers: Array<ContainerFormData>;
 
     constructor() {
         this.containers = [];

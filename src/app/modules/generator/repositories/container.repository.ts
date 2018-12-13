@@ -2,13 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ApiService } from '../services/api.service';
 import { Container } from '../models/container';
 import { ContainerArgs } from '../interfaces/api-data';
+import { ApiService } from '../../../core/services/api.service';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class ContainerRepository {
 
     constructor(private api: ApiService) {
