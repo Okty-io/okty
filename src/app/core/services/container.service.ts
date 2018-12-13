@@ -52,8 +52,6 @@ export class ContainerService {
             });
         });
 
-        console.log(output);
-
         return output;
     }
 
