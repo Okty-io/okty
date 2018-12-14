@@ -15,7 +15,6 @@ export class PreviewComponent implements OnInit {
 
     ngOnInit() {
         this.preview = '';
-        hljs.initHighlighting();
     }
 
     @Input()
@@ -26,7 +25,6 @@ export class PreviewComponent implements OnInit {
 
         const file = YAML.stringify(data, 8);
         this.preview = hljs.highlight('yaml', file).value;
-
     }
 
 }
