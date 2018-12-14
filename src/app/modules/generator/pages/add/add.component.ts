@@ -43,7 +43,8 @@ export class AddComponent implements OnInit, OnDestroy {
 
     getContainerFormData(): ContainerFormData {
         const containerFormData = new ContainerFormData();
-        containerFormData.form = this.route.snapshot.params.id;
+        containerFormData.image = this.route.snapshot.params.id;
+        containerFormData.form = this.container;
         containerFormData.config = this.data.value;
 
         return containerFormData;
@@ -56,10 +57,10 @@ export class AddComponent implements OnInit, OnDestroy {
         this.router.navigate(['/', 'generator', 'review']);
     }
 
-    async updateData(updatedData: FormGroup) {
+    updateData(updatedData: FormGroup) {
         this.data = updatedData;
 
-        const apiArg = await this.containerService.formDataToApiArg(this.getContainerFormData());
+        const apiArg = this.containerService.formDataToApiArg(this.getContainerFormData());
         this.containerRepository.getPreview(apiArg)
             .then((preview: any) => this.preview = preview)
             .catch((error) => console.log(error));

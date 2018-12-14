@@ -2,19 +2,15 @@ import { Injectable } from '@angular/core';
 import { ContainerArgs } from '../interfaces/api-data';
 import { ContainerFormData } from '../interfaces/form-data';
 import { Container, ContainerConfigField, ContainerConfigGroup } from '../models/container';
-import { ContainerRepository } from '../repositories/container.repository';
 
 @Injectable()
 export class ContainerService {
 
-    constructor(private containerRepository: ContainerRepository) {
-    }
-
-    async formDataToApiArg(formData: ContainerFormData): Promise<ContainerArgs> {
+    formDataToApiArg(formData: ContainerFormData): ContainerArgs {
+        const container: Container = formData.form;
         const output = {image: '', args: {}} as ContainerArgs;
-        output.image = formData.form;
+        output.image = formData.image;
 
-        const container: Container = await this.containerRepository.getOne(formData.form).toPromise();
 
         container.config.forEach((group: ContainerConfigGroup) => {
             group.fields.forEach((field: ContainerConfigField) => {

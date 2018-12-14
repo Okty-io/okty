@@ -26,16 +26,18 @@ export class ReviewComponent implements OnInit {
         this.preview = '';
         this.containers = this.sessionService.getContainers();
 
-        const promises: Promise<ContainerArgs>[] = [];
+        const apiArgs: ContainerArgs[] = [];
         this.containers.forEach((data: ContainerFormData) => {
-            promises.push(this.containerService.formDataToApiArg(data));
+            apiArgs.push(this.containerService.formDataToApiArg(data));
         });
 
-        Promise.all(promises).then((apiArgs: ContainerArgs[]) => {
-            this.containerRepository.getFullPreview(apiArgs)
-                .then((preview: any) => this.preview = preview)
-                .catch((error) => console.log(error));
-        });
+        this.containerRepository.getFullPreview(apiArgs)
+            .then((preview: any) => this.preview = preview)
+            .catch((error) => console.log(error));
+    }
+
+    export(): void {
+        console.log('Export');
     }
 
 }

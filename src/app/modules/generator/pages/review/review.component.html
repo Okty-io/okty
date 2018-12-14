@@ -1,6 +1,21 @@
-<div>
-    <p *ngFor="let container of containers">
-        {{ container.form }}
-    </p>
+<div class="col">
+    <div>
+        <h2>Is your project ready ?</h2>
+        <div class="action">
+            <a [routerLink]="['/', 'generator', 'containers']">Add a container</a>
+            <button (click)="export()">Export my project</button>
+        </div>
+    </div>
+    <div>
+        <h2>Your project contains</h2>
+        <div class="containers">
+            <div *ngFor="let container of containers">
+                <img [src]="container.form.logo" [alt]="container.form.name">
+                <p>{{container.form.name}}</p>
+            </div>
+        </div>
+    </div>
 </div>
-<app-generator-preview [content]="preview"></app-generator-preview>
+<div class="col">
+    <app-generator-preview [content]="preview"></app-generator-preview>
+</div>
