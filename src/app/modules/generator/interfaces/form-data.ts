@@ -1,5 +1,8 @@
+import { Container } from '../models/container';
+
 export class ContainerFormData {
-    form: string;
+    image: string;
+    form: Container;
     config: Array<FormFieldData[]>;
 }
 
