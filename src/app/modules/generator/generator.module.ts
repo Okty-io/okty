@@ -23,8 +23,9 @@ import { PreviewComponent } from './components/preview/preview.component';
 import { ContainerRepository } from './repositories/container.repository';
 import { TemplateRepository } from './repositories/template.repository';
 import { ContainerService } from './services/container.service';
-import { FormControlService } from './services/form-control.service';
+import { FormService } from './services/form.service';
 import { SessionService } from './services/session.service';
+import { EditComponent } from './pages/edit/edit.component';
 
 @NgModule({
     declarations: [
@@ -45,6 +46,7 @@ import { SessionService } from './services/session.service';
         FormComponent,
         ReviewComponent,
         PreviewComponent,
+        EditComponent,
     ],
     imports: [
         CommonModule,
@@ -56,7 +58,7 @@ import { SessionService } from './services/session.service';
         ContainerRepository,
         TemplateRepository,
         ContainerService,
-        FormControlService,
+        FormService,
         SessionService
     ],
     entryComponents: [

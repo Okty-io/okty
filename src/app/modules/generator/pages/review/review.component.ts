@@ -25,6 +25,7 @@ export class ReviewComponent implements OnInit {
     ngOnInit(): void {
         this.preview = '';
         this.containers = this.sessionService.getContainers();
+        console.log(this.containers);
 
         const apiArgs: ContainerArgs[] = [];
         this.containers.forEach((data: ContainerFormData) => {

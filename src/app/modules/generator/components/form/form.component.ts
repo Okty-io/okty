@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { Container, ContainerConfigField, ContainerConfigGroup } from '../../models/container';
-import { FormControlService } from '../../services/form-control.service';
+import { FormService } from '../../services/form.service';
 
 @Component({
     selector: 'app-generator-form',
@@ -15,7 +15,7 @@ export class FormComponent implements OnInit {
 
     formGroup: FormGroup;
 
-    constructor(private formControlService: FormControlService) {
+    constructor(private formService: FormService) {
     }
 
     ngOnInit(): void {
@@ -23,7 +23,7 @@ export class FormComponent implements OnInit {
 
         this.container.config.forEach((group: ContainerConfigGroup) => {
             group.fields.forEach((field: ContainerConfigField) => {
-                const formControl = this.formControlService.generate(field);
+                const formControl = this.formService.generateControl(field);
                 const formControlName = group.id + '_' + field.id;
 
                 this.formGroup.addControl(formControlName, formControl);

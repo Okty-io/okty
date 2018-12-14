@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ContainerConfigField } from '../models/container';
-import { FormControl, ValidatorFn, Validators } from '@angular/forms';
+import { Container, ContainerConfigField } from '../models/container';
+import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { isNumberValidator } from '../validators/is-number.validator';
+import { ContainerFormData } from '../interfaces/form-data';
 
 @Injectable()
-export class FormControlService {
+export class FormService {
 
     // noinspection JSMethodCanBeStatic
-    generate(field: ContainerConfigField): FormControl {
+    generateControl(field: ContainerConfigField): FormControl {
         const formControl = new FormControl(field.value);
         if (!field.validators) {
             return formControl;
@@ -38,5 +39,15 @@ export class FormControlService {
         formControl.setValidators(validators);
 
         return formControl;
+    }
+
+    // noinspection JSMethodCanBeStatic
+    formToContainerData(data: FormGroup, container: Container, image: string) {
+        const containerFormData = new ContainerFormData();
+        containerFormData.image = image;
+        containerFormData.form = container;
+        containerFormData.config = data.value;
+
+        return containerFormData;
     }
 }

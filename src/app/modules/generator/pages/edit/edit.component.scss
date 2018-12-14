@@ -1,0 +1,28 @@
+:host {
+    .config {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .header {
+        width: 100%;
+
+        img {
+            max-width: 100px;
+        }
+
+        h1 {
+            display: inline;
+        }
+    }
+
+    form {
+        width: 50%;
+    }
+
+    .preview {
+        width: 40%;
+        margin-left: 5%;
+    }
+}
