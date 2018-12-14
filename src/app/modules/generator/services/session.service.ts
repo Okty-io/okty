@@ -17,4 +17,8 @@ export class SessionService {
     getContainers(): Array<ContainerFormData> {
         return this.containers;
     }
+
+    getContainer(id: string) {
+        return this.containers.find((formData: ContainerFormData) => formData.id === id);
+    }
 }

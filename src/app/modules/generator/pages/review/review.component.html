@@ -9,8 +9,8 @@
     <div>
         <h2>Your project contains</h2>
         <div class="containers" *ngIf="containers.length > 0">
-            <div *ngFor="let container of containers; let id = index;">
-                <a [href]="['/', 'generator', 'edit', id]">
+            <div *ngFor="let container of containers">
+                <a [routerLink]="['/', 'generator', 'edit', container.id]">
                     <img [src]="container.form.logo" [alt]="container.form.name">
                     <p>{{container.form.name}}</p>
                 </a>
