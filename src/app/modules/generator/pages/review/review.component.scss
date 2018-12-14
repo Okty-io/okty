@@ -5,6 +5,10 @@
         width: 60%;
         text-align: center;
 
+        .no-containers {
+            text-align: center;
+        }
+
         .containers {
             display: flex;
             flex-wrap: wrap;
@@ -13,6 +17,7 @@
 
             > div {
                 width: 25%;
+
                 img {
                     box-sizing: border-box;
                     max-width: 80%;
