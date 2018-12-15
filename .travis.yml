@@ -12,7 +12,8 @@ install:
     - docker run -v $(pwd):/app -w /app node:8 npm install
 
 script:
-    - docker run -v $(pwd):/app -w /app node:8 ./node_modules/.bin/ng build --prod --aot
+    - if [ "$TRAVIS_BRANCH" == "master" ]; then docker run -v $(pwd):/app -w /app node:8 ./node_modules/.bin/ng build --prod --aot; fi
+    - if [ "$TRAVIS_BRANCH" == "dev" ]; then docker run -v $(pwd):/app -w /app node:8 ./node_modules/.bin/ng build --configuration=develop; fi
 
 deploy:
     provider: script
