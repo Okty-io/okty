@@ -14,10 +14,14 @@
     </div>
 
     <form (submit)="submit()">
-        <app-generator-form [container]="container" [userData]="containerFormData.config" (dataChange)="updateData($event)"></app-generator-form>
-        <button type="button">Back</button>
+        <app-generator-form [container]="container"
+                            [userData]="containerFormData.config"
+                            (dataChange)="updateData($event)">
+        </app-generator-form>
+
+        <button type="button" (click)="goBack()">Back</button>
         <button type="submit">Next</button>
-        <button type="button">Delete</button>
+        <button type="button" (click)="delete()">Delete</button>
     </form>
 
     <div class="preview">
