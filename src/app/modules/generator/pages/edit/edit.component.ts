@@ -49,4 +49,13 @@ export class EditComponent implements OnInit {
             .then((preview: any) => this.preview = preview)
             .catch((error) => console.log(error));
     }
+
+    submit(): void {
+        const containerFormData = this.formService.formToContainerData(this.data, this.container, this.containerFormData.image);
+        containerFormData.id = this.containerFormData.id;
+
+        console.log(containerFormData);
+        // this.sessionService.addContainer(containerFormData);
+        // this.router.navigate(['/', 'generator', 'review']);
+    }
 }

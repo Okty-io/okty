@@ -14,7 +14,7 @@
     </div>
 
     <form (submit)="submit()">
-        <app-generator-form [container]="container" (dataChange)="updateData($event)"></app-generator-form>
+        <app-generator-form [container]="container" [userData]="containerFormData.config" (dataChange)="updateData($event)"></app-generator-form>
         <button type="button">Back</button>
         <button type="submit">Next</button>
         <button type="button">Delete</button>
