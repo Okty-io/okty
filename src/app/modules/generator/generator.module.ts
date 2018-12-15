@@ -17,7 +17,7 @@ import { SelectMultipleComponent } from './components/fields/select-multiple/sel
 import { SelectContainerComponent } from './components/fields/select-container/select-container.component';
 import { OnlyVisibleFieldPipe } from './directives/only-visible-field.pipe';
 import { FormComponent } from './components/form/form.component';
-import { ValidatorErrorsPipe } from './directives/validator-errrors.pipe';
+import { ValidatorErrorsPipe } from './directives/validator-errors.pipe';
 import { ReviewComponent } from './pages/review/review.component';
 import { PreviewComponent } from './components/preview/preview.component';
 import { ContainerRepository } from './repositories/container.repository';
@@ -27,6 +27,7 @@ import { FormService } from './services/form.service';
 import { SessionService } from './services/session.service';
 import { EditComponent } from './pages/edit/edit.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ContainerValidators } from './validators/container.validators';
 
 @NgModule({
     declarations: [
@@ -61,7 +62,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
         TemplateRepository,
         ContainerService,
         FormService,
-        SessionService
+        SessionService,
+        ContainerValidators,
     ],
     entryComponents: [
         VoidComponent,

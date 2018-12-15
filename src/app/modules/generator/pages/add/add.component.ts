@@ -45,6 +45,10 @@ export class AddComponent implements OnInit, OnDestroy {
     }
 
     submit(): void {
+        if (this.data.invalid) {
+            return;
+        }
+
         const containerFormData = this.formService.formToContainerData(this.data, this.container, this.route.snapshot.params.id);
 
         this.sessionService.addContainer(containerFormData);
