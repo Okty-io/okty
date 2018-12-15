@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './core/services/api.service';
+import { TitleService } from './core/services/title.service';
 
 @NgModule({
     declarations: [
@@ -21,7 +23,10 @@ import { HttpClientModule } from '@angular/common/http';
         AppRoutingModule,
         CoreModule
     ],
-    providers: [],
+    providers: [
+        ApiService,
+        TitleService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

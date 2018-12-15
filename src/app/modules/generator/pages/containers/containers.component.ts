@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ContainerRepository } from '../../repositories/container.repository';
 import { Container } from '../../models/container';
 import { Listable } from '../../interfaces/listable';
+import { TitleService } from '../../../../core/services/title.service';
 
 @Component({
     templateUrl: './containers.component.html',
@@ -14,10 +15,15 @@ export class ContainersComponent implements OnInit, OnDestroy {
 
     private subscribeContainers;
 
-    constructor(private containerRepository: ContainerRepository) {
+    constructor(
+        private containerRepository: ContainerRepository,
+        private titleService: TitleService
+    ) {
     }
 
     ngOnInit(): void {
+        this.titleService.set('Containers list');
+
         this.containers = null;
         this.displayed = null;
 
