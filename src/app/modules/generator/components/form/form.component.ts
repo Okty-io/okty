@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { Container, ContainerConfigField, ContainerConfigGroup } from '../../models/container';
 import { FormService } from '../../services/form.service';
@@ -9,18 +9,24 @@ import { FormFieldData } from '../../interfaces/form-data';
     templateUrl: './form.component.html',
     styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit {
+export class FormComponent {
 
-    @Input() container: Container;
     @Input() userData: Array<FormFieldData[]>;
     @Output() dataChange: EventEmitter<FormGroup> = new EventEmitter();
 
     formGroup: FormGroup;
+    form: Container;
 
     constructor(private formService: FormService) {
     }
 
-    ngOnInit(): void {
+    getFormControl(group, field): AbstractControl {
+        return this.formGroup.get(group.id + '_' + field.id);
+    }
+
+    @Input()
+    set container(container: Container) {
+        this.form = container;
         this.formGroup = new FormGroup({});
 
         this.initControls();
@@ -30,12 +36,8 @@ export class FormComponent implements OnInit {
         this.formGroup.valueChanges.subscribe(() => this.dataChange.emit(this.formGroup));
     }
 
-    getFormControl(group, field): AbstractControl {
-        return this.formGroup.get(group.id + '_' + field.id);
-    }
-
     private initControls(): void {
-        this.container.config.forEach((group: ContainerConfigGroup) => {
+        this.form.config.forEach((group: ContainerConfigGroup) => {
             group.fields.forEach((field: ContainerConfigField) => {
                 const formControl = this.formService.generateControl(field);
                 const formControlName = group.id + '_' + field.id;

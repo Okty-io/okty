@@ -1,25 +1,30 @@
-<div class="text" *ngIf="!container">
-    <div *ngIf="error">
-        {{error}}
-    </div>
-    <div *ngIf="!error">
-        Loading ...
-    </div>
-</div>
+<app-generator-sidebar></app-generator-sidebar>
 
-<div class="config" *ngIf="container">
-    <div class="header">
-        <img src="{{container.logo}}" alt="{{container.name}} logo">
-        <h1>Configuration {{container.name}}</h1>
+<div>
+    <div class="text" *ngIf="!container">
+        <div *ngIf="error">
+            {{error}}
+        </div>
+        <div *ngIf="!error">
+            Loading ...
+        </div>
     </div>
 
-    <form (submit)="submit()">
-        <app-generator-form [container]="container" (dataChange)="updateData($event)"></app-generator-form>
-        <button type="button" (click)="goBack()">Back</button>
-        <button type="submit">Next</button>
-    </form>
+    <div class="config" *ngIf="container">
+        <div class="header">
+            <img src="{{container.logo}}" alt="{{container.name}} logo">
+            <h1>Configuration {{container.name}}</h1>
+        </div>
 
-    <div class="preview">
-        <app-generator-preview [content]="preview"></app-generator-preview>
+        <form (submit)="submit()">
+            <app-generator-form [container]="container" (dataChange)="updateData($event)"></app-generator-form>
+            <button type="button" (click)="goBack()">Back</button>
+            <button type="submit">Next</button>
+        </form>
+
+        <div class="preview">
+            <app-generator-preview [content]="preview"></app-generator-preview>
+        </div>
     </div>
+
 </div>

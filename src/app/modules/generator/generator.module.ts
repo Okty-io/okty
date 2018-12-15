@@ -26,6 +26,7 @@ import { ContainerService } from './services/container.service';
 import { FormService } from './services/form.service';
 import { SessionService } from './services/session.service';
 import { EditComponent } from './pages/edit/edit.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ import { EditComponent } from './pages/edit/edit.component';
         ReviewComponent,
         PreviewComponent,
         EditComponent,
+        SidebarComponent,
     ],
     imports: [
         CommonModule,

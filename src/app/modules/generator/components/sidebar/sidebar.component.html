@@ -1,0 +1,17 @@
+<div *ngIf="containers.length > 0">
+    <div class="controls">
+        <a [routerLink]="['/', 'generator', 'containers']">
+            <p>+</p>
+        </a>
+        <a [routerLink]="['/', 'generator', 'review']">
+            <p>e</p>
+        </a>
+    </div>
+    <div class="containers">
+        <p *ngFor="let container of containers">
+            <a [routerLink]="['/', 'generator', 'edit', container.id]">
+                <img src="https://mailcatcher.me/logo.png" alt="">
+            </a>
+        </p>
+    </div>
+</div>
