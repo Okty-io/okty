@@ -7,6 +7,7 @@ export class SessionService {
 
     private readonly containers: ContainerFormData[];
     private containersObservable: BehaviorSubject<ContainerFormData[]>;
+    private editing: string;
 
     constructor() {
         this.containers = [];
@@ -43,5 +44,17 @@ export class SessionService {
 
     containersChange(): Observable<ContainerFormData[]> {
         return this.containersObservable.asObservable();
+    }
+
+    startEditing(id: string): void {
+        this.editing = id;
+    }
+
+    stopEditing(): void {
+        this.editing = '';
+    }
+
+    getEditingId(): string {
+        return this.editing;
     }
 }

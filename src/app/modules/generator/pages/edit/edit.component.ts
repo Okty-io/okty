@@ -38,6 +38,7 @@ export class EditComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe((params: { [key: string]: string }) => {
             this.id = params.id;
+            this.sessionService.startEditing(this.id);
 
             this.containerFormData = this.sessionService.getContainer(this.id);
             if (!this.containerFormData) {
@@ -68,6 +69,7 @@ export class EditComponent implements OnInit {
         containerFormData.id = this.containerFormData.id;
 
         this.sessionService.addContainer(containerFormData);
+        this.sessionService.stopEditing();
         this.router.navigate(['/', 'generator', 'review']);
     }
 
