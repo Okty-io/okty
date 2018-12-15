@@ -1,4 +1,9 @@
 :host {
+    > div {
+        width: 65%;
+        margin: auto;
+    }
+
     .config {
         display: flex;
         flex-wrap: wrap;

@@ -1,0 +1,39 @@
+:host {
+    position: absolute;
+    display: block;
+    width: 140px;
+    margin-top: 0;
+    z-index: 1000;
+
+    .controls {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+
+        p {
+            text-align: center;
+            width: 32px;
+            line-height: 32px;
+            box-sizing: border-box;
+            border: 1px solid #000;
+            border-radius: 100%;
+        }
+    }
+
+    .containers {
+        p {
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+
+            border: 1px solid #000;
+            border-radius: 100%;
+            text-align: center;
+            margin: auto auto 12px;
+
+            img {
+                max-width: 50%;
+            }
+        }
+    }
+}

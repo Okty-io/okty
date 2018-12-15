@@ -9,6 +9,8 @@
 
 <div class="list" *ngIf="elements && elements.length > 0">
     <div *ngFor="let element of elements">
-        <a [routerLink]="element.getLink()">{{ element.getTitle() }}</a>
+        <div class="card">
+            <a [routerLink]="element.getLink()">{{ element.getTitle() }}</a>
+        </div>
     </div>
 </div>

@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ContainerFormData } from '../interfaces/form-data';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class SessionService {
 
-    private readonly containers: Array<ContainerFormData>;
+    private readonly containers: ContainerFormData[];
+    private containersObservable: BehaviorSubject<ContainerFormData[]>;
 
     constructor() {
         this.containers = [];
+        this.containersObservable = new BehaviorSubject<ContainerFormData[]>(this.containers);
     }
 
     addContainer(data: ContainerFormData): void {
@@ -20,6 +23,7 @@ export class SessionService {
         }
 
         this.containers.push(data);
+        this.containersObservable.next(this.containers);
     }
 
     getContainers(): Array<ContainerFormData> {
@@ -35,5 +39,9 @@ export class SessionService {
         const index = this.containers.indexOf(container);
 
         this.containers.splice(index, 1);
+    }
+
+    containersChange(): Observable<ContainerFormData[]> {
+        return this.containersObservable.asObservable();
     }
 }

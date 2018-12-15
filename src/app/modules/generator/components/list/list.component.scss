@@ -3,14 +3,19 @@
         display: flex;
         flex-wrap: wrap;
 
-        div {
-            width: 150px;
-            height: 150px;
-            border: 1px solid #000;
-
-            margin: 12px;
+        > div {
+            box-sizing: border-box;
+            width: 20%;
 
             text-align: center;
+            margin-bottom: 32px;
+
+            .card {
+                width: 80%;
+                height: 150px;
+                margin: auto;
+                border: 1px solid #000;
+            }
         }
     }
 }

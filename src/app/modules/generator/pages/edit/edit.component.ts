@@ -15,6 +15,8 @@ import { Location } from '@angular/common';
 })
 export class EditComponent implements OnInit {
 
+    id: string;
+
     containerFormData: ContainerFormData;
 
     container: Container;
@@ -34,19 +36,23 @@ export class EditComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.containerFormData = this.sessionService.getContainer(this.route.snapshot.params.id);
-        if (!this.containerFormData) {
-            throw new Error('Container not found');
-        }
+        this.route.params.subscribe((params: { [key: string]: string }) => {
+            this.id = params.id;
 
-        this.preview = '';
-        this.container = this.containerFormData.form;
+            this.containerFormData = this.sessionService.getContainer(this.id);
+            if (!this.containerFormData) {
+                throw new Error('Container not found');
+            }
+
+            this.preview = '';
+            this.container = this.containerFormData.form;
+        });
     }
 
     updateData(updatedData: FormGroup) {
         this.data = updatedData;
 
-        const containerData = this.formService.formToContainerData(this.data, this.container, this.route.snapshot.params.id);
+        const containerData = this.formService.formToContainerData(this.data, this.container, this.id);
         const apiArg = this.containerService.formDataToApiArg(containerData);
         this.containerRepository.getPreview(apiArg)
             .then((preview: any) => this.preview = preview)
