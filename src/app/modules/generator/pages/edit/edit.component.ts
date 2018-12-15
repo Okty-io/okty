@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContainerFormData } from '../../interfaces/form-data';
 import { Container } from '../../models/container';
 import { FormGroup } from '@angular/forms';
@@ -7,6 +7,7 @@ import { SessionService } from '../../services/session.service';
 import { ContainerService } from '../../services/container.service';
 import { ContainerRepository } from '../../repositories/container.repository';
 import { FormService } from '../../services/form.service';
+import { Location } from '@angular/common';
 
 @Component({
     templateUrl: './edit.component.html',
@@ -27,7 +28,9 @@ export class EditComponent implements OnInit {
         private sessionService: SessionService,
         private containerService: ContainerService,
         private containerRepository: ContainerRepository,
-        private formService: FormService) {
+        private formService: FormService,
+        private router: Router,
+        private location: Location) {
     }
 
     ngOnInit() {
@@ -51,11 +54,23 @@ export class EditComponent implements OnInit {
     }
 
     submit(): void {
+        if (this.data.invalid) {
+            return;
+        }
+
         const containerFormData = this.formService.formToContainerData(this.data, this.container, this.containerFormData.image);
         containerFormData.id = this.containerFormData.id;
 
-        console.log(containerFormData);
-        // this.sessionService.addContainer(containerFormData);
-        // this.router.navigate(['/', 'generator', 'review']);
+        this.sessionService.addContainer(containerFormData);
+        this.router.navigate(['/', 'generator', 'review']);
+    }
+
+    delete(): void {
+        this.sessionService.removeContainer(this.containerFormData.id);
+        this.router.navigate(['/', 'generator', 'review']);
+    }
+
+    goBack(): void {
+        this.location.back();
     }
 }
