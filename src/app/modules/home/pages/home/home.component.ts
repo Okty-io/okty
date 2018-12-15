@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as anime from 'animejs';
+import { TitleService } from '../../../../core/services/title.service';
 
 @Component({
     selector: 'app-home',
@@ -12,10 +13,11 @@ export class HomeComponent implements OnInit {
         loop: true
     });
 
-    constructor() {
+    constructor(private titleService: TitleService) {
     }
 
     ngOnInit() {
+        this.titleService.set('Home');
     }
 
     public animeIso(): void {

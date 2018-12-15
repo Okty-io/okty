@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Template } from '../../models/template';
 import { Listable } from '../../interfaces/listable';
 import { TemplateRepository } from '../../repositories/template.repository';
+import { TitleService } from '../../../../core/services/title.service';
 
 @Component({
     templateUrl: './templates.component.html',
@@ -14,10 +15,15 @@ export class TemplatesComponent implements OnInit, OnDestroy {
 
     private subscribeTemplates;
 
-    constructor(private templateRepository: TemplateRepository) {
+    constructor(
+        private templateRepository: TemplateRepository,
+        private titleService: TitleService
+    ) {
     }
 
     ngOnInit(): void {
+        this.titleService.set(`Templates list`);
+
         this.templates = null;
         this.displayed = null;
 

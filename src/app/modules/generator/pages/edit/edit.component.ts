@@ -8,6 +8,7 @@ import { ContainerService } from '../../services/container.service';
 import { ContainerRepository } from '../../repositories/container.repository';
 import { FormService } from '../../services/form.service';
 import { Location } from '@angular/common';
+import { TitleService } from '../../../../core/services/title.service';
 
 @Component({
     templateUrl: './edit.component.html',
@@ -32,13 +33,16 @@ export class EditComponent implements OnInit {
         private containerRepository: ContainerRepository,
         private formService: FormService,
         private router: Router,
-        private location: Location) {
+        private location: Location,
+        private titleService: TitleService
+    ) {
     }
 
     ngOnInit() {
         this.route.params.subscribe((params: { [key: string]: string }) => {
             this.id = params.id;
             this.sessionService.startEditing(this.id);
+
 
             this.containerFormData = this.sessionService.getContainer(this.id);
             if (!this.containerFormData) {
@@ -47,6 +51,8 @@ export class EditComponent implements OnInit {
 
             this.preview = '';
             this.container = this.containerFormData.form;
+
+            this.titleService.set(`Edit your ${this.container.name} container`);
         });
     }
 

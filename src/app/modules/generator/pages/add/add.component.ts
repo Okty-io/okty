@@ -7,6 +7,7 @@ import { SessionService } from '../../services/session.service';
 import { ContainerService } from '../../services/container.service';
 import { FormService } from '../../services/form.service';
 import { Location } from '@angular/common';
+import { TitleService } from '../../../../core/services/title.service';
 
 @Component({
     templateUrl: './add.component.html',
@@ -28,14 +29,20 @@ export class AddComponent implements OnInit, OnDestroy {
         private router: Router,
         private containerService: ContainerService,
         private formService: FormService,
-        private location: Location
+        private location: Location,
+        private titleService: TitleService
     ) {
     }
 
     ngOnInit(): void {
+        this.titleService.set('New container');
+
         this.subscribeContainer = this.containerRepository.getOne(this.route.snapshot.params.id)
             .subscribe(
-                (container: Container) => this.container = container,
+                (container: Container) => {
+                    this.container = container;
+                    this.titleService.set(`New ${this.container.name} container`);
+                },
                 (error: string) => this.error = error
             );
     }

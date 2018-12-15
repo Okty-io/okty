@@ -4,6 +4,7 @@ import { SessionService } from '../../services/session.service';
 import { ContainerService } from '../../services/container.service';
 import { ContainerRepository } from '../../repositories/container.repository';
 import { ContainerArgs } from '../../interfaces/api-data';
+import { TitleService } from '../../../../core/services/title.service';
 
 @Component({
     selector: 'app-generator-review',
@@ -18,11 +19,15 @@ export class ReviewComponent implements OnInit {
     constructor(
         private sessionService: SessionService,
         private containerService: ContainerService,
-        private containerRepository: ContainerRepository) {
+        private containerRepository: ContainerRepository,
+        private titleService: TitleService
+    ) {
 
     }
 
     ngOnInit(): void {
+        this.titleService.set('Review and export your project');
+
         this.preview = '';
         this.containers = this.sessionService.getContainers();
 
