@@ -5,7 +5,7 @@
 export const environment = {
     production: false,
     api: {
-        host: 'https://okty-server-dev.herokuapp.co'
+        host: 'https://okty-server-dev.herokuapp.com'
     }
 };
 

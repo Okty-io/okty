@@ -5,6 +5,7 @@ import { TemplatesComponent } from './pages/templates/templates.component';
 import { AddComponent } from './pages/add/add.component';
 import { ReviewComponent } from './pages/review/review.component';
 import { EditComponent } from './pages/edit/edit.component';
+import { LoadComponent } from './pages/load/load.component';
 
 const routes: Routes = [
     {
@@ -22,6 +23,10 @@ const routes: Routes = [
     {
         path: 'edit/:id',
         component: EditComponent
+    },
+    {
+        path: 'load/:id',
+        component: LoadComponent
     },
     {
         path: 'review',
