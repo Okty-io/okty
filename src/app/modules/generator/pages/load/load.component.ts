@@ -43,7 +43,7 @@ export class LoadComponent implements OnInit {
         });
     }
 
-    private async initContainer(container: { image: string, config: Array<FormFieldData[]> }): void {
+    private async initContainer(container: { image: string, config: Array<FormFieldData[]> }): Promise<void> {
         const data = new ContainerFormData();
         data.image = container.image;
         data.config = container.config;
