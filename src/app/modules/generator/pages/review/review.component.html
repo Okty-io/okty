@@ -1,9 +1,12 @@
 <div class="col">
     <div>
         <h2>Is your project ready ?</h2>
-        <div class="action">
+        <div class="action" *ngIf="!loading">
             <a [routerLink]="['/', 'generator', 'containers']">Add a container</a>
             <button (click)="export()">Export my project</button>
+        </div>
+        <div class="loading" *ngIf="loading">
+            <p>Loading...</p>
         </div>
     </div>
     <div>

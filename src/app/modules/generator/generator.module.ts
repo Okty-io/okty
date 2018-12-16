@@ -28,6 +28,7 @@ import { SessionService } from './services/session.service';
 import { EditComponent } from './pages/edit/edit.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ContainerValidators } from './validators/container.validators';
+import { ProjectRepository } from './repositories/project.repository';
 
 @NgModule({
     declarations: [
@@ -60,6 +61,7 @@ import { ContainerValidators } from './validators/container.validators';
     providers: [
         ContainerRepository,
         TemplateRepository,
+        ProjectRepository,
         ContainerService,
         FormService,
         SessionService,
