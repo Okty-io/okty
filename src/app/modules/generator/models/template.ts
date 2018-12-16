@@ -1,4 +1,5 @@
 import { Listable } from '../interfaces/listable';
+import { FormFieldData } from '../interfaces/form-data';
 
 export class Template implements Listable {
     id: string;
@@ -6,9 +7,7 @@ export class Template implements Listable {
     logo: string;
     containers: Array<{
         image: string;
-        config: Array<{
-            [key: string]: string;
-        }>;
+        config: Array<FormFieldData[]>;
     }>;
 
     getTitle(): string {
@@ -20,6 +19,6 @@ export class Template implements Listable {
     }
 
     getLink(): string {
-        return '/';
+        return '/generator/load/' + this.id;
     }
 }

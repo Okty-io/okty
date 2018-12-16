@@ -29,6 +29,7 @@ import { EditComponent } from './pages/edit/edit.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ContainerValidators } from './validators/container.validators';
 import { ProjectRepository } from './repositories/project.repository';
+import { LoadComponent } from './pages/load/load.component';
 
 @NgModule({
     declarations: [
@@ -51,6 +52,7 @@ import { ProjectRepository } from './repositories/project.repository';
         PreviewComponent,
         EditComponent,
         SidebarComponent,
+        LoadComponent,
     ],
     imports: [
         CommonModule,

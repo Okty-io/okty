@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Template } from '../models/template';
@@ -21,5 +21,13 @@ export class TemplateRepository {
                 return of([]);
             })
         );
+    }
+
+    public getOne(id: string): Observable<Template> {
+        return this.api.get(`template/${id}`)
+            .pipe(
+                map((element: object) => Object.assign(new Template, element)),
+                catchError((response: HttpErrorResponse) => throwError(response.error.error ? response.error.error : 'Error'))
+            );
     }
 }

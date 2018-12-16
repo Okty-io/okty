@@ -28,8 +28,7 @@ export class ContainerRepository {
         return this.api.get(`container/form/${id}`)
             .pipe(
                 map((element: object) => Object.assign(new Container, element)),
-                catchError((response: HttpErrorResponse) => throwError(response.error.error ? response.error.error : 'Error')
-                )
+                catchError((response: HttpErrorResponse) => throwError(response.error.error ? response.error.error : 'Error'))
             );
     }
 
