@@ -40,6 +40,7 @@ export class SessionService {
         const index = this.containers.indexOf(container);
 
         this.containers.splice(index, 1);
+        this.containersObservable.next(this.containers);
     }
 
     containersChange(): Observable<ContainerFormData[]> {
@@ -56,5 +57,10 @@ export class SessionService {
 
     getEditingId(): string {
         return this.editing;
+    }
+
+    reset() {
+        this.containers.length = 0;
+        this.containersObservable.next(this.containers);
     }
 }
