@@ -63,7 +63,7 @@ export class EditComponent implements OnInit {
         const apiArg = this.containerService.formDataToApiArg(containerData);
         this.containerRepository.getPreview(apiArg)
             .then((preview: any) => this.preview = preview)
-            .catch((error) => console.log(error));
+            .catch(() => this.preview = undefined);
     }
 
     submit(): void {

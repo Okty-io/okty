@@ -41,7 +41,7 @@ export class ReviewComponent implements OnInit {
 
         this.containerRepository.getFullPreview(apiArgs)
             .then((preview: any) => this.preview = preview)
-            .catch((error) => console.error(error));
+            .catch(() => this.preview = undefined);
     }
 
     export(): void {

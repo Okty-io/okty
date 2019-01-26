@@ -13,7 +13,7 @@ export class ContainerRepository {
     }
 
     public getAll(): Observable<Container[]> {
-        return this.api.get('container/form').pipe(
+        return this.api.get('containers').pipe(
             map((elements: Array<object>) => {
                 return elements.map(element => Object.assign(new Container, element));
             }),
@@ -25,7 +25,7 @@ export class ContainerRepository {
     }
 
     public getOne(id: string): Observable<Container> {
-        return this.api.get(`container/form/${id}`)
+        return this.api.get(`containers/${id}/form`)
             .pipe(
                 map((element: object) => Object.assign(new Container, element)),
                 catchError((response: HttpErrorResponse) => throwError(response.error.error ? response.error.error : 'Error'))

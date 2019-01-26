@@ -12,14 +12,11 @@ export class TemplateRepository {
     }
 
     public getAll(): Observable<Template[]> {
-        return this.api.get('template').pipe(
+        return this.api.get('templates').pipe(
             map((elements: Array<object>) => {
                 return elements.map(element => Object.assign(new Template, element));
             }),
-            catchError((error: HttpErrorResponse) => {
-                console.error(error.message);
-                return of([]);
-            })
+            catchError(() => of([]))
         );
     }
 
