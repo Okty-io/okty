@@ -13,7 +13,7 @@ export class ApiService {
     }
 
     public get(endpoint: string): Observable<any> {
-        return this.http.get(`${this.baseUrl}/${endpoint}/`);
+        return this.http.get(`${this.baseUrl}/${endpoint}`);
     }
 
     public post(endpoint: string, data: any): Observable<any> {
@@ -21,6 +21,6 @@ export class ApiService {
     }
 
     public download(endpoint: string, data: any): Observable<Blob> {
-        return this.http.post(`${this.baseUrl}/${endpoint}/`, data, {responseType: 'blob'});
+        return this.http.post(`${this.baseUrl}/${endpoint}`, data, {responseType: 'blob'});
     }
 }
