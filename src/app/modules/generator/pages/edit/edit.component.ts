@@ -43,7 +43,6 @@ export class EditComponent implements OnInit {
             this.id = params.id;
             this.sessionService.startEditing(this.id);
 
-
             this.containerFormData = this.sessionService.getContainer(this.id);
             if (!this.containerFormData) {
                 throw new Error('Container not found');
@@ -59,8 +58,12 @@ export class EditComponent implements OnInit {
     updateData(updatedData: FormGroup) {
         this.data = updatedData;
 
-        const containerData = this.formService.formToContainerData(this.data, this.container, this.id);
+        const containerData = this.formService.formToContainerData(this.data, this.container);
+        console.log(containerData);
+        console.log(this.container);
         const apiArg = this.containerService.formDataToApiArg(containerData);
+        console.log(apiArg);
+
         this.containerRepository.getPreview(apiArg)
             .then((preview: any) => this.preview = preview)
             .catch(() => this.preview = undefined);
@@ -71,7 +74,7 @@ export class EditComponent implements OnInit {
             return;
         }
 
-        const containerFormData = this.formService.formToContainerData(this.data, this.container, this.containerFormData.image);
+        const containerFormData = this.formService.formToContainerData(this.data, this.container);
         containerFormData.id = this.containerFormData.id;
 
         this.sessionService.addContainer(containerFormData);
