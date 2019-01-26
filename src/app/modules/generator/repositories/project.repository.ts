@@ -12,7 +12,7 @@ export class ProjectRepository {
     }
 
     public build(apiArgs: ContainerArgs[]): Promise<Blob> {
-        return this.api.download(`container/build`, apiArgs)
+        return this.api.download(`build`, apiArgs)
             .pipe(
                 catchError((error: HttpErrorResponse) => throwError(error.message))
             )

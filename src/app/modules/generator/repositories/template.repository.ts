@@ -21,7 +21,7 @@ export class TemplateRepository {
     }
 
     public getOne(id: string): Observable<Template> {
-        return this.api.get(`template/${id}`)
+        return this.api.get(`templates/${id}`)
             .pipe(
                 map((element: object) => Object.assign(new Template, element)),
                 catchError((response: HttpErrorResponse) => throwError(response.error.error ? response.error.error : 'Error'))
