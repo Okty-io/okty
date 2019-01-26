@@ -17,7 +17,7 @@ export class ApiService {
     }
 
     public post(endpoint: string, data: any): Observable<any> {
-        return this.http.post(`${this.baseUrl}/${endpoint}/`, data, {responseType: 'json'});
+        return this.http.post(`${this.baseUrl}/${endpoint}`, data, {responseType: 'json'});
     }
 
     public download(endpoint: string, data: any): Observable<Blob> {

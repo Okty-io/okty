@@ -36,6 +36,7 @@ export class AddComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.titleService.set('New container');
+        this.preview = '';
 
         this.subscribeContainer = this.containerRepository.getOne(this.route.snapshot.params.id)
             .subscribe(
@@ -64,12 +65,14 @@ export class AddComponent implements OnInit, OnDestroy {
 
     updateData(updatedData: FormGroup) {
         this.data = updatedData;
+        this.preview = '';
 
         const containerData = this.formService.formToContainerData(this.data, this.container, this.route.snapshot.params.id);
         const apiArg = this.containerService.formDataToApiArg(containerData);
+
         this.containerRepository.getPreview(apiArg)
             .then((preview: any) => this.preview = preview)
-            .catch((error) => console.log(error));
+            .catch(() => this.preview = undefined);
     }
 
     goBack(): void {

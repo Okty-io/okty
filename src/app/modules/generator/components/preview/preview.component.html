@@ -1,5 +1,8 @@
-<div>
+<div *ngIf="!loading">
     <pre>
         <code class="hljs" [innerHTML]="preview"></code>
     </pre>
+</div>
+<div *ngIf="loading">
+    Loading...
 </div>
