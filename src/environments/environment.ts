@@ -6,6 +6,9 @@ export const environment = {
     production: false,
     api: {
         host: 'http://127.0.0.1:8080/v1'
+    },
+    github: {
+        clientId: '84292809e436159ed5a3'
     }
 };
 
