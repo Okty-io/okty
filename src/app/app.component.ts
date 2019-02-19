@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { homeAnimation } from './modules/home/pages/home/home.animation';
+import { AuthenticationService } from './core/authentication/authentication.service';
 
 @Component({
     selector: 'app-root',
@@ -15,7 +16,14 @@ import { homeAnimation } from './modules/home/pages/home/home.animation';
         homeAnimation
     ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+    constructor(private authentication: AuthenticationService) {
+    }
+
+    public ngOnInit(): void {
+        this.authentication.checkloggedIn();
+    }
 
     prepareRoute(outlet: RouterOutlet) {
         return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];

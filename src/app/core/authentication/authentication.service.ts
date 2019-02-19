@@ -16,6 +16,15 @@ export class AuthenticationService {
         this.subject = new BehaviorSubject(this.user);
     }
 
+    public checkloggedIn(): void {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            return;
+        }
+
+        this.login(token);
+    }
+
     public login(token: string): void {
         localStorage.setItem('token', token);
 
@@ -32,5 +41,9 @@ export class AuthenticationService {
 
     public getObservable(): Observable<User> {
         return this.subject.asObservable();
+    }
+
+    public hasToken(): boolean {
+        return !!localStorage.getItem('token');
     }
 }

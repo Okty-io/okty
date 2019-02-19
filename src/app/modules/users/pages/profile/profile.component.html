@@ -1,3 +1,6 @@
-<p>
-  Hello {{user.name}}
-</p>
+<div *ngIf="!user">Loading...</div>
+<div *ngIf="user">
+    <p>
+        Hello {{user.name}}
+    </p>
+</div>

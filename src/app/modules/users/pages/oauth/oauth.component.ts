@@ -32,7 +32,6 @@ export class OauthComponent implements OnInit {
     }
 
     private handleSuccess(response: { token: string }): void {
-        console.log(response);
         this.authenticationService.login(response.token);
         this.router.navigate(['/', 'users', 'profile']);
 
@@ -55,7 +54,7 @@ export class OauthComponent implements OnInit {
         }
         localStorage.removeItem('api_state');
 
-        this.api.post('user', {code: code, state: state})
+        this.api.post('login', {code: code, state: state})
             .subscribe(
                 (response: { token: string }) => this.handleSuccess(response),
                 (error: HttpErrorResponse) => this.handleError(error)
