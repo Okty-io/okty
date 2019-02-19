@@ -1,0 +1,9 @@
+<div *ngIf="loading">
+    Loading...
+</div>
+<div *ngIf="!loading && error">
+    An error occured during the login process
+</div>
+<div *ngIf="!loading && !error">
+    You have been successfully logged in
+</div>

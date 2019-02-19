@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
@@ -12,15 +12,32 @@ export class ApiService {
         this.baseUrl = environment.api.host;
     }
 
+    private static getHeaders(): HttpHeaders {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            return new HttpHeaders();
+        }
+
+        return new HttpHeaders({
+            'Authorization': `Bearer ${token}`
+        });
+    }
+
     public get(endpoint: string): Observable<any> {
-        return this.http.get(`${this.baseUrl}/${endpoint}`);
+        const headers = ApiService.getHeaders();
+
+        return this.http.get(`${this.baseUrl}/${endpoint}`, {headers: headers});
     }
 
     public post(endpoint: string, data: any): Observable<any> {
-        return this.http.post(`${this.baseUrl}/${endpoint}`, data, {responseType: 'json'});
+        const headers = ApiService.getHeaders();
+
+        return this.http.post(`${this.baseUrl}/${endpoint}`, data, {responseType: 'json', headers: headers});
     }
 
     public download(endpoint: string, data: any): Observable<Blob> {
-        return this.http.post(`${this.baseUrl}/${endpoint}`, data, {responseType: 'blob'});
+        const headers = ApiService.getHeaders();
+
+        return this.http.post(`${this.baseUrl}/${endpoint}`, data, {responseType: 'blob', headers: headers});
     }
 }

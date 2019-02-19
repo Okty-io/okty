@@ -48,9 +48,9 @@ export class FormService {
     }
 
     // noinspection JSMethodCanBeStatic
-    formToContainerData(data: FormGroup, container: Container, image: string) {
+    formToContainerData(data: FormGroup, container: Container) {
         const containerFormData = new ContainerFormData();
-        containerFormData.image = image;
+        containerFormData.image = container.id;
         containerFormData.form = container;
         containerFormData.config = data.value;
 
