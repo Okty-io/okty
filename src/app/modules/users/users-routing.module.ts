@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { OauthComponent } from './pages/oauth/oauth.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import IsNotLoggedIn from './guards/isNotLoggedIn';
+import IsLoggedIn from './guards/isLoggedIn';
 
 const routes: Routes = [
     {
@@ -22,14 +23,17 @@ const routes: Routes = [
     },
     {
         path: 'profile',
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [
+            IsLoggedIn
+        ]
     }
 ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
-    providers: [IsNotLoggedIn],
+    providers: [IsNotLoggedIn, IsLoggedIn],
 })
 export class UsersRoutingModule {
 }
