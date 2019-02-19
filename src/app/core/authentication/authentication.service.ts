@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import User from '../../shared/models/user';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiService } from '../services/api.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
     providedIn: 'root'
@@ -10,10 +11,12 @@ export class AuthenticationService {
 
     private user: User;
     private subject: BehaviorSubject<User>;
+    private jwtHelper;
 
     constructor(private api: ApiService) {
         this.user = null;
         this.subject = new BehaviorSubject(this.user);
+        this.jwtHelper = new JwtHelperService();
     }
 
     public checkloggedIn(): void {
@@ -44,6 +47,16 @@ export class AuthenticationService {
     }
 
     public hasToken(): boolean {
-        return !!localStorage.getItem('token');
+        const token = localStorage.getItem('token');
+        if (!token) {
+            return false;
+        }
+
+        if (token && this.jwtHelper.isTokenExpired(token)) {
+            localStorage.removeItem('token');
+            return false;
+        }
+
+        return true;
     }
 }
