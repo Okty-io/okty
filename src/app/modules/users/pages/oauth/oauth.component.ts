@@ -14,14 +14,20 @@ export class OauthComponent implements OnInit {
     loading = true;
     error = false;
 
-    constructor(private route: ActivatedRoute, private api: ApiService, private router: Router, private authenticationService: AuthenticationService) {
+    constructor(
+        private route: ActivatedRoute,
+        private api: ApiService,
+        private router: Router,
+        private authenticationService: AuthenticationService
+    ) {
     }
 
     ngOnInit() {
         const provider = this.route.snapshot.params.provider;
 
         const authFunctions = {
-            'github': this.loginWithGithub
+            'github': this.loginWithGithub.bind(this),
+            'gitlab': this.loginWithGitlab.bind(this),
         };
 
         try {
@@ -45,7 +51,7 @@ export class OauthComponent implements OnInit {
         this.error = true;
     }
 
-    private loginWithGithub = (): void => {
+    private getParams(): { code: string, state: string } {
         const code = this.route.snapshot.queryParams.code;
         const state = this.route.snapshot.queryParams.state;
 
@@ -54,7 +60,23 @@ export class OauthComponent implements OnInit {
         }
         localStorage.removeItem('api_state');
 
-        this.api.post('login', {code: code, state: state})
+        return {code, state};
+    }
+
+    private loginWithGithub() {
+        const {code, state} = this.getParams();
+
+        this.api.post('login', {code: code, state: state, provider: 'github'})
+            .subscribe(
+                (response: { token: string }) => this.handleSuccess(response),
+                (error: HttpErrorResponse) => this.handleError(error)
+            );
+    }
+
+    private loginWithGitlab() {
+        const {code, state} = this.getParams();
+
+        this.api.post('login', {code: code, state: state, provider: 'gitlab'})
             .subscribe(
                 (response: { token: string }) => this.handleSuccess(response),
                 (error: HttpErrorResponse) => this.handleError(error)

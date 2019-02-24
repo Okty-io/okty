@@ -9,6 +9,9 @@ export const environment = {
     },
     github: {
         clientId: '84292809e436159ed5a3'
+    },
+    gitlab: {
+        clientId: 'a24f92a5fb0d62e585ecadefb473c28e445197aaa8e95c2a7d44c0b26823efc8'
     }
 };
 
