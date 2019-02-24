@@ -1,7 +1,20 @@
 :host {
     > div {
         width: 100%;
-        text-align: center;
-        margin: 32px 0;
+        input{
+            width: 100%;
+            background: transparent;
+            text-align: center;
+            font-size: 30px;
+            line-height: 60px;
+            border: solid 1px #D6D6D6;
+            border-radius: 30px;
+            outline: none;
+            margin: 0 auto;
+            display: block;
+            max-width: 650px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
     }
 }
