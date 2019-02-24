@@ -25,7 +25,7 @@ export class ContainerRepository {
     }
 
     public getOne(id: string): Observable<Container> {
-        return this.api.get(`containers/${id}/form`)
+        return this.api.get(`containers/${id}`)
             .pipe(
                 map((element: object) => Object.assign(new Container, element)),
                 catchError((response: HttpErrorResponse) => throwError(response.error.error ? response.error.error : 'Error'))
