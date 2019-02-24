@@ -55,7 +55,8 @@
             <a>Builder</a>
             <a>Documentation</a>
             <a>Blog</a>
-            <a class="signup" (click)="shapeAnime()">Sign in</a>
+            <a class="signup" [routerLink]="['/', 'users', 'login']" *ngIf="!user">Sign in</a>
+            <a class="signup" [routerLink]="['/', 'users', 'profile']" *ngIf="user">Profile</a>
         </div>
 
         <label class="small-nav toggle">

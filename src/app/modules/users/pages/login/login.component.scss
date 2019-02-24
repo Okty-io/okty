@@ -1,0 +1,15 @@
+:host {
+    > div {
+        width: 40%;
+        border: 1px solid #000;
+        margin: 24px auto auto;
+
+        > p {
+            text-align: center;
+        }
+    }
+
+    h1 {
+        text-align: center;
+    }
+}
