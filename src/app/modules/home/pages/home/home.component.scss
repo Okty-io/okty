@@ -1,5 +1,42 @@
 @import "../../../../../styles.scss";
+.home-bg-gradient{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100vw - 20px);
+    height: 100vh;
+    z-index: -2;
+    background: rgba(255,255,255,1);
+    background: -moz-linear-gradient(33deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 58%, rgba(226,228,255,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(58%, rgba(255,255,255,1)), color-stop(100%, rgba(226,228,255,1)));
+    background: -webkit-linear-gradient(33deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 58%, rgba(226,228,255,1) 100%);
+    background: -o-linear-gradient(33deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 58%, rgba(226,228,255,1) 100%);
+    background: -ms-linear-gradient(33deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 58%, rgba(226,228,255,1) 100%);
+    background: linear-gradient(33deg, white 0%, white 58%, #e2e4ff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2e4ff', GradientType=1 );
+}
+.home-bg-art{
+    width: 1820px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
 
+.home-titles{
+    .title{
+        font-family: $font--open-sans;
+        font-size: 3.5em;
+        font-weight: 300;
+        margin: 0;
+    }
+    .subtitle{
+        font-family: $font--open-sans;
+        font-size: 2em;
+        font-weight: 300;
+        margin: 0;
+    }
+}
 .row {
     height: calc(100vh - 60px);
     margin-top: 60px;
@@ -27,11 +64,10 @@
         }
 
         .center-item-left {
-            max-width: 70%;
             margin-left: 15%;
 
             h3 {
-                max-width: 380px;
+                max-width: 525px;
             }
         }
         .center-item-right {
@@ -50,30 +86,34 @@
                 display: inline-block;
                 padding: 8px 18px;
                 cursor: pointer;
-                border-radius: 25px;
+                border-radius: 40px;
                 text-decoration: none;
                 transition: all .3s ease;
+                height: 45px;
+                padding: 0 40px;
+                line-height: 45px;
+                font-weight: 300;
             }
 
             .empty {
-                background: $color--primary;
-                border: 2px solid $color--primary;
+                @include button-br;
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3d65c2', endColorstr='#3d68de', GradientType=1 );
+                border: 1px solid transparent;
                 color: white;
 
                 &:hover {
-                    background: rgba(255, 255, 255, 0);
-                    color: black;
+                    @include button-br-hover;
                 }
             }
 
             .template {
                 background: white;
-                border: 2px solid $color--primary;
+                border: 1px solid #000000;
                 color: black;
 
                 &:hover {
-                    background: $color--primary;
-                    border: 2px solid $color--primary;
+                    @include button-br-hover;
+                    border-color:transparent;
                     color: white;
                 }
             }
@@ -224,11 +264,11 @@
     position: absolute;
     width: 22px;
     height: 35px;
-    bottom: 20px;
+    bottom: 75px;
     left: 50%;
     margin-left: -12px;
     border-radius: 15px;
-    border: 2px solid $color--primary;
+    border: 1px solid #000000;
     -webkit-animation: intro 1s;
     animation: intro 1s;
 
@@ -238,7 +278,7 @@
         height: 3px;
         margin: 6px auto;
         border-radius: 4px;
-        background: $color--primary;
+        background: #000000;
         -webkit-animation: finger 1s infinite;
         animation: finger 1s infinite;
     }

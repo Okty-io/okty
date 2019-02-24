@@ -10,7 +10,14 @@
 <div class="list" *ngIf="elements && elements.length > 0">
     <div *ngFor="let element of elements">
         <div class="card">
-            <a [routerLink]="element.getLink()">{{ element.getTitle() }}</a>
+            <a [routerLink]="element.getLink()">
+                <span class="icon">
+                    <img src="{{element.getImage()}}" alt="">
+                </span>
+                <span class="title">
+                    {{ element.getTitle() }}
+                </span>
+            </a>
         </div>
     </div>
 </div>
