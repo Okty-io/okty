@@ -8,3 +8,9 @@ services:
             - './:/app'
         working_dir: '/app'
         command: ['sh', '-c', 'npm install && npm start']
+        networks:
+          - okty-front
+
+networks:
+  okty-front:
+      name: okty-front
