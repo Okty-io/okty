@@ -30,6 +30,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ContainerValidators } from './validators/container.validators';
 import { ProjectRepository } from './repositories/project.repository';
 import { LoadComponent } from './pages/load/load.component';
+import { HighlightModule } from 'ngx-highlightjs';
 
 @NgModule({
     declarations: [
@@ -59,6 +60,7 @@ import { LoadComponent } from './pages/load/load.component';
         GeneratorRoutingModule,
         FormsModule,
         ReactiveFormsModule,
+        HighlightModule
     ],
     providers: [
         ContainerRepository,
