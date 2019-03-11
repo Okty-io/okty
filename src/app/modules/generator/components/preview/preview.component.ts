@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import hljs from 'highlight.js/lib';
 
 @Component({
     selector: 'app-generator-preview',
@@ -19,9 +18,6 @@ export class PreviewComponent {
         }
 
         this.loading = !data;
-
-        const file = YAML.stringify(data, 8);
-        this.preview = hljs.highlight('yaml', file).value;
+        this.preview = YAML.stringify(data, 8);
     }
-
 }
