@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './core/services/api.service';
 import { TitleService } from './core/services/title.service';
+import { HighlightModule } from 'ngx-highlightjs';
+
+import yaml from 'highlight.js/lib/languages/yaml';
 
 @NgModule({
     declarations: [
@@ -18,6 +21,9 @@ import { TitleService } from './core/services/title.service';
         HttpClientModule,
         AppRoutingModule,
         CoreModule,
+        HighlightModule.forRoot({
+            languages: () => [{name: 'yaml', func: yaml}]
+        })
     ],
     providers: [
         ApiService,
