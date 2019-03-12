@@ -33,6 +33,7 @@ import { LoadComponent } from './pages/load/load.component';
 import { HighlightModule } from 'ngx-highlightjs';
 import { SharedModule } from '../../shared/shared.module';
 import { ActionComponent } from './components/action/action.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
     declarations: [
@@ -65,6 +66,7 @@ import { ActionComponent } from './components/action/action.component';
         ReactiveFormsModule,
         HighlightModule,
         SharedModule,
+        NgSelectModule,
     ],
     providers: [
         ContainerRepository,
