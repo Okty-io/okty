@@ -1,0 +1,10 @@
+:host {
+    margin-bottom: 32px;
+
+    display: flex;
+    justify-content: space-between;
+
+    app-button + app-button{
+        margin-left: 1vw;
+    }
+}

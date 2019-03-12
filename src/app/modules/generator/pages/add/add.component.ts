@@ -6,7 +6,6 @@ import { ContainerRepository } from '../../repositories/container.repository';
 import { SessionService } from '../../services/session.service';
 import { ContainerService } from '../../services/container.service';
 import { FormService } from '../../services/form.service';
-import { Location } from '@angular/common';
 import { TitleService } from '../../../../core/services/title.service';
 
 @Component({
@@ -29,7 +28,6 @@ export class AddComponent implements OnInit, OnDestroy {
         private router: Router,
         private containerService: ContainerService,
         private formService: FormService,
-        private location: Location,
         private titleService: TitleService
     ) {
     }
@@ -73,9 +71,5 @@ export class AddComponent implements OnInit, OnDestroy {
         this.containerRepository.getPreview(apiArg)
             .then((preview: any) => this.preview = preview)
             .catch(() => this.preview = undefined);
-    }
-
-    goBack(): void {
-        this.location.back();
     }
 }
