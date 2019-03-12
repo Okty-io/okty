@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "@auth0/angular-jwt": "^2.1.0",
+    "@ng-select/ng-select": "^2.16.2",
     "animejs": "^2.2.0",
     "core-js": "^2.5.4",
     "file-saver": "^2.0.0",

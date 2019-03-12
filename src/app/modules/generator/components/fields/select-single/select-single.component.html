@@ -1,11 +1,18 @@
-<label>
-    {{ field.label }}
-    <select [name]="field.label" [formControl]="formControl">
-        <option *ngFor="let option of options" [value]="option.value">
-            {{option.label}}
-        </option>
-    </select>
-</label>
+<label [htmlFor]="field.id">{{ field.label }}</label>
+
+<!--<select [id]="field.id" [name]="field.label" [formControl]="formControl" [ngClass]="{'error': formControl.invalid}">-->
+    <!--<option *ngFor="let option of options" [value]="option.id">-->
+        <!--{{option.text}}-->
+    <!--</option>-->
+<!--</select>-->
+
+<ng-select [items]="options"
+           bindLabel="name"
+           bindValue="id"
+           [formControl]="formControl"
+           [labelForId]="field.id"
+></ng-select>
+
 <div *ngIf="formControl.invalid">
-    <p>{{ formControl.errors | validatorErrors }}</p>
+    <small>{{ formControl.errors | validatorErrors }}</small>
 </div>

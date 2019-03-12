@@ -1,0 +1,44 @@
+label {
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 4px;
+}
+
+select {
+    border: none;
+    background-color: #EEE;
+    padding: 12px;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+    position: relative;
+
+    &.error {
+        border: 1px solid #f03434;
+    }
+
+    &::-ms-expand {
+        display: none;
+    }
+
+    &:after {
+        content: "";
+        height: 5px;
+        width: 5px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        border: solid #fff;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    }
+}
+
+div {
+    small {
+        color: #f03434;
+        font-style: italic;
+    }
+}
+

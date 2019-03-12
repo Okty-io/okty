@@ -11,7 +11,7 @@ export class SelectSingleComponent implements OnInit {
     @Input() formControl: FormControl;
     @Input() field: ContainerConfigField;
 
-    options: Array<{ label: string; value: string }>;
+    options: Array<{ name: string; id: string }>;
 
     ngOnInit(): void {
         this.options = [];
@@ -21,8 +21,8 @@ export class SelectSingleComponent implements OnInit {
             }
 
             this.options.push({
-                label: this.field.source[key].toString(),
-                value: key
+                name: this.field.source[key].toString(),
+                id: key
             });
         }
     }
