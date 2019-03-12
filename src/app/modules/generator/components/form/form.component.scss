@@ -27,9 +27,10 @@
         .fields {
             display: flex;
             flex-wrap: wrap;
+            justify-content: space-between;
 
             div {
-                width: 50%;
+                width: 48%;
             }
         }
     }
