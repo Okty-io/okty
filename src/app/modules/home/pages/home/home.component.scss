@@ -132,7 +132,14 @@
             opacity: 0;
             transition: opacity .5s;
         }
-
+        app-page-illustration{
+            position: absolute;
+            top: calc(50% + 39px);
+            right: calc(50% + 113px);
+            z-index: 20;
+            transform: translateX(50%) translateY(-50%);
+            animation: jump 4s ease-in-out infinite;
+        }
         .planche {
             position: absolute;
             left: 0;
@@ -142,6 +149,8 @@
         }
 
         #plate {
+            position: absolute;
+            right: calc(23% + 25px);
             z-index: 10;
             animation: jump 4s ease-in-out infinite;
         }
