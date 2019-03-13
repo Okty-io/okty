@@ -3,8 +3,7 @@
 <input type="text"
        [id]="field.id"
        [name]="field.label"
-       [formControl]="formControl"
-       [ngClass]="{'error': formControl.invalid}">
+       [formControl]="formControl">
 
 <div *ngIf="formControl.invalid">
     <small>{{ formControl.errors | validatorErrors }}</small>
