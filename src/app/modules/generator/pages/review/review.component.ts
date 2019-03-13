@@ -5,8 +5,6 @@ import { ContainerService } from '../../services/container.service';
 import { ContainerRepository } from '../../repositories/container.repository';
 import { ContainerArgs } from '../../interfaces/api-data';
 import { TitleService } from '../../../../core/services/title.service';
-import { ProjectRepository } from '../../repositories/project.repository';
-import { saveAs } from 'file-saver';
 
 @Component({
     selector: 'app-generator-review',
@@ -15,17 +13,13 @@ import { saveAs } from 'file-saver';
 })
 export class ReviewComponent implements OnInit {
 
-    containers: Array<ContainerFormData>;
     preview: string;
-
-    loading: boolean;
 
     constructor(
         private sessionService: SessionService,
         private containerService: ContainerService,
         private containerRepository: ContainerRepository,
         private titleService: TitleService,
-        private projectRepository: ProjectRepository
     ) {
 
     }
@@ -33,10 +27,7 @@ export class ReviewComponent implements OnInit {
     ngOnInit(): void {
         this.titleService.set('Review and export your project');
 
-        this.loading = false;
         this.preview = '';
-        this.containers = this.sessionService.getContainers();
-
         const apiArgs: ContainerArgs[] = this.getAllContainersArgs();
 
         this.containerRepository.getFullPreview(apiArgs)
@@ -44,23 +35,12 @@ export class ReviewComponent implements OnInit {
             .catch(() => this.preview = undefined);
     }
 
-    export(): void {
-        this.loading = true;
-        const apiArgs: ContainerArgs[] = this.getAllContainersArgs();
-
-        this.projectRepository.build(apiArgs)
-            .then((file: Blob) => saveAs(file, 'okty.zip'))
-            .catch((error: string) => console.error(error))
-            .finally(() => this.loading = false);
-    }
-
     private getAllContainersArgs(): ContainerArgs[] {
         const apiArgs: ContainerArgs[] = [];
-        this.containers.forEach((data: ContainerFormData) => {
+        this.sessionService.getContainers().forEach((data: ContainerFormData) => {
             apiArgs.push(this.containerService.formDataToApiArg(data));
         });
 
         return apiArgs;
     }
-
 }
