@@ -34,6 +34,9 @@ import { HighlightModule } from 'ngx-highlightjs';
 import { SharedModule } from '../../shared/shared.module';
 import { ActionComponent } from './components/action/action.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ReviewActionComponent } from './components/review-action/review-action.component';
+import { ReviewGridComponent } from './components/review-grid/review-grid.component';
 
 @NgModule({
     declarations: [
@@ -58,6 +61,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
         SidebarComponent,
         LoadComponent,
         ActionComponent,
+        ReviewActionComponent,
+        ReviewGridComponent,
     ],
     imports: [
         CommonModule,
@@ -67,6 +72,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
         HighlightModule,
         SharedModule,
         NgSelectModule,
+        FontAwesomeModule,
     ],
     providers: [
         ContainerRepository,

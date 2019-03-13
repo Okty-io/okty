@@ -1,28 +1,6 @@
 <div class="col">
-    <div>
-        <h2>Is your project ready ?</h2>
-        <div class="action" *ngIf="!loading">
-            <a [routerLink]="['/', 'generator', 'containers']">Add a container</a>
-            <button (click)="export()">Export my project</button>
-        </div>
-        <div class="loading" *ngIf="loading">
-            <p>Loading...</p>
-        </div>
-    </div>
-    <div>
-        <h2>Your project contains</h2>
-        <div class="containers" *ngIf="containers.length > 0">
-            <div *ngFor="let container of containers">
-                <a [routerLink]="['/', 'generator', 'edit', container.id]">
-                    <img [src]="container.form.logo" [alt]="container.form.name">
-                    <p>{{container.form.name}}</p>
-                </a>
-            </div>
-        </div>
-        <div class="no-containers" *ngIf="containers.length <= 0">
-            No container
-        </div>
-    </div>
+    <app-generator-review-action></app-generator-review-action>
+    <app-generator-review-grid></app-generator-review-grid>
 </div>
 <div class="col">
     <app-generator-preview [content]="preview"></app-generator-preview>

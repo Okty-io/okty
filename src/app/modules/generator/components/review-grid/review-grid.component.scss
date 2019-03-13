@@ -1,0 +1,22 @@
+.containers {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: auto;
+
+    > div {
+        width: 25%;
+
+        img {
+            box-sizing: border-box;
+            max-width: 80%;
+            border: 1px solid #000;
+            border-radius: 50%;
+            padding: 10%;
+        }
+
+        p {
+            margin-top: 0;
+        }
+    }
+}
