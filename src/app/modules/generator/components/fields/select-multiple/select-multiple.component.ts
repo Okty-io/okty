@@ -27,8 +27,13 @@ export class SelectMultipleComponent implements OnInit {
             });
         }
 
+        if (!this.formControl.value) {
+            this.formControl.setValue('');
+        }
+        const value = this.formControl.value.split(',').filter((id) => id);
+
         this.displayedFormControl = new FormControl();
-        this.displayedFormControl.setValue(this.formControl.value);
+        this.displayedFormControl.setValue(value);
 
         this.displayedFormControl.valueChanges.subscribe((selected: string[]) => {
             this.formControl.setValue(selected.join(','));
