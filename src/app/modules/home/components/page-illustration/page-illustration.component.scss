@@ -8,7 +8,6 @@ $page-main-color:#2B2B2B;
     display: block;
 }
 .page-illustration-container{
-    //perspective: 3000px;
 
     .page-main{
         width: $page-main-width;
@@ -86,7 +85,6 @@ $page-main-color:#2B2B2B;
                             transform: rotateX(-14deg) rotateY(11deg) rotateZ(3deg);
                             perspective: 1000;
                             transition: transform 1s;
-                            //transform: rotateY(26deg) rotateX(-15deg) translateZ(5px);
                             .line-face__front{
                                 position: absolute;
                                 top: 0;
