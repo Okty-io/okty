@@ -25,5 +25,7 @@ export class SelectSingleComponent implements OnInit {
                 id: key
             });
         }
+
+        this.formControl.setValue(this.options[0].id);
     }
 }
