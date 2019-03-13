@@ -12,6 +12,9 @@
 
     .form {
         width: 60%;
+        @media screen and (max-width: 1200px) {
+            width: 100%;
+        }
 
         .header {
             width: 100%;
@@ -39,5 +42,9 @@
     .preview {
         width: 50%;
         margin-left: 5%;
+
+        @media screen and (max-width: 1200px) {
+            display: none;
+        }
     }
 }
