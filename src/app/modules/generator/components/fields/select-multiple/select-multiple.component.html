@@ -1,11 +1,13 @@
-<label>
-    {{ field.label }}
-    <select [name]="field.label" [formControl]="displayedFormControl" multiple>
-        <option *ngFor="let option of options" [value]="option.value">
-            {{option.label}}
-        </option>
-    </select>
-</label>
+<label [htmlFor]="field.id">{{ field.label }}</label>
+
+<ng-select [items]="options"
+           bindLabel="label"
+           bindValue="value"
+           [formControl]="displayedFormControl"
+           [labelForId]="field.id"
+           [multiple]="true"
+></ng-select>
+
 <div *ngIf="formControl.invalid">
-    <p>{{ formControl.errors | validatorErrors }}</p>
+    <small>{{ formControl.errors | validatorErrors }}</small>
 </div>

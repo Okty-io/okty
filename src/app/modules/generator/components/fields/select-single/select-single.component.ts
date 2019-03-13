@@ -25,5 +25,9 @@ export class SelectSingleComponent implements OnInit {
                 value: key
             });
         }
+
+        if (!this.formControl.value || this.formControl.value.trim().length === 0) {
+            this.formControl.setValue(this.options[0].value);
+        }
     }
 }

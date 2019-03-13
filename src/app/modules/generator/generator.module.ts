@@ -31,6 +31,9 @@ import { ContainerValidators } from './validators/container.validators';
 import { ProjectRepository } from './repositories/project.repository';
 import { LoadComponent } from './pages/load/load.component';
 import { HighlightModule } from 'ngx-highlightjs';
+import { SharedModule } from '../../shared/shared.module';
+import { ActionComponent } from './components/action/action.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
     declarations: [
@@ -54,13 +57,16 @@ import { HighlightModule } from 'ngx-highlightjs';
         EditComponent,
         SidebarComponent,
         LoadComponent,
+        ActionComponent,
     ],
     imports: [
         CommonModule,
         GeneratorRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        HighlightModule
+        HighlightModule,
+        SharedModule,
+        NgSelectModule,
     ],
     providers: [
         ContainerRepository,

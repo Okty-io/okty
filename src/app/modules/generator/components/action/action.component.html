@@ -1,0 +1,7 @@
+<div>
+    <app-button type="light" (click)="goBack()">Back</app-button>
+    <app-button type="primary" (click)="submit()">{{ remove ? 'Update' : 'Add' }}</app-button>
+</div>
+<div>
+    <app-button type="danger" *ngIf="remove" (click)="remove()">Delete</app-button>
+</div>

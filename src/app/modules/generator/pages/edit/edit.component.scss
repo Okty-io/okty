@@ -1,33 +1,50 @@
 :host {
     > div {
-        width: 65%;
+        width: 80%;
         margin: auto;
+        font-family: 'Open Sans', sans-serif;
     }
 
     .config {
         display: flex;
-        flex-wrap: wrap;
         align-items: flex-start;
     }
 
-    .header {
-        width: 100%;
-
-        img {
-            max-width: 100px;
+    .form {
+        width: 60%;
+        @media screen and (max-width: 1200px) {
+            width: 100%;
         }
 
-        h1 {
-            display: inline;
-        }
-    }
+        .header {
+            width: 100%;
+            margin-bottom: 32px;
 
-    form {
-        width: 50%;
+            img {
+                padding: 12px;
+                width: 75px;
+                height: 75px;
+                border: 1px solid #000;
+                border-radius: 50%;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            h1 {
+                display: inline-block;
+                vertical-align: middle;
+                margin-left: 1vw;
+                font-weight: 300;
+            }
+        }
     }
 
     .preview {
-        width: 40%;
+        width: 50%;
         margin-left: 5%;
+
+        @media screen and (max-width: 1200px) {
+            display: none;
+        }
     }
 }

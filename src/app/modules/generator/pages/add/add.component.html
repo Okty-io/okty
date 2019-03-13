@@ -1,30 +1,28 @@
 <app-generator-sidebar></app-generator-sidebar>
 
-<div>
-    <div class="text" *ngIf="!container">
-        <div *ngIf="error">
-            {{error}}
-        </div>
-        <div *ngIf="!error">
-            Loading ...
-        </div>
+<div class="loading" *ngIf="!container">
+    <div *ngIf="error">
+        {{error}}
     </div>
+    <div *ngIf="!error">
+        Loading ...
+    </div>
+</div>
 
-    <div class="config" *ngIf="container">
+<div class="config" *ngIf="container">
+    <div class="form">
         <div class="header">
-            <img src="{{container.logo}}" alt="{{container.name}} logo">
+            <img [src]="container.logo" [alt]="container.name">
             <h1>Configuration {{container.name}}</h1>
         </div>
 
         <form (submit)="submit()">
             <app-generator-form [container]="container" (dataChange)="updateData($event)"></app-generator-form>
-            <button type="button" (click)="goBack()">Back</button>
-            <button type="submit">Add</button>
+            <app-generator-action [submit]="submit.bind(this)"></app-generator-action>
         </form>
-
-        <div class="preview">
-            <app-generator-preview [content]="preview"></app-generator-preview>
-        </div>
     </div>
 
+    <div class="preview">
+        <app-generator-preview [content]="preview"></app-generator-preview>
+    </div>
 </div>
