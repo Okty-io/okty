@@ -16,13 +16,16 @@ h2 {
 
     > div {
         width: 25%;
+        display: flex;
 
-        img {
-            box-sizing: border-box;
-            max-width: 80%;
+        #image-box {
+            width: 75px;
+            height: 75px;
             border: 1px solid #000;
             border-radius: 50%;
-            padding: 10%;
+            background-size: 60%;
+            background-repeat: no-repeat;
+            background-position: center;
         }
 
         p {
