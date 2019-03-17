@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../authentication/authentication.service';
 import User from '../../../shared/models/user';
 import { Subscription } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Component({
     selector: 'app-navbar',
@@ -10,6 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
+    public displayNav = environment.displayNavbar ? true : false;
     public user: User;
     private subscription: Subscription;
 

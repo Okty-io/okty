@@ -1,8 +1,6 @@
 <div class="navbar">
-    <a href="/">
+    <a [routerLink]="'/'">
         <div class="navbar-left">
-            <!--<img id="logo-blue" class="logo" src="./assets/logo-blue.svg">-->
-            <!--<img id="logo-white" class="logo" src="./assets/logo-white.svg">-->
             <div class="logo">
                 <svg id="logo-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
                     <style type="text/css">
@@ -46,48 +44,19 @@
                 </svg>
 
             </div>
-            <span #name class="name">Okty</span>
+            <span class="name">Okty</span>
         </div>
     </a>
 
     <div class="navbar-right">
         <div class="large-nav">
-            <a>Builder</a>
+            <a *ngIf="displayNav">Builder</a>
             <a>Documentation</a>
-            <a>Blog</a>
-            <a class="signup" [routerLink]="['/', 'users', 'login']" *ngIf="!user">Sign in</a>
-            <a class="signup" [routerLink]="['/', 'users', 'profile']" *ngIf="user">Profile</a>
+            <a *ngIf="displayNav">Blog</a>
+            <ng-container *ngIf="displayNav">
+                <a class="signup" [routerLink]="['/', 'users', 'login']" *ngIf="!user">Sign in</a>
+                <a class="signup" [routerLink]="['/', 'users', 'profile']" *ngIf="user">Profile</a>
+            </ng-container>
         </div>
-
-        <label class="small-nav toggle">
-            <input type="checkbox">
-            <div>
-                <div>
-                    <span></span>
-                    <span></span>
-                </div>
-                <svg>
-                    <use xlink:href="#path"></use>
-                </svg>
-                <svg>
-                    <use xlink:href="#path"></use>
-                </svg>
-            </div>
-        </label>
-
-        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-            <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" id="path">
-                <path d="M22,22 L2,22 C2,11 11,2 22,2 C33,2 42,11 42,22"></path>
-            </symbol>
-        </svg>
     </div>
 </div>
-
-<svg id="morph-container" viewBox="0 0 0 0" preserveAspectRatio="xMinYMid slice">
-    <linearGradient id="gradient" gradientUnits="userSpaceOnUse" x1="1189.3693" y1="631.6639" x2="1975.4751"
-                    y2="81.2267">
-        <stop offset="0" style="stop-color:#227fc8"/>
-        <stop offset="1" style="stop-color:#227fc8"/>
-    </linearGradient>
-    <path id="morph-shape" d=""/>
-</svg>
