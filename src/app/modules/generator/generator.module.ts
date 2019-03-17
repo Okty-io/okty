@@ -32,7 +32,7 @@ import { ProjectRepository } from './repositories/project.repository';
 import { LoadComponent } from './pages/load/load.component';
 import { HighlightModule } from 'ngx-highlightjs';
 import { SharedModule } from '../../shared/shared.module';
-import { ActionComponent } from './components/action/action.component';
+import { FormActionComponent } from './components/form-action/form-action.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
@@ -57,7 +57,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
         EditComponent,
         SidebarComponent,
         LoadComponent,
-        ActionComponent,
+        FormActionComponent,
     ],
     imports: [
         CommonModule,
