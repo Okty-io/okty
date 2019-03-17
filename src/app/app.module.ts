@@ -25,7 +25,7 @@ import { SharedModule } from './shared/shared.module';
         SharedModule,
         HighlightModule.forRoot({
             languages: () => [{name: 'yaml', func: yaml}]
-        }),
+        })
     ],
     providers: [
         ApiService,
