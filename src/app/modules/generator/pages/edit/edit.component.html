@@ -21,7 +21,9 @@
                                 [userData]="containerFormData.config"
                                 (dataChange)="updateData($event)">
             </app-generator-form>
-            <app-generator-action [submit]="submit.bind(this)" [remove]="delete.bind(this)"></app-generator-action>
+            <app-generator-form-action [submit]="submit.bind(this)"
+                                       [remove]="delete.bind(this)">
+            </app-generator-form-action>
         </form>
     </div>
 

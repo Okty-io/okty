@@ -18,7 +18,9 @@
 
         <form (submit)="submit()">
             <app-generator-form [container]="container" (dataChange)="updateData($event)"></app-generator-form>
-            <app-generator-action [submit]="submit.bind(this)"></app-generator-action>
+            <app-generator-form-action [submit]="submit.bind(this)"
+                                       [formInvalid]="!preview">
+            </app-generator-form-action>
         </form>
     </div>
 

@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
 
-    app-button:nth-child(1):nth-child(2){
+    app-button + app-button {
         margin-left: 1vw;
     }
 }

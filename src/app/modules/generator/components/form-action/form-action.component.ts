@@ -2,14 +2,14 @@ import { Component, Input } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
-    selector: 'app-generator-action',
-    templateUrl: './action.component.html',
-    styleUrls: ['./action.component.scss']
+    selector: 'app-generator-form-action',
+    templateUrl: './form-action.component.html',
+    styleUrls: ['./form-action.component.scss']
 })
-export class ActionComponent {
+export class FormActionComponent {
 
-    @Input() submit: Function;
     @Input() remove: Function;
+    @Input() formInvalid: boolean;
 
     constructor(private location: Location) {
     }
@@ -18,4 +18,8 @@ export class ActionComponent {
         this.location.back();
     }
 
+    @Input()
+    public submit() {
+
+    }
 }
