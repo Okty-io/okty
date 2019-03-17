@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-generator-preview',
@@ -9,11 +10,14 @@ export class PreviewComponent {
 
     preview = '';
     loading = true;
+    faSpinner = faSpinner;
 
     @Input()
     set content(data: string) {
         if (data === undefined) {
-            this.preview = 'An error occured';
+            this.preview = '# Configuration is not valid';
+            this.loading = false;
+
             return;
         }
 
