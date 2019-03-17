@@ -12,7 +12,8 @@ export const environment = {
     },
     gitlab: {
         clientId: 'a24f92a5fb0d62e585ecadefb473c28e445197aaa8e95c2a7d44c0b26823efc8'
-    }
+    },
+    displayNavbar: true
 };
 
 /*
