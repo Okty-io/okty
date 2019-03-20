@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { homeAnimation } from './modules/home/pages/home/home.animation';
+import { homeAnimation } from './modules/cms/pages/home/home.animation';
 import { AuthenticationService } from './core/authentication/authentication.service';
 import { CookieConsentService } from './core/services/cookie-consent.service';
 
