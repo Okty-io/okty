@@ -27,10 +27,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/assets/style/cookie.scss",
+              "src/assets/style/highlight.scss",
+              "src/assets/style/select.scss",
+              "src/assets/style/main.scss",
+              "node_modules/cookieconsent/build/cookieconsent.min.css"
             ],
             "scripts": [
-                "node_modules/yamljs/dist/yaml.min.js"
+                "node_modules/yamljs/dist/yaml.min.js",
+                "node_modules/cookieconsent/build/cookieconsent.min.js"
             ]
           },
           "configurations": {

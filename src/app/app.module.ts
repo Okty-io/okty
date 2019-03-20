@@ -11,6 +11,8 @@ import { HighlightModule } from 'ngx-highlightjs';
 
 import yaml from 'highlight.js/lib/languages/yaml';
 import { SharedModule } from './shared/shared.module';
+import { NgcCookieConsentModule } from 'ngx-cookieconsent';
+import { cookieConfig } from './core/configs/cookie-consent';
 
 @NgModule({
     declarations: [
@@ -23,9 +25,8 @@ import { SharedModule } from './shared/shared.module';
         AppRoutingModule,
         CoreModule,
         SharedModule,
-        HighlightModule.forRoot({
-            languages: () => [{name: 'yaml', func: yaml}]
-        })
+        HighlightModule.forRoot({languages: () => [{name: 'yaml', func: yaml}]}),
+        NgcCookieConsentModule.forRoot(cookieConfig)
     ],
     providers: [
         ApiService,
