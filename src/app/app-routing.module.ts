@@ -12,7 +12,7 @@ const routes: Routes = [
     },
     {
         path: '',
-        loadChildren: './modules/home/home.module#HomeModule'
+        loadChildren: './modules/cms/cms.module#CmsModule'
     }
 ];
 
