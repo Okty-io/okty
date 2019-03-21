@@ -1,4 +1,4 @@
-    import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ContainerFormData } from '../../interfaces/form-data';
 import { SessionService } from '../../services/session.service';
 
@@ -23,5 +23,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.containersSubscription.unsubscribe();
+    }
+    deleteContainer(id: string): void {
+        this.sessionService.removeContainer(id);
     }
 }

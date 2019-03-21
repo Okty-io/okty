@@ -1,33 +1,35 @@
 <app-generator-sidebar></app-generator-sidebar>
+<div>
 
-<div class="loading" *ngIf="!container">
-    <div *ngIf="error">
-        {{error}}
+    <div class="loading" *ngIf="!container">
+        <div *ngIf="error">
+            {{error}}
+        </div>
+        <div *ngIf="!error">
+            Loading ...
+        </div>
     </div>
-    <div *ngIf="!error">
-        Loading ...
-    </div>
-</div>
 
-<div class="config" *ngIf="container">
-    <div class="form">
-        <div class="header">
-            <img [src]="container.logo" [alt]="container.name">
-            <h1>Configuration {{container.name}}</h1>
+    <div class="config" *ngIf="container">
+        <div class="form">
+            <div class="header">
+                <img [src]="container.logo" [alt]="container.name">
+                <h1>Configuration {{container.name}}</h1>
+            </div>
+
+            <form (submit)="submit()">
+                <app-generator-form [container]="container"
+                                    [userData]="containerFormData.config"
+                                    (dataChange)="updateData($event)">
+                </app-generator-form>
+                <app-generator-form-action [submit]="submit.bind(this)"
+                                           [remove]="delete.bind(this)">
+                </app-generator-form-action>
+            </form>
         </div>
 
-        <form (submit)="submit()">
-            <app-generator-form [container]="container"
-                                [userData]="containerFormData.config"
-                                (dataChange)="updateData($event)">
-            </app-generator-form>
-            <app-generator-form-action [submit]="submit.bind(this)"
-                                       [remove]="delete.bind(this)">
-            </app-generator-form-action>
-        </form>
-    </div>
-
-    <div class="preview">
-        <app-generator-preview [content]="preview"></app-generator-preview>
+        <div class="preview">
+            <app-generator-preview [content]="preview"></app-generator-preview>
+        </div>
     </div>
 </div>

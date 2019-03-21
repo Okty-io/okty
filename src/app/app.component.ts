@@ -7,11 +7,12 @@ import { AuthenticationService } from './core/authentication/authentication.serv
     selector: 'app-root',
     template: `
         <app-navbar></app-navbar>
-        <div [@routeAnimations]="prepareRoute(outlet)" style="min-height: calc(100vh - 427px)">
+        <div [@routeAnimations]="prepareRoute(outlet)" style="min-height: calc(100% - 427px)">
             <router-outlet #outlet="outlet"></router-outlet>
         </div>
         <app-footer></app-footer>
     `,
+    styleUrls: ['./app.component.scss'],
     animations: [
         homeAnimation
     ]
