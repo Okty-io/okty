@@ -24,4 +24,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.containersSubscription.unsubscribe();
     }
+    deleteContainer(id: string): void {
+        this.sessionService.removeContainer(id);
+    }
 }

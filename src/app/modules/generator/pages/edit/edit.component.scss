@@ -1,7 +1,9 @@
 :host {
     > div {
-        width: 80%;
-        margin: auto;
+        display: inline-block;
+        vertical-align: top;
+        width: 65%;
+        margin-left: calc(17.5% - 140px);
         font-family: 'Open Sans', sans-serif;
     }
 
