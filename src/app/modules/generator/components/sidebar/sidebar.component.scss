@@ -1,9 +1,10 @@
 :host {
-    position: absolute;
-    display: block;
+    display: inline-block;
+    vertical-align: top;
     width: 140px;
     margin-top: 0;
     z-index: 1000;
+    padding-bottom: 20px;
     .sidebar{
         margin-top: 50px;
     }
@@ -121,5 +122,11 @@
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 990px){
+    :host{
+        display: none;
     }
 }

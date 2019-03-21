@@ -1,6 +1,8 @@
 :host {
     > div {
+        display: inline-block;
+        vertical-align: top;
         width: 65%;
-        margin: auto;
+        margin-left: calc(17.5% - 140px);
     }
 }
