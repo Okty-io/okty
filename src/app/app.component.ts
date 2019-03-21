@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { homeAnimation } from './modules/home/pages/home/home.animation';
+import { homeAnimation } from './modules/cms/pages/home/home.animation';
 import { AuthenticationService } from './core/authentication/authentication.service';
+import { CookieConsentService } from './core/services/cookie-consent.service';
 
 @Component({
     selector: 'app-root',
@@ -19,11 +20,12 @@ import { AuthenticationService } from './core/authentication/authentication.serv
 })
 export class AppComponent implements OnInit {
 
-    constructor(private authentication: AuthenticationService) {
+    constructor(private authentication: AuthenticationService, private cookieConsent: CookieConsentService) {
     }
 
     public ngOnInit(): void {
         this.authentication.checkloggedIn();
+        this.cookieConsent.init();
     }
 
     prepareRoute(outlet: RouterOutlet) {

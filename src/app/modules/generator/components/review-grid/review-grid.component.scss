@@ -18,6 +18,12 @@ h2 {
         width: 25%;
         display: flex;
 
+        a {
+            margin: auto;
+            text-decoration: none;
+            color: #000;
+        }
+
         #image-box {
             width: 75px;
             height: 75px;
@@ -29,7 +35,7 @@ h2 {
         }
 
         p {
-            margin-top: 0;
+            margin-top: 8px;
         }
     }
 }

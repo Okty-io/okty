@@ -9,5 +9,8 @@ export const environment = {
     gitlab: {
         clientId: 'ec52e389d991ddbf48c4bd1d58ac64a60ea6e67f13657ff7848a8eddc27757f5'
     },
+    cookie: {
+        domain: 'dmrlam0gsz6qr.cloudfront.net',
+    },
     displayNavbar: false
 };
