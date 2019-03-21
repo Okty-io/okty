@@ -5,7 +5,7 @@
 export const environment = {
     production: false,
     api: {
-        host: 'https://okty-server-dev.herokuapp.com/v1'
+        host: 'http://127.0.0.1:8080/v1'
     },
     github: {
         clientId: '84292809e436159ed5a3'
