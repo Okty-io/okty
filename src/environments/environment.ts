@@ -16,7 +16,8 @@ export const environment = {
     cookie: {
         domain: '127.0.0.1'
     },
-    displayNavbar: true
+    displayNavbar: true,
+    GoogleAnalyticsId: 'UA-120161401-3'
 };
 
 /*

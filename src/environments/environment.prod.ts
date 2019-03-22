@@ -12,5 +12,6 @@ export const environment = {
     cookie: {
         domain: 'okty.io'
     },
-    displayNavbar: false
+    displayNavbar: false,
+    GoogleAnalyticsId: 'UA-120161401-2'
 };

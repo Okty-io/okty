@@ -14,4 +14,8 @@ export class TitleService {
     set(title: string): void {
         this.title.setTitle(title ? title + this.separator + this.suffix : this.suffix);
     }
+
+    get(): string {
+        return this.title.getTitle();
+    }
 }
