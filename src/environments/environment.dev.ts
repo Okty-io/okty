@@ -12,5 +12,6 @@ export const environment = {
     cookie: {
         domain: 'dmrlam0gsz6qr.cloudfront.net',
     },
-    displayNavbar: false
+    displayNavbar: false,
+    GoogleAnalyticsId: 'UA-120161401-3'
 };

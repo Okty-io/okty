@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { homeAnimation } from './modules/cms/pages/home/home.animation';
 import { AuthenticationService } from './core/authentication/authentication.service';
 import { CookieConsentService } from './core/services/cookie-consent.service';
+import { AnalyticsService } from './core/services/analytics.service';
 
 @Component({
     selector: 'app-root',
@@ -20,12 +21,17 @@ import { CookieConsentService } from './core/services/cookie-consent.service';
 })
 export class AppComponent implements OnInit {
 
-    constructor(private authentication: AuthenticationService, private cookieConsent: CookieConsentService) {
+    constructor(
+        private authentication: AuthenticationService,
+        private cookieConsent: CookieConsentService,
+        private analytics: AnalyticsService
+    ) {
     }
 
     public ngOnInit(): void {
         this.authentication.checkloggedIn();
         this.cookieConsent.init();
+        this.analytics.init();
     }
 
     prepareRoute(outlet: RouterOutlet) {
