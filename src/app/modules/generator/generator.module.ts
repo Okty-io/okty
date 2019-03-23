@@ -37,7 +37,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReviewActionComponent } from './components/review-action/review-action.component';
 import { ReviewGridComponent } from './components/review-grid/review-grid.component';
-import { LeaveGuard } from './guards/leave.guard';
 
 @NgModule({
     declarations: [
@@ -84,7 +83,6 @@ import { LeaveGuard } from './guards/leave.guard';
         FormService,
         SessionService,
         ContainerValidators,
-        LeaveGuard,
     ],
     entryComponents: [
         VoidComponent,
