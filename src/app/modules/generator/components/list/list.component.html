@@ -1,23 +1,14 @@
 <div class="text" *ngIf="!elements || (elements && elements.length == 0)">
     <div *ngIf="elements == null">
-        Loading ...
+        <fa-icon [icon]="faSpinner" [spin]="true" [size]="'2x'"></fa-icon>
     </div>
     <div *ngIf="elements && elements.length == 0">
-        No data
+        <span class="error">An error occured while fetching data...</span>
     </div>
 </div>
 
 <div class="list" *ngIf="elements && elements.length > 0">
     <div *ngFor="let element of elements">
-        <div class="card">
-            <a [routerLink]="element.getLink()">
-                <span class="icon">
-                    <img src="{{element.getImage()}}" alt="">
-                </span>
-                <span class="title">
-                    {{ element.getTitle() }}
-                </span>
-            </a>
-        </div>
+        <app-generator-card [element]="element"></app-generator-card>
     </div>
 </div>
