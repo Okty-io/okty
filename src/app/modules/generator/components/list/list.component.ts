@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Listable } from '../../interfaces/listable';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons/faSpinner';
 
 @Component({
     selector: 'app-generator-list',
@@ -9,6 +10,7 @@ import { Listable } from '../../interfaces/listable';
 export class ListComponent {
 
     @Input() elements: Listable[];
+    faSpinner = faSpinner;
 
     constructor() {
     }

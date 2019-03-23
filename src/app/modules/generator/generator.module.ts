@@ -37,6 +37,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReviewActionComponent } from './components/review-action/review-action.component';
 import { ReviewGridComponent } from './components/review-grid/review-grid.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
     declarations: [
@@ -64,6 +65,7 @@ import { ReviewGridComponent } from './components/review-grid/review-grid.compon
         ReviewActionComponent,
         ReviewGridComponent,
         FormActionComponent,
+        CardComponent,
     ],
     imports: [
         CommonModule,
