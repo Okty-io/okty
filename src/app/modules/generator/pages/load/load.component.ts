@@ -26,6 +26,7 @@ export class LoadComponent implements OnInit {
 
     ngOnInit() {
         this.errors = [];
+        this.sessionService.reset();
 
         this.templateRepository.getOne(this.activatedRoute.snapshot.params.id).subscribe((template: Template) => {
             template.containers.forEach((container: { image: string, config: Array<FormFieldData[]> }) => {
