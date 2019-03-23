@@ -47,6 +47,10 @@ svg {
     font-size:12px;
     padding:5px;
     list-style: none;
+
+    a {
+        color: #fff;
+    }
 }
 
 .footer_nav h2 {
@@ -56,6 +60,7 @@ svg {
     color:#fff;
     letter-spacing: .10em;
     font-size:14px;
+    text-transform: uppercase;
 }
 
 .social_icons i{
@@ -70,6 +75,10 @@ svg {
     display: -webkit-flex;
     align-items: center;
     justify-content: center;
+
+    a {
+        color: #fff;
+    }
 }
 
 .bottom p {
