@@ -10,6 +10,10 @@ export class ContainerValidators {
     }
 
     static isNumberValidator(formControl: FormControl): ValidationErrors | null {
+        if (!formControl.value) {
+            return null;
+        }
+
         const numberRegex = new RegExp('^[0-9]+$');
 
         return numberRegex.test(formControl.value) ? null : {
