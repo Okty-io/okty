@@ -11,7 +11,6 @@ export class ContainerService {
         const output = {image: '', args: {}} as ContainerArgs;
         output.image = formData.image;
 
-
         container.config.forEach((group: ContainerConfigGroup) => {
             group.fields.forEach((field: ContainerConfigField) => {
                 const name = group.id + '_' + field.id;
@@ -83,6 +82,10 @@ export class ContainerService {
     private addToPorts(output: ContainerArgs, source: string, destination: string): void {
         if (!output.args.ports) {
             output.args.ports = [];
+        }
+
+        if (!source) {
+            return;
         }
 
         output.args.ports.push({
