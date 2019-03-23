@@ -28,7 +28,7 @@ export class ContainerValidators {
             const editingId = this.sessionService.getEditingId();
             const similarContainer: ContainerFormData = this.sessionService.getContainers()
                 .find((data: ContainerFormData) => {
-                    return (data.config['general_id'] === control.value) && data.id !== editingId;
+                    return (data.config['general_name'] === control.value) && data.id !== editingId;
                 });
 
             let response = null;
