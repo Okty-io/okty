@@ -32,6 +32,12 @@ export const homeAnimation =
                         style({opacity: 0, offset: 0.3}),
                         style({opacity: 1, offset: 1})
                     ]))
+                ]),
+                query('.home-bg-art', [
+                    animate('2s ease-out', keyframes([
+                        style({opacity: 0}),
+                        style({opacity: 1})
+                    ]))
                 ])
             ])
         ]),
@@ -48,6 +54,11 @@ export const homeAnimation =
                     animate('1s ease-out', style({
                         opacity: 0,
                         marginTop: '200px'
+                    }))
+                ]),
+                query('.home-bg-art', [
+                    animate('1s ease-out', style({
+                        opacity: 0,
                     }))
                 ])
             ])
