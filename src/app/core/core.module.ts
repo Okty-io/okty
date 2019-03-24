@@ -4,6 +4,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { NgcCookieConsentModule } from 'ngx-cookieconsent';
+import { InlineSVGModule } from 'ng-inline-svg';
 
 @NgModule({
     declarations: [
@@ -13,7 +14,8 @@ import { NgcCookieConsentModule } from 'ngx-cookieconsent';
     imports: [
         CommonModule,
         RouterModule.forChild([]),
-        NgcCookieConsentModule
+        NgcCookieConsentModule,
+        InlineSVGModule.forRoot()
     ],
     exports: [
         NavbarComponent,

@@ -1,10 +1,11 @@
 @import "../../../../assets/style/media-query";
 
-:host{
+:host {
     width: 100%;
     height: 80px;
     display: block;
 }
+
 .navbar {
     width: 100%;
     height: 80px;
@@ -15,24 +16,29 @@
 
     .navbar-left {
         margin-left: 25px;
+
         .logo {
             width: 80px;
             margin-top: 5px;
             display: inline-block;
             vertical-align: middle;
-            svg{
+
+            svg {
                 width: 100%;
-                fill : linear-gradient(to right, #3d64c2 0%,#3d68de 100%);
             }
-        }
 
-        #logo-blue {
-            z-index: 9;
-        }
+            &.blue {
+                @include MQ(L) {
+                    display: none;
+                }
+            }
 
-        #logo-white {
-            z-index: 10;
-            opacity: 1;
+            &.white {
+                display: none;
+                @include MQ(L) {
+                    display: inline-block;
+                }
+            }
         }
 
         .name {
@@ -41,11 +47,14 @@
             height: 60px;
             line-height: 60px;
             font-size: 20px;
-            font-weight: bold;
             font-family: sans-serif;
             font-weight: 200;
             color: #000;
             margin-left: 10px;
+
+            @include MQ(L) {
+                color: #fff;
+            }
         }
 
         a, a:visited {
@@ -63,7 +72,6 @@
 
         a {
             font-family: sans-serif;
-            font-weight: bold;
             line-height: 60px;
             margin-right: 40px;
             background-image: linear-gradient(#000 50%, #000 50%), linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 50%);
@@ -114,10 +122,6 @@
     }
 }
 
-/*********************************************
-**************** MEDIA SIZE ******************
-*********************************************/
-
 @include MQ(L) {
     .navbar {
         .navbar-left {
@@ -155,173 +159,4 @@
             }
         }
     }
-}
-
-@include MQ(S) {
-}
-
-.small-nav {
-    display: none;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 25px;
-}
-
-.toggle {
-    display: block;
-    cursor: pointer;
-}
-
-.toggle input {
-    display: none;
-}
-
-.toggle input + div {
-    width: 20px;
-    height: 14px;
-    position: relative;
-}
-
-.toggle input + div div {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    transition: -webkit-transform .5s ease;
-    transition: transform .5s ease;
-    transition: transform .5s ease, -webkit-transform .5s ease;
-}
-
-.toggle input + div div span {
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-}
-
-.toggle input + div div span:first-child {
-    top: 0;
-}
-
-.toggle input + div div span:first-child:before, .toggle input + div div span:first-child:after {
-    top: 0;
-}
-
-.toggle input + div div span:last-child {
-    bottom: 0;
-}
-
-.toggle input + div div span:last-child:before, .toggle input + div div span:last-child:after {
-    bottom: 0;
-}
-
-.toggle input + div div span:before, .toggle input + div div span:after {
-    content: '';
-    display: block;
-    width: 47%;
-    height: 2px;
-    border-radius: 1px;
-    background: #fff;
-    position: absolute;
-    -webkit-backface-visibility: hidden;
-    transition: border-radius .3s ease, -webkit-transform .5s ease;
-    transition: transform .5s ease, border-radius .3s ease;
-    transition: transform .5s ease, border-radius .3s ease, -webkit-transform .5s ease;
-}
-
-.toggle input + div div span:before {
-    left: 0;
-    -webkit-transform-origin: 0 50%;
-    transform-origin: 0 50%;
-    -webkit-transform: translate(1px, 0) scaleX(1.1);
-    transform: translate(1px, 0) scaleX(1.1);
-}
-
-.toggle input + div div span:after {
-    right: 0;
-    -webkit-transform-origin: 100% 50%;
-    transform-origin: 100% 50%;
-    -webkit-transform: translate(-1px, 0) scaleX(1.1);
-    transform: translate(-1px, 0) scaleX(1.1);
-}
-
-.toggle input + div svg {
-    display: block;
-    fill: none;
-    stroke: #fff;
-    stroke-width: 2px;
-    width: 44px;
-    height: 44px;
-    stroke-linecap: round;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin: -22px 0 0 -22px;
-    stroke-dasharray: 0 82.801 8 82.801;
-    stroke-dashoffset: 82.801;
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    transition: stroke-dashoffset .5s ease, stroke-dasharray .6s ease, -webkit-transform .5s ease;
-    transition: stroke-dashoffset .5s ease, stroke-dasharray .6s ease, transform .5s ease;
-    transition: stroke-dashoffset .5s ease, stroke-dasharray .6s ease, transform .5s ease, -webkit-transform .5s ease;
-}
-
-.toggle input + div svg:nth-child(3) {
-    -webkit-transform: rotate(180deg) scale(1);
-    transform: rotate(180deg) scale(1);
-}
-
-.toggle input:checked + div div {
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-
-.toggle input:checked + div div span:first-child:before {
-    -webkit-transform: rotate(45deg) translate(2.2px, -3px) scaleX(1.05);
-    transform: rotate(45deg) translate(2.2px, -3px) scaleX(1.05);
-}
-
-.toggle input:checked + div div span:first-child:after {
-    -webkit-transform: rotate(-45deg) translate(-2.2px, -3px) scaleX(1.05);
-    transform: rotate(-45deg) translate(-2.2px, -3px) scaleX(1.05);
-}
-
-.toggle input:checked + div div span:last-child:before {
-    -webkit-transform: rotate(-45deg) translate(2.2px, 3px) scaleX(1.05);
-    transform: rotate(-45deg) translate(2.2px, 3px) scaleX(1.05);
-}
-
-.toggle input:checked + div div span:last-child:after {
-    -webkit-transform: rotate(45deg) translate(-2.2px, 3px) scaleX(1.05);
-    transform: rotate(45deg) translate(-2.2px, 3px) scaleX(1.05);
-}
-
-.toggle input:checked + div svg {
-    stroke-dashoffset: 62;
-    stroke-dasharray: 0 82.801 62 82.801;
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-
-.toggle input:checked + div svg:nth-child(3) {
-    -webkit-transform: rotate(270deg);
-    transform: rotate(270deg);
-}
-
-html {
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-}
-
-* {
-    box-sizing: inherit;
-}
-
-*:before, *:after {
-    box-sizing: inherit;
 }
