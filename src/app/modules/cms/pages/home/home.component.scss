@@ -1,21 +1,17 @@
 @import "../../../../../assets/style/main";
-.home-bg-gradient{
+
+.home-bg-gradient {
     position: absolute;
     top: 0;
     right: 0;
     width: calc(100vw - 20px);
     height: 100vh;
     z-index: -2;
-    background: rgba(255,255,255,1);
-    background: -moz-linear-gradient(33deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 58%, rgba(226,228,255,1) 100%);
-    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(58%, rgba(255,255,255,1)), color-stop(100%, rgba(226,228,255,1)));
-    background: -webkit-linear-gradient(33deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 58%, rgba(226,228,255,1) 100%);
-    background: -o-linear-gradient(33deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 58%, rgba(226,228,255,1) 100%);
-    background: -ms-linear-gradient(33deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 58%, rgba(226,228,255,1) 100%);
+    background: rgba(255, 255, 255, 1);
     background: linear-gradient(33deg, white 0%, white 58%, #e2e4ff 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2e4ff', GradientType=1 );
 }
-.home-bg-art{
+
+.home-bg-art {
     width: 1820px;
     position: absolute;
     right: 0;
@@ -23,20 +19,22 @@
     z-index: -1;
 }
 
-.home-titles{
-    .title{
+.home-titles {
+    .title {
         font-family: $font--open-sans;
         font-size: 3.5em;
         font-weight: 300;
         margin: 0;
     }
-    .subtitle{
+
+    .subtitle {
         font-family: $font--open-sans;
         font-size: 2em;
         font-weight: 300;
         margin: 0;
     }
 }
+
 .row {
     height: calc(100vh - 60px);
     margin-top: 60px;
@@ -46,14 +44,6 @@
         height: 100%;
         float: left;
         position: relative;
-
-        .morphing-bubble-left {
-            display: none;
-        }
-
-        .morphing-bubble-right {
-            display: block;
-        }
 
         .center {
             font-weight: bold;
@@ -70,13 +60,13 @@
                 max-width: 525px;
             }
         }
+
         .center-item-right {
             max-width: 100%;
             position: relative;
         }
 
         .center-item {
-
             h3 {
                 margin-bottom: 70px;
             }
@@ -84,7 +74,6 @@
             .action {
                 margin-right: 25px;
                 display: inline-block;
-                padding: 8px 18px;
                 cursor: pointer;
                 border-radius: 40px;
                 text-decoration: none;
@@ -97,7 +86,6 @@
 
             .empty {
                 @include button-br;
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3d65c2', endColorstr='#3d68de', GradientType=1 );
                 border: 1px solid transparent;
                 color: white;
 
@@ -113,26 +101,14 @@
 
                 &:hover {
                     @include button-br-hover;
-                    border-color:transparent;
+                    border-color: transparent;
                     color: white;
                 }
             }
 
         }
 
-        .fade-to-top {
-            animation: fade-to-top .5s ease-in-out;
-            animation-fill-mode: forwards;
-        }
-        .fade-to-bottom {
-            animation: fade-to-bottom .5s ease-in-out;
-            animation-fill-mode: forwards;
-        }
-        .fade {
-            opacity: 0;
-            transition: opacity .5s;
-        }
-        app-page-illustration{
+        app-page-illustration {
             position: absolute;
             top: calc(50% + 39px);
             right: calc(50% + 113px);
@@ -140,6 +116,7 @@
             transform: translateX(50%) translateY(-50%);
             animation: jump 4s ease-in-out infinite;
         }
+
         .planche {
             position: absolute;
             left: 0;
@@ -165,14 +142,6 @@
     .row {
         .column_left {
             width: 100%;
-
-            .morphing-bubble-left {
-                display: block;
-            }
-
-            .morphing-bubble-right {
-                display: none;
-            }
 
             .center-item-left {
                 text-align: center;
@@ -400,58 +369,6 @@ h2 {
 
 p {
     margin-bottom: 1.3em;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.morphing-bubble {
-    position: absolute;
-    z-index: -1;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    display: none;
-}
-
-.morphing-bubble-left {
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.morphing-bubble-right {
-    right: 0;
-}
-
-.morphing-bubble::before {
-    content: '';
-    display: block;
-    width: 60vh;
-    height: 60vh;
-    min-height: 200px;
-    min-width: 200px;
-    background: linear-gradient(
-            270deg,
-            $color--primary,
-            $color--primary
-    );
-    background-size: 1600% 1600%;
-    -webkit-animation: transform 50s ease-in-out infinite both alternate,
-    movement 40s ease-in-out infinite both,
-    shade 60s linear infinite both;
-    animation: transform 50s ease-in-out infinite both alternate,
-    movement 40s ease-in-out infinite both,
-    shade 60s linear infinite both;
 }
 
 @keyframes transform {
