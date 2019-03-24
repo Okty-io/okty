@@ -1,54 +1,7 @@
-/*********************************************
-***************** VARIABLES ******************
-*********************************************/
-
 @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
 
-$color--primary: #227fc8;
-$font--lato: 'Lato', sans-serif;
-$font--open-sans: 'Open Sans', sans-serif;
-
-
-/*********************************************
-**************** MEDIA SIZE ******************
-*********************************************/
-
-$S: 480px;
-$M: 790px;
-$L: 970px;
-
-@mixin button-br(){
-    background: rgba(61,101,194,1);
-    background: linear-gradient(to right, rgba(61,101,194,1) 0%, rgba(61,104,222,1) 100%);
-}
-
-@mixin button-br-hover(){
-    background: rgba(61,101,194,1);
-    background: linear-gradient(to right, darken(rgba(61,101,194,1),15) 0%, darken(rgba(61,104,222,1),15) 100%);
-}
-
-@mixin MQ( $canvas ) {
-    @if $canvas == S {
-        @media only screen and ( max-width: $S ) {
-            @content;
-        }
-    } @else if $canvas == M {
-        @media only screen and ( max-width: $M ) {
-            @content;
-        }
-    } @else if $canvas == L {
-        @media only screen and ( max-width: $L ) {
-            @content;
-        }
-    }
-}
-
-/*********************************************
-***************** GENERAL ********************
-*********************************************/
-
 html {
-    font-family: $font--lato;
+    font-family: 'Lato', sans-serif;
     font-size: 15px;
     color: #000;
     line-height: 1.7;
@@ -68,9 +21,8 @@ html {
 }
 
 body {
-    padding: 0;
     margin: 0;
     min-height: 100%;
-    padding-bottom: 337px;
+    padding: 0 0 337px;
     position: relative;
 }
