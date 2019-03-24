@@ -3,7 +3,6 @@ import * as anime from 'animejs';
 import { TitleService } from '../../../../core/services/title.service';
 
 @Component({
-    selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })
