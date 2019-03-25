@@ -7,7 +7,7 @@
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
     display: inline-block;
     position: relative;
-    margin: auto 15px 32px auto;
+    margin: auto auto 32px auto;
 
     @include MQ(L) {
         height: 150px;
