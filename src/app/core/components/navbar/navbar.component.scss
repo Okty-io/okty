@@ -26,19 +26,6 @@
             svg {
                 width: 100%;
             }
-
-            &.blue {
-                @include MQ(L) {
-                    display: none;
-                }
-            }
-
-            &.white {
-                display: none;
-                @include MQ(L) {
-                    display: inline-block;
-                }
-            }
         }
 
         .name {

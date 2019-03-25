@@ -1,13 +1,6 @@
 <app-generator-sidebar></app-generator-sidebar>
 <div>
-    <div class="loading" *ngIf="!container">
-        <div *ngIf="error">
-            {{error}}
-        </div>
-        <div *ngIf="!error">
-            Loading ...
-        </div>
-    </div>
+    <app-loader [loading]="loading" [error]="error"></app-loader>
 
     <div class="config" *ngIf="container">
         <div class="form">
