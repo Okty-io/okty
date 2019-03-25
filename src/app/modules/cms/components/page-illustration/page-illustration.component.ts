@@ -23,7 +23,7 @@ export class PageIllustrationComponent implements OnInit {
             const pageIllustration = document.querySelector('.page-illustration-container');
             let translateX = (1 - this.cardScale) * 100;
             translateX += (10 / 100) * (this.cardScale * 100);
-            pageIllustration.style.transform = 'scale(' + this.cardScale + ') translateX(' + translateX + '%)';
+            (pageIllustration as any).style.transform = 'scale(' + this.cardScale + ') translateX(' + translateX + '%)';
         }
     }
 
