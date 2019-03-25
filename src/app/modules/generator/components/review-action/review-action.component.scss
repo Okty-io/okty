@@ -1,3 +1,5 @@
+@import "../../../../../assets/style/media-query";
+
 h2 {
     font-weight: 300;
     font-size: 2.5em;
@@ -6,5 +8,11 @@ h2 {
 .action {
     app-button:nth-child(1) {
         margin-right: 2em;
+
+        @include MQ(520px) {
+            display: block;
+            margin-right: 0;
+            margin-bottom: 12px;
+        }
     }
 }

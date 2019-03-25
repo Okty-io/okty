@@ -12,23 +12,20 @@ h2 {
 .containers {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     width: 50%;
     margin: auto;
 
+    @include MQ(520px) {
+        width: 80%;
+    }
+
     > div {
-        width: 25%;
+        width: 120px;
         display: flex;
 
-        @include MQ(1250px) {
-            width: 33%;
-        }
-
-        @include MQ(L) {
-            width: 25%;
-        }
-
-        @include MQ(S) {
-            width: 50%;
+        @include MQ(520px) {
+            width: 100px;
         }
 
         a {
