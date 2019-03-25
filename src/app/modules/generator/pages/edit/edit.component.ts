@@ -24,7 +24,8 @@ export class EditComponent implements OnInit {
     data: FormGroup;
 
     preview: string;
-    error: string;
+    error: boolean;
+    loading: boolean;
 
     constructor(
         private route: ActivatedRoute,
@@ -39,17 +40,22 @@ export class EditComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.loading = false;
         this.route.params.subscribe((params: { [key: string]: string }) => {
             this.id = params.id;
             this.sessionService.startEditing(this.id);
 
             this.containerFormData = this.sessionService.getContainer(this.id);
             if (!this.containerFormData) {
+                this.error = true;
+                this.loading = false;
+
                 throw new Error('Container not found');
             }
 
             this.preview = '';
             this.container = this.containerFormData.form;
+            this.loading = false;
 
             this.titleService.set(`Edit your ${this.container.name} container`);
         });
@@ -82,9 +88,5 @@ export class EditComponent implements OnInit {
     delete(): void {
         this.sessionService.removeContainer(this.containerFormData.id);
         this.router.navigate(['/', 'generator', 'review']);
-    }
-
-    goBack(): void {
-        this.location.back();
     }
 }

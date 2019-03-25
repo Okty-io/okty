@@ -1,18 +1,31 @@
+@import "../../../../../assets/style/media-query";
+
 :host {
     font-family: 'Open Sans', sans-serif;
     display: flex;
+    flex-wrap: wrap;
 
     .col:nth-child(1) {
-        width: 60%;
+        width: 50%;
         text-align: center;
+
+        @include MQ(L) {
+            width: 100%;
+        }
     }
 
     .col:nth-child(2) {
-        width: 40%;
+        width: 50%;
         padding: 0 5% 0 0;
 
         code {
             text-align: left;
+        }
+
+        @include MQ(L) {
+            width: 75%;
+            padding: 0;
+            margin: auto;
         }
     }
 }

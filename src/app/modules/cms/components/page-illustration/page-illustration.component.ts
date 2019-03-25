@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-page-illustration',
-  templateUrl: './page-illustration.component.html',
-  styleUrls: ['./page-illustration.component.scss']
+    selector: 'app-page-illustration',
+    templateUrl: './page-illustration.component.html',
+    styleUrls: ['./page-illustration.component.scss']
 })
 export class PageIllustrationComponent implements OnInit {
     public cardScale = 1;
-    constructor() { }
+
+    constructor() {
+    }
 
     ngOnInit() {
         this.pageIllustationResize();
@@ -15,7 +17,7 @@ export class PageIllustrationComponent implements OnInit {
 
     }
 
-    pageIllustationResize () {
+    pageIllustationResize() {
         const maxScreenWidth = 1920;
         const percentage = Math.floor((window.innerWidth / maxScreenWidth) * 100);
         if (window.innerWidth < maxScreenWidth && percentage > 50) {
@@ -23,7 +25,9 @@ export class PageIllustrationComponent implements OnInit {
             const pageIllustration = document.querySelector('.page-illustration-container');
             let translateX = (1 - this.cardScale) * 100;
             translateX += (10 / 100) * (this.cardScale * 100);
-            (pageIllustration as any).style.transform = 'scale(' + this.cardScale + ') translateX(' + translateX + '%)';
+            if ((pageIllustration as any).style) {
+                (pageIllustration as any).style.transform = 'scale(' + this.cardScale + ') translateX(' + translateX + '%)';
+            }
         }
     }
 
