@@ -9,10 +9,6 @@
     position: relative;
     margin: auto auto 32px auto;
 
-    @include MQ(L) {
-        height: 150px;
-    }
-
     &:nth-child(5n) {
         margin-right: 0;
     }
@@ -29,10 +25,6 @@
         height: 110px;
         display: block;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 50%);
-
-        @include MQ(L) {
-            height: 90px;
-        }
     }
 
     a {
@@ -51,11 +43,6 @@
         border: solid 1px #707070;
         position: relative;
         z-index: 20;
-
-        @include MQ(L) {
-            width: 75px;
-            height: 75px;
-        }
 
         img {
             width: 100%;
@@ -81,9 +68,5 @@
         color: #000000;
         line-height: inherit;
         word-break: break-word;
-
-        @include MQ(L) {
-            font-size: 14px;
-        }
     }
 }

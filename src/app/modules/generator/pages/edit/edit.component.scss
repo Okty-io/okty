@@ -32,7 +32,7 @@
             width: 100%;
         }
 
-        @include MQ(1400px){
+        @include MQ(1400px) {
             width: 100%;
         }
 
@@ -68,7 +68,7 @@
         width: 45%;
         margin-left: 5%;
 
-        @include MQ(1400px){
+        @include MQ(1400px) {
             width: 100%;
             margin-left: 0;
         }
