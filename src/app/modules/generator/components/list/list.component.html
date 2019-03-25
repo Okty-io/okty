@@ -8,7 +8,5 @@
 </div>
 
 <div class="list" *ngIf="elements && elements.length > 0">
-    <div *ngFor="let element of elements">
-        <app-generator-card [element]="element"></app-generator-card>
-    </div>
+    <app-generator-card [element]="element" *ngFor="let element of elements"></app-generator-card>
 </div>

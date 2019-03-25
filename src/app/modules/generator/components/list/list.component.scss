@@ -15,11 +15,5 @@
         max-width: calc(170px * 5);
         justify-content: flex-start;
         margin: 0 auto;
-
-        > div {
-            box-sizing: border-box;
-            text-align: center;
-            margin-bottom: 32px;
-        }
     }
 }
