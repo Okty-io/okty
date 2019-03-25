@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Listable } from '../../interfaces/listable';
 
 @Component({
@@ -7,7 +7,5 @@ import { Listable } from '../../interfaces/listable';
     styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-
     @Input() element: Listable;
-
 }
