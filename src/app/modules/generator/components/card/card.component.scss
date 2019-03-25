@@ -9,9 +9,9 @@
     position: relative;
     margin: auto auto 32px auto;
 
-    @include MQ(L) {
-        height: 150px;
-    }
+    //@include MQ(L) {
+    //    height: 150px;
+    //}
 
     &:nth-child(5n) {
         margin-right: 0;
@@ -30,9 +30,9 @@
         display: block;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 50%);
 
-        @include MQ(L) {
-            height: 90px;
-        }
+        //@include MQ(L) {
+        //    height: 90px;
+        //}
     }
 
     a {
@@ -52,10 +52,10 @@
         position: relative;
         z-index: 20;
 
-        @include MQ(L) {
-            width: 75px;
-            height: 75px;
-        }
+        //@include MQ(L) {
+        //    width: 75px;
+        //    height: 75px;
+        //}
 
         img {
             width: 100%;
@@ -82,8 +82,8 @@
         line-height: inherit;
         word-break: break-word;
 
-        @include MQ(L) {
-            font-size: 14px;
-        }
+        //@include MQ(L) {
+        //    font-size: 14px;
+        //}
     }
 }
