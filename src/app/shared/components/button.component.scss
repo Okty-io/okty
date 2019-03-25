@@ -1,0 +1,49 @@
+button {
+    border: none;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    outline: none;
+}
+
+.primary {
+    background: #3D68DD;
+    color: #FFF;
+
+    &:hover {
+        background: linear-gradient(to right, darken(rgba(61, 101, 194, 1), 15) 0%, darken(rgba(61, 104, 222, 1), 15) 100%)
+    }
+}
+
+.light {
+    background: #FFF;
+    color: #000;
+    border: 1px solid rgba(120, 120, 120, 0.5);
+
+    &:hover {
+        background: linear-gradient(to right, darken(rgba(61, 101, 194, 1), 15) 0%, darken(rgba(61, 104, 222, 1), 15) 100%);
+        color: white;
+    }
+}
+
+.danger {
+    background: #D80303;
+    color: #FFF;
+}
+
+.small {
+}
+
+.medium {
+    padding: 10px 25px;
+    border-radius: 30px;
+}
+
+.large {
+    padding: 13px 40px;
+    border-radius: 40px;
+    font-size: 0.95em;
+}
+
+[disabled] {
+    opacity: 0.4;
+}

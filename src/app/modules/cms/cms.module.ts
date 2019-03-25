@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { PageIllustrationComponent } from './components/page-illustration/page-illustration.component';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
         CommonModule,
         CmsRoutingModule,
         HttpClientModule,
-        InlineSVGModule.forRoot()
+        InlineSVGModule.forRoot(),
+        SharedModule
     ]
 })
 export class CmsModule {
