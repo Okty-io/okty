@@ -8,7 +8,7 @@ import { TitleService } from '../../../../core/services/title.service';
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+    public cardScale = 1;
     private relativeOffset = anime.timeline({
         loop: true
     });
