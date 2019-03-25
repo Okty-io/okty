@@ -1,3 +1,5 @@
+@import "../../../../../assets/style/media-query";
+
 :host {
     text-align: center;
 
@@ -15,5 +17,26 @@
         max-width: calc(170px * 5);
         justify-content: flex-start;
         margin: 0 auto;
+
+        width: 80%;
+        @include MQ(L) {
+            width: 70%;
+        }
+
+        > * {
+            width: 20%;
+
+            @include MQ(S) {
+                width: 50% !important;
+            }
+
+            @include MQ(930px) {
+                width: 33% !important;
+            }
+
+            @include MQ(1250px) {
+                width: 25%
+            }
+        }
     }
 }
