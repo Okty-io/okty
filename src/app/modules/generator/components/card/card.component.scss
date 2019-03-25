@@ -1,12 +1,17 @@
+@import "../../../../../assets/style/media-query";
 
 .card {
-    width: 155px;
+    width: 88%;
     height: 205px;
     border-radius: 12px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
     display: inline-block;
     position: relative;
-    margin: auto 15px auto auto;
+    margin: auto 15px 32px auto;
+
+    @include MQ(L) {
+        height: 150px;
+    }
 
     &:nth-child(5n) {
         margin-right: 0;
@@ -16,13 +21,7 @@
         content: '';
         border-radius: 12px 12px 0 0;
         background: rgba(61, 127, 194, 1);
-        background: -moz-linear-gradient(left, rgba(61, 127, 194, 1) 0%, rgba(61, 69, 222, 1) 100%);
-        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(61, 127, 194, 1)), color-stop(100%, rgba(61, 69, 222, 1)));
-        background: -webkit-linear-gradient(left, rgba(61, 127, 194, 1) 0%, rgba(61, 69, 222, 1) 100%);
-        background: -o-linear-gradient(left, rgba(61, 127, 194, 1) 0%, rgba(61, 69, 222, 1) 100%);
-        background: -ms-linear-gradient(left, rgba(61, 127, 194, 1) 0%, rgba(61, 69, 222, 1) 100%);
         background: linear-gradient(to right, rgba(61, 127, 194, 1) 0%, rgba(61, 69, 222, 1) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d7fc2', endColorstr='#3d45de', GradientType=1);
         position: absolute;
         top: 0;
         left: 0;
@@ -30,6 +29,10 @@
         height: 110px;
         display: block;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 50%);
+
+        @include MQ(L) {
+            height: 90px;
+        }
     }
 
     a {
@@ -48,6 +51,11 @@
         border: solid 1px #707070;
         position: relative;
         z-index: 20;
+
+        @include MQ(L) {
+            width: 75px;
+            height: 75px;
+        }
 
         img {
             width: 100%;
@@ -72,5 +80,10 @@
         font-weight: 400;
         color: #000000;
         line-height: inherit;
+        word-break: break-word;
+
+        @include MQ(L) {
+            font-size: 14px;
+        }
     }
 }
