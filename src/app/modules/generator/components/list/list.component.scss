@@ -3,14 +3,6 @@
 :host {
     text-align: center;
 
-    .text {
-        margin-top: 32px;
-
-        span.error {
-            color: #f03434;
-        }
-    }
-
     .list {
         display: flex;
         flex-wrap: wrap;
