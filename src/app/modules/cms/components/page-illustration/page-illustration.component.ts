@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-page-illustration',
     templateUrl: './page-illustration.component.html',
     styleUrls: ['./page-illustration.component.scss']
 })
-export class PageIllustrationComponent implements OnInit {
+export class PageIllustrationComponent implements OnInit, OnDestroy {
     public cardScale = 1;
 
     constructor() {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.pageIllustationResize();
         window.addEventListener('resize', this.pageIllustationResize);
+    }
 
+    ngOnDestroy(): void {
+        window.removeEventListener('resize', this.pageIllustationResize);
     }
 
     pageIllustationResize() {
