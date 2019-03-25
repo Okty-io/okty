@@ -7,32 +7,17 @@
         display: flex;
         flex-wrap: wrap;
         max-width: calc(170px * 5);
-        justify-content: flex-start;
+        justify-content: center;
         margin: 0 auto;
 
         width: 80%;
-        @include MQ(L) {
-            width: 70%;
-        }
 
         &.small {
             justify-content: center;
         }
 
         > * {
-            width: 20%;
-
-            @include MQ(S) {
-                width: 50% !important;
-            }
-
-            @include MQ(930px) {
-                width: 33% !important;
-            }
-
-            @include MQ(1250px) {
-                width: 25%
-            }
+            width: 170px;
         }
     }
 }
