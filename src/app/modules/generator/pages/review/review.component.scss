@@ -5,6 +5,11 @@
     display: flex;
     flex-wrap: wrap;
 
+    @include MQ(S) {
+        width: 94%;
+        margin-left: 3%;
+    }
+
     .col:nth-child(1) {
         width: 50%;
         text-align: center;
@@ -23,7 +28,7 @@
         }
 
         @include MQ(L) {
-            width: 75%;
+            width: 90%;
             padding: 0;
             margin: auto;
         }
