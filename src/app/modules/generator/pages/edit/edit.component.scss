@@ -40,6 +40,8 @@
             width: 100%;
             margin-bottom: 32px;
             white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
 
             @include MQ(450px) {
                 display: flex;
@@ -50,18 +52,29 @@
 
                 > * {
                     width: 100%;
-                    margin: 0 !important
+                    margin: 0 !important;
                 }
             }
 
-            img {
-                padding: 12px;
+            .icon {
                 width: 75px;
                 height: 75px;
-                border: 1px solid #000;
-                border-radius: 50%;
                 display: inline-block;
-                vertical-align: middle;
+                overflow: hidden;
+                border-radius: 50%;
+                border: solid 1px #636363;
+                position: relative;
+
+                img {
+                    width: 100%;
+                    max-width: 45px;
+                    height: auto;
+                    display: inline;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(-50%);
+                }
             }
 
             h1 {
@@ -69,6 +82,10 @@
                 vertical-align: middle;
                 margin-left: 1vw;
                 font-weight: 300;
+            }
+
+            button{
+                text-transform: uppercase;
             }
         }
     }

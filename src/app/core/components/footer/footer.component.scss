@@ -35,42 +35,42 @@ svg {
 
 .footer_nav {
     padding-left:60px;
-}
 
-.footer_nav .column {
-    display:inline-block;
-    vertical-align: top;
-    list-style: none;
-    padding: 0px 15px 0px 15px;
-}
-
-.footer_nav ul {
-    padding:0px;
-}
-
-.footer_nav ul li {
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    color:#fff;
-    letter-spacing: .10em;
-    font-size:12px;
-    padding:5px;
-    list-style: none;
-
-    a {
-        color: #fff;
+    .column {
+        display:inline-block;
+        vertical-align: top;
+        list-style: none;
+        padding: 0px 15px 0px 15px;
     }
-}
 
-.footer_nav h2 {
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: 800;
-    color:#fff;
-    letter-spacing: .10em;
-    font-size:14px;
-    text-transform: uppercase;
+    ul {
+        padding:0px;
+
+        li {
+            font-family: 'Open Sans', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            color:#fff;
+            letter-spacing: .10em;
+            font-size:12px;
+            padding:5px;
+            list-style: none;
+
+            a {
+                color: #fff;
+            }
+        }
+    }
+
+    h2 {
+        font-family: 'Open Sans', sans-serif;
+        font-style: normal;
+        font-weight: 800;
+        color:#fff;
+        letter-spacing: .10em;
+        font-size:14px;
+        text-transform: uppercase;
+    }
 }
 
 .social_icons i{

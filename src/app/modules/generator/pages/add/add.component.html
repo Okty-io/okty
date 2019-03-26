@@ -5,7 +5,9 @@
     <div class="config" *ngIf="container">
         <div class="form">
             <div class="header">
-                <img [src]="container.logo" [alt]="container.name">
+                <div class="icon">
+                    <img [src]="container.logo" [alt]="container.name">
+                </div>
                 <h1>Configuration {{container.name}}</h1>
             </div>
 

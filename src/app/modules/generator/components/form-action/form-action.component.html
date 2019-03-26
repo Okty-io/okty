@@ -1,3 +1,3 @@
-<app-button type="light" (click)="goBack()">Back</app-button>
-<app-button type="danger" *ngIf="remove" (click)="remove()">Delete</app-button>
-<app-button type="primary" (click)="submit()" [disabled]="formInvalid">{{ remove ? 'Update' : 'Add' }}</app-button>
+<app-button type="light form-action" (click)="goBack()">Back</app-button>
+<app-button type="danger form-action" *ngIf="remove" (click)="remove()">Delete</app-button>
+<app-button type="primary form-action" (click)="submit()" [disabled]="formInvalid">{{ remove ? 'Update' : 'Add' }}</app-button>
