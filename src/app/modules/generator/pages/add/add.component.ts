@@ -19,7 +19,8 @@ export class AddComponent implements OnInit, OnDestroy {
     container: Container;
     data: FormGroup;
     preview: string;
-    error: string;
+    error: boolean;
+    loading: boolean;
 
     constructor(
         private containerRepository: ContainerRepository,
@@ -35,14 +36,16 @@ export class AddComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.titleService.set('New container');
         this.preview = '';
+        this.loading = true;
 
         this.subscribeContainer = this.containerRepository.getOne(this.route.snapshot.params.id)
             .subscribe(
                 (container: Container) => {
                     this.container = container;
                     this.titleService.set(`New ${this.container.name} container`);
+                    this.loading = false;
                 },
-                (error: string) => this.error = error
+                () => this.error = true
             );
     }
 

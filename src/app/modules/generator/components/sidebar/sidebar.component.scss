@@ -1,3 +1,5 @@
+@import "../../../../../assets/style/media-query";
+
 :host {
     display: inline-block;
     vertical-align: top;
@@ -5,9 +7,15 @@
     margin-top: 0;
     z-index: 1000;
     padding-bottom: 20px;
-    .sidebar{
+
+    @include MQ(S) {
+        display: none
+    }
+
+    .sidebar {
         margin-top: 50px;
     }
+
     .controls {
         width: 100%;
         display: flex;
@@ -22,8 +30,9 @@
             border: 1px solid #707070;
             border-radius: 100%;
             position: relative;
-            svg{
-                fill:#707070;
+
+            svg {
+                fill: #707070;
                 width: 15px;
                 height: 15px;
                 display: block;
@@ -40,12 +49,15 @@
         margin-left: 25px;
         margin-right: 0;
         margin-top: 20px;
+
         .container {
             position: relative;
-            &:not(:last-of-type){
+
+            &:not(:last-of-type) {
                 margin-bottom: 15px;
             }
-            .icon{
+
+            .icon {
                 width: 86px;
                 height: 86px;
                 display: block;
@@ -53,7 +65,8 @@
                 border: solid 1px #c6c6c6;
                 position: relative;
                 transition: all cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.15s;
-                img{
+
+                img {
                     width: 100%;
                     max-width: 50px;
                     height: auto;
@@ -65,7 +78,7 @@
                 }
             }
 
-            .legend{
+            .legend {
                 margin: 0;
                 height: 40px;
                 line-height: 40px;
@@ -84,21 +97,22 @@
                 opacity: 0;
             }
 
-            .delete-icon{
+            .delete-icon {
                 width: 30px;
                 height: 30px;
                 display: block;
                 border-radius: 50%;
-                box-shadow: 0 3px 9px rgba(0,0,0,0.53);
+                box-shadow: 0 3px 9px rgba(0, 0, 0, 0.53);
                 background: #EB0000;
                 position: absolute;
                 top: 15px;
                 left: 0;
                 opacity: 0;
-                transform:translateX(-10%) translateY(-10%);
+                transform: translateX(-10%) translateY(-10%);
                 transition: all cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.15s;
-                svg{
-                    fill:#FFFFFF;
+
+                svg {
+                    fill: #FFFFFF;
                     width: 15px;
                     height: 15px;
                     display: block;
@@ -108,15 +122,18 @@
                     transform: translateY(-50%) translateX(-50%);
                 }
             }
-            &:hover{
-                .icon{
+
+            &:hover {
+                .icon {
                     border-color: #707070;
                 }
-                .legend{
+
+                .legend {
                     opacity: 1;
-                    right:-10px;
+                    right: -10px;
                 }
-                .delete-icon{
+
+                .delete-icon {
                     opacity: 1;
                     top: 0;
                 }
@@ -125,8 +142,3 @@
     }
 }
 
-@media screen and (max-width: 990px){
-    :host{
-        display: none;
-    }
-}

@@ -1,26 +1,58 @@
+@import "../../../../../assets/style/media-query";
+
 :host {
     > div {
         display: inline-block;
         vertical-align: top;
-        width: 65%;
-        margin-left: calc(17.5% - 140px);
+        width: 75%;
+        margin-left: calc(12.5% - 140px);
         font-family: 'Open Sans', sans-serif;
+
+        @include MQ(S) {
+            width: 92%;
+            margin-left: 4%;
+        }
     }
 
     .config {
         display: flex;
         align-items: flex-start;
+        flex-wrap: wrap;
     }
 
     .form {
-        width: 60%;
-        @media screen and (max-width: 1200px) {
+        width: 50%;
+
+        @include MQ(L) {
+            width: 95% !important;
+            margin: auto;
+        }
+
+        @include MQ(1200px) {
+            width: 100%;
+        }
+
+        @include MQ(1400px) {
             width: 100%;
         }
 
         .header {
             width: 100%;
             margin-bottom: 32px;
+            white-space: nowrap;
+
+            @include MQ(450px) {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+                white-space: initial;
+
+                > * {
+                    width: 100%;
+                    margin: 0 !important;
+                }
+            }
 
             img {
                 padding: 12px;
@@ -42,11 +74,17 @@
     }
 
     .preview {
-        width: 50%;
+        width: 45%;
         margin-left: 5%;
 
-        @media screen and (max-width: 1200px) {
-            display: none;
+        @include MQ(1400px) {
+            width: 100%;
+            margin-left: 0;
+        }
+
+        @include MQ(S) {
+            width: 96%;
+            margin-left: 2%;
         }
     }
 }

@@ -1,6 +1,7 @@
+@import "../../../../../assets/style/media-query";
+
 :host {
     display: block;
-    margin-bottom: 64px;
 }
 
 h2 {
@@ -11,12 +12,21 @@ h2 {
 .containers {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     width: 50%;
     margin: auto;
 
+    @include MQ(520px) {
+        width: 80%;
+    }
+
     > div {
-        width: 25%;
+        width: 120px;
         display: flex;
+
+        @include MQ(520px) {
+            width: 100px;
+        }
 
         a {
             margin: auto;
@@ -32,6 +42,7 @@ h2 {
             background-size: 60%;
             background-repeat: no-repeat;
             background-position: center;
+            margin: auto;
         }
 
         p {

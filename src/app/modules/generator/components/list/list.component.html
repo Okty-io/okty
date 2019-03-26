@@ -1,14 +1,9 @@
-<div class="text" *ngIf="!elements || (elements && elements.length == 0)">
-    <div *ngIf="elements == null">
-        <fa-icon [icon]="faSpinner" [spin]="true" [size]="'2x'"></fa-icon>
-    </div>
-    <div *ngIf="elements && elements.length == 0">
-        <span class="error">An error occured while fetching data...</span>
-    </div>
+<app-loader [loading]="elements == null"></app-loader>
+
+<div *ngIf="elements && elements.length <= 0">
+    <p>No data found</p>
 </div>
 
-<div class="list" *ngIf="elements && elements.length > 0">
-    <div *ngFor="let element of elements">
-        <app-generator-card [element]="element"></app-generator-card>
-    </div>
+<div class="list" [ngClass]="{'small': elements.length <= 5 }" *ngIf="elements && elements.length > 0">
+    <app-generator-card [element]="element" *ngFor="let element of elements"></app-generator-card>
 </div>
