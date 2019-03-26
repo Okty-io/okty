@@ -3,6 +3,7 @@ button {
     font-family: 'Open Sans', sans-serif;
     cursor: pointer;
     outline: none;
+    transition: all .15s ease-in-out;
 }
 
 .primary {
@@ -10,7 +11,8 @@ button {
     color: #FFF;
 
     &:hover {
-        background: linear-gradient(to right, darken(rgba(61, 101, 194, 1), 15) 0%, darken(rgba(61, 104, 222, 1), 15) 100%)
+        transition: all .15s ease-in-out;
+        background: #264598;
     }
 }
 
@@ -20,7 +22,8 @@ button {
     border: 1px solid rgba(120, 120, 120, 0.5);
 
     &:hover {
-        background: linear-gradient(to right, darken(rgba(61, 101, 194, 1), 15) 0%, darken(rgba(61, 104, 222, 1), 15) 100%);
+        transition: all .15s ease-in-out;
+        background: #264598;
         color: white;
     }
 }

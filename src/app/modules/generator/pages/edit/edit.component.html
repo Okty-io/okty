@@ -3,12 +3,13 @@
     <app-loader [error]="error" [loading]="loading" [errorMessage]="'Container not found'"></app-loader>
 
     <div class="config" *ngIf="container">
+        <div class="header">
+                <span>
+                    <img [src]="container.logo" [alt]="container.name">
+                </span>
+            <h1>Configuration {{container.name}}</h1>
+        </div>
         <div class="form">
-            <div class="header">
-                <img [src]="container.logo" [alt]="container.name">
-                <h1>Configuration {{container.name}}</h1>
-            </div>
-
             <form (submit)="submit()">
                 <app-generator-form [container]="container"
                                     [userData]="containerFormData.config"
