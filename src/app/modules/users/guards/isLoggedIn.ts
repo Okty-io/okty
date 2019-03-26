@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AuthenticationService } from '../../../core/authentication/authentication.service';
 
 @Injectable()
-export default class IsLoggedIn implements CanActivate {
+export class IsLoggedIn implements CanActivate {
 
     constructor(private authentication: AuthenticationService, private router: Router) {
     }

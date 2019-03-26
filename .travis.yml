@@ -9,11 +9,11 @@ before_install:
     - pip install --user awscli
 
 install:
-    - docker run -v $(pwd):/app -w /app node:8 npm install
+    - docker run -v $(pwd):/app -w /app node:11-stretch npm install
 
 script:
-    - if [ "$TRAVIS_BRANCH" == "master" ]; then docker run -v $(pwd):/app -w /app node:8 ./node_modules/.bin/ng build --prod --aot; fi
-    - if [ "$TRAVIS_BRANCH" == "dev" ]; then docker run -v $(pwd):/app -w /app node:8 ./node_modules/.bin/ng build --configuration=develop; fi
+    - if [ "$TRAVIS_BRANCH" == "master" ]; then docker run -v $(pwd):/app -w /app node:11-stretch ./node_modules/.bin/ng build --prod --aot; fi
+    - if [ "$TRAVIS_BRANCH" == "dev" ]; then docker run -v $(pwd):/app -w /app node:11-stretch ./node_modules/.bin/ng build --configuration=develop; fi
 
 deploy:
     provider: script

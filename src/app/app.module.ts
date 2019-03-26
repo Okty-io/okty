@@ -14,6 +14,10 @@ import { SharedModule } from './shared/shared.module';
 import { NgcCookieConsentModule } from 'ngx-cookieconsent';
 import { cookieConfig } from './core/configs/cookie-consent';
 
+export function hljsLanguages() {
+    return [{name: 'yaml', func: yaml}];
+}
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -25,7 +29,7 @@ import { cookieConfig } from './core/configs/cookie-consent';
         AppRoutingModule,
         CoreModule,
         SharedModule,
-        HighlightModule.forRoot({languages: () => [{name: 'yaml', func: yaml}]}),
+        HighlightModule.forRoot({languages: hljsLanguages}),
         NgcCookieConsentModule.forRoot(cookieConfig)
     ],
     providers: [

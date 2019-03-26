@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { OauthComponent } from './pages/oauth/oauth.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import IsNotLoggedIn from './guards/isNotLoggedIn';
-import IsLoggedIn from './guards/isLoggedIn';
+import { IsNotLoggedIn } from './guards/isNotLoggedIn';
+import { IsLoggedIn } from './guards/isLoggedIn';
 
 const routes: Routes = [
     {
