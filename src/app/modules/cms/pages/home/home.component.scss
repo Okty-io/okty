@@ -164,6 +164,11 @@
                 .subtitle{
                     font-size: 1.5em;
                 }
+                app-button {
+                    margin-right: 0;
+                    margin-bottom: 15px;
+                    display: block;
+                }
             }
             .center-item{
                 h3{
