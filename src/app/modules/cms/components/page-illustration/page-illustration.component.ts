@@ -21,8 +21,9 @@ export class PageIllustrationComponent implements OnInit {
         if (window.innerWidth < maxScreenWidth && percentage > 50) {
             this.cardScale = percentage / 100;
             const pageIllustration = document.querySelector('.page-illustration-container');
-            let translateX = (1 - this.cardScale) * 100;
-            translateX += (10 / 100) * (this.cardScale * 100);
+            const min = -20;
+            const max = 180;
+            const translateX = ( ( (1 - this.cardScale ) * 100) * (max - min) / 100) + min;
             (pageIllustration as any).style.transform = 'scale(' + this.cardScale + ') translateX(' + translateX + '%)';
         }
     }
