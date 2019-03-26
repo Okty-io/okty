@@ -9,6 +9,5 @@
         Export my project
     </app-button>
 </div>
-<div class="loading" *ngIf="loading">
-    <p>Loading...</p>
-</div>
+<app-loader [loading]="loading" [error]="error" [errorMessage]="'An error occured while generating your project'"></app-loader>
+

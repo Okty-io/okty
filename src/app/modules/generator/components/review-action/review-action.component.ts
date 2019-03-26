@@ -16,6 +16,7 @@ export class ReviewActionComponent implements OnInit {
     faDownload = faDownload;
     faPlus = faPlus;
     loading: boolean;
+    error: boolean;
 
     containers: Array<ContainerFormData>;
 
@@ -27,6 +28,7 @@ export class ReviewActionComponent implements OnInit {
     }
 
     public ngOnInit(): void {
+        this.error = false;
         this.loading = false;
         this.containers = this.sessionService.getContainers();
     }
@@ -37,7 +39,10 @@ export class ReviewActionComponent implements OnInit {
 
         this.projectRepository.build(apiArgs)
             .then((file: Blob) => saveAs(file, 'okty.zip'))
-            .catch((error: string) => console.error(error))
+            .catch((error: string) => {
+                this.error = true;
+                console.error(error);
+            })
             .finally(() => this.loading = false);
     }
 

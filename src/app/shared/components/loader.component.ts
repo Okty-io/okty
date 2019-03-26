@@ -9,7 +9,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
                 <fa-icon [icon]="faSpinner" [spin]="true" [size]="'2x'"></fa-icon>
             </div>
             <div *ngIf="error">
-                <span class="error">An error occured while fetching data...</span>
+                <span class="error">{{errorMessage}}</span>
             </div>
         </div>
     `,
@@ -19,6 +19,7 @@ export class LoaderComponent {
 
     @Input() loading = true;
     @Input() error = false;
+    @Input() errorMessage = 'An error occured while fetching data...';
 
     faSpinner = faSpinner;
 }
