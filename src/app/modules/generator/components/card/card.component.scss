@@ -8,6 +8,7 @@
     display: inline-block;
     position: relative;
     margin: auto auto 32px auto;
+    transition: all .2s ease-in-out;
 
     &:nth-child(5n) {
         margin-right: 0;
@@ -68,5 +69,10 @@
         color: #000000;
         line-height: inherit;
         word-break: break-word;
+    }
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.16);
     }
 }
