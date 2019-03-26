@@ -61,7 +61,6 @@ import { CardComponent } from './components/card/card.component';
         EditComponent,
         SidebarComponent,
         LoadComponent,
-        ActionComponent,
         ReviewActionComponent,
         ReviewGridComponent,
         FormActionComponent,
