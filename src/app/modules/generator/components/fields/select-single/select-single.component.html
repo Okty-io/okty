@@ -1,0 +1,12 @@
+<label [htmlFor]="field.id">{{ field.label }}</label>
+
+<ng-select [items]="options"
+           bindLabel="label"
+           bindValue="value"
+           [formControl]="formControl"
+           [labelForId]="field.id"
+></ng-select>
+
+<div *ngIf="formControl.invalid">
+    <small>{{ formControl.errors | validatorErrors }}</small>
+</div>

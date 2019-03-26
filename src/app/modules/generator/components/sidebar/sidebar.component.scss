@@ -1,0 +1,144 @@
+@import "../../../../../assets/style/media-query";
+
+:host {
+    display: inline-block;
+    vertical-align: top;
+    width: 140px;
+    margin-top: 0;
+    z-index: 1000;
+    padding-bottom: 20px;
+
+    @include MQ(S) {
+        display: none
+    }
+
+    .sidebar {
+        margin-top: 50px;
+    }
+
+    .controls {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+
+        a {
+            text-align: center;
+            width: 32px;
+            height: 32px;
+            display: block;
+            box-sizing: border-box;
+            border: 1px solid #707070;
+            border-radius: 100%;
+            position: relative;
+
+            svg {
+                fill: #707070;
+                width: 15px;
+                height: 15px;
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+            }
+        }
+    }
+
+    .containers {
+        width: 86px;
+        margin-left: 25px;
+        margin-right: 0;
+        margin-top: 20px;
+
+        .container {
+            position: relative;
+
+            &:not(:last-of-type) {
+                margin-bottom: 15px;
+            }
+
+            .icon {
+                width: 86px;
+                height: 86px;
+                display: block;
+                border-radius: 50%;
+                border: solid 1px #c6c6c6;
+                position: relative;
+                transition: all cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.15s;
+
+                img {
+                    width: 100%;
+                    max-width: 50px;
+                    height: auto;
+                    display: inline;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(-50%);
+                }
+            }
+
+            .legend {
+                margin: 0;
+                height: 40px;
+                line-height: 40px;
+                color: #ffffff;
+                background: #3d4fd9;
+                padding: 0 20px;
+                border-radius: 20px;
+                font-size: 1rem;
+                font-weight: 600;
+                text-align: center;
+                position: absolute;
+                top: 50%;
+                right: 20px;
+                transform: translateY(-50%) translateX(100%);
+                transition: all cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.15s;
+                opacity: 0;
+            }
+
+            .delete-icon {
+                width: 30px;
+                height: 30px;
+                display: block;
+                border-radius: 50%;
+                box-shadow: 0 3px 9px rgba(0, 0, 0, 0.53);
+                background: #EB0000;
+                position: absolute;
+                top: 15px;
+                left: 0;
+                opacity: 0;
+                transform: translateX(-10%) translateY(-10%);
+                transition: all cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.15s;
+
+                svg {
+                    fill: #FFFFFF;
+                    width: 15px;
+                    height: 15px;
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateY(-50%) translateX(-50%);
+                }
+            }
+
+            &:hover {
+                .icon {
+                    border-color: #707070;
+                }
+
+                .legend {
+                    opacity: 1;
+                    right: -10px;
+                }
+
+                .delete-icon {
+                    opacity: 1;
+                    top: 0;
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,25 @@
+<div class="home-bg-gradient"></div>
+<div class="home-bg-art" [inlineSVG]="'./assets/background.svg'"></div>
+
+<div class="row">
+    <div id="column_left" class="column column_left home-titles">
+        <div class="center">
+            <div class="center-item center-item-left">
+                <h1 class="title">Welcome to Okty</h1>
+                <h3 class="subtitle">The simplest open source application to create your docker projects</h3>
+
+                <app-button type="primary" size="large" routerLink="/generator/containers">Empty project</app-button>
+                <app-button type="light" size="large" routerLink="/generator/templates">From template</app-button>
+            </div>
+        </div>
+    </div>
+
+    <div id="column_right" class="column column_right" (onSVGInserted)="animeIso()" [replaceContents]="false"
+         [inlineSVG]="'./assets/iso_lines_color.svg'">
+        <div id="plate">
+            <app-page-illustration></app-page-illustration>
+        </div>
+        <img id="lines" class="planche" src="./assets/iso_lines_base.svg"/>
+        <img id="cubes" class="planche" src="./assets/iso_cubes.svg"/>
+    </div>
+</div>

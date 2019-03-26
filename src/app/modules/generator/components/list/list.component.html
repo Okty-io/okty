@@ -1,0 +1,9 @@
+<app-loader [loading]="elements == null"></app-loader>
+
+<div *ngIf="elements && elements.length <= 0">
+    <p>No data found</p>
+</div>
+
+<div class="list" [ngClass]="{'small': elements.length <= 5 }" *ngIf="elements && elements.length > 0">
+    <app-generator-card [element]="element" *ngFor="let element of elements"></app-generator-card>
+</div>

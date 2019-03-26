@@ -1,81 +1,40 @@
-import { SidebarService } from './services/sidebar.service';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterEvent } from '@angular/router';
-import { environment } from '../environments/environment';
+import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { homeAnimation } from './modules/cms/pages/home/home.animation';
+import { AuthenticationService } from './core/authentication/authentication.service';
+import { CookieConsentService } from './core/services/cookie-consent.service';
+import { AnalyticsService } from './core/services/analytics.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+    selector: 'app-root',
+    template: `
+        <app-navbar></app-navbar>
+        <div [@routeAnimations]="prepareRoute(outlet)" style="min-height: calc(100% - 427px)">
+            <router-outlet #outlet="outlet"></router-outlet>
+        </div>
+        <app-footer></app-footer>
+    `,
+    styleUrls: ['./app.component.scss'],
+    animations: [
+        homeAnimation
+    ]
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
 
-  public wrapperStatus = 'full';
-  private sidebarSubscription: Subscription;
-  private routerSubscription: Subscription;
-
-  public version = environment.version;
-
-  loading = false;
-
-  constructor(private sidebarStatus: SidebarService,
-              private changeDetector: ChangeDetectorRef,
-              private router: Router) {
-  }
-
-  ngOnInit(): void {
-    this.initSidebar();
-    this.initGoogleAnalytics();
-  }
-
-  private initSidebar(): void {
-    this.sidebarSubscription = this.sidebarStatus.getObservable().subscribe((status: boolean) => {
-      this.wrapperStatus = status ? 'sidebar' : 'full';
-      this.changeDetector.detectChanges();
-    });
-  }
-
-  private initGoogleAnalytics(): void {
-    this.routerSubscription = this.router.events.subscribe((event: RouterEvent) => {
-      this.navigationInterceptor(event);
-
-      if (event instanceof NavigationEnd) {
-        if (!environment.production || !window.localStorage) {
-          return;
-        }
-
-        this.updateGoogleAnalyticsPage(event.urlAfterRedirects);
-      }
-    });
-  }
-
-  private navigationInterceptor(event: RouterEvent): void {
-    if (event instanceof NavigationStart) {
-      this.loading = true;
-    }
-    if (event instanceof NavigationEnd) {
-      this.loading = false;
+    constructor(
+        private authentication: AuthenticationService,
+        private cookieConsent: CookieConsentService,
+        private analytics: AnalyticsService
+    ) {
     }
 
-    // Set loading state to false in both of the below events to hide the spinner in case a request fails
-    if (event instanceof NavigationCancel) {
-      this.loading = false;
+    public ngOnInit(): void {
+        this.authentication.checkloggedIn();
+        this.cookieConsent.init();
+        this.analytics.init();
     }
-    if (event instanceof NavigationError) {
-      this.loading = false;
+
+    prepareRoute(outlet: RouterOutlet) {
+        return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
     }
-  }
-
-  private updateGoogleAnalyticsPage(url: string): void {
-    setTimeout(() => {
-      ga('set', 'page', url);
-      ga('send', 'pageview');
-    }, 250);
-  }
-
-  ngOnDestroy(): void {
-    this.sidebarSubscription.unsubscribe();
-    this.routerSubscription.unsubscribe();
-  }
 }

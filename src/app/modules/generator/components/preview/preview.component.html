@@ -1,0 +1,12 @@
+<div *ngIf="!loading">
+    <pre>
+        <code [highlight]="preview"></code>
+    </pre>
+</div>
+<div class="loading" *ngIf="loading">
+    <pre>
+        <code class="hljs">
+            <fa-icon [icon]="faSpinner" [spin]="true" [size]="'2x'"></fa-icon>
+        </code>
+    </pre>
+</div>

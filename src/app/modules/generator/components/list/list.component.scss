@@ -1,0 +1,23 @@
+@import "../../../../../assets/style/media-query";
+
+:host {
+    text-align: center;
+
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: calc(170px * 5);
+        justify-content: center;
+        margin: 0 auto;
+
+        width: 80%;
+
+        &.small {
+            justify-content: center;
+        }
+
+        > * {
+            width: 170px;
+        }
+    }
+}

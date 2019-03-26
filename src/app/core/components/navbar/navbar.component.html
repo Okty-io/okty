@@ -1,0 +1,20 @@
+<div class="navbar">
+    <a [routerLink]="'/'">
+        <div class="navbar-left">
+            <div class="logo blue" [inlineSVG]="'./assets/logo-blue.svg'"></div>
+            <span class="name">Okty</span>
+        </div>
+    </a>
+
+    <div class="navbar-right">
+        <div class="large-nav">
+            <a *ngIf="displayNav">Builder</a>
+            <a href="https://github.com/Okty-io/okty/wiki">Documentation</a>
+            <a *ngIf="displayNav">Blog</a>
+            <ng-container *ngIf="displayNav">
+                <a class="signup" [routerLink]="['/', 'users', 'login']" *ngIf="!user">Sign in</a>
+                <a class="signup" [routerLink]="['/', 'users', 'profile']" *ngIf="user">Profile</a>
+            </ng-container>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<h2>Your project contains</h2>
+<div class="containers" *ngIf="containers.length > 0">
+    <div *ngFor="let container of containers">
+        <a [routerLink]="['/', 'generator', 'edit', container.id]">
+            <div id="image-box" [style.background-image]="'url(' + container.form.logo + ')'"></div>
+            <p>{{container.form.name}}</p>
+        </a>
+    </div>
+</div>
+<div class="no-containers" *ngIf="containers.length <= 0">
+    No container
+</div>

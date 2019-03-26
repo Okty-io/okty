@@ -1,0 +1,26 @@
+label {
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 4px;
+}
+
+input {
+    border: none;
+    background-color: #EEE;
+    padding: 12px;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+
+    &.ng-invalid {
+        border: 1px solid #f03434;
+    }
+}
+
+div {
+    small {
+        color: #f03434;
+        font-style: italic;
+    }
+}
+

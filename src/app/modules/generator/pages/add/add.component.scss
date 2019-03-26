@@ -1,0 +1,99 @@
+@import "../../../../../assets/style/media-query";
+
+:host {
+    > div {
+        display: inline-block;
+        vertical-align: top;
+        width: 75%;
+        margin-left: calc(12.5% - 140px);
+        font-family: 'Open Sans', sans-serif;
+
+        @include MQ(S) {
+            width: 92%;
+            margin-left: 4%;
+        }
+    }
+
+    .config {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .header {
+        width: 100%;
+        text-align: center;
+        white-space: nowrap;
+
+        span {
+            width: 75px;
+            height: 75px;
+            display: block;
+            border-radius: 100%;
+            margin: 15px auto 0;
+            background: #ffffff;
+            border: solid 1px #707070;
+            position: relative;
+            z-index: 20;
+
+            img {
+                width: 100%;
+                max-width: 45px;
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translateY(-50%) translateX(-50%);
+                transform: translateY(-50%) translateX(-50%);
+
+                @include MQ(L) {
+                    font-size: 1.4em;
+                }
+            }
+        }
+
+        h1 {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 1vw;
+            font-weight: 300;
+
+            @include MQ(L) {
+                font-size: 1.4em;
+            }
+        }
+    }
+
+    .form {
+        width: 50%;
+
+        @include MQ(L) {
+            width: 95% !important;
+            margin: auto;
+        }
+
+        @include MQ(1200px) {
+            width: 100%;
+        }
+
+        @include MQ(1400px) {
+            width: 100%;
+        }
+
+    }
+
+    .preview {
+        width: 45%;
+        margin-left: 5%;
+
+        @include MQ(1400px) {
+            width: 100%;
+            margin-left: 0;
+        }
+
+        @include MQ(S) {
+            width: 96%;
+            margin-left: 2%;
+        }
+    }
+}

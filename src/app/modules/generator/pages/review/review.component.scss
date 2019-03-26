@@ -1,0 +1,36 @@
+@import "../../../../../assets/style/media-query";
+
+:host {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include MQ(S) {
+        width: 94%;
+        margin-left: 3%;
+    }
+
+    .col:nth-child(1) {
+        width: 50%;
+        text-align: center;
+
+        @include MQ(L) {
+            width: 100%;
+        }
+    }
+
+    .col:nth-child(2) {
+        width: 50%;
+        padding: 0 5% 0 0;
+
+        code {
+            text-align: left;
+        }
+
+        @include MQ(L) {
+            width: 90%;
+            padding: 0;
+            margin: auto;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@import "../../../../../assets/style/media-query";
+
+:host {
+    > div {
+        display: inline-block;
+        vertical-align: top;
+        width: calc(100% - 280px);
+
+        @include MQ(S) {
+            width: 90%;
+            margin-left: 5%;
+        }
+    }
+}

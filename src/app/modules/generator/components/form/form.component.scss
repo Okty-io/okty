@@ -1,0 +1,44 @@
+@import "../../../../../assets/style/media-query";
+
+:host {
+    font-family: 'Open Sans', sans-serif;
+
+    .group {
+        margin: 0 0 32px 0;
+        border: 1px solid rgba(0, 0, 0, 0.16);
+        padding: 0 32px 32px;
+        border-radius: 4px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+        h2 {
+            width: 100%;
+            text-align: center;
+            font-weight: 300;
+            margin: 8px 0;
+        }
+
+        hr {
+            display: block;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid rgba(120, 120, 120, 0.3);
+            margin: 0.6em 0 1em;
+            padding: 0;
+        }
+
+        .fields {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            div {
+                @include MQ(M) {
+                    width: 98%;
+                }
+
+                width: 48%;
+                margin-bottom: 16px;
+            }
+        }
+    }
+}

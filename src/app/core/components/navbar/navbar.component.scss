@@ -1,0 +1,136 @@
+@import "../../../../assets/style/media-query";
+
+:host {
+    width: 100%;
+    height: 80px;
+    display: block;
+}
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    .navbar-left {
+        margin-left: 25px;
+
+        .logo {
+            width: 80px;
+            margin-top: 5px;
+            display: inline-block;
+            vertical-align: middle;
+
+            svg {
+                width: 100%;
+            }
+        }
+
+        .name {
+            display: inline-block;
+            vertical-align: middle;
+            height: 60px;
+            line-height: 60px;
+            font-size: 20px;
+            font-family: sans-serif;
+            font-weight: 200;
+            color: #000;
+            margin-left: 10px;
+
+        }
+
+        a, a:visited {
+            text-decoration: none;
+            color: #000 !important;
+        }
+    }
+
+    .navbar-right {
+        height: 60px;
+        width: auto;
+        right: 0;
+        top: 0;
+        position: absolute;
+
+        a {
+            font-family: sans-serif;
+            line-height: 60px;
+            margin-right: 40px;
+            background-image: linear-gradient(#000 50%, #000 50%), linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 50%);
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-size: 0 0.15em, 100% 0.15em;
+            padding-bottom: .188em;
+            text-decoration: none;
+            transition: background-size .3s ease-out;
+            font-weight: 200;
+            font-size: 16px;
+            color: #000;
+
+            &:hover {
+                background-size: 100% 0.15em, 100% 0.15em;
+                cursor: pointer;
+            }
+        }
+
+        .signup {
+            background: #3D68DD;
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.35);
+            margin-right: 25px !important;
+            padding: 10px 25px;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all .3s ease;
+            animation: pulse 1.5s infinite;
+            color: #fff;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(.9);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(#5a99d4, 0);
+            }
+            100% {
+                transform: scale(.9);
+                box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+            }
+        }
+
+        .signup:hover {
+            background: #264598;
+        }
+    }
+}
+
+@include MQ(L) {
+    .navbar {
+        .navbar-right {
+            .large-nav {
+                display: block;
+            }
+
+            .small-nav {
+                display: none;
+            }
+        }
+    }
+}
+
+@include MQ(M) {
+    .navbar {
+        .navbar-right {
+            .large-nav {
+                display: none;
+            }
+
+            .small-nav {
+                display: block;
+            }
+        }
+    }
+}

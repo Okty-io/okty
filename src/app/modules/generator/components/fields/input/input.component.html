@@ -1,0 +1,10 @@
+<label [htmlFor]="field.id">{{ field.label }}</label>
+
+<input type="text"
+       [id]="field.id"
+       [name]="field.label"
+       [formControl]="formControl">
+
+<div *ngIf="formControl.invalid">
+    <small>{{ formControl.errors | validatorErrors }}</small>
+</div>

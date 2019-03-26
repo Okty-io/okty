@@ -1,0 +1,26 @@
+<app-generator-sidebar></app-generator-sidebar>
+<div>
+    <app-loader [loading]="loading" [error]="error"></app-loader>
+
+    <div class="config" *ngIf="container">
+        <div class="header">
+                <span>
+                    <img [src]="container.logo" [alt]="container.name">
+                </span>
+            <h1>Configuration {{container.name}}</h1>
+        </div>
+
+        <div class="form">
+            <form (submit)="submit()">
+                <app-generator-form [container]="container" (dataChange)="updateData($event)"></app-generator-form>
+                <app-generator-form-action [submit]="submit.bind(this)"
+                                           [formInvalid]="!preview">
+                </app-generator-form-action>
+            </form>
+        </div>
+
+        <div class="preview">
+            <app-generator-preview [content]="preview"></app-generator-preview>
+        </div>
+    </div>
+</div>

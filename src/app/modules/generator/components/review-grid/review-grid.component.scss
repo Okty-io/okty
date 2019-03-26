@@ -1,0 +1,52 @@
+@import "../../../../../assets/style/media-query";
+
+:host {
+    display: block;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 2.5em;
+}
+
+.containers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+
+    @include MQ(520px) {
+        width: 80%;
+    }
+
+    > div {
+        width: 120px;
+        display: flex;
+
+        @include MQ(520px) {
+            width: 100px;
+        }
+
+        a {
+            margin: auto;
+            text-decoration: none;
+            color: #000;
+        }
+
+        #image-box {
+            width: 75px;
+            height: 75px;
+            border: 1px solid #000;
+            border-radius: 50%;
+            background-size: 60%;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: auto;
+        }
+
+        p {
+            margin-top: 8px;
+        }
+    }
+}

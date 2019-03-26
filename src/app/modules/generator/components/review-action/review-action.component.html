@@ -1,0 +1,13 @@
+<h2>Is your project ready ?</h2>
+<div class="action" *ngIf="!loading">
+    <app-button [routerLink]="['/', 'generator', 'containers']" type="light">
+        <fa-icon [icon]="faPlus"></fa-icon>
+        Add a container
+    </app-button>
+    <app-button (click)="export()" type="primary">
+        <fa-icon [icon]="faDownload"></fa-icon>
+        Export my project
+    </app-button>
+</div>
+<app-loader [loading]="loading" [error]="error" [errorMessage]="'An error occured while generating your project'"></app-loader>
+

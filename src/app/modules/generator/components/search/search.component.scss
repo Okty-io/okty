@@ -1,0 +1,27 @@
+@import "../../../../../assets/style/media-query";
+
+:host {
+    > div {
+        width: 100%;
+
+        @include MQ(L) {
+            width: 90%;
+            margin: auto;
+        }
+
+        input {
+            width: 100%;
+            background: transparent;
+            text-align: center;
+            font-size: 30px;
+            line-height: 60px;
+            border: solid 1px #D6D6D6;
+            border-radius: 30px;
+            outline: none;
+            display: block;
+            max-width: 650px;
+            margin: 0 auto 20px;
+            font-weight: 300;
+        }
+    }
+}

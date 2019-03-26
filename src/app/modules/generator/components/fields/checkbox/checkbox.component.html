@@ -1,0 +1,7 @@
+<label>
+    {{ field.label }}
+    <input type="checkbox" [name]="field.label" [formControl]="formControl">
+</label>
+<div *ngIf="formControl.invalid">
+    <p>{{ formControl.errors | validatorErrors }}</p>
+</div>

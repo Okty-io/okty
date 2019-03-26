@@ -1,0 +1,26 @@
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1.5em;
+    color: #FFF;
+    background: #2B2B2B;
+    border-radius: 6px;
+}
+
+.hljs-attr {
+    color: #FF8000;
+}
+
+.hljs-string {
+    color: #fff;
+}
+
+pre {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 0;
+
+    code {
+        font-size: 15px;
+    }
+}

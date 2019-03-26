@@ -1,0 +1,14 @@
+<div *ngIf="form">
+    <div class="group" *ngFor="let group of form?.config">
+        <h2>{{ group.label }}</h2>
+        <hr>
+        <div class="fields">
+            <div *ngFor="let field of group.fields|onlyVisibleField">
+                <ng-template appGeneratorFormField
+                             [appFormField]="field"
+                             [appFormControl]="getFormControl(group, field)">
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

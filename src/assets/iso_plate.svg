@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 915.51 668">
+    <defs>
+        <style>
+            .cls-1{isolation:isolate;}.cls-2{stroke:#333;stroke-miterlimit:10;stroke-width:2px;}.cls-2,.cls-8{opacity:0;}.cls-3{opacity:0.33;mix-blend-mode:multiply;}.cls-4{fill:#0e2b44;}.cls-5{fill:#2b2b2b;}.cls-6{fill:#1c1c1c;}.cls-7{fill:#3f3f3f;}.cls-9{fill:#a8d9fd;}.cls-10{fill:#1793ef;}.cls-11{fill:#68bcfb;}
+        </style>
+    </defs>
+    <title></title>
+    <g class="cls-1">
+        <g id="Calque_2" data-name="Calque 2">
+            <g id="Calque_2-2" data-name="Calque 2">
+                <line class="cls-2" x1="686" y1="191" x2="569" y2="256"/>
+            </g>
+            <g id="Calque_5" data-name="Calque 5">
+                <g id="_Groupe_" data-name="&lt;Groupe&gt;">
+                    <image class="cls-3" width="813" height="518" transform="translate(0 150)"/>
+                    <polygon class="cls-4" points="434.89 186.4 738.38 361.62 343.5 589.6 40.62 414.04 434.89 186.4"/>
+                </g>
+                <polygon id="_Tracé_" data-name="&lt;Tracé&gt;" class="cls-5"
+                         points="434.89 178.03 738.38 353.25 343.5 581.23 40.62 405.67 434.89 178.03"/>
+                <g id="_Groupe_2" data-name="&lt;Groupe&gt;">
+                    <g id="_Groupe_3" data-name="&lt;Groupe&gt;">
+                        <polygon class="cls-6" points="738 353.03 738 353 737.95 353 738 353.03"/>
+                    </g>
+                    <g id="_Groupe_4" data-name="&lt;Groupe&gt;">
+                        <polygon class="cls-6"
+                                 points="738 353.46 343.5 581.23 41.19 406 41 406 41 415 40.67 415 343.5 590.75 738.37 363 738 363 738 353.46"/>
+                    </g>
+                </g>
+                <g id="_Groupe_5" data-name="&lt;Groupe&gt;">
+                    <polyline id="_Tracé_2" data-name="&lt;Tracé&gt;" class="cls-7"
+                              points="343 590.75 40.67 415 41 415 41 406 41.19 406 343 581.23"/>
+                    <g id="_Groupe_6" data-name="&lt;Groupe&gt;">
+                        <polygon class="cls-7"
+                                 points="41.19 406 41 406 41 415 40.67 415 343.5 590.75 343.5 581.23 41.19 406"/>
+                    </g>
+                </g>
+            </g>
+            <g id="Calque_12" data-name="Calque 12">
+                <line class="cls-2" x1="624" y1="81" x2="563" y2="116"/>
+                <line class="cls-2" x1="747" y1="156" x2="686" y2="191"/>
+                <line class="cls-2" x1="868" y1="227" x2="807" y2="262"/>
+                <line class="cls-2" x1="807" y1="262" x2="563" y2="116"/>
+            </g>
+            <g id="Calque_11" data-name="Calque 11">
+                <g class="cls-8">
+                    <path class="cls-9" d="M625.25,0,579,26.7v.05l46.25,26.7,46.26-26.7v0Z"/>
+                    <path class="cls-10" d="M625.25,53.5v53.37l46.26-26.71V26.79L625.25,53.5Z"/>
+                    <path class="cls-11" d="M579,26.79V80.16l46.25,26.71V53.5Z"/>
+                </g>
+                <g class="cls-8">
+                    <path class="cls-9" d="M748.25,71,702,97.7v0l46.25,26.7,46.26-26.7v0Z"/>
+                    <path class="cls-10" d="M748.25,124.5v53.37l46.26-26.71V97.79L748.25,124.5Z"/>
+                    <path class="cls-11" d="M702,97.79v53.37l46.25,26.71V124.5Z"/>
+                </g>
+                <g class="cls-8">
+                    <path class="cls-9" d="M869.25,142,823,168.7v.05l46.25,26.7,46.26-26.7v0Z"/>
+                    <path class="cls-10" d="M869.25,195.5v53.37l46.26-26.71V168.79L869.25,195.5Z"/>
+                    <path class="cls-11" d="M823,168.79v53.37l46.25,26.71V195.5Z"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
