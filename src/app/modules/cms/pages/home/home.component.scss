@@ -106,7 +106,8 @@
     .row {
         .column_left {
             width: 100%;
-            .center{
+
+            .center {
                 position: relative;
                 top: 0;
                 transform: translateY(0);
@@ -129,81 +130,55 @@
             display: none;
         }
     }
-    .home-bg-art{
+    .home-bg-art {
         display: none;
     }
-    .home-bg-gradient{
+    .home-bg-gradient {
         width: 100vw;
     }
 }
 
 @include MQ(M) {
     .row {
-        .column{
-            .center-item{
-                .action{
+        .column {
+            .center-item {
+                .action {
                     display: block;
                     max-width: 180px;
-                    margin: 0 auto;
-                    margin-bottom: 10px;
+                    margin: 0 auto 10px;
                 }
             }
         }
     }
-
-
 }
 
 @include MQ(S) {
     .row {
-        .column{
-            .center-item-left{
-                .title{
+        .column {
+            .center-item-left {
+                .title {
                     font-size: 2em;
                 }
-                .subtitle{
+
+                .subtitle {
                     font-size: 1.5em;
                 }
+
                 app-button {
                     margin-right: 0;
                     margin-bottom: 15px;
                     display: block;
                 }
             }
-            .center-item{
-                h3{
+
+            .center-item {
+                h3 {
                     margin-bottom: 35px;
                 }
             }
         }
     }
 
-}
-
-/*********************************************
-***************** KEYFRAMES ******************
-*********************************************/
-
-@keyframes fade-to-top {
-    0% {
-        opacity: 1;
-        margin-top: 0px;
-    }
-    100% {
-        opacity: 0;
-        margin-top: 100px;
-    }
-}
-
-@keyframes fade-to-bottom {
-    0% {
-        opacity: 1;
-        margin-bottom: 0px;
-    }
-    100% {
-        opacity: 0;
-        margin-bottom: 100px;
-    }
 }
 
 @keyframes jump {
