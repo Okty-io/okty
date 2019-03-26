@@ -9,8 +9,8 @@
         font-family: 'Open Sans', sans-serif;
 
         @include MQ(S) {
-            width: 100%;
-            margin: auto;
+            width: 92%;
+            margin-left: 4%;
         }
     }
 
@@ -41,6 +41,19 @@
             margin-bottom: 32px;
             white-space: nowrap;
 
+            @include MQ(450px) {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+                white-space: initial;
+
+                > * {
+                    width: 100%;
+                    margin: 0 !important
+                }
+            }
+
             img {
                 padding: 12px;
                 width: 75px;
@@ -49,10 +62,6 @@
                 border-radius: 50%;
                 display: inline-block;
                 vertical-align: middle;
-
-                @include MQ(L) {
-                    font-size: 1.4em;
-                }
             }
 
             h1 {
