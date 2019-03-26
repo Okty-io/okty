@@ -112,17 +112,6 @@
 
 @include MQ(L) {
     .navbar {
-        .navbar-left {
-            #logo-blue {
-                display: none;
-            }
-
-            #logo-white {
-                display: block;
-                opacity: 1;
-            }
-        }
-
         .navbar-right {
             .large-nav {
                 display: block;
