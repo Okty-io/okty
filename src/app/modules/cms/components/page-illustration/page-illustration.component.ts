@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PageIllustrationComponent implements OnInit {
     public cardScale = 1;
     constructor() { }
-
+N
     ngOnInit() {
         this.pageIllustationResize();
         window.addEventListener('resize', this.pageIllustationResize);
