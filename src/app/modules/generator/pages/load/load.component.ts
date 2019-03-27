@@ -29,34 +29,39 @@ export class LoadComponent implements OnInit {
         this.sessionService.reset();
 
         this.templateRepository.getOne(this.activatedRoute.snapshot.params.id).subscribe((template: Template) => {
+            const promises = [];
+
             template.containers.forEach((container: { image: string, config: Array<FormFieldData[]> }) => {
-                this.initContainer(container);
+                promises.push(this.initContainer(container));
             });
 
-            if (this.errors.length > 0) {
-                this.sessionService.reset();
-                return;
-            }
-
-            setTimeout(() => {
+            Promise.all(promises).then(() => {
                 this.router.navigate(['/', 'generator', 'review']);
-            }, 750);
+            }).catch(() => {
+                this.sessionService.reset();
+            });
         });
     }
 
-    private async initContainer(container: { image: string, config: Array<FormFieldData[]> }): Promise<void> {
-        const data = new ContainerFormData();
-        data.image = container.image;
-        data.config = container.config;
+    private initContainer(container: { image: string, config: Array<FormFieldData[]> }): Promise<void> {
+        return new Promise((resolve, reject) => {
+            const data = new ContainerFormData();
+            data.image = container.image;
+            data.config = container.config;
 
-        data.form = await this.containerRepository.getOne(container.image)
-            .toPromise()
-            .catch((error) => {
-                this.errors.push(error);
-                return null;
-            }) as Container;
+            this.containerRepository.getOne(container.image).toPromise<Container>()
+                .then((form: Container) => {
+                    data.form = form;
+                    this.sessionService.addContainer(data);
 
-        this.sessionService.addContainer(data);
+                    resolve();
+                })
+                .catch((error) => {
+                    this.errors.push(error);
+
+                    reject();
+                });
+        });
     }
 
 }
