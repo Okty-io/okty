@@ -7,6 +7,10 @@ const routes: Routes = [
         loadChildren: './modules/generator/generator.module#GeneratorModule'
     },
     {
+        path: 'learning',
+        loadChildren: './modules/learning/learning.module#LearningModule'
+    },
+    {
         path: 'users',
         loadChildren: './modules/users/users.module#UsersModule'
     },
