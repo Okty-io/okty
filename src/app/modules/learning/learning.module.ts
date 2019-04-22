@@ -9,6 +9,7 @@ import { ProgressComponent } from './components/progress/progress.component';
 import { ChapterComponent } from './components/chapter/chapter.component';
 import { LessonComponent } from './components/lesson/lesson.component';
 import { ChapterRepository } from './repositories/chapter.repository';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { ChapterRepository } from './repositories/chapter.repository';
         CommonModule,
         LearningRoutingModule,
         SharedModule,
+        FontAwesomeModule,
     ],
     providers: [
         ChapterRepository

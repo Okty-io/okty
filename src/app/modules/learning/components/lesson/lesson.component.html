@@ -1,1 +1,5 @@
-<p>{{ lesson.name }}</p>
+<p>{{ lesson.position }}. {{ lesson.name }}</p>
+
+<div class="status" [attr.completed]="isCompleted">
+    <fa-icon *ngIf="isCompleted" [icon]="completedIcon"></fa-icon>
+</div>
