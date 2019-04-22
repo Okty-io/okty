@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-learning-progress',
@@ -7,12 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgressComponent implements OnInit {
 
+    @Input() percentage: number;
+
     constructor() {
 
     }
 
     ngOnInit() {
+        if (!this.percentage) {
+            this.percentage = 0;
+        }
 
+        if (this.percentage < 0) {
+            this.percentage = 0;
+        }
+
+        if (this.percentage > 100) {
+            this.percentage = 100;
+        }
     }
 
 }

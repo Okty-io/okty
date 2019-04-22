@@ -10,6 +10,6 @@ export class ChapterRepository {
     }
 
     public getAll(): Observable<Chapter[]> {
-        return this.api.get('chapters');
+        return this.api.get('learning/chapters');
     }
 }
