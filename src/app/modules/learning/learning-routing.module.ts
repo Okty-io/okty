@@ -14,7 +14,7 @@ const routes: Routes = [
         component: ChaptersComponent
     },
     {
-        path: 'chapters/:id/:step',
+        path: 'chapters/:id/:lesson',
         component: LessonComponent
     }
 ];

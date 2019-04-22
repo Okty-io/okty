@@ -1,3 +1,4 @@
-<p>
-  lesson works!
-</p>
+<app-loader [loading]="loading" [error]="!loading && !lesson"></app-loader>
+<ng-container *ngIf="!loading && lesson">
+    <p>{{ lesson.name }}</p>
+</ng-container>

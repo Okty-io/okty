@@ -1,4 +1,8 @@
-<app-learning-progress [percentage]="percentage"></app-learning-progress>
+<app-loader [loading]="loading" [error]="!loading && chapters.length <= 0"></app-loader>
 
-<app-learning-chapter *ngFor="let chapter of chapters" [chapter]="chapter">
-</app-learning-chapter>
+<ng-container *ngIf="!loading && chapters.length > 0">
+    <app-learning-progress [percentage]="percentage"></app-learning-progress>
+
+    <app-learning-chapter *ngFor="let chapter of chapters" [chapter]="chapter">
+    </app-learning-chapter>
+</ng-container>

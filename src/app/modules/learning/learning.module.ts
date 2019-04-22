@@ -11,6 +11,7 @@ import { LessonCardComponent } from './components/lesson-card/lesson-card.compon
 import { ChapterRepository } from './repositories/chapter.repository';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LessonComponent } from './pages/lesson/lesson.component';
+import { LessonRepository } from './repositories/lesson.repository';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { LessonComponent } from './pages/lesson/lesson.component';
         FontAwesomeModule,
     ],
     providers: [
-        ChapterRepository
+        ChapterRepository,
+        LessonRepository,
     ]
 })
 export class LearningModule {

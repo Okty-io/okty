@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class ChaptersComponent implements OnInit, OnDestroy {
 
+    public loading: boolean;
     public percentage: number;
     public chapters: Chapter[];
     private chapterSubscription: Subscription;
@@ -18,12 +19,14 @@ export class ChaptersComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.loading = true;
         this.percentage = 0;
         this.chapters = [];
 
         this.chapterSubscription = this.chapterRepository.getAll()
             .subscribe((chapters: Chapter[]) => {
                 this.chapters = chapters;
+                this.loading = false;
             });
     }
 
