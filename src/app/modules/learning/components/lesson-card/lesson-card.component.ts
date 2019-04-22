@@ -4,10 +4,10 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-learning-lesson',
-    templateUrl: './lesson.component.html',
-    styleUrls: ['./lesson.component.scss']
+    templateUrl: './lesson-card.component.html',
+    styleUrls: ['./lesson-card.component.scss']
 })
-export class LessonComponent implements OnInit {
+export class LessonCardComponent implements OnInit {
 
     @Input() lesson: Lesson;
 

@@ -7,9 +7,10 @@ import { ChaptersComponent } from './pages/chapters/chapters.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ProgressComponent } from './components/progress/progress.component';
 import { ChapterComponent } from './components/chapter/chapter.component';
-import { LessonComponent } from './components/lesson/lesson.component';
+import { LessonCardComponent } from './components/lesson-card/lesson-card.component';
 import { ChapterRepository } from './repositories/chapter.repository';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LessonComponent } from './pages/lesson/lesson.component';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         ChaptersComponent,
         ProgressComponent,
         ChapterComponent,
+        LessonCardComponent,
         LessonComponent
     ],
     imports: [

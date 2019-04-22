@@ -1,2 +1,5 @@
 <p class="title">{{ chapter.name }}</p>
-<app-learning-lesson *ngFor="let lesson of chapter.lessons" [lesson]="lesson"></app-learning-lesson>
+<app-learning-lesson *ngFor="let lesson of chapter.lessons"
+                     [lesson]="lesson"
+                     [routerLink]="['/', 'learning', 'chapters', chapter.id, lesson.position]">
+</app-learning-lesson>
