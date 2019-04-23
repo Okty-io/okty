@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LessonRepository } from '../../repositories/lesson.repository';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Lesson from '../../models/lesson';
 
 @Component({
@@ -13,7 +13,7 @@ export class LessonComponent implements OnInit {
     public loading: boolean;
     public lesson: Lesson;
 
-    constructor(private lessonRepository: LessonRepository, private activatedRoute: ActivatedRoute) {
+    constructor(private lessonRepository: LessonRepository, private activatedRoute: ActivatedRoute, private router: Router) {
     }
 
     ngOnInit() {
@@ -30,4 +30,7 @@ export class LessonComponent implements OnInit {
         });
     }
 
+    handleEnd = () => {
+        this.router.navigate(['/learning', 'chapters']);
+    }
 }

@@ -1,4 +1,16 @@
-<app-loader [loading]="loading" [error]="!loading && !lesson"></app-loader>
 <ng-container *ngIf="!loading && lesson">
-    <p>{{ lesson.name }}</p>
+    <app-learning-stepper [title]="lesson.name" [handleEnd]="handleEnd">
+        <cdk-step *ngFor="let step of lesson.steps">
+            <p style="text-align: justify">
+                {{ step.text }}
+            </p>
+        </cdk-step>
+
+        <cdk-step>
+            <p style="text-align: center">
+                Congratulations!
+            </p>
+        </cdk-step>
+    </app-learning-stepper>
 </ng-container>
+<app-loader [loading]="loading" [error]="!loading && !lesson"></app-loader>
