@@ -12,6 +12,8 @@ import { ChapterRepository } from './repositories/chapter.repository';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LessonComponent } from './pages/lesson/lesson.component';
 import { LessonRepository } from './repositories/lesson.repository';
+import { StepperComponent } from './components/stepper/stepper.component';
+import { CdkStepperModule } from '@angular/cdk/stepper';
 
 @NgModule({
     declarations: [
@@ -20,13 +22,15 @@ import { LessonRepository } from './repositories/lesson.repository';
         ProgressComponent,
         ChapterComponent,
         LessonCardComponent,
-        LessonComponent
+        LessonComponent,
+        StepperComponent
     ],
     imports: [
         CommonModule,
         LearningRoutingModule,
         SharedModule,
         FontAwesomeModule,
+        CdkStepperModule,
     ],
     providers: [
         ChapterRepository,
