@@ -1,9 +1,7 @@
 <ng-container *ngIf="!loading && lesson">
     <app-learning-stepper [title]="lesson.name" [handleEnd]="handleEnd">
         <cdk-step *ngFor="let step of lesson.steps">
-            <p style="text-align: justify">
-                {{ step.text }}
-            </p>
+            <div style="text-align: justify" [innerHTML]="step.text"></div>
         </cdk-step>
 
         <cdk-step>
