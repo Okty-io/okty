@@ -2,6 +2,7 @@
     <app-learning-stepper [title]="lesson.name" [handleEnd]="handleEnd">
         <cdk-step *ngFor="let step of lesson.steps">
             <div style="text-align: justify" [innerHTML]="step.text"></div>
+            <ng-template appLearningAction [action]="step.action"></ng-template>
         </cdk-step>
 
         <cdk-step>

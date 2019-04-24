@@ -14,6 +14,9 @@ import { LessonComponent } from './pages/lesson/lesson.component';
 import { LessonRepository } from './repositories/lesson.repository';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { CdkStepperModule } from '@angular/cdk/stepper';
+import { QcmComponent } from './components/actions/qcm/qcm.component';
+import { ActionDirective } from './directives/action.directive';
+import { VoidComponent } from './components/actions/void/void.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +26,10 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
         ChapterComponent,
         LessonCardComponent,
         LessonComponent,
-        StepperComponent
+        StepperComponent,
+        ActionDirective,
+        VoidComponent,
+        QcmComponent,
     ],
     imports: [
         CommonModule,
@@ -35,6 +41,10 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
     providers: [
         ChapterRepository,
         LessonRepository,
+    ],
+    entryComponents: [
+        VoidComponent,
+        QcmComponent,
     ]
 })
 export class LearningModule {
