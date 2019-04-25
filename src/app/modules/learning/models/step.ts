@@ -5,4 +5,5 @@ export default class Step {
     position: number;
     text: string;
     action: Action;
+    validated: boolean;
 }

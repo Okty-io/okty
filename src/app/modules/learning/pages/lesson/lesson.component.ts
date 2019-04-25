@@ -25,6 +25,8 @@ export class LessonComponent implements OnInit {
         this.activatedRoute.params.subscribe((data) => {
             this.lessonRepository.getByChapterAndStepNumber(data.id, data.lesson).then((lesson: Lesson) => {
                 this.lesson = lesson;
+                this.lesson.steps.map((step) => step.validated = !step.action);
+
                 this.loading = false;
             });
         });

@@ -1,4 +1,4 @@
-import { ComponentFactoryResolver, Directive, Input, OnInit, Type, ViewContainerRef } from '@angular/core';
+import { ComponentFactoryResolver, Directive, EventEmitter, Input, OnInit, Output, Type, ViewContainerRef } from '@angular/core';
 import { QcmComponent } from '../components/actions/qcm/qcm.component';
 import { VoidComponent } from '../components/actions/void/void.component';
 import Action from '../models/action';
@@ -9,6 +9,7 @@ import Action from '../models/action';
 export class ActionDirective implements OnInit {
 
     @Input() action: Action;
+    @Output() validateAction = new EventEmitter();
 
     constructor(private viewContainer: ViewContainerRef, private factory: ComponentFactoryResolver) {
     }
@@ -23,6 +24,7 @@ export class ActionDirective implements OnInit {
 
         const component = this.viewContainer.createComponent(componentFactory);
         component.instance.action = this.action;
+        component.instance.validateAction = this.validateAction;
     }
 
     private getComponentType(): Type<any> {

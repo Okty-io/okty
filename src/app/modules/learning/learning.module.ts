@@ -18,6 +18,7 @@ import { QcmComponent } from './components/actions/qcm/qcm.component';
 import { ActionDirective } from './directives/action.directive';
 import { VoidComponent } from './components/actions/void/void.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LessonStepComponent } from './components/lesson-step/lesson-step.component';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         ActionDirective,
         VoidComponent,
         QcmComponent,
+        LessonStepComponent,
     ],
     imports: [
         CommonModule,

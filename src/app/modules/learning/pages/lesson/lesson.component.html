@@ -1,8 +1,7 @@
 <ng-container *ngIf="!loading && lesson">
     <app-learning-stepper [title]="lesson.name" [handleEnd]="handleEnd">
-        <cdk-step *ngFor="let step of lesson.steps">
-            <div style="text-align: justify" [innerHTML]="step.text"></div>
-            <ng-template appLearningAction [action]="step.action"></ng-template>
+        <cdk-step *ngFor="let step of lesson.steps" [completed]="step.validated">
+            <app-learning-lesson-step [step]="step"></app-learning-lesson-step>
         </cdk-step>
 
         <cdk-step>

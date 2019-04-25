@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import Action from '../../../models/action';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -9,6 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class QcmComponent implements OnInit {
 
     @Input() action: Action;
+    @Output() validateAction: EventEmitter<boolean>;
 
     public form: FormGroup;
 
@@ -31,9 +32,7 @@ export class QcmComponent implements OnInit {
         });
     }
 
-    public submit(event): void {
-        event.preventDefault();
-
+    public submit(): void {
         const values = this.form.value;
 
         this.action.config.questions.map((question, indexQuestion) => {
@@ -50,6 +49,7 @@ export class QcmComponent implements OnInit {
         });
 
         console.log(values);
+        this.validateAction.emit(true);
     }
 
 }

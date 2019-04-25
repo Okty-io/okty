@@ -14,6 +14,6 @@
 
 <div class="action-bar">
     <app-button [type]="'light'" [disabled]="!hasPrevious()" (click)="previous()">Previous</app-button>
-    <app-button [type]="'primary'" (click)="next()" *ngIf="hasNext()">Next</app-button>
+    <app-button [type]="'primary'" (click)="next()" *ngIf="hasNext()" [disabled]="!selected.completed">Next</app-button>
     <app-button [type]="'primary'" (click)="handleEnd()" *ngIf="!hasNext()">Go to next chapter</app-button>
 </div>
