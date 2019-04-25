@@ -17,6 +17,7 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
 import { QcmComponent } from './components/actions/qcm/qcm.component';
 import { ActionDirective } from './directives/action.directive';
 import { VoidComponent } from './components/actions/void/void.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -37,6 +38,8 @@ import { VoidComponent } from './components/actions/void/void.component';
         SharedModule,
         FontAwesomeModule,
         CdkStepperModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     providers: [
         ChapterRepository,
