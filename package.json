@@ -31,7 +31,7 @@
     "@ng-select/ng-select": "^2.16.2",
     "animejs": "^2.2.0",
     "cookieconsent": "^3.1.0",
-    "core-js": "^2.5.4",
+    "core-js": "^3.0.1",
     "file-saver": "^2.0.0",
     "highlight.js": "^9.15.6",
     "ng-inline-svg": "^8.1.0",
