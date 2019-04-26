@@ -35,7 +35,7 @@
     "file-saver": "^2.0.0",
     "highlight.js": "^9.15.6",
     "ng-inline-svg": "^8.1.0",
-    "ngx-cookieconsent": "^2.1.1",
+    "ngx-cookieconsent": "^2.2.0",
     "ngx-highlightjs": "^3.0.3",
     "rxjs": "~6.3.3",
     "yamljs": "^0.3.0",
