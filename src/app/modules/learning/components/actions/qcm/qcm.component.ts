@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import Action from '../../../models/action';
 import { FormControl, FormGroup } from '@angular/forms';
+import ActionResponse from '../../../models/action-response';
+import { ActionRepository } from '../../../repositories/action.repository';
 
 @Component({
     templateUrl: './qcm.component.html',
@@ -13,7 +15,11 @@ export class QcmComponent implements OnInit {
 
     public form: FormGroup;
 
+    constructor(private actionRepository: ActionRepository) {
+    }
+
     ngOnInit() {
+        console.log(this.action);
         this.form = new FormGroup({});
 
         this.action.config.questions.map((question, indexQuestion) => {
@@ -47,6 +53,11 @@ export class QcmComponent implements OnInit {
                 values[indexQuestion][indexLabel + 1] = (indexLabel + 1 === parseInt(answered, 10));
             });
         });
+
+        this.actionRepository.checkResult(this.action, values)
+            .then((response: ActionResponse) => {
+                console.log(response);
+            });
 
         console.log(values);
         this.validateAction.emit(true);

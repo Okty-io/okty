@@ -19,6 +19,7 @@ import { ActionDirective } from './directives/action.directive';
 import { VoidComponent } from './components/actions/void/void.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LessonStepComponent } from './components/lesson-step/lesson-step.component';
+import { ActionRepository } from './repositories/action.repository';
 
 @NgModule({
     declarations: [
@@ -46,6 +47,7 @@ import { LessonStepComponent } from './components/lesson-step/lesson-step.compon
     providers: [
         ChapterRepository,
         LessonRepository,
+        ActionRepository
     ],
     entryComponents: [
         VoidComponent,
