@@ -14,12 +14,13 @@ export class QcmComponent implements OnInit {
     @Output() validateAction: EventEmitter<boolean>;
 
     public form: FormGroup;
+    public validated: boolean;
 
     constructor(private actionRepository: ActionRepository) {
     }
 
     ngOnInit() {
-        console.log(this.action);
+        this.validated = null;
         this.form = new FormGroup({});
 
         this.action.config.questions.map((question, indexQuestion) => {
@@ -55,12 +56,31 @@ export class QcmComponent implements OnInit {
         });
 
         this.actionRepository.checkResult(this.action, values)
-            .then((response: ActionResponse) => {
-                console.log(response);
-            });
-
-        console.log(values);
-        this.validateAction.emit(true);
+            .then((response) => this.handleResponse(response))
+            .catch(() => this.handleError());
     }
 
+    private handleResponse(response: ActionResponse): void {
+        if (response.validated) {
+            this.validated = true;
+            this.validateAction.emit(true);
+
+            return;
+        }
+
+        this.validated = false;
+        this.validateAction.emit(false);
+        response.details.errors.map((id) => {
+            this.form.get(id.toString()).setErrors({api: true});
+        });
+    }
+
+    private handleError(): void {
+        this.validated = false;
+        this.validateAction.emit(false);
+    }
+
+    public isGroupInvalid(id: number): boolean {
+        return this.form.get(id.toString()).invalid;
+    }
 }

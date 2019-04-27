@@ -4,6 +4,10 @@
 
 .title {
     font-weight: 600;
+
+    &.invalid {
+        color: #f03434;
+    }
 }
 
 label {
@@ -12,4 +16,14 @@ label {
 
 .action {
     text-align: center;
+}
+
+.error {
+    text-align: center;
+    color: #f03434;
+}
+
+.success {
+    text-align: center;
+    color: #27ae60;
 }

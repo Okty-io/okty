@@ -1,7 +1,7 @@
 <h3 class="header">Quiz</h3>
 <form [formGroup]="form">
     <div *ngFor="let config of action.config.questions;let i = index;" [formGroupName]="i">
-        <p class="title">{{config.title}}</p>
+        <p class="title" [ngClass]="{'invalid': isGroupInvalid(i)}">{{config.title}}</p>
         <p class="answer" *ngFor="let label of config.questions; let e = index;">
             <label>
                 <ng-container *ngIf="config.responses.length > 1">
@@ -14,6 +14,14 @@
             </label>
         </p>
     </div>
+    <ng-container *ngIf="validated !== null">
+        <p class=error *ngIf="validated === false">
+            Sorry, your answers do not seem right
+        </p>
+        <p class="success" *ngIf="validated === true">
+            Congratulations !
+        </p>
+    </ng-container >
     <div class="action">
         <app-button [type]="'light'" (click)="submit()">Check answers</app-button>
     </div>

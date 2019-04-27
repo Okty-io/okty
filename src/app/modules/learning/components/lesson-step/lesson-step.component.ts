@@ -10,8 +10,8 @@ export class LessonStepComponent {
 
     @Input() step: Step;
 
-    completeStep(): void {
-        this.step.validated = true;
+    completeStep(event: boolean): void {
+        this.step.validated = event;
     }
 
 }
