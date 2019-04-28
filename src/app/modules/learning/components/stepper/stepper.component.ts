@@ -11,8 +11,19 @@ export class StepperComponent extends CdkStepper {
 
     @Input() title: string;
 
-    onClick(index: number): void {
-        this.selectedIndex = index;
+    onClick(target: number): void {
+        if (target > this.selectedIndex) {
+            while (this.selectedIndex < target) {
+                if (!this.selected.completed) {
+                    return;
+                }
+                this.selectedIndex += 1;
+            }
+        }
+
+        if (target < this.selectedIndex) {
+            this.selectedIndex = target;
+        }
     }
 
     hasPrevious(): boolean {
