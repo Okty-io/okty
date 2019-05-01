@@ -94,6 +94,7 @@ export class AnalyticsService {
 
     purchase(elements: Array<{ name: string, id: string, variant: string }>): void {
         const data = {
+            'event': 'purchase',
             'ecommerce': {
                 'purchase': {
                     'actionField': {
