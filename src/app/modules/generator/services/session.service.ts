@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ContainerFormData } from '../interfaces/form-data';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { AnalyticsService } from '../../../core/services/analytics.service';
 
 @Injectable()
 export class SessionService {
@@ -9,7 +10,7 @@ export class SessionService {
     private containersObservable: BehaviorSubject<ContainerFormData[]>;
     private editing: string;
 
-    constructor() {
+    constructor(private analytics: AnalyticsService) {
         this.containers = [];
         this.containersObservable = new BehaviorSubject<ContainerFormData[]>(this.containers);
     }
@@ -25,6 +26,12 @@ export class SessionService {
 
         this.containers.push(data);
         this.containersObservable.next(this.containers);
+
+        this.analytics.addToCart({
+            id: data.form.id,
+            name: data.form.name,
+            variant: data.id
+        });
     }
 
     getContainers(): Array<ContainerFormData> {
@@ -38,6 +45,12 @@ export class SessionService {
     removeContainer(id: string) {
         const container = this.getContainer(id);
         const index = this.containers.indexOf(container);
+
+        this.analytics.removeFromCart({
+            id: container.form.id,
+            name: container.form.name,
+            variant: id
+        });
 
         this.containers.splice(index, 1);
         this.containersObservable.next(this.containers);

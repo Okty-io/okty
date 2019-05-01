@@ -6,6 +6,7 @@ import { ContainerFormData } from '../../interfaces/form-data';
 import { ProjectRepository } from '../../repositories/project.repository';
 import { ContainerService } from '../../services/container.service';
 import { SessionService } from '../../services/session.service';
+import { AnalyticsService } from '../../../../core/services/analytics.service';
 
 @Component({
     selector: 'app-generator-review-action',
@@ -23,7 +24,8 @@ export class ReviewActionComponent implements OnInit {
     constructor(
         private projectRepository: ProjectRepository,
         private containerService: ContainerService,
-        private sessionService: SessionService
+        private sessionService: SessionService,
+        private analytics: AnalyticsService
     ) {
     }
 
@@ -36,6 +38,15 @@ export class ReviewActionComponent implements OnInit {
     export(): void {
         this.loading = true;
         const apiArgs: ContainerArgs[] = this.getAllContainersArgs();
+
+        this.analytics.purchase(this.containers.map((element: ContainerFormData) => {
+            return {
+                id: element.form.id,
+                name: element.form.name,
+                variant: element.id,
+                quantity: 1
+            };
+        }));
 
         this.projectRepository.build(apiArgs)
             .then((file: Blob) => saveAs(file, 'okty.zip'))

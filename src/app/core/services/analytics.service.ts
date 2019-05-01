@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
     providedIn: CoreModule
 })
 export class AnalyticsService {
+
     public init(): void {
         if (!this.isEnabled()) {
             return;
@@ -26,8 +27,87 @@ export class AnalyticsService {
         })(window, document, 'script', 'dataLayer', environment.gtmId);
     }
 
-    // noinspection JSMethodCanBeStatic
     public isEnabled(): boolean {
         return !!environment.gtmId;
+    }
+
+    private push(data: any): void {
+        (<any>window).dataLayer.push(data);
+    }
+
+    selectProduct(element: { name: string; id: string }): void {
+        const data = {
+            'event': 'productClick',
+            'ecommerce': {
+                'click': {
+                    'products': [{
+                        'name': element.name,
+                        'id': element.id,
+                    }]
+                }
+            }
+        };
+
+        this.push(data);
+    }
+
+    addToCart(element: { name: string, id: string, variant: string }): void {
+        const data = {
+            'event': 'addToCart',
+            'ecommerce': {
+                'currencyCode': 'USD',
+                'add': {
+                    'products': [{
+                        'name': element.name,
+                        'id': element.id,
+                        'variant': element.variant,
+                        'quantity': 1
+                    }]
+                }
+            }
+        };
+
+        this.push(data);
+    }
+
+    removeFromCart(element: { name: string, id: string, variant: string }): void {
+        const data = {
+            'event': 'removeFromCart',
+            'ecommerce': {
+                'remove': {
+                    'products': [{
+                        'name': element.name,
+                        'id': element.id,
+                        'variant': element.variant,
+                        'quantity': 1
+                    }]
+                }
+            }
+        };
+
+        this.push(data);
+    }
+
+    purchase(elements: Array<{ name: string, id: string, variant: string }>): void {
+        const data = {
+            'ecommerce': {
+                'purchase': {
+                    'actionField': {
+                        'id': (new Date().getTime() + Math.floor((Math.random() * 10000) + 1)).toString(16),
+                        'revenue': elements.length,
+                        'tax': '0',
+                        'shipping': '0',
+                        'coupon': ''
+                    },
+                    'products': elements
+                }
+            }
+        };
+
+        this.push(data);
+    }
+
+    search(text: string): void {
+
     }
 }

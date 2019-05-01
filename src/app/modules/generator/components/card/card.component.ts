@@ -1,5 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import { Listable } from '../../interfaces/listable';
+import { Component, Input } from '@angular/core';
+import { AnalyticsService } from '../../../../core/services/analytics.service';
+import { Container } from '../../models/container';
+import { Template } from '../../models/template';
 
 @Component({
     selector: 'app-generator-card',
@@ -7,5 +9,12 @@ import { Listable } from '../../interfaces/listable';
     styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-    @Input() element: Listable;
+    @Input() element: Container | Template;
+
+    constructor(private analytics: AnalyticsService) {
+    }
+
+    public onClick(element: Container | Template) {
+        this.analytics.selectProduct({id: element.id, name: element.name});
+    }
 }
