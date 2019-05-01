@@ -13,5 +13,5 @@ export const environment = {
         domain: 'okty.io'
     },
     displayNavbar: false,
-    GoogleAnalyticsId: 'UA-120161401-2'
+    gtmId: 'GTM-WF2K8D9'
 };

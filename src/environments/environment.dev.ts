@@ -13,5 +13,5 @@ export const environment = {
         domain: 'dmrlam0gsz6qr.cloudfront.net',
     },
     displayNavbar: false,
-    GoogleAnalyticsId: 'UA-120161401-3'
+    gtmId: 'GTM-WF2K8D9'
 };
