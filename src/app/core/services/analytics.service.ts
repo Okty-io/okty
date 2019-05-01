@@ -47,6 +47,11 @@ export class AnalyticsService {
                     'products': [{
                         'name': element.name,
                         'id': element.id,
+                        'price': 1,
+                        'brand': 'Okty',
+                        'category': 'Container',
+                        'variant': '',
+                        'position': 1
                     }]
                 }
             }
@@ -65,7 +70,10 @@ export class AnalyticsService {
                         'name': element.name,
                         'id': element.id,
                         'variant': element.variant,
-                        'quantity': 1
+                        'quantity': 1,
+                        'price': '1',
+                        'brand': 'Okty',
+                        'category': 'Container',
                     }]
                 }
             }
@@ -83,7 +91,10 @@ export class AnalyticsService {
                         'name': element.name,
                         'id': element.id,
                         'variant': element.variant,
-                        'quantity': 1
+                        'quantity': 1,
+                        'price': '1',
+                        'brand': 'Okty',
+                        'category': 'Container',
                     }]
                 }
             }
@@ -93,18 +104,32 @@ export class AnalyticsService {
     }
 
     purchase(elements: Array<{ name: string, id: string, variant: string }>): void {
+        const products = elements.map((element) => {
+            return {
+                'name': element.name,
+                'id': element.id,
+                'variant': element.variant,
+                'quantity': 1,
+                'price': '1',
+                'brand': 'Okty',
+                'category': 'Container',
+                'coupon': '',
+            };
+        });
+
         const data = {
             'event': 'purchase',
             'ecommerce': {
                 'purchase': {
                     'actionField': {
                         'id': (new Date().getTime() + Math.floor((Math.random() * 10000) + 1)).toString(16),
+                        'affiliation': '',
                         'revenue': elements.length,
                         'tax': '0',
                         'shipping': '0',
                         'coupon': ''
                     },
-                    'products': elements
+                    'products': products
                 }
             }
         };
