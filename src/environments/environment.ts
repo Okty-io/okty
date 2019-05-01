@@ -17,7 +17,7 @@ export const environment = {
         domain: '127.0.0.1'
     },
     displayNavbar: true,
-    gtmId: 'GTM-WF2K8D9'
+    gtmId: null
 };
 
 /*

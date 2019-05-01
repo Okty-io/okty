@@ -32,6 +32,10 @@ export class AnalyticsService {
     }
 
     private push(data: any): void {
+        if (!(<any>window).dataLayer) {
+            (<any>window).dataLayer = [];
+        }
+
         (<any>window).dataLayer.push(data);
     }
 
