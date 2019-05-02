@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Listable } from '../../interfaces/listable';
+import { AnalyticsService } from '../../../../core/services/analytics.service';
 
 @Component({
     selector: 'app-generator-search',
@@ -17,7 +18,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     searchControl: FormControl;
 
-    constructor() {
+    constructor(private analytics: AnalyticsService) {
     }
 
     ngOnInit(): void {
@@ -30,6 +31,8 @@ export class SearchComponent implements OnInit, OnDestroy {
 
             this.displayed = this.elements.filter((element) => element.getTitle().toLowerCase().includes(value.toLowerCase()));
             this.outputSearch.emit(this.displayed);
+
+            this.analytics.search(value);
         });
     }
 

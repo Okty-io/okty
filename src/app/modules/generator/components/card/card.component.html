@@ -1,5 +1,5 @@
 <div class="card">
-    <a [routerLink]="element.getLink()">
+    <a [routerLink]="element.getLink()" (click)="onClick(element)">
         <span class="icon">
             <img [src]="element.getImage()" alt="">
         </span>

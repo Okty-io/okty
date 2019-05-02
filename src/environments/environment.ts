@@ -17,7 +17,7 @@ export const environment = {
         domain: '127.0.0.1'
     },
     displayNavbar: true,
-    GoogleAnalyticsId: 'UA-120161401-3'
+    gtmId: null
 };
 
 /*
