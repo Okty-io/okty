@@ -49,4 +49,9 @@ button {
 
 [disabled] {
     opacity: 0.4;
+
+    &:hover {
+        background: inherit !important;
+        color: inherit !important;
+    }
 }
