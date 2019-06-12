@@ -33,6 +33,13 @@ export class LessonComponent implements OnInit {
     }
 
     handleEnd = () => {
+        let completed = JSON.parse(localStorage.getItem('lesson_completed'));
+        completed = !!completed ? completed : {};
+
+        completed[this.lesson.id] = true;
+
+        localStorage.setItem('lesson_completed', JSON.stringify(completed));
+
         this.router.navigate(['/learning', 'chapters']);
     }
 }

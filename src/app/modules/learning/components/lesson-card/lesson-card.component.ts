@@ -18,7 +18,10 @@ export class LessonCardComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.isCompleted = false;
+        let completed = JSON.parse(localStorage.getItem('lesson_completed'));
+        completed = !!completed ? completed : {};
+
+        this.isCompleted = completed[this.lesson.id];
     }
 
 }
