@@ -18,7 +18,7 @@ script:
 deploy:
     -   provider: script
         skip_cleanup: true
-        script: aws s3 sync --region=eu-west-3 --delete --acl public-read dist/okty s3://okty
+        script: aws s3 sync --region=eu-west-3 --delete --acl public-read dist/okty s3://okty-dev
         on:
             repo: Okty-io/okty
             branch: dev
