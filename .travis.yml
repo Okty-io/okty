@@ -21,16 +21,14 @@ deploy:
         script: aws s3 sync --region=eu-west-3 --delete --acl public-read dist/okty s3://okty
         on:
             repo: Okty-io/okty
-            branch: dev
-    -   provider: firebase
-        skip-cleanup: true
-        token:
-            secure: k7/beDs+b6jH2hUQ7HtbpNiqT7scmBNy28tcj7DQA2fB66x9Q/jugVAUv1hcU+hZBqy7Bw008OfracvpJXV46U2gSOHHxCBQg1le7gqb/+Kcb0qwjkNrag0HwlunutHvtKTtUrE2c3uueksT/VM0p73bjJTTMA1wc3eUfZhY1fC44Dm0rFcpsn9oSL0vN4wyfm3RSxN1c1JX2+7vZxRM247Nd3xoXAdRQDLpgqq/QE1fnpD8x7QW5o/UBxVgZj43T7G8YoV8nAHTjEWerIzy7d1QL4WYT8TvmvcpXK719YaKzZBqmNP2J6/lf704vz2JVOo188kFbdUZYI4flXJoRc7M7e8SMbxhcnzUk24cpqemUEX1OdvQSDhWzCwbafg4EDujE6FQ/d6Z6+wuLanMfXH4LOHSuaITNpctXvajwbVc/KhK0S4MIrU8Amn+PXvg/AN/RB2pgCd8BDrtkPfK0/LhQtRMg3yndGtfEyQIBYSEZgsLuSW+SGj50QefiyOKPfrjetpYeqB40dvBrTbNULwqbdCIxBBRTW6ZfyIe8uEnFN8diDTIwHBhktVmIS262gwxxdOGBbHLnTuY8RszvhR6IQ34IWWjayPxJyHZJPo+44BeBOntpKLhmk0mGetSPBhY+9p6CR9WLi6jMHLLDzuODunVv0TTiJv2yfAkHvE=
-        project: okty-7e60c
+            branch: master
+    -   provider: script
+        skip_cleanup: true
+        script: aws s3 sync --region=eu-west-3 --delete --acl public-read dist/okty s3://okty-dev
         on:
             repo: Okty-io/okty
-            branch: master
+            branch: dev
 
 after_deploy:
-    - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
-
+    - if [ "$TRAVIS_BRANCH" == "master" ]; then aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_PROD_DISTRIBUTION_ID --paths "/*"; fi
+    - if [ "$TRAVIS_BRANCH" == "dev" ]; then aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DEV_DISTRIBUTION_ID --paths "/*"; fi

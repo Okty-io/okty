@@ -8,13 +8,9 @@
 
     <div class="navbar-right">
         <div class="large-nav">
-            <a *ngIf="displayNav">Builder</a>
+            <a *ngIf="displayNav" href="https://builder.okty.io/">Builder</a>
             <a href="https://github.com/Okty-io/okty/wiki">Documentation</a>
-            <a *ngIf="displayNav">Blog</a>
-            <ng-container *ngIf="displayNav">
-                <a class="signup" [routerLink]="['/', 'users', 'login']" *ngIf="!user">Sign in</a>
-                <a class="signup" [routerLink]="['/', 'users', 'profile']" *ngIf="user">Profile</a>
-            </ng-container>
+            <a *ngIf="displayNav" [routerLink]="['/', 'learning']">Learning</a>
         </div>
     </div>
 </div>
