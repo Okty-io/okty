@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <a href="https://okty.io/">
-    <img src="https://i.imgur.com/kN8SThu.png" alt="Okty" height="200">
+    <img src="https://cdn.worldvectorlogo.com/logos/okty-1.svg" alt="Okty" height="200">
   </a>
   <br>
   Okty.io
