@@ -7,10 +7,6 @@ const routes: Routes = [
         loadChildren: () => import('./modules/generator/generator.module').then(m => m.GeneratorModule)
     },
     {
-        path: 'learning',
-        loadChildren: () => import('./modules/learning/learning.module').then(m => m.LearningModule)
-    },
-    {
         path: 'users',
         loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
     },
