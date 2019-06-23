@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <a href="https://okty.io/">
-    <img src="https://i.imgur.com/kN8SThu.png" alt="Okty" height="200">
+    <img src="https://cdn.worldvectorlogo.com/logos/okty-1.svg" alt="Okty" height="200">
   </a>
   <br>
   Okty.io
@@ -13,7 +13,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![Build Status](https://travis-ci.org/Okty-io/okty.svg?branch=master)](https://travis-ci.org/okty-io/okty) 
+[![Build Status](https://travis-ci.org/Okty-io/okty.svg?branch=dev)](https://travis-ci.org/okty-io/okty) 
 ![Dependencies](https://david-dm.org/okty-io/okty.svg)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-lightgrey.svg)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
