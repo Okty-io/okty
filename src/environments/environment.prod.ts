@@ -10,7 +10,7 @@ export const environment = {
         clientId: 'b8747a953ff6311d20ab48fd8e91e86ec457d75200878601ecfaf15a4f743f4b'
     },
     cookie: {
-        domain: 'okty.io'
+        domain: '.okty.io'
     },
     displayNavbar: false,
     gtmId: 'GTM-WF2K8D9'
