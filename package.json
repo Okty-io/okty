@@ -29,7 +29,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
     "@fortawesome/free-solid-svg-icons": "^5.10.1",
     "@ng-select/ng-select": "^2.20.5",
-    "animejs": "^2.2.0",
+    "animejs": "^3.1.0",
     "cookieconsent": "^3.1.1",
     "core-js": "^2.6.9",
     "file-saver": "^2.0.2",
