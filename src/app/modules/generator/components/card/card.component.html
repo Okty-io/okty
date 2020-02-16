@@ -1,7 +1,7 @@
 <div class="card">
     <a [routerLink]="element.getLink()" (click)="onClick(element)">
         <span class="icon">
-            <img [src]="element.getImage()" alt="">
+            <img [src]="getImageSrc(element.getImage())" alt="">
         </span>
         <span class="title">{{ element.getTitle() }}</span>
     </a>
